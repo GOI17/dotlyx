@@ -32,12 +32,13 @@
         lazygit
         eza
         fd
+        fzf
       ];
 
       environment.variables = {
         DOTLYX_HOME_PATH="$HOME/Documents/personal/workspace/dotlyx";
         TESTING="DUMMY";
-        EDITOR="NVIM_APPNAME=nvim-nvchad";
+        EDITOR="NVIM_APPNAME=nvim-nvchad nvim";
       };
 
       # Necessary for using flakes on this system.
