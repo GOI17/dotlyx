@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BundleIdRedactor.lastRolloverDay</key>
+	<date>2024-12-22T00:00:00Z</date>
+	<key>BundleIdRedactor.salt</key>
+	<data>
+	+UGFqfJQTyzCfuKGuC8dNgWE7Vr/hUFQYqEnAyzTGTM=
+	</data>
+	<key>BundleIdRedactor.seenBundleIds</key>
+	<array>
+		<string>com.apple.reminders</string>
+	</array>
+</dict>
+</plist>

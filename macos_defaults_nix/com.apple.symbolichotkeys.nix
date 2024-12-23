@@ -1,0 +1,5 @@
+{
+  "com.apple.symbolichotkeys" = {
+    AppleSymbolicHotKeys = { 15 = { enabled = false; }; 16 = { enabled = false; }; 164 = { enabled = false; value = { parameters = [ 65535; 65535; 0; ]; type = "standard"; }; }; 17 = { enabled = false; }; 18 = { enabled = false; }; 19 = { enabled = false; }; 20 = { enabled = false; }; 21 = { enabled = false; }; 22 = { enabled = false; }; 23 = { enabled = false; }; 24 = { enabled = false; }; 25 = { enabled = false; }; 26 = { enabled = false; }; 60 = { enabled = false; value = { parameters = [ 32; 49; 262144; ]; type = "standard"; }; }; 61 = { enabled = false; value = { parameters = [ 32; 49; 786432; ]; type = "standard"; }; }; 64 = { enabled = false; value = { parameters = [ 32; 49; 1048576; ]; type = "standard"; }; }; 65 = { enabled = true; value = { parameters = [ 32; 49; 1572864; ]; type = "standard"; }; }; 7 = { enabled = true; value = { parameters = [ 65535; 120; 8650752; ]; type = "standard"; }; }; 79 = { enabled = true; }; 80 = { enabled = true; }; 81 = { enabled = true; }; 82 = { enabled = true; }; };
+  };
+}

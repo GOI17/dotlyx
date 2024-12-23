@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSNavPanelExpandedSizeForOpenMode</key>
+	<string>{800, 448}</string>
+	<key>NSOSPLastRootDirectory</key>
+	<data>
+	Ym9va1gCAAAAAAQQMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAEA
+	AAQAAAADAwAAAAQAAAUAAAABAQAAVXNlcnMAAAAEAAAAAQYAABAAAAAIAAAABAMAAB1C
+	AAAAAAAABAAAAAEGAAAsAAAACAAAAAAEAABBxmPJmujUiBgAAAABAgAAAgAAAAAAAAAf
+	AgAAAAAAAB8CAAAAAAAAAAAAAAEFAAAIAAAAAQkAAGZpbGU6Ly8vDAAAAAEBAABNYWNp
+	bnRvc2ggSEQIAAAABAMAAABQoRtzAAAACAAAAAAEAABBxmPHqoAAACQAAAABAQAAODZC
+	RjIzNTEtOTlBOC00MDI4LTkxOTAtM0Y0RTUxMTAxQjBGGAAAAAECAACBAAAAAQAAAO8T
+	AAABAAAA7xMAAAEAAAABAAAAAQEAAC8AAAAwAAAAAQIAAGRuaWIAAAAAAQAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAGRsZncCAgAAAAAAAMwAAAD+////AQAAAAAAAAAQAAAA
+	BBAAACAAAAAAAAAABRAAADwAAAAAAAAAEBAAAFgAAAAAAAAAQBAAAEgAAAAAAAAAAiAA
+	ABABAAAAAAAABSAAAIAAAAAAAAAAECAAAJAAAAAAAAAAESAAAMQAAAAAAAAAEiAAAKQA
+	AAAAAAAAEyAAALQAAAAAAAAAICAAAPAAAAAAAAAAMCAAAHgAAAAAAAAAAdAAAHgAAAAA
+	AAAAENAAAAQAAAAAAAAAF/AAABAAAAAAAAAAIvAAABwBAAAAAAAA
+	</data>
+	<key>NSWindow Frame NSNavPanelAutosaveName</key>
+	<string>560 324 800 448 0 0 1920 1080 </string>
+	<key>amplitudePulseAnalyticsTracker_nextHeartbeatDate</key>
+	<date>2024-12-23T08:00:00Z</date>
+	<key>calculator_currenciesRefresh</key>
+	<data>
+	eyJzdWNjZWVkZWQiOnsiXzAiOjc1NjYwMTIyOC45NjEwNTd9fQ==
+	</data>
+	<key>commandScheduler_commandRuns</key>
+	<dict/>
+	<key>commandsPreferencesExpandedItemIds</key>
+	<array>
+		<string>builtin_package_navigation</string>
+		<string>builtin_package_systemCommands</string>
+		<string>builtin_package_developer</string>
+		<string>builtin_package_windowManagement</string>
+	</array>
+	<key>database_lastValidAppVersion</key>
+	<string>1.88.4</string>
+	<key>database_lastValidOSVersion</key>
+	<string>15.1.0</string>
+	<key>fallbackSearches_didMigrateScriptCommands</key>
+	<true/>
+	<key>floatingNotes_didCreateOnboardingNote</key>
+	<true/>
+	<key>floatingNotes_didMigrateFloatingNotesHotkeysAndAliases</key>
+	<true/>
+	<key>floatingNotes_didMigrateFloatingNotesRecords</key>
+	<true/>
+	<key>hasQueuedStatusBarHint</key>
+	<false/>
+	<key>hasShownStatusBarHintAfterOnboarding</key>
+	<true/>
+	<key>mainWindowPositionCache</key>
+	<dict>
+		<key>1(0.0, 0.0, 1512.0, 982.0)</key>
+		<string>{381, 845}</string>
+		<key>2(0.0, 0.0, 1920.0, 1080.0)</key>
+		<string>{585, 916}</string>
+		<key>3(0.0, 0.0, 1920.0, 1080.0)</key>
+		<string>{585, 916}</string>
+	</dict>
+	<key>mainWindow_isMonitoringGlobalHotkeys</key>
+	<true/>
+	<key>onboardingCompleted</key>
+	<true/>
+	<key>onboarding_completedTaskIdentifiers</key>
+	<array>
+		<string>windowManagement</string>
+		<string>installFirstExtension</string>
+	</array>
+	<key>onboarding_raycastShortcuts</key>
+	<array>
+		<string>Esc</string>
+		<string>⌘,</string>
+	</array>
+	<key>onboarding_setupHotkey</key>
+	<true/>
+	<key>onboarding_showTasksProgress</key>
+	<true/>
+	<key>permissions.folders.read:/Users/josegilbertoolivasibarra/Desktop</key>
+	<true/>
+	<key>permissions.folders.read:/Users/josegilbertoolivasibarra/Documents</key>
+	<true/>
+	<key>permissions.folders.read:/Users/josegilbertoolivasibarra/Downloads</key>
+	<true/>
+	<key>permissions.folders.read:cloudStorage</key>
+	<true/>
+	<key>raycast-preferences-restorableData</key>
+	<data>
+	eyJ0eXBlTmFtZSI6IkV4dGVuc2lvbnNQcmVmZXJlbmNlc1RhYkl0ZW0iLCJwZXJzaXN0
+	ZW5jZURhdGUiOjc1NTk1NDA5Ny44MzA2NzJ9
+	</data>
+	<key>raycast-updates-lastAppUpdateCheckDate</key>
+	<real>1734906011.661881</real>
+	<key>raycast-updates-lastTargetCommitishInstalled</key>
+	<string>02ac1256bbe1d9752478c9c92f02485befd872c6</string>
+	<key>raycast-updates-whatsNewItemDisplayDate</key>
+	<real>1734574717.005873</real>
+	<key>raycast-wrapped-2024-dataSummary</key>
+	<string>days: 25 opened: 90 topAppsRaw: 8 topApps: 8 actions: 104</string>
+	<key>raycastAnonymousId</key>
+	<string>27448CA0-5DC0-43D0-921A-10C3F5EA0BD6</string>
+	<key>raycastFirstKnownAppVersion</key>
+	<data>
+	IjEuODcuNSI=
+	</data>
+	<key>raycastInstallationDate</key>
+	<date>2024-12-15T08:41:02Z</date>
+	<key>raycastLoginItemAutoInstalled</key>
+	<date>2024-12-15T08:41:03Z</date>
+	<key>raycastPreferredWindowMode</key>
+	<string>default</string>
+	<key>raycastShouldFollowSystemAppearance</key>
+	<true/>
+	<key>showGettingStartedLink</key>
+	<true/>
+	<key>store_everInstalled</key>
+	<array>
+		<string>c0c9423a-7014-481e-8bb9-44c4c6df53be</string>
+		<string>40ebc708-964f-473b-8d19-d4e9cbd27ae9</string>
+		<string>a9696c4c-a4e8-4ff1-bf49-c9015f796200</string>
+		<string>606e26d8-b3c5-4760-8001-dccce1b872c4</string>
+	</array>
+	<key>store_migratedHackerNews</key>
+	<true/>
+	<key>store_migratedNative</key>
+	<true/>
+	<key>store_migratedReminders</key>
+	<true/>
+	<key>subscriptions_active</key>
+	<false/>
+</dict>
+</plist>

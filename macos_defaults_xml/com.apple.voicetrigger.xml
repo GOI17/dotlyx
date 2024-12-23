@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Accessory Alarm Playback Status</key>
+	<false/>
+	<key>Accessory Media Playback Status</key>
+	<true/>
+	<key>Accessory Timer Playback Status</key>
+	<false/>
+	<key>UserPreferredVoiceTriggerPhraseType</key>
+	<integer>1</integer>
+</dict>
+</plist>

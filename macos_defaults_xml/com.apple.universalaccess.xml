@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FontSizeCategory</key>
+	<dict>
+		<key>com.apple.MobileSMS</key>
+		<string>UseGlobal</string>
+		<key>com.apple.Notes</key>
+		<string>UseGlobal</string>
+		<key>com.apple.finder</key>
+		<string>UseGlobal</string>
+		<key>com.apple.iBooksX</key>
+		<string>UseGlobal</string>
+		<key>com.apple.iCal</key>
+		<string>UseGlobal</string>
+		<key>com.apple.mail</key>
+		<string>UseGlobal</string>
+		<key>com.apple.stocks</key>
+		<string>UseGlobal</string>
+		<key>com.apple.weather</key>
+		<string>UseGlobal</string>
+		<key>global</key>
+		<string>DEFAULT</string>
+		<key>version</key>
+		<string>3.0</string>
+	</dict>
+	<key>History</key>
+	<dict>
+		<key>MouseKeys</key>
+		<array>
+			<dict>
+				<key>Date</key>
+				<string>2024-12-11 22:20:44</string>
+				<key>Reason</key>
+				<string>Reset</string>
+				<key>State</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>Date</key>
+				<string>2024-12-11 22:20:47</string>
+				<key>Reason</key>
+				<string>Reset</string>
+				<key>State</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>Date</key>
+				<string>2024-12-11 22:20:47</string>
+				<key>Reason</key>
+				<string>Reset</string>
+				<key>State</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>Date</key>
+				<string>2024-12-11 22:23:10</string>
+				<key>Reason</key>
+				<string>Reset</string>
+				<key>State</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>Date</key>
+				<string>2024-12-11 22:23:13</string>
+				<key>Reason</key>
+				<string>Reset</string>
+				<key>State</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>Date</key>
+				<string>2024-12-11 22:23:13</string>
+				<key>Reason</key>
+				<string>Reset</string>
+				<key>State</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>Date</key>
+				<string>2024-12-14 22:42:50</string>
+				<key>Reason</key>
+				<string>Reset</string>
+				<key>State</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>closeViewHotkeysEnabled</key>
+	<false/>
+	<key>closeViewZoomDisplayID</key>
+	<integer>0</integer>
+	<key>closeViewZoomFactor</key>
+	<real>1</real>
+	<key>com.apple.custommenu.apps</key>
+	<array>
+		<string>NSGlobalDomain</string>
+	</array>
+	<key>customFonts</key>
+	<false/>
+	<key>dwellTimeDefaultAction</key>
+	<real>3</real>
+	<key>grayscale</key>
+	<false/>
+	<key>hudNotifiedConstrast</key>
+	<real>0.0</real>
+	<key>keyboardAccessCommandMap</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwRVSRudWxs0g0ODxBfEBNj
+	b21tYW5kc1RvS2V5Q2hvcmRzViRjbGFzc4AAgALSEhMUFVokY2xhc3NuYW1lWCRjbGFz
+	c2VzXxAWQVhTU0tleWJvYXJkQ29tbWFuZE1hcKIWF18QFkFYU1NLZXlib2FyZENvbW1h
+	bmRNYXBYTlNPYmplY3QIERokKTI3SUxRU1ddYnh/gYOIk5y1uNEAAAAAAAABAQAAAAAA
+	AAAYAAAAAAAAAAAAAAAAAAAA2g==
+	</data>
+	<key>keyboardAccessFocusRingTimeout</key>
+	<real>15</real>
+	<key>login</key>
+	<false/>
+	<key>sessionChange</key>
+	<false/>
+</dict>
+</plist>

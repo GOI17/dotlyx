@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>/Applications/Raycast.app</key>
+	<true/>
+	<key>/Applications/Raycast.app/Contents/MacOS/Raycast</key>
+	<true/>
+	<key>2::/Applications/Karabiner-EventViewer.app</key>
+	<true/>
+	<key>2::/Applications/Karabiner-EventViewer.app/Contents/MacOS/Karabiner-EventViewer</key>
+	<true/>
+	<key>2::/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_grabber</key>
+	<true/>
+	<key>2::org.pqrs.Karabiner-EventViewer</key>
+	<true/>
+	<key>com.raycast.macos</key>
+	<true/>
+</dict>
+</plist>

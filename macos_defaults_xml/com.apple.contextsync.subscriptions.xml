@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>lastBootUUID</key>
+	<string>6B169B81-0A2E-44DC-BC08-988C29363438</string>
+	<key>rebootNotificationDelivered</key>
+	<true/>
+	<key>storageVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

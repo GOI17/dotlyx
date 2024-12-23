@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CKPerBootTasks</key>
+	<array>
+		<string>CKAccountInfoCacheReset</string>
+	</array>
+	<key>CKStartupTime</key>
+	<integer>1733983656</integer>
+	<key>GKActiveEnvironmentKeyV2</key>
+	<integer>5</integer>
+	<key>GKFullscreenSignInPresentationDataKey</key>
+	<dict>
+		<key>count</key>
+		<integer>0</integer>
+		<key>exceededLimit</key>
+		<false/>
+	</dict>
+	<key>GKLastProtocolVersionUsedKeyV2</key>
+	<string>6.18.23.5.15.23.5.5.2</string>
+	<key>GKPushEnvironmentKeyV2</key>
+	<integer>2</integer>
+	<key>GKPushTokenKeyV2</key>
+	<data>
+	53lAsCp3p4aVLWUFN2k9nt7JxvEchnHJ3fwAGzBCz7s=
+	</data>
+	<key>GKSignInBannerPresentationDataKey</key>
+	<dict>
+		<key>count</key>
+		<integer>0</integer>
+		<key>exceededLimit</key>
+		<false/>
+	</dict>
+	<key>GKURLPatternCacheBagURLUserDefaultsKey</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwTFFUkbnVsbNMNDg8QERJX
+	TlMuYmFzZVYkY2xhc3NbTlMucmVsYXRpdmWAAIADgAJfED5odHRwczovL2luaXQuZ2Mu
+	YXBwbGUuY29tL1dlYk9iamVjdHMvR0tJbml0LndvYS93YS9nZXRCYWc/aXg9M9IVFhcY
+	WiRjbGFzc25hbWVYJGNsYXNzZXNVTlNVUkyiFxlYTlNPYmplY3QIERokKTI3SUxRU1he
+	ZW10gIKEhsfM1+Dm6QAAAAAAAAEBAAAAAAAAABoAAAAAAAAAAAAAAAAAAADy
+	</data>
+	<key>GKURLPatternCacheExpirationDateUserDefaultsKey</key>
+	<date>2024-12-13T22:45:29Z</date>
+</dict>
+</plist>

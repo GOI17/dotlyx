@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FMIPGarbageCollectorIdentityKey</key>
+	<string>17776849872</string>
+	<key>FMIPLimitedPrecisionPrefKey.limitedPrecision</key>
+	<false/>
+	<key>deviceImageVersion</key>
+	<string>33</string>
+	<key>frontMostWindow</key>
+	<true/>
+	<key>itemLearnMoreURL</key>
+	<string>https://support.apple.com/kb/HT211331?viewlocale=en_US</string>
+	<key>publicAPSToken</key>
+	<string>E77940B02A77A786952D650537693D9EDEC9C6F11C8671C9DDFC001B3042CFBB</string>
+	<key>windowVisible</key>
+	<true/>
+</dict>
+</plist>

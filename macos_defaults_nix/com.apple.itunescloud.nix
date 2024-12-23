@@ -1,0 +1,12 @@
+{
+  "com.apple.itunescloud" = {
+    ICDefaultsCachedSubscriptionStatus = { lastKnownActiveDSID = 17776849872; lastKnownOSVersion = "24B2083"; responses = { {"phoneNumber":"","dsid":"0","storefrontID":"143468"} = { status = { _ICMusicSubscriptionStatusAdditionalProperties = { carrierBundlingStatusType = 0; }; acceptSilentAuth = true; account = {  }; family = {  }; match = { status = "Disabled"; }; music = { eligibleOffer = "INTRO"; eligibleOffers = [ "INTRO"; ]; isFamilySubscription = false; isNotEligibleForFreeTrial = false; previousOffer = "Individual"; status = "Disabled"; }; status = 0; terms = [  ]; }; valid = 0; }; }; };
+    ICDefaultsKeyAuthServiceClientTokenCache = { 17776849872 = "b'bplist00\xd4\x01\x02\x03\x04\x05\x06\x07\nX$versionY$archiverT$topX$objects\x12\x00\x01\x86\xa0_\x10\x0fNSKeyedArchiver\xd1\x08\tTroot\x80\x01\xa6\x0b\x0c\x17\x1f &U$null\xd5\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16V$class[tokenResultYlastError^lastUpdateTime_\x10\x1cexcludeFromBackgroundRefresh\x80\x05\x80\x00\x80\x02#A\xc6\x85\\2\x7f\x8em\t\xd4\x18\x19\x1a\r\x1b\x13\x1d\x1eVNSCodeZNSUserInfoXNSDomain\x13\xff\xff\xff\xff\xff\xff\xe4\xa1\x80\x00\x80\x03\x80\x04WICError\xd2!"#$Z$classnameX$classesWNSError\xa2#%XNSObject\xd2!"\'(_\x10%ICLibraryAuthServiceClientTokenStatus\xa2)%_\x10%ICLibraryAuthServiceClientTokenStatus\x00\x08\x00\x11\x00\x1a\x00$\x00)\x002\x007\x00I\x00L\x00Q\x00S\x00Z\x00`\x00k\x00r\x00~\x00\x88\x00\x97\x00\xb6\x00\xb8\x00\xba\x00\xbc\x00\xc5\x00\xc6\x00\xcf\x00\xd6\x00\xe1\x00\xea\x00\xf3\x00\xf5\x00\xf7\x00\xf9\x01\x01\x01\x06\x01\x11\x01\x1a\x01"\x01%\x01.\x013\x01[\x01^\x00\x00\x00\x00\x00\x00\x02\x01\x00\x00\x00\x00\x00\x00\x00*\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x86'"; };
+    ICDefaultsKeyCachedU18MinorAccountStatus = false;
+    ICDefaultsKeyLastKnownSubscriptionStatusBaseCacheKey = { phoneNumber = ""; storefrontID = "143468"; };
+    ICDefaultsKeyLastKnownUserAgeVerificationState = { 17776849872 = { ICAgeVerificationStateKeyDSID = "17776849872"; ICAgeVerificationStateKeyStatus = 1; ICAgeVerificationStateKeyTreatment = 0; }; };
+    ICDefaultsKeyMediaLibraryAccessApplicationIdentifiersWithTCCAcceptanceDates = {  };
+    ICDefaultsKeySharedControlsCapability = true;
+    ICDefaultsKeySocialProfileSupported = true;
+  };
+}

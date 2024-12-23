@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSWindow Frame MainSceneWindow</key>
+	<string>244 136 1024 768 0 0 1512 950 </string>
+	<key>coarseServiceAcknowledged_v1.0</key>
+	<false/>
+	<key>onboarding_v2.1</key>
+	<true/>
+	<key>restoreState</key>
+	<string>devices</string>
+	<key>separationalert_v1.0</key>
+	<true/>
+	<key>tabInfo</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGvEBILDBkaGxwjJCUmJy0xMjk6
+	OzxVJG51bGzTDQ4PEBQYV05TLmtleXNaTlMub2JqZWN0c1YkY2xhc3OjERITgAKAA4AE
+	oxUWF4AFgAuADYARXxAPbGFzdFZpc2l0ZWRUaW1lWmN1cnJlbnRUYWJZdGltZVNwZW50
+	0g4PHSKkHh8gIYAGgAeACIAJgAojQdnZk1+u7fojQdnZk2mbzOojQdnZk184ZQYjv/AA
+	AAAAAADSKCkqK1okY2xhc3NuYW1lWCRjbGFzc2VzV05TQXJyYXmiKixYTlNPYmplY3TS
+	Dg8uIqEvgAyACiM/8AAAAAAAANIODzMipDQ1NiGADoAPgBCACYAKIz/SwfUAAAAAI0Bq
+	0bnUgAAAIz/9ojwAAAAA0igpPT5cTlNEaWN0aW9uYXJ5oj0sAAgAEQAaACQAKQAyADcA
+	SQBMAFEAUwBoAG4AdQB9AIgAjwCTAJUAlwCZAJ0AnwChAKMApQC3AMIAzADRANYA2ADa
+	ANwA3gDgAOkA8gD7AQQBCQEUAR0BJQEoATEBNgE4AToBPAFFAUoBTwFRAVMBVQFXAVkB
+	YgFrAXQBeQGGAAAAAAAAAgEAAAAAAAAAPwAAAAAAAAAAAAAAAAAAAYk=
+	</data>
+</dict>
+</plist>

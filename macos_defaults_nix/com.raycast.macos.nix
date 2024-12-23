@@ -1,0 +1,47 @@
+{
+  "com.raycast.macos" = {
+    NSNavPanelExpandedSizeForOpenMode = "{800, 448}";
+    NSOSPLastRootDirectory = "b'bookX\x02\x00\x00\x00\x00\x04\x100\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00T\x01\x00\x00\x04\x00\x00\x00\x03\x03\x00\x00\x00\x04\x00\x00\x05\x00\x00\x00\x01\x01\x00\x00Users\x00\x00\x00\x04\x00\x00\x00\x01\x06\x00\x00\x10\x00\x00\x00\x08\x00\x00\x00\x04\x03\x00\x00\x1dB\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x01\x06\x00\x00,\x00\x00\x00\x08\x00\x00\x00\x00\x04\x00\x00A\xc6c\xc9\x9a\xe8\xd4\x88\x18\x00\x00\x00\x01\x02\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x1f\x02\x00\x00\x00\x00\x00\x00\x1f\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x05\x00\x00\x08\x00\x00\x00\x01\t\x00\x00file:///\x0c\x00\x00\x00\x01\x01\x00\x00Macintosh HD\x08\x00\x00\x00\x04\x03\x00\x00\x00P\xa1\x1bs\x00\x00\x00\x08\x00\x00\x00\x00\x04\x00\x00A\xc6c\xc7\xaa\x80\x00\x00$\x00\x00\x00\x01\x01\x00\x0086BF2351-99A8-4028-9190-3F4E51101B0F\x18\x00\x00\x00\x01\x02\x00\x00\x81\x00\x00\x00\x01\x00\x00\x00\xef\x13\x00\x00\x01\x00\x00\x00\xef\x13\x00\x00\x01\x00\x00\x00\x01\x00\x00\x00\x01\x01\x00\x00/\x00\x00\x000\x00\x00\x00\x01\x02\x00\x00dnib\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00dlfw\x02\x02\x00\x00\x00\x00\x00\x00\xcc\x00\x00\x00\xfe\xff\xff\xff\x01\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x04\x10\x00\x00 \x00\x00\x00\x00\x00\x00\x00\x05\x10\x00\x00<\x00\x00\x00\x00\x00\x00\x00\x10\x10\x00\x00X\x00\x00\x00\x00\x00\x00\x00@\x10\x00\x00H\x00\x00\x00\x00\x00\x00\x00\x02 \x00\x00\x10\x01\x00\x00\x00\x00\x00\x00\x05 \x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x10 \x00\x00\x90\x00\x00\x00\x00\x00\x00\x00\x11 \x00\x00\xc4\x00\x00\x00\x00\x00\x00\x00\x12 \x00\x00\xa4\x00\x00\x00\x00\x00\x00\x00\x13 \x00\x00\xb4\x00\x00\x00\x00\x00\x00\x00  \x00\x00\xf0\x00\x00\x00\x00\x00\x00\x000 \x00\x00x\x00\x00\x00\x00\x00\x00\x00\x01\xd0\x00\x00x\x00\x00\x00\x00\x00\x00\x00\x10\xd0\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x17\xf0\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00"\xf0\x00\x00\x1c\x01\x00\x00\x00\x00\x00\x00'";
+    NSWindow Frame NSNavPanelAutosaveName = "560 324 800 448 0 0 1920 1080 ";
+    amplitudePulseAnalyticsTracker_nextHeartbeatDate = "2024-12-23 08:00:00";
+    calculator_currenciesRefresh = "b'{"succeeded":{"_0":756601228.961057}}'";
+    commandScheduler_commandRuns = {  };
+    commandsPreferencesExpandedItemIds = [ "builtin_package_navigation"; "builtin_package_systemCommands"; "builtin_package_developer"; "builtin_package_windowManagement"; ];
+    database_lastValidAppVersion = "1.88.4";
+    database_lastValidOSVersion = "15.1.0";
+    fallbackSearches_didMigrateScriptCommands = true;
+    floatingNotes_didCreateOnboardingNote = true;
+    floatingNotes_didMigrateFloatingNotesHotkeysAndAliases = true;
+    floatingNotes_didMigrateFloatingNotesRecords = true;
+    hasQueuedStatusBarHint = false;
+    hasShownStatusBarHintAfterOnboarding = true;
+    mainWindowPositionCache = { 1(0.0, 0.0, 1512.0, 982.0) = "{381, 845}"; 2(0.0, 0.0, 1920.0, 1080.0) = "{585, 916}"; 3(0.0, 0.0, 1920.0, 1080.0) = "{585, 916}"; };
+    mainWindow_isMonitoringGlobalHotkeys = true;
+    onboardingCompleted = true;
+    onboarding_completedTaskIdentifiers = [ "windowManagement"; "installFirstExtension"; ];
+    onboarding_raycastShortcuts = [ "Esc"; "⌘,"; ];
+    onboarding_setupHotkey = true;
+    onboarding_showTasksProgress = true;
+    permissions.folders.read:/Users/josegilbertoolivasibarra/Desktop = true;
+    permissions.folders.read:/Users/josegilbertoolivasibarra/Documents = true;
+    permissions.folders.read:/Users/josegilbertoolivasibarra/Downloads = true;
+    permissions.folders.read:cloudStorage = true;
+    raycast-preferences-restorableData = "b'{"typeName":"ExtensionsPreferencesTabItem","persistenceDate":755954097.830672}'";
+    raycast-updates-lastAppUpdateCheckDate = 1734906011.661881;
+    raycast-updates-lastTargetCommitishInstalled = "02ac1256bbe1d9752478c9c92f02485befd872c6";
+    raycast-updates-whatsNewItemDisplayDate = 1734574717.005873;
+    raycast-wrapped-2024-dataSummary = "days: 25 opened: 90 topAppsRaw: 8 topApps: 8 actions: 104";
+    raycastAnonymousId = "27448CA0-5DC0-43D0-921A-10C3F5EA0BD6";
+    raycastFirstKnownAppVersion = "b'"1.87.5"'";
+    raycastInstallationDate = "2024-12-15 08:41:02";
+    raycastLoginItemAutoInstalled = "2024-12-15 08:41:03";
+    raycastPreferredWindowMode = "default";
+    raycastShouldFollowSystemAppearance = true;
+    showGettingStartedLink = true;
+    store_everInstalled = [ "c0c9423a-7014-481e-8bb9-44c4c6df53be"; "40ebc708-964f-473b-8d19-d4e9cbd27ae9"; "a9696c4c-a4e8-4ff1-bf49-c9015f796200"; "606e26d8-b3c5-4760-8001-dccce1b872c4"; ];
+    store_migratedHackerNews = true;
+    store_migratedNative = true;
+    store_migratedReminders = true;
+    subscriptions_active = false;
+  };
+}

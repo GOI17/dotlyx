@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>KSCKDidSetupRecordZoneProd-TextReplacements</key>
+	<true/>
+	<key>KSCKSubscriptionProd-TextReplacements</key>
+	<true/>
+	<key>KSDidMigrateToCloudKitOnCloud</key>
+	<true/>
+	<key>KSDidPushAllLocalRecordsOnce-2</key>
+	<true/>
+	<key>KSDidPushMigrationStatusOnce-2</key>
+	<true/>
+	<key>KSLastKnownUserID-TextReplacements</key>
+	<string>_59e17d7a52dff42574f43d287a67c717</string>
+	<key>KSSampleShortcutWasImported_CK</key>
+	<true/>
+	<key>kDidMigrateToUUIDRecordName</key>
+	<false/>
+	<key>kTRCKLastSyncTime</key>
+	<date>2024-12-19T02:48:42Z</date>
+	<key>kTRCKSyncCount</key>
+	<integer>1</integer>
+</dict>
+</plist>

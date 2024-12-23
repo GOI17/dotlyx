@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppQuitTransactions</key>
+	<array/>
+	<key>CurrentExtensionURL</key>
+	<string>/System/Library/ExtensionKit/Extensions/KeyboardSettings.appex</string>
+	<key>NSQuitAlwaysKeepsWindows</key>
+	<false/>
+	<key>NSSplitView Subview Frames main, SidebarNavigationView</key>
+	<array>
+		<string>0.000000, 0.000000, 215.000000, 720.000000, NO, NO</string>
+		<string>216.000000, 0.000000, 499.000000, 720.000000, NO, NO</string>
+	</array>
+	<key>NSWindow Frame main</key>
+	<string>398 115 715 720 0 0 1512 950 </string>
+	<key>ThirdPartyCount</key>
+	<integer>0</integer>
+	<key>recentPanes</key>
+	<array>
+		<string>com.apple.Keyboard-Settings.extension</string>
+		<string>com.apple.Displays-Settings.extension</string>
+		<string>com.apple.settings.PrivacySecurity.extension</string>
+		<string>com.apple.BluetoothSettings</string>
+		<string>com.apple.Desktop-Settings.extension</string>
+		<string>com.apple.Accessibility-Settings.extension</string>
+	</array>
+</dict>
+</plist>

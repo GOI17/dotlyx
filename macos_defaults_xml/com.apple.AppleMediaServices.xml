@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMSCloudKitRecordZoneChangeTokens</key>
+	<dict>
+		<key>private:IdentifierZone</key>
+		<data>
+		YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9i
+		amVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwRElUk
+		bnVsbNINDg8QViRjbGFzc18QD0NoYW5nZVRva2VuRGF0YYADgAJPEC8fChAS
+		DAAANMMVYnZ4AAAAABgBGAAiFgjpm9HjquK+haIBEOr0hv7HqvHViAEoANIT
+		FBUWWiRjbGFzc25hbWVYJGNsYXNzZXNfEBNDS1NlcnZlckNoYW5nZVRva2Vu
+		ohUXWE5TT2JqZWN0CBEaJCkyN0lMUVNYXmNqfH6AsrfCy+HkAAAAAAAAAQEA
+		AAAAAAAAGAAAAAAAAAAAAAAAAAAAAO0=
+		</data>
+	</dict>
+	<key>AMSDidSetUpServerDataCache</key>
+	<true/>
+	<key>AMSFPCertExpiration</key>
+	<date>2024-12-16T08:48:46Z</date>
+	<key>AMSIncludeFullRequestInHARLogging</key>
+	<false/>
+	<key>AMSIncludeFullResponseInHARLogging</key>
+	<false/>
+	<key>AMSJSVersionMap</key>
+	<dict>
+		<key>analytics</key>
+		<string>21.0.84</string>
+		<key>internal</key>
+		<string>24.0.14</string>
+		<key>journeys</key>
+		<string>2400.2415.3</string>
+	</dict>
+	<key>AMSSamplingSession-TLSSessionTickets</key>
+	<dict>
+		<key>date</key>
+		<date>2024-12-15T04:52:36Z</date>
+		<key>duration</key>
+		<real>1800</real>
+		<key>result</key>
+		<true/>
+	</dict>
+	<key>AMSSamplingSession-xp_amp_appstore_log:qJO7Vty2LO98sz+eud1os9HfnMs</key>
+	<dict>
+		<key>date</key>
+		<date>2024-12-12T06:22:02Z</date>
+		<key>duration</key>
+		<real>60000</real>
+		<key>result</key>
+		<false/>
+	</dict>
+	<key>AMSStorefrontSuffixes</key>
+	<dict>
+		<key>com.apple.MediaPlayer.RemotePlayerService</key>
+		<string> t:musicstore1</string>
+		<key>com.apple.Music</key>
+		<string> t:musicstore1</string>
+		<key>com.apple.TV</key>
+		<string> t:tv1</string>
+	</dict>
+</dict>
+</plist>

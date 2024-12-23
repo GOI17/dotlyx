@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DiskSpaceWasLow</key>
+	<false/>
+	<key>iCloudPhotoLibraryHasBeenEnabledAccountIdentifiers</key>
+	<array>
+		<string>F78AAE5E-982D-4F6F-B42A-7E632AB674C4</string>
+	</array>
+	<key>iCloudPhotoLibraryLastResetWelcomePromptDBVersion</key>
+	<integer>12200</integer>
+	<key>lastHighlightTitlesUpdateDate</key>
+	<date>2024-12-19T07:17:25Z</date>
+	<key>lastRecentHighlightUpdateDate</key>
+	<date>2024-12-19T07:17:25Z</date>
+</dict>
+</plist>

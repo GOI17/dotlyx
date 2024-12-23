@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ATXAppLaunchMonitor_LastLaunchWasHomescreen</key>
+	<false/>
+	<key>ATXEnterLOIUpdateSourceLastRefreshDate</key>
+	<date>2024-12-12T06:20:52Z</date>
+	<key>ATXIntentCache.OSVersion</key>
+	<string>24B2083</string>
+	<key>ATXPrivacyPreservingLocationHashDeviceSpecificSalt</key>
+	<data>
+	eDeNrdzsBo0=
+	</data>
+	<key>ATXUpdatePredictionsLoggerCountsDictionary-ActionPredictions</key>
+	<dict>
+		<key>TRIGGER_TYPE_APPLAUNCH</key>
+		<integer>97</integer>
+		<key>TRIGGER_TYPE_OTHER</key>
+		<integer>10</integer>
+		<key>TRIGGER_TYPE_TOTAL</key>
+		<integer>107</integer>
+	</dict>
+	<key>ATXUpdatePredictionsLoggerCountsDictionary-AppPredictions</key>
+	<dict/>
+	<key>ATXUpdatePredictionsLoggerLastLogDate</key>
+	<date>2024-12-15T04:40:52Z</date>
+	<key>activityDeletionHighWaterMarkKey</key>
+	<date>2024-12-15T06:42:55Z</date>
+	<key>com.apple.duetexpertd.MMUpdateMonitor.PredictionCount</key>
+	<integer>0</integer>
+	<key>coreAnalyticsFieldHashSaltKey</key>
+	<string>23006169-3EEE-4D15-98C9-188B5574BD2C</string>
+	<key>intentDeletionHighWaterMark</key>
+	<date>2024-12-15T06:42:55Z</date>
+	<key>lastMajorOSUpgradeApproximateTimestamp</key>
+	<real>755677245.04139805</real>
+	<key>lastMajorOSUpgradeMajorVersion</key>
+	<integer>15</integer>
+	<key>lastMinorOSUpgradeApproximateTimestamp</key>
+	<real>755677245.04118299</real>
+	<key>lastMinorOSUpgradeMinorVersion</key>
+	<integer>1</integer>
+	<key>modeAppSessionPipelineLastKnownModeKey</key>
+	<integer>14</integer>
+	<key>modeAppSessionPipelineLastRunTimestampKey</key>
+	<real>0.0</real>
+	<key>modeScoreFilesUpgradeTimeKey</key>
+	<real>755677244.87284803</real>
+	<key>showInSearchToSuggestOnHomeScreenMigration</key>
+	<true/>
+</dict>
+</plist>

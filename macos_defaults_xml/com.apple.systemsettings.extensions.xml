@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>LastIndexed</key>
+	<dict>
+		<key>com.apple.Battery-Settings.extension</key>
+		<string>71d8c4781484a9494d92ed4a75f29c7e</string>
+		<key>com.apple.CD-DVD-Settings.extension</key>
+		<string>a222cff6cd5c712885580ac94760c7d2</string>
+		<key>com.apple.ClassKit-Settings.extension</key>
+		<string>0e3bd47256ba93f644f52be08079c9fb</string>
+		<key>com.apple.Game-Controller-Settings.extension</key>
+		<string>aba59f559682f832eb4e63be08423a1e</string>
+		<key>com.apple.Mouse-Settings.extension</key>
+		<string>0ab66ee15bae3a7b1315112481f76732</string>
+		<key>com.apple.Siri-Settings.extension</key>
+		<string>4d963f3f70af2c5cb49d41dd8d58338c</string>
+		<key>com.apple.Touch-ID-Settings.extension</key>
+		<string>974b799fe72d1c330663142f4705deb6</string>
+		<key>com.apple.Trackpad-Settings.extension</key>
+		<string>df07588b678c9f076ed8a646ed32cfac</string>
+	</dict>
+	<key>cs-indexing done</key>
+	<true/>
+	<key>current_state</key>
+	<dict>
+		<key>device.cddvd</key>
+		<false/>
+		<key>device.mouse</key>
+		<false/>
+		<key>device.touchID</key>
+		<true/>
+		<key>device.trackpad</key>
+		<true/>
+		<key>powersource.battery</key>
+		<true/>
+		<key>supports.systemAssistantExperience</key>
+		<true/>
+		<key>user.isguest</key>
+		<false/>
+	</dict>
+	<key>osVersion</key>
+	<string>15-1</string>
+	<key>sessionUUID</key>
+	<string>E2F8B659-C813-4ABA-906B-60451810572C</string>
+	<key>state-indexing done</key>
+	<true/>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>

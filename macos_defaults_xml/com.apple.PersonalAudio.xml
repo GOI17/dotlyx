@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>personalMediaEnabledByRouteUID</key>
+	<dict>
+		<key>PAConfigurationWildcard</key>
+		<false/>
+	</dict>
+	<key>shouldUpdateAccessory</key>
+	<true/>
+	<key>transparencyAmplification</key>
+	<dict>
+		<key>80:95:3A:E7:57:DE</key>
+		<real>0.5</real>
+	</dict>
+	<key>transparencyBalance</key>
+	<dict>
+		<key>80:95:3A:E7:57:DE</key>
+		<real>0.5</real>
+	</dict>
+	<key>transparencyBeamforming</key>
+	<dict>
+		<key>80:95:3A:E7:57:DE</key>
+		<false/>
+	</dict>
+	<key>transparencyCustomized</key>
+	<dict>
+		<key>80:95:3A:E7:57:DE</key>
+		<false/>
+	</dict>
+	<key>transparencyNoiseSupressor</key>
+	<dict>
+		<key>80:95:3A:E7:57:DE</key>
+		<real>0.0</real>
+	</dict>
+	<key>transparencyTone</key>
+	<dict>
+		<key>80:95:3A:E7:57:DE</key>
+		<real>0.5</real>
+	</dict>
+</dict>
+</plist>

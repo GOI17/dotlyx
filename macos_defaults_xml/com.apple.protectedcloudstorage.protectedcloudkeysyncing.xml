@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CKPerBootTasks</key>
+	<array>
+		<string>CKAccountInfoCacheReset</string>
+	</array>
+	<key>CKStartupTime</key>
+	<integer>1734244133</integer>
+	<key>initialWState</key>
+	<false/>
+	<key>knownWState</key>
+	<false/>
+	<key>nextRegistrySync</key>
+	<date>2024-12-12T08:20:58Z</date>
+	<key>registrySyncIdentifier</key>
+	<string>F78AAE5E-982D-4F6F-B42A-7E632AB674C4</string>
+	<key>timestampObserveWDisable</key>
+	<date>2024-12-12T06:20:54Z</date>
+</dict>
+</plist>

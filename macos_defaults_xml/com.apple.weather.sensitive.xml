@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>activeUserModel</key>
+	<data>
+	Y3JkdAYAAAASIHIeEgIwABIOIgwI7q/6ugYQ7dewkAISCCIGCIC4+LoGMhIKEMgYpY3G
+	YUgWqo/9a43o87I=
+	</data>
+	<key>privateUserIdentifier</key>
+	<string>F8D224F2-7A3D-4F29-B961-2D73F54A2578</string>
+	<key>privateUserIdentifierLastResetDate</key>
+	<date>2024-12-15T08:48:46Z</date>
+	<key>reportWeatherIdentifier</key>
+	<string>08D94D57-D7CE-4F24-B01A-E978431B14E4</string>
+	<key>reportWeatherIdentifierLastResetDate</key>
+	<date>2024-12-15T08:48:46Z</date>
+	<key>userIdentifier</key>
+	<string>0F10C168-FEB3-4F4C-A95D-6BDBD908F47F</string>
+	<key>userIdentifierLastResetDate</key>
+	<date>2024-12-15T08:48:46Z</date>
+	<key>userStartDate</key>
+	<date>2023-08-01T07:00:00Z</date>
+</dict>
+</plist>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CSEvents.V1</key>
+	<dict>
+		<key>currentDate</key>
+		<date>2024-12-19T02:52:00Z</date>
+		<key>lastFlushDate</key>
+		<date>2024-12-19T07:23:54Z</date>
+		<key>processedCount</key>
+		<integer>0</integer>
+		<key>version</key>
+		<integer>2</integer>
+	</dict>
+</dict>
+</plist>

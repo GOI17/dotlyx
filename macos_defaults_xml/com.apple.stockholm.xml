@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MaxPaymentCards</key>
+	<integer>16</integer>
+	<key>PDExpressPasses</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwRVSRudWxs0g0ODxBaTlMu
+	b2JqZWN0c1YkY2xhc3OggALSEhMUFVokY2xhc3NuYW1lWCRjbGFzc2VzVU5TU2V0ohQW
+	WE5TT2JqZWN0CBEaJCkyN0lMUVNXXWJtdHV3fIeQlpkAAAAAAAABAQAAAAAAAAAXAAAA
+	AAAAAAAAAAAAAAAAog==
+	</data>
+	<key>PDExpressPasses-2</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwRVSRudWxs0g0ODxBaTlMu
+	b2JqZWN0c1YkY2xhc3OggALSEhMUFVokY2xhc3NuYW1lWCRjbGFzc2VzVU5TU2V0ohQW
+	WE5TT2JqZWN0CBEaJCkyN0lMUVNXXWJtdHV3fIeQlpkAAAAAAAABAQAAAAAAAAAXAAAA
+	AAAAAAAAAAAAAAAAog==
+	</data>
+	<key>PKDisableCloudKitEnvironmentChangeHandlingKey</key>
+	<false/>
+	<key>PKWalletShouldAutomaticallyRegisterKey</key>
+	<false/>
+	<key>RemoteAdminV2</key>
+	<true/>
+</dict>
+</plist>

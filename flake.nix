@@ -9,16 +9,35 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
+    macosDefaults = import ./macos_defaults.nix;
     system = "aarch64-darwin";  # (x86_64-linux, aarch64-darwin, etc.)
     configuration = { pkgs, ... }: {
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages = [
-        pkgs.vim
+      environment.systemPackages = with pkgs; [
+        mas
+        neovim
+        tree
+        wget
+        jq
+        gh
+        ripgrep
+        rename
+        neofetch
+        jump
+        gcc
+        openssl
+        asdf-vm
+        raycast
+        karabiner-elements
+        brave
+        lazygit
+        eza
+        fd
       ];
 
       environment.variables = {
-        DOTLYX_HOME_PATH="~/Documents/personal/workspace/dotlyx";
+        DOTLYX_HOME_PATH="$HOME/Documents/personal/workspace/dotlyx";
+        TESTING="DUMMY";
+        EDITOR="NVIM_APPNAME=nvim-nvchad";
       };
 
       # Necessary for using flakes on this system.
@@ -36,6 +55,8 @@
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = system;
+      nixpkgs.config.allowUnfree = true;
+      # nixpkgs.config.allowUnsupportedSystem = true;
     };
   in
   {
@@ -44,6 +65,26 @@
     darwinConfigurations."Joses-MacBook-Pro" = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration 
+      ];
+    };
+    programs = { pkgs }: {
+      defaults.settings = macosDefaults
+      // {
+        # INFO: Override example:
+        # "com.apple.dock".titlesize = 64;
+      };
+
+      zsh.initExtra = ". ${pkgs.asdf-vm}/share/asdf-vm/asdf.sh";
+      zsh.plugins = [
+        {
+          name = "fzf-tab";
+          src = pkgs.fetchFromGitHub {
+            owner = "Aloxaf";
+            repo = "fzf-tab";
+            rev = "c2b4aa5ad2532cca91f23908ac7f00efb7ff09c9";
+            sha256 = "1b4pksrc573aklk71dn2zikiymsvq19bgvamrdffpf7azpq6kxl2";
+          };
+        }
       ];
     };
   };
