@@ -5,13 +5,62 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    mac-app-util.url = "github:hraban/mac-app-util";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nix-homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    nix-homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    nix-homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{
+    self,
+    nix-darwin,
+    nixpkgs,
+    mac-app-util,
+    nix-homebrew,
+    nix-homebrew-core,
+    nix-homebrew-cask,
+    nix-homebrew-bundle,
+  }:
   let
     macosDefaults = import ./macos_defaults.nix;
-    system = "aarch64-darwin";  # (x86_64-linux, aarch64-darwin, etc.)
+
+    system = "aarch64-darwin";
+
     configuration = { pkgs, ... }: {
+      fonts.packages = [
+        pkgs.nerd-fonts.caskaydia-cove
+      ];
+
+      homebrew = {
+        enable = true;
+        casks = [
+          "obs"
+          "shortcat"
+          "notion"
+          "notion-calendar"
+        ];
+        masApps = {
+          # Identifier = APP_ID
+          #"Yoink" = 457622435;
+        };
+
+        onActivation = {
+          cleanup = "zap";
+          autoUpdate = true;
+          upgrade = true;
+        };
+      };
+
       environment.systemPackages = with pkgs; [
         mas
         neovim
@@ -33,12 +82,16 @@
         eza
         fd
         fzf
+        zsh
       ];
 
-      environment.variables = {
-        DOTLYX_HOME_PATH="$HOME/Documents/personal/workspace/dotlyx";
-        TESTING="DUMMY";
-        EDITOR="NVIM_APPNAME=nvim-nvchad nvim";
+      environment = {
+        shellAliases = { };
+        variables = {
+          DOTLYX_HOME_PATH="$HOME/Documents/personal/workspace/dotlyx";
+          ZIM_HOME="$HOME/.zim";
+        };
+
       };
 
       # Necessary for using flakes on this system.
@@ -57,7 +110,7 @@
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = system;
       nixpkgs.config.allowUnfree = true;
-      # nixpkgs.config.allowUnsupportedSystem = true;
+      nixpkgs.config.allowUnsupportedSystem = true;
     };
   in
   {
@@ -66,27 +119,30 @@
     darwinConfigurations."Joses-MacBook-Pro" = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration 
+        mac-app-util.darwinModules.default
+        nix-homebrew.darwinModules.nix-homebrew {
+          nix-homebrew = {
+            autoMigrate = true;
+            enable = true;
+            enableRosetta = true;
+            user = "josegilbertoolivasibarra";
+	    mutableTaps = false;
+	    taps = {
+              "homebrew/homebrew-core" = nix-homebrew-core;
+              "homebrew/homebrew-cask" = nix-homebrew-cask;
+              "homebrew/homebrew-bundle" = nix-homebrew-bundle;
+            };
+          };
+        }
       ];
     };
+
     programs = { pkgs }: {
       defaults.settings = macosDefaults
       // {
         # INFO: Override example:
         # "com.apple.dock".titlesize = 64;
       };
-
-      zsh.initExtra = ". ${pkgs.asdf-vm}/share/asdf-vm/asdf.sh";
-      zsh.plugins = [
-        {
-          name = "fzf-tab";
-          src = pkgs.fetchFromGitHub {
-            owner = "Aloxaf";
-            repo = "fzf-tab";
-            rev = "c2b4aa5ad2532cca91f23908ac7f00efb7ff09c9";
-            sha256 = "1b4pksrc573aklk71dn2zikiymsvq19bgvamrdffpf7azpq6kxl2";
-          };
-        }
-      ];
     };
   };
 }

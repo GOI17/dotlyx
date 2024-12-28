@@ -1,0 +1,26 @@
+- clean: ["~"]
+
+- defaults:
+    link:
+      create: true
+      force: true
+
+- create:
+    - $DOTLYX_HOME_PATH/modules/shell/bash/completions
+    - $DOTLYX_HOME_PATH/modules/shell/bash/themes
+
+- link:
+    ~/.bash_profile: $DOTLYX_HOME_PATH/modules/shell/bash/.bash_profile
+    ~/.bashrc: $DOTLYX_HOME_PATH/modules/shell/bash/.bashrc
+    ~/.zimrc: $DOTLYX_HOME_PATH/modules/shell/zsh/.zimrc
+    ~/.zlogin: $DOTLYX_HOME_PATH/modules/shell/zsh/.zlogin
+    ~/.zshenv: $DOTLYX_HOME_PATH/modules/shell/zsh/.zshenv
+    ~/.zshrc: $DOTLYX_HOME_PATH/modules/shell/zsh/.zshrc
+    ~/.inputrc: shell/.inputrc
+    # ~/.config/nvim-scratch: editors/nvim-scratch
+    ~/.config/nvim-nvchad: $DOTLYX_HOME_PATH/modules/editors/nvim-nvchad
+    # ~/.config/nvim-astro: editors/nvim-astro
+    ~/.wezterm.lua: $DOTLYX_HOME_PATH/modules/terminals/wezterm/wezterm.lua
+    # ~/.alacritty.yml: terminals/alacritty/.alacritty.yml
+    # ~/.tmux.conf: shell/tmux/.tmux.conf
+    # ~/.tmux: shell/tmux/.tmux

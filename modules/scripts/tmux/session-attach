@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOTFILES_PATH/scripts/tmux/utils/sessions.sh"
+
+##? Pick and attach tmux session
+#?? 0.0.1
+##?
+##? Usage:
+##?    session-attach
+docs::parse "$@"
+
+tmux a -t "$(get_tmux_sessions)"

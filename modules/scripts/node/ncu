@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Show outdated dependencies by group (major, minor, patch)
+#?? 0.0.1
+##?
+##? Usage:
+##?     ncu
+docs::parse "$@"
+
+ncu --interactive --format group

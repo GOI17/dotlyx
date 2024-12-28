@@ -1,0 +1,28 @@
+- clean: ["~"]
+
+- defaults:
+    link:
+      create: true
+      force: true
+
+- create:
+    - ~/.hushlogin
+
+- link:
+    ~/.dotly: os/mac/.dotly
+    ~/bin/bash: /opt/homebrew/bin/bash
+    ~/bin/date: /opt/homebrew/bin/gdate
+    ~/bin/find: /opt/homebrew/bin/gfind
+    ~/bin/make: /opt/homebrew/bin/gmake
+    ~/bin/sed: /opt/homebrew/bin/gsed
+    ~/bin/touch: /opt/homebrew/bin/gtouch
+    ~/bin/zsh: /opt/homebrew/bin/zsh
+    # ~/.config/sketchybar: os/mac/sketchybar
+    # ~/.config/sketchybar/icons.sh: os/mac/sketchybar/icons.sh
+    # ~/.config/sketchybar/sizes.sh: os/mac/sketchybar/sizes.sh
+    # ~/.config/sketchybar/items: os/mac/sketchybar/items
+    # ~/.config/sketchybar/plugins: os/mac/sketchybar/plugins
+    # ~/.sketchybarrc: os/mac/sketchybar/.sketchybarrc
+    # ~/.skhdrc: os/mac/skhd/.skhdrc
+    # ~/.spacebarrc: os/mac/spacebar/.spacebarrc
+    # ~/.yabairc: os/mac/yabai/.yabairc

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOTFILES_PATH/shell/aliases.sh"
+source "$DOTFILES_TEMPLATE/scripts/git/utils/stash-get.sh"
+
+##? Apply selected stash
+##?
+##? Usage:
+##?   stash-apply
+docs::parse "$@"
+
+git stash pop "$(get_stash)"

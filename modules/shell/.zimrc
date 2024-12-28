@@ -1,0 +1,7 @@
+zmodule zimfw/environment
+zmodule zimfw/git-info
+zmodule zimfw/input
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-autosuggestions
+zmodule gitster
+zmodule prompt-pwd

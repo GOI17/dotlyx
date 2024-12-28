@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOTFILES_PATH/shell/aliases.sh"
+
+##? Create branch and auto switch to it
+##?
+##? Usage:
+##?   branch-rename <new_branch_name>
+##?   branch-rename -r <new_branch_name>
+docs::parse "$@"
+
+current_branch=$(gb --show-current)
+
+while getopts ":r:" option; do
+  case $option in
+    r)
+      git push origin --delete $current_branch
+      git push origin --set-upstream $new_branch_name
+      exit;;
+    \?)
+      git branch -m $current_branch $new_branch_name
+      exit;;

@@ -1,0 +1,10 @@
+- clean: ['~']
+
+- defaults:
+    link:
+      create: true
+      force: true
+
+- link:
+    ~/.dotly: os/linux/.dotly
+    ~/.i3: os/linux/wm/i3
