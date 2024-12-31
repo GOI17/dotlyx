@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-echo "NIX Home: $NIX_CONFIG_HOME"
-mkdir $NIX_CONFIG_HOME && cd $NIX_CONFIG_HOME
+cd $NIX_CONFIG_HOME
 
 echo "DOTLYX: Initializing Nix default configurations"
 
-exit 1
+command_exists() {
+    type "$1" >/dev/null 2>&1
+}
 
-if ! [[ type darwin-rebuild >/dev/null 2>&1 ]]; then
+if ! command_exists darwin-rebuild; then
   echo "DOTLYX: Installing nix-darwin..."
-  nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake $NIX_CONFIG_HOME
+  nix --extra-experimental-features "nix-command flakes" \
+	  run nix-darwin -- switch --flake $NIX_CONFIG_HOME
   /bin/zsh -c "source '$HOME/.zshrc'"
 fi
 

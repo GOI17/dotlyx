@@ -60,21 +60,29 @@ if ! [[ $SHELL =~ "zsh" ]]; then
     sudo chsh -s "$(command -v zsh)"
 fi
 
-git init 2>&1
+git init
 
 echo "DOTLYX: Adding dotlyx as git submodule"
 git -c protocol.file.allow=always \
-	submodule add "$HOME/Documents/personal/workspace/dotlyx" modules/dotlyx 2>&1
+	submodule add "$HOME/Documents/personal/workspace/dotlyx" modules/dotlyx
 
 source "$DOTLYX_HOME_PATH/scripts/nix/check_for_required_tools.sh"
 
 echo "DOTLYX: Installing zim..."
 curl -fsSL --create-dirs -o "$ZIM_HOME/zimfw.zsh" \
   https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh 2>&1 && \
-  zsh "$ZIM_HOME/zimfw.zsh" install 2>&1
+  zsh "$ZIM_HOME/zimfw.zsh" install
 
 echo "DOTLYX: Installing dotlyx submodules..."
-git submodule update --init --recursive 2>&1
+git submodule update --init --recursive
+
+if [ ! -d "$DOTFILES_PATH/shell" ]; then
+	cp -r "$DOTLYX_HOME_PATH/dotfiles_template/"* "$DOTFILES_PATH/"
+
+	sed -i -e "s|XXX_DOTFILES_PATH_XXX|$DOTFILES_PATH|g" "$DOTFILES_PATH/bin/sdot"
+	sed -i -e "s|XXX_DOTFILES_PATH_XXX|$DOTFILES_PATH|g" "$DOTFILES_PATH/shell/bash/.bashrc"
+	sed -i -e "s|XXX_DOTFILES_PATH_XXX|$DOTFILES_PATH|g" "$DOTFILES_PATH/shell/zsh/.zshenv"
+fi
 
 source "$DOTLYX_HOME_PATH/scripts/nix/build_config.sh"
 
