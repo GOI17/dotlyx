@@ -84,6 +84,8 @@ if [ ! -d "$DOTFILES_PATH/shell" ]; then
 	sed -i -e "s|XXX_DOTFILES_PATH_XXX|$DOTFILES_PATH|g" "$DOTFILES_PATH/shell/zsh/.zshenv"
 fi
 
+"$DOTLYX_HOME_PATH/modules/dotbot/bin/dotbot" -d "$DOTLYX_HOME_PATH" -c "$DOTFILES_PATH/symlinks/conf.yaml"
+
 source "$DOTLYX_HOME_PATH/scripts/nix/build_config.sh"
 
 cd $HOME
