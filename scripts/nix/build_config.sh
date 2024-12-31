@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+cd $NIX_CONFIG_HOME
+
+echo "DOTLYX: Initializing Nix default configurations"
+
+if ! [[ type darwin-rebuild >/dev/null 2>&1 ]]; then
+  echo "DOTLYX: Installing nix-darwin..."
+  nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake $NIX_CONFIG_HOME
+  /bin/zsh -c "source '$HOME/.zshrc'"
+fi
+
+echo "DOTLYX: Building nix configurations..."
+
+darwin-rebuild switch --flake $NIX_CONFIG_HOME

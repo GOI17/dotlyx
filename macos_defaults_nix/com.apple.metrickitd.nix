@@ -1,5 +1,0 @@
-{
-  "com.apple.metrickitd" = {
-    MXClientTeamID = {  };
-  };
-}
