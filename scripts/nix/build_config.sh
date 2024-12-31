@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-cd $NIX_CONFIG_HOME
+echo "NIX Home: $NIX_CONFIG_HOME"
+mkdir $NIX_CONFIG_HOME && cd $NIX_CONFIG_HOME
 
 echo "DOTLYX: Initializing Nix default configurations"
+
+exit 1
 
 if ! [[ type darwin-rebuild >/dev/null 2>&1 ]]; then
   echo "DOTLYX: Installing nix-darwin..."
