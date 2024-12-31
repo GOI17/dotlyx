@@ -5,8 +5,8 @@ read -p 'Where are going to be located your dotfiles (Default: ~/.dotfiles)?. En
 DEFAULT_DOTFILES_PATH="~/.dotfiles"
 export DOTFILES_PATH="$dotfiles_user_input:-$DEFAULT_DOTFILES_PATH"
 export DOTLYX_HOME_PATH="$DOTFILES_PATH/modules/dotlyx"
+export NIX_CONFIG_HOME="$DOTFILES_PATH/modules/nix"
 export ZIM_HOME="$DOTFILES_PATH/modules/zim"
-export NIX_CONFIG_HOME="$DOTLYX_HOME_PATH/modules/nix"
 
 get_local_time_in_secons ()
 {

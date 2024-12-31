@@ -6,5 +6,5 @@
       force: true
 
 - link:
-    ~/.dotly: os/linux/.dotly
+    ~/.dotlyx: os/linux/.dotlyx
     ~/.i3: os/linux/wm/i3

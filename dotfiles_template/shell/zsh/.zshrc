@@ -17,16 +17,15 @@ source "$ZIM_HOME/init.zsh"
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_HIGHLIGHT_MAXLENGTH=300
 
-source "$DOTLYX_HOME_PATH/modules/shell/init.sh"
+source "$DOTFILES_PATH/shell/init.sh"
 
-# fpath=(
-#   "$DOTFILES_PATH/shell/zsh/themes"
-#   "$DOTFILES_PATH/shell/zsh/completions"
-#   "$DOTLY_PATH/shell/zsh/themes"
-#   "$DOTLY_PATH/shell/zsh/completions"
-#   "$ASDF_DIR/completions"
-#   $fpath
-# )
+fpath=(
+	"$DOTFILES_PATH/shell/zsh/themes"
+	"$DOTFILES_PATH/shell/zsh/completions"
+	"$DOTLY_PATH/shell/zsh/themes"
+	"$DOTLY_PATH/shell/zsh/completions"
+	$fpath
+)
 
 # autoload -Uz promptinit && promptinit
 # autoload -Uz compinit && compinit
@@ -34,6 +33,6 @@ source "$DOTLYX_HOME_PATH/modules/shell/init.sh"
 # source "$DOTLY_PATH/shell/zsh/bindings/dot.zsh"
 # source "$DOTLY_PATH/shell/zsh/bindings/reverse_search.zsh"
 # source "$DOTLYX_HOME_PATH/modules/shell/zsh/key-bindings.zsh"
-source "$HOME/fzf-tab/fzf-tab.plugin.zsh"
+# source "$HOME/fzf-tab/fzf-tab.plugin.zsh"
 
 eval "$(jump shell)"

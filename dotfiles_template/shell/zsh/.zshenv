@@ -1,0 +1,4 @@
+export DOTFILES_PATH="XXX_DOTFILES_PATH_XXX"
+export DOTLYX_HOME_PATH="$DOTFILES_PATH/modules/dotlyx"
+export NIX_CONFIG_HOME="$DOTFILES_PATH/modules/nix"
+export ZIM_HOME="$DOTFILES_PATH/modules/zim"
