@@ -10,7 +10,7 @@ DOTFILES_PATH="${DOTFILES_PATH:-$DEFAULT_DOTFILES_PATH}"
 DOTFILES_PATH="$(eval echo "$DOTFILES_PATH")"
 export DOTFILES_PATH="$DOTFILES_PATH"
 export DOTLYX_HOME_PATH="$DOTFILES_PATH/modules/dotlyx"
-export NIX_CONFIG_HOME="$DOTFILES_PATH/modules/nix"
+export NIX_CONFIG_HOME="~/.config/nix-darwin"
 export ZIM_HOME="$DOTFILES_PATH/modules/zim"
 
 get_local_time_in_secons ()

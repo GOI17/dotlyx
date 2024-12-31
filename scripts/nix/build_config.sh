@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-cd $NIX_CONFIG_HOME
-
 echo "DOTLYX: Initializing Nix default configurations"
 
 command_exists() {
@@ -15,6 +13,6 @@ if ! command_exists darwin-rebuild; then
   /bin/zsh -c "source '$HOME/.zshrc'"
 fi
 
-echo "DOTLYX: Building nix configurations..."
+echo "DOTLYX: Building RANDOOOOM nix configurations..."
 
 darwin-rebuild switch --flake $NIX_CONFIG_HOME

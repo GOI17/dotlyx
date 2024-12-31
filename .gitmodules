@@ -2,3 +2,6 @@
 	path = modules/dotbot
 	url = https://github.com/anishathalye/dotbot.git
 	branch = master
+[submodule "modules/dotlyx"]
+	path = modules/dotlyx
+	url = /Users/josegilbertoolivasibarra/Documents/personal/workspace/dotlyx
