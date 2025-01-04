@@ -16,4 +16,4 @@ if ! command_exists darwin-rebuild; then
 fi
 
 echo "DOTLYX: Building nix configurations..."
-nix run nix-darwin -v -- switch --flake .
+nix run nix-darwin -v -- switch --flake .#Joses-MacBook-Pro
