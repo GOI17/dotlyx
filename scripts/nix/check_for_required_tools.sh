@@ -91,22 +91,8 @@ if ! command_exists python3; then
 	fi
 fi
 
-echo "DOTLYX: Setting up Nix..."
-
 if ! command_exists nix; then
-	echo "DOTLYX: nix not installed, trying to install"
-
-  echo "DOTLYX: Installing Nix..."
-
-  curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-  curl -sSf -L https://install.lix.systems/lix | sh -s -- install
-else
-	echo "DOTLYX: nix installed, upgrading nix via flakes..."
-
-  sudo --preserve-env=PATH nix run \
-    --extra-experimental-features 'nix-command flakes' \
-    --extra-substituters https://cache.lix.systems --extra-trusted-public-keys "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o=" \
-    'git+https://git.lix.systems/lix-project/lix?ref=refs/tags/2.91.1' -- \
-    upgrade-nix \
-    --extra-substituters https://cache.lix.systems --extra-trusted-public-keys "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
+	echo "DOTLYX: nix is not installed, trying to install"
+	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+	curl -sSf -L https://install.lix.systems/lix | sh -s -- install
 fi
