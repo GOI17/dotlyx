@@ -90,8 +90,6 @@
       environment = {
         shellAliases = { };
         variables = {
-          DOTLYX_HOME_PATH="$HOME/Documents/personal/workspace/dotlyx";
-          ZIM_HOME="$HOME/.zim";
           USER_NAME="$(whoami)"
         };
 
