@@ -85,9 +85,9 @@ source "$DOTLYX_HOME_PATH/scripts/nix/check_for_required_tools.sh"
 echo "DOTLYX: Installing dotlyx submodules..."
 git submodule update --init --recursive
 cp -r "$DOTLYX_HOME_PATH/dotfiles_template/"* .
-sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|$DOTFILES_PATH|g" "./bin/sdot"
-sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|$DOTFILES_PATH|g" "./shell/bash/.bashrc"
-sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|$DOTFILES_PATH|g" "./shell/zsh/.zshenv"
+sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|$USER_DOTFILES_PATH|g" "./bin/sdot"
+sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|$USER_DOTFILES_PATH|g" "./shell/bash/.bashrc"
+sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|$USER_DOTFILES_PATH|g" "./shell/zsh/.zshenv"
 "$DOTLYX_HOME_PATH/modules/dotbot/bin/dotbot" -d "$DOTLYX_HOME_PATH" -c "./symlinks/conf.yaml"
 echo "DOTLYX: Installing zim..."
 curl -fsSL --create-dirs -o "$ZIM_HOME/zimfw.zsh" \

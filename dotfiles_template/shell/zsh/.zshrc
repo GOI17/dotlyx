@@ -17,13 +17,11 @@ source "$ZIM_HOME/init.zsh"
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_HIGHLIGHT_MAXLENGTH=300
 
-source "$DOTFILES_PATH/shell/init.sh"
+source "$USER_DOTFILES_PATH/shell/init.sh"
 
 fpath=(
-	"$DOTFILES_PATH/shell/zsh/themes"
-	"$DOTFILES_PATH/shell/zsh/completions"
-	"$DOTLY_PATH/shell/zsh/themes"
-	"$DOTLY_PATH/shell/zsh/completions"
+	"$USER_DOTFILES_PATH/shell/zsh/themes"
+	"$USER_DOTFILES_PATH/shell/zsh/completions"
 	$fpath
 )
 
