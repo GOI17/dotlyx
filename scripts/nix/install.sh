@@ -65,7 +65,7 @@ mkdir -pv "$USER_DOTFILES_PATH" 2>&1
 
 export USER_DOTFILES_PATH="$(realpath $USER_DOTFILES_PATH)"
 export DOTLYX_HOME_PATH="$USER_DOTFILES_PATH/modules/dotlyx"
-export NIX_CONFIG_HOME="~/.config/nix-darwin"
+export NIX_CONFIG_HOME="///Users/$(whoami)/.config/nix-darwin"
 export ZIM_HOME="$USER_DOTFILES_PATH/modules/zim"
 
 echo "DOTLYX: ENVIRONMENT VARIABLES:
