@@ -15,4 +15,4 @@ fi
 
 echo "DOTLYX: Building nix configurations..."
 
-darwin-rebuild switch --flake "$NIX_CONFIG_HOME/flake.nix"
+darwin-rebuild switch --flake "~/.config/nix-darwin"
