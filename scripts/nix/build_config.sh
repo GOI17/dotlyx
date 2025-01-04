@@ -9,10 +9,10 @@ command_exists() {
 if ! command_exists darwin-rebuild; then
   echo "DOTLYX: Installing nix-darwin..."
   nix --extra-experimental-features "nix-command flakes" \
-	  run nix-darwin -- switch --flake $NIX_CONFIG_HOME
+	  run nix-darwin -- switch --flake "$HOME/.config/nix-darwin"
   /bin/zsh -c "source '$HOME/.zshrc'"
 fi
 
 echo "DOTLYX: Building nix configurations..."
 
-darwin-rebuild switch --flake "~/.config/nix-darwin"
+darwin-rebuild switch --flake "$HOME/.config/nix-darwin"
