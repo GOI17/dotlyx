@@ -17,4 +17,4 @@
     ~/.zshenv: $USER_DOTFILES_PATH/shell/zsh/.zshenv
     ~/.zshrc: $USER_DOTFILES_PATH/shell/zsh/.zshrc
     ~/.inputrc: $USER_DOTFILES_PATH/shell/.inputrc
-    ~/.config/nix-darwin: $USER_DOTFILES_PATH/modules/nix
+    ~/.config/nix-darwin/flake.nix: $USER_DOTFILES_PATH/modules/nix/flake.nix
