@@ -6,15 +6,15 @@
       force: true
 
 - create:
-    - $DOTFILES_PATH/shell/bash/completions
-    - $DOTFILES_PATH/shell/bash/themes
+    - $USER_DOTFILES_PATH/shell/bash/completions
+    - $USER_DOTFILES_PATH/shell/bash/themes
 
 - link:
-    ~/.bash_profile: $DOTFILES_PATH/modules/shell/bash/.bash_profile
-    ~/.bashrc: $DOTFILES_PATH/shell/bash/.bashrc
-    ~/.zimrc: $DOTFILES_PATH/shell/zsh/.zimrc
-    ~/.zlogin: $DOTFILES_PATH/shell/zsh/.zlogin
-    ~/.zshenv: $DOTFILES_PATH/shell/zsh/.zshenv
-    ~/.zshrc: $DOTFILES_PATH/shell/zsh/.zshrc
-    ~/.inputrc: $DOTFILES_PATH/shell/.inputrc
-    ~/.config/nix-darwin: $DOTFILES_PATH/modules/nix
+    ~/.bash_profile: $USER_DOTFILES_PATH/modules/shell/bash/.bash_profile
+    ~/.bashrc: $USER_DOTFILES_PATH/shell/bash/.bashrc
+    ~/.zimrc: $USER_DOTFILES_PATH/shell/zsh/.zimrc
+    ~/.zlogin: $USER_DOTFILES_PATH/shell/zsh/.zlogin
+    ~/.zshenv: $USER_DOTFILES_PATH/shell/zsh/.zshenv
+    ~/.zshrc: $USER_DOTFILES_PATH/shell/zsh/.zshrc
+    ~/.inputrc: $USER_DOTFILES_PATH/shell/.inputrc
+    ~/.config/nix-darwin: $USER_DOTFILES_PATH/modules/nix
