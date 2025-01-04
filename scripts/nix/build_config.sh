@@ -13,6 +13,6 @@ if ! command_exists darwin-rebuild; then
   /bin/zsh -c "source '$HOME/.zshrc'"
 fi
 
-echo "DOTLYX: Building RANDOOOOM nix configurations..."
+echo "DOTLYX: Building nix configurations..."
 
-darwin-rebuild switch --flake $NIX_CONFIG_HOME
+darwin-rebuild switch --flake "$NIX_CONFIG_HOME/flake.nix"
