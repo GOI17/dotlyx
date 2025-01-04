@@ -90,9 +90,8 @@
       environment = {
         shellAliases = { };
         variables = {
-          USER_NAME="$(whoami)"
+          USER_NAME="$(whoami)";
         };
-
       };
 
       # Necessary for using flakes on this system.
