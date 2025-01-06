@@ -32,8 +32,9 @@
     nix-homebrew-bundle,
   }:
   let
-    systemDefaults = import ./macos_defaults.nix;
-    system = "aarch64-darwin"; # change it based on your architure
+    #systemDefaults = import ./macos_defaults.nix;
+    system = "aarch64-darwin";
+    userName="$(whoami)";
     configuration = { pkgs, ... }: {
       # Add your custom fonts
       # ex.
@@ -90,7 +91,6 @@
       environment = {
         shellAliases = { };
         variables = {
-          USER_NAME="$(whoami)";
         };
       };
 
@@ -120,7 +120,7 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#<your-username> ex. darwin-rebuild build --flake .#Joe
-    darwinConfigurations."$configuration.environment.variables.USER_NAME" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."$userName" = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration 
         mac-app-util.darwinModules.default
@@ -141,12 +141,12 @@
       ];
     };
 
-    programs = { pkgs }: {
-      defaults.settings = systemDefaults
-      // {
+    #programs = { pkgs }: {
+    #  defaults.settings = systemDefaults
+    #  // {
         # INFO: Override example:
         # "com.apple.dock".titlesize = 64;
-      };
-    };
+    #  };
+    #};
   };
 }
