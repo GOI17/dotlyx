@@ -6,13 +6,11 @@
       force: true
 
 - create:
-    - $USER_DOTFILES_PATH/shell/bash/completions
-    - $USER_DOTFILES_PATH/shell/bash/themes
+    - $USER_DOTFILES_PATH/shell/zsh/completions
+    - $USER_DOTFILES_PATH/shell/zsh/themes
     - $HOME/.config/nix-darwin
 
 - link:
-    ~/.bash_profile: $USER_DOTFILES_PATH/modules/shell/bash/.bash_profile
-    ~/.bashrc: $USER_DOTFILES_PATH/shell/bash/.bashrc
     ~/.zimrc: $USER_DOTFILES_PATH/shell/zsh/.zimrc
     ~/.zlogin: $USER_DOTFILES_PATH/shell/zsh/.zlogin
     ~/.zshenv: $USER_DOTFILES_PATH/shell/zsh/.zshenv
