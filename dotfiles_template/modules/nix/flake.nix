@@ -19,6 +19,34 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
+    zim-completion = {
+      url = "github:zimfw/completion";
+      flake = false;
+    };
+    zim-environment = {
+      url = "github:zimfw/environment";
+      flake = false;
+    };
+    zim-git-info = {
+      url = "github:zimfw/git-info";
+      flake = false;
+    };
+    zim-input = {
+      url = "github:zimfw/input";
+      flake = false;
+    };
+    zim-utility = {
+      url = "github:zimfw/utility";
+      flake = false;
+    };
+    zsh-autopair = {
+      url = "github:hlissner/zsh-autopair";
+      flake = false;
+    };
+    zsh-completions = {
+      url = "github:zsh-users/zsh-completions";
+      flake = false;
+    };
   };
 
   outputs = inputs@{
@@ -30,6 +58,7 @@
     nix-homebrew-core,
     nix-homebrew-cask,
     nix-homebrew-bundle,
+    ...
   }:
   let
     #systemDefaults = import ./macos_defaults.nix;
@@ -119,6 +148,7 @@
 
       # Allows to install non-compatible architecture applications
       nixpkgs.config.allowUnsupportedSystem = true;
+
       programs.zsh.enable = true;
       programs.zsh.enableCompletion = true;
       programs.zsh.enableBashCompletion = true;
@@ -130,6 +160,9 @@
       programs.zsh.shellInit = ''
         source "$ZIM_HOME/init.sh"
 	eval "$(jump shell)"
+      '';
+      programs.zsh.loginShellInit = ''
+	source "$ZIM_HOME/login_init.zsh" -q &!
       '';
     };
   in
