@@ -127,13 +127,13 @@
       system.stateVersion = 5;
 
       # The platform the configuration will be used on.
-      official-nixpkgs.hostPlatform = system;
+      nixpkgs.hostPlatform = system;
 
       # Allows to install non-opensource applications
-      official-nixpkgs.config.allowUnfree = true;
+      nixpkgs.config.allowUnfree = true;
 
       # Allows to install non-compatible architecture applications
-      official-nixpkgs.config.allowUnsupportedSystem = true;
+      nixpkgs.config.allowUnsupportedSystem = true;
 
       programs.zsh.enable = true;
       programs.zsh.enableCompletion = true;
