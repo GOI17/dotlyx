@@ -121,7 +121,7 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#<your-username> ex. darwin-rebuild build --flake .#Joe
-    darwinConfigurations."$profile" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."${profile}" = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration 
         mac-app-util.darwinModules.default
@@ -130,7 +130,7 @@
             autoMigrate = true;
             enable = true;
             enableRosetta = true;
-            user = "$useName";
+            user = "${useName}";
             mutableTaps = false;
             taps = {
               "homebrew/homebrew-core" = nix-homebrew-core;
