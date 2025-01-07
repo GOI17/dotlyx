@@ -106,11 +106,10 @@
         eza
         fd
         fzf
-        zsh
+	fork-nixpkgs.zsh
 	zsh-syntax-highlighting
 	zsh-fast-syntax-highlighting
 	nix-zsh-completions
-	fork-nixpkgs.zimfw
       ];
 
       # Necessary for using flakes on this system.
@@ -169,6 +168,7 @@
       programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       '';
+      programs.zsh.zimfw.enable = true;
     };
   in
   {
