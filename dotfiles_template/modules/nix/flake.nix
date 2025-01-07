@@ -102,7 +102,7 @@
 	zsh-syntax-highlighting
 	zsh-fast-syntax-highlighting
 	nix-zsh-completions
-	(import = import ./nix-zimfw.nix { inherit pkgs; })
+	(import ./nix-zimfw.nix { inherit pkgs; })
       ];
 
       # Necessary for using flakes on this system.
