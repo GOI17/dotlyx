@@ -30,6 +30,9 @@ pkgs.stdenv.mkDerivation rec {
   ## looks for `zimfw.zsh` there, so we're going to tell it here to look for
   ## the `zimfw.zsh` where we currently are.
   postFixup = ''
+  	echo "
+	ZIM_HOME= $ZIM_HOME
+	"
     substituteInPlace $out/zimfw.zsh \
       --replace "\''${ZIM_HOME}/zimfw.zsh" "$out/zimfw.zsh" \
       --replace "\''${(q-)ZIM_HOME}/zimfw.zsh" "$out/zimfw.zsh"
