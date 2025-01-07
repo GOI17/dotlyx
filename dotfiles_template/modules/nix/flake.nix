@@ -93,7 +93,9 @@
         fd
         fzf
         zsh
-      ];
+      ] ++ optional programs.zsh.enableCompletion pkgs.nix-zsh-completions
+        ++ optional programs.zsh.enableSyntaxHighlighting pkgs.zsh-syntax-highlighting
+        ++ optional programs.zsh.enableFastSyntaxHighlighting pkgs.zsh-fast-syntax-highlighting;
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
@@ -142,12 +144,18 @@
       ];
     };
 
-    #programs = { pkgs }: {
-    #  defaults.settings = systemDefaults
-    #  // {
-        # INFO: Override example:
-        # "com.apple.dock".titlesize = 64;
-    #  };
-    #};
+    programs.zsh.enable = true;
+    programs.zsh.enableCompletion = true;
+    programs.zsh.enableBashCompletion = true;
+    programs.zsh.enableFzfCompletion = true;
+    programs.zsh.enableFzfCompletion = true;
+    programs.zsh.enableFzfGit = true;
+    programs.zsh.enableFzfHistory = true;
+    # programs.zsh.enableSyntaxHighlighting = true;
+    programs.zsh.enableFastSyntaxHighlighting = true;
+    programs.zsh.shellInit = ''
+    	source "$ZIM_HOME/init.sh"
+	eval "$(jump shell)"
+    '';
   };
 }
