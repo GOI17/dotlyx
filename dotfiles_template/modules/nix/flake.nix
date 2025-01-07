@@ -34,6 +34,7 @@
     nix-homebrew-core,
     nix-homebrew-cask,
     nix-homebrew-bundle,
+    zimfw,
     ...
   }:
   let
@@ -170,13 +171,13 @@
       programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       '';
-      programs.zsh.zimfw.enable = true;
     };
   in
   {
     darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
       modules = [
 	      configuration 
+	      zimfw.darwinModules.default
 	      mac-app-util.darwinModules.default
 	      nix-homebrew.darwinModules.nix-homebrew {
 			nix-homebrew = {
