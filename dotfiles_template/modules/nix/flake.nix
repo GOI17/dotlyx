@@ -119,6 +119,18 @@
 
       # Allows to install non-compatible architecture applications
       nixpkgs.config.allowUnsupportedSystem = true;
+      programs.zsh.enable = true;
+      programs.zsh.enableCompletion = true;
+      programs.zsh.enableBashCompletion = true;
+      programs.zsh.enableFzfCompletion = true;
+      programs.zsh.enableFzfGit = true;
+      programs.zsh.enableFzfHistory = true;
+      # programs.zsh.enableSyntaxHighlighting = true;
+      programs.zsh.enableFastSyntaxHighlighting = true;
+      programs.zsh.shellInit = ''
+        source "$ZIM_HOME/init.sh"
+	eval "$(jump shell)"
+      '';
     };
   in
   {
@@ -144,18 +156,5 @@
         }
       ];
     };
-
-    programs.zsh.enable = true;
-    programs.zsh.enableCompletion = true;
-    programs.zsh.enableBashCompletion = true;
-    programs.zsh.enableFzfCompletion = true;
-    programs.zsh.enableFzfGit = true;
-    programs.zsh.enableFzfHistory = true;
-    # programs.zsh.enableSyntaxHighlighting = true;
-    programs.zsh.enableFastSyntaxHighlighting = true;
-    programs.zsh.shellInit = ''
-    	source "$ZIM_HOME/init.sh"
-	eval "$(jump shell)"
-    '';
   };
 }
