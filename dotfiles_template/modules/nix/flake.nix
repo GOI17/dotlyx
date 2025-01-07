@@ -142,7 +142,7 @@
         #source "$ZIM_HOME/init.sh"
 	eval "$(jump shell)"
       '';
-      programs.zimfw.enable = true;
+      programs.zim.enable = true;
       #programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       #'';
