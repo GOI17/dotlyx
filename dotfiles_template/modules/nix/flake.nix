@@ -65,6 +65,10 @@
         };
       };
 
+      environment.shells = [
+	      "${pkgs.zimfw}/bin/zimfw"
+      ];
+
       environment.extraInit = import ./functions.nix;
 
       environment.extraSetup = ''
@@ -109,6 +113,7 @@
 	zsh-syntax-highlighting
 	zsh-fast-syntax-highlighting
 	nix-zsh-completions
+	zimfw
       ];
 
       # Necessary for using flakes on this system.
