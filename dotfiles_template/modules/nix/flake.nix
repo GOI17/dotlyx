@@ -39,6 +39,10 @@
       url = "github:zimfw/utility";
       flake = false;
     };
+    zimfw = {
+      url = "github:zimfw/zimfw";
+      flake = false;
+    };
     zsh-autopair = {
       url = "github:hlissner/zsh-autopair";
       flake = false;
@@ -169,16 +173,6 @@
       #programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       #'';
-      programs.zsh.plugins = [
-      {
-      	name = "zim";
-	src = pkgs.fetchFromGithub {
-		repo = "zimfw";
-		owner = "zimfw";
-		rev = "latest";
-	};
-      }
-      ];
     };
   in
   {
