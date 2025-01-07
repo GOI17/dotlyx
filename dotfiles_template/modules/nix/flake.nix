@@ -177,7 +177,7 @@
     darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
       modules = [
 	      configuration 
-	      zimfw.darwinModules.default
+	      zimfw
 	      mac-app-util.darwinModules.default
 	      nix-homebrew.darwinModules.nix-homebrew {
 			nix-homebrew = {
