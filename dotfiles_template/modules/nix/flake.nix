@@ -2,10 +2,9 @@
   description = "Dotlyx flake template";
 
   inputs = {
-    official-nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    fork-nixpkgs.url = "github:ThibautMarty/nixpkgs/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "official-nixpkgs";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     nix-homebrew-core = {
@@ -25,8 +24,7 @@
   outputs = inputs@{
     self,
     nix-darwin,
-    official-nixpkgs,
-    fork-nixpkgs,
+    nixpkgs,
     mac-app-util,
     nix-homebrew,
     nix-homebrew-core,
@@ -70,9 +68,10 @@
       environment.extraInit = import ./functions.nix;
 
       environment.extraSetup = ''
-	#curl -fsSL --create-dirs -o "$ZIM_HOME/zimfw.zsh" \
-	#  https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh 2>&1 && \
-	#  zsh "$ZIM_HOME/zimfw.zsh" install
+	echo "DOTLYX: Installing zim..."
+	curl -fsSL --create-dirs -o "$ZIM_HOME/zimfw.zsh" \
+	  https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh 2>&1 && \
+	  zsh "$ZIM_HOME/zimfw.zsh" install
       '';
 
       environment.shellAliases = import ./aliases.nix;
@@ -106,7 +105,7 @@
         eza
         fd
         fzf
-	fork-nixpkgs.zsh
+        zsh
 	zsh-syntax-highlighting
 	zsh-fast-syntax-highlighting
 	nix-zsh-completions
@@ -168,7 +167,6 @@
       programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       '';
-      programs.zsh.zimfw.enable = true;
     };
   in
   {
