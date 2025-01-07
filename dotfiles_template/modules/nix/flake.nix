@@ -19,10 +19,6 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
-    nix-homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
     zimfw = {
       url = "github:zimfw/zimfw";
       flake = false;
