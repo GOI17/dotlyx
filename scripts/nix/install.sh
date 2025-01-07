@@ -89,10 +89,10 @@ done
 for symlinks_file in "conf.yaml" "conf.macos.yaml"; do
 	"$DOTLYX_HOME_PATH/modules/dotbot/bin/dotbot" -d "$DOTLYX_HOME_PATH" -c "./symlinks/$symlinks_file"
 done
-echo "DOTLYX: Installing zim..."
-curl -fsSL --create-dirs -o "$ZIM_HOME/zimfw.zsh" \
-  https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh 2>&1 && \
-  zsh "$ZIM_HOME/zimfw.zsh" install
+#echo "DOTLYX: Installing zim..."
+#curl -fsSL --create-dirs -o "$ZIM_HOME/zimfw.zsh" \
+#  https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh 2>&1 && \
+#  zsh "$ZIM_HOME/zimfw.zsh" install
 source "$DOTLYX_HOME_PATH/scripts/nix/build_config.sh"
 cd $HOME
 echo "DOTLYX: Restart your terminal and Welcome to Dotlyx!"
