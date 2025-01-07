@@ -146,28 +146,28 @@
       #programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       #'';
-      zimfw.darwinModules.default = true;
-      mac-app-util.darwinModules.default = true;
-      nix-homebrew.darwinModules.nix-homebrew = {
-		nix-homebrew = {
-			autoMigrate = true;
-			enable = true;
-			enableRosetta = true;
-			user = "${userName}";
-			mutableTaps = false;
-			taps = {
-				"homebrew/homebrew-core" = nix-homebrew-core;
-				"homebrew/homebrew-cask" = nix-homebrew-cask;
-				"homebrew/homebrew-bundle" = nix-homebrew-bundle;
-			};
-		};
-	};
     };
   in
   {
     darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
-      modules = [ 
-        configuration 
+      modules = [
+	      configuration 
+	      zimfw.darwinModules.default
+	      mac-app-util.darwinModules.default
+	      nix-homebrew.darwinModules.nix-homebrew {
+			nix-homebrew = {
+				autoMigrate = true;
+				enable = true;
+				enableRosetta = true;
+				user = "${userName}";
+				mutableTaps = false;
+				taps = {
+					"homebrew/homebrew-core" = nix-homebrew-core;
+					"homebrew/homebrew-cask" = nix-homebrew-cask;
+					"homebrew/homebrew-bundle" = nix-homebrew-bundle;
+				};
+			};
+		}
       ];
     };
   };
