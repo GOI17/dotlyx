@@ -1,9 +1,9 @@
-{ stdenv, lib, fetchFromGitHub }:
+{ pkgs }:
 
-stdenv.mkDerivation rec {
+pkgs.stdenv.mkDerivation rec {
   pname = "zimfw";
   version = "1.12.0";
-  src = fetchFromGitHub {
+  src = pkgs.fetchFromGitHub {
     owner = "zimfw";
     repo = "zimfw";
     rev = "v${version}";
@@ -35,7 +35,7 @@ stdenv.mkDerivation rec {
       --replace "\''${(q-)ZIM_HOME}/zimfw.zsh" "$out/zimfw.zsh"
   '';
 
-  meta = with lib; {
+  meta = with pkgs.lib; {
     description =
       "The Zsh configuration framework with blazing speed and modular extensions";
     homepage = "https://zimfw.sh";
