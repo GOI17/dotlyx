@@ -34,7 +34,6 @@
     nix-homebrew-core,
     nix-homebrew-cask,
     nix-homebrew-bundle,
-    zimfw,
     ...
   }:
   let
@@ -153,7 +152,6 @@
     darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
       modules = [
 	      configuration 
-	      zimfw.darwinModules.default
 	      mac-app-util.darwinModules.default
 	      nix-homebrew.darwinModules.nix-homebrew {
 			nix-homebrew = {
