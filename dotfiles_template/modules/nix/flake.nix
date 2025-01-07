@@ -163,12 +163,12 @@
       # programs.zsh.enableSyntaxHighlighting = true;
       programs.zsh.enableFastSyntaxHighlighting = true;
       programs.zsh.shellInit = ''
-        source "$ZIM_HOME/init.sh"
+        #source "$ZIM_HOME/init.sh"
 	eval "$(jump shell)"
       '';
-      programs.zsh.loginShellInit = ''
-	source "$ZIM_HOME/login_init.zsh" -q &!
-      '';
+      #programs.zsh.loginShellInit = ''
+	#source "$ZIM_HOME/login_init.zsh" -q &!
+      #'';
     };
   in
   {
