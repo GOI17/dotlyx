@@ -65,18 +65,7 @@
         };
       };
 
-      environment.shells = [
-	      "${pkgs.zimfw}/bin/zimfw"
-      ];
-
       environment.extraInit = import ./functions.nix;
-
-      environment.extraSetup = ''
-	echo "DOTLYX: Installing zim..."
-	#curl -fsSL --create-dirs -o "$ZIM_HOME/zimfw.zsh" \
-	#  https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh 2>&1 && \
-	#  zsh "$ZIM_HOME/zimfw.zsh" install
-      '';
 
       environment.shellAliases = import ./aliases.nix;
 
@@ -113,7 +102,7 @@
 	zsh-syntax-highlighting
 	zsh-fast-syntax-highlighting
 	nix-zsh-completions
-	zimfw
+	({ import = import ./nix-zimfw.nix })
       ];
 
       # Necessary for using flakes on this system.
@@ -172,8 +161,6 @@
       programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       '';
-
-      programs.zsh.zimfw.enable = true;
     };
   in
   {
