@@ -3,7 +3,7 @@
 
   inputs = {
     official-nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    fork-nixpkgs.url = "github:ThibautMarty/nixpkgs-unstable";
+    fork-nixpkgs = "github:ThibautMarty/nixpkgs/master";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
