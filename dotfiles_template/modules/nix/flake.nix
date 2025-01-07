@@ -95,12 +95,6 @@
         zsh
       ];
 
-      environment = {
-        shellAliases = { };
-        variables = {
-        };
-      };
-
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
