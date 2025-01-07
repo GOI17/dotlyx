@@ -97,7 +97,12 @@
 
       environment.shellAliases = import ./aliases.nix;
 
-      environment.variables = import ./exports.nix;
+      environment.variables = import ./exports.nix
+      // {
+      	USER_DOTFILES_PATH= "XXX_USER_DOTFILES_PATH_XXX";
+      	DOTLYX_HOME_PATH = "${environment.variables.USER_DOTFILES_PATH}/modules/dotlyx";
+      	ZIM_HOME = "${environment.variables.USER_DOTFILES_PATH}/modules/zim";
+      };
 
       environment.systemPackages = with pkgs; [
         # text editors
