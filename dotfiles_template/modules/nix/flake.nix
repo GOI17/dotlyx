@@ -169,7 +169,6 @@
       programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       '';
-      programs.zimfw.enable = true;
     };
   in
   {
