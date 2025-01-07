@@ -145,8 +145,8 @@
       #programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       #'';
-      zimfw.darwinModules.default;
-      mac-app-util.darwinModules.default;
+      zimfw.darwinModules.default = true;
+      mac-app-util.darwinModules.default = true;
       nix-homebrew.darwinModules.nix-homebrew = {
 		nix-homebrew = {
 			autoMigrate = true;
