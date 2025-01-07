@@ -17,8 +17,6 @@ source "$ZIM_HOME/init.zsh"
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_HIGHLIGHT_MAXLENGTH=300
 
-source "$USER_DOTFILES_PATH/shell/init.sh"
-
 fpath=(
 	"$USER_DOTFILES_PATH/shell/zsh/themes"
 	"$USER_DOTFILES_PATH/shell/zsh/completions"

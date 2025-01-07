@@ -35,6 +35,7 @@
     #systemDefaults = import ./macos_defaults.nix;
     system = "aarch64-darwin";
     userName="$(whoami)";
+    profile="Joses-MacBook-Pro";
     configuration = { pkgs, ... }: {
       # Add your custom fonts
       # ex.
@@ -62,6 +63,12 @@
           upgrade = true;
         };
       };
+
+      environment.extraInit = import ./functions.nix;
+
+      environment.shellAliases = import ./aliases.nix;
+
+      environment.variables = import ./exports.nix;
 
       environment.systemPackages = with pkgs; [
         # text editors
@@ -120,7 +127,7 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#<your-username> ex. darwin-rebuild build --flake .#Joe
-    darwinConfigurations."$userName" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."$profile" = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration 
         mac-app-util.darwinModules.default
@@ -129,7 +136,7 @@
             autoMigrate = true;
             enable = true;
             enableRosetta = true;
-            user = "$configuration.environment.variables.USER_NAME";
+            user = "$useName";
             mutableTaps = false;
             taps = {
               "homebrew/homebrew-core" = nix-homebrew-core;

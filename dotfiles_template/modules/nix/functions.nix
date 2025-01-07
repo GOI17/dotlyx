@@ -1,3 +1,4 @@
+''
 function vv() {
 	# Assumes all configs exist in directories named ~/.config/nvim-*
 	local config=$(fd --max-depth 1 --glob 'nvim-*' ~/.config | fzf --prompt="Neovim Configs > " --border --exit-0)
@@ -31,3 +32,4 @@ symlinks::apply ()
   dotbot -d "$DOTLYX_HOME_PATH" -c "$DOTLYX_HOME_PATH/modules/symlinks/conf.yaml" "$@"
   dotbot -d "$DOTLYX_HOME_PATH" -c "$DOTLYX_HOME_PATH/modules/symlinks/conf.macos.yaml" "$@"
 }
+''
