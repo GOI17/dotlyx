@@ -130,7 +130,7 @@
             autoMigrate = true;
             enable = true;
             enableRosetta = true;
-            user = "${useName}";
+            user = "${userName}";
             mutableTaps = false;
             taps = {
               "homebrew/homebrew-core" = nix-homebrew-core;
