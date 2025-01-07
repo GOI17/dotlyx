@@ -93,10 +93,9 @@
         fd
         fzf
         zsh
-	if programs.zsh.enableCompletion then pkgs.nix-zsh-completions
-	if programs.zsh.enableSyntaxHighlighting then pkgs.zsh-syntax-highlighting
-	if programs.zsh.enableFastSyntaxHighlighting then pkgs.zsh-fast-syntax-highlighting
-      ];
+      ] ++ nixpkgs.lib.optional programs.zsh.enableCompletion pkgs.nix-zsh-completions
+        ++ nixpkgs.lib.optional programs.zsh.enableSyntaxHighlighting pkgs.zsh-syntax-highlighting
+        ++ nixpkgs.lib.optional programs.zsh.enableFastSyntaxHighlighting pkgs.zsh-fast-syntax-highlighting;
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
