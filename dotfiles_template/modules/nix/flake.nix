@@ -20,8 +20,8 @@
       flake = false;
     };
     zimfw = {
-      url = "github:zimfw/zimfw";
-      flake = false;
+    	url = "github:joedevivo/zimfw.nix";
+	flake = true;
     };
   };
 
@@ -40,7 +40,7 @@
     #systemDefaults = import ./macos_defaults.nix;
     system = "aarch64-darwin";
     userName="$(whoami)";
-    hostName="Joses-MacBook-Pro";
+    hostName="XXX_USER_HOSTNAME_XXX";
     configuration = { pkgs, ... }: {
       # Add your custom fonts
       # ex.
@@ -70,6 +70,12 @@
       };
 
       environment.extraInit = import ./functions.nix;
+
+      environment.extraSetup = ''
+	#curl -fsSL --create-dirs -o "$ZIM_HOME/zimfw.zsh" \
+	#  https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh 2>&1 && \
+	#  zsh "$ZIM_HOME/zimfw.zsh" install
+      '';
 
       environment.shellAliases = import ./aliases.nix;
 
@@ -138,14 +144,33 @@
       programs.zsh.enableFzfHistory = true;
       # programs.zsh.enableSyntaxHighlighting = true;
       programs.zsh.enableFastSyntaxHighlighting = true;
-      programs.zsh.shellInit = ''
+      programs.zsh.enableGlobalCompInit = true;
+      programs.zsh.interactiveShellInit = ''
+	# ZSH Ops
+	setopt HIST_IGNORE_ALL_DUPS
+	setopt HIST_FCNTL_LOCK
+	setopt +o nomatch
+	# setopt autopushd
+
+	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
         #source "$ZIM_HOME/init.sh"
+
+	# Async mode for autocompletion
+	ZSH_AUTOSUGGEST_USE_ASYNC=true
+	ZSH_HIGHLIGHT_MAXLENGTH=300
 	eval "$(jump shell)"
       '';
-      programs.zim.enable = true;
-      #programs.zsh.loginShellInit = ''
+      programs.zsh.shellInit = ''
+	export USER_DOTFILES_PATH="XXX_USER_DOTFILES_PATH_XXX"
+	export DOTLYX_HOME_PATH="$USER_DOTFILES_PATH/modules/dotlyx"
+	export NIX_CONFIG_HOME="$USER_DOTFILES_PATH/modules/nix"
+	export ZIM_HOME="$USER_DOTFILES_PATH/modules/zim"
+      '';
+      programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
-      #'';
+      '';
+      programs.zsh.zimfw.enable = true;
     };
   in
   {
