@@ -34,6 +34,7 @@
     nix-homebrew-core,
     nix-homebrew-cask,
     nix-homebrew-bundle,
+    zimfw,
     ...
   }:
   let
