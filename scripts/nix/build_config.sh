@@ -16,4 +16,4 @@ if ! command_exists darwin-rebuild; then
 fi
 
 echo "DOTLYX: Building nix configurations..."
-darwin-rebuild switch --flake ".#$(whoami)" --impure
+darwin-rebuild switch --flake . --impure
