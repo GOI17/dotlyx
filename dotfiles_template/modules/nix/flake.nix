@@ -19,36 +19,12 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
-    zim-completion = {
-      url = "github:zimfw/completion";
-      flake = false;
-    };
-    zim-environment = {
-      url = "github:zimfw/environment";
-      flake = false;
-    };
-    zim-git-info = {
-      url = "github:zimfw/git-info";
-      flake = false;
-    };
-    zim-input = {
-      url = "github:zimfw/input";
-      flake = false;
-    };
-    zim-utility = {
-      url = "github:zimfw/utility";
+    nix-homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
     zimfw = {
       url = "github:zimfw/zimfw";
-      flake = false;
-    };
-    zsh-autopair = {
-      url = "github:hlissner/zsh-autopair";
-      flake = false;
-    };
-    zsh-completions = {
-      url = "github:zsh-users/zsh-completions";
       flake = false;
     };
   };
@@ -68,7 +44,6 @@
     #systemDefaults = import ./macos_defaults.nix;
     system = "aarch64-darwin";
     userName="$(whoami)";
-    profile="Joses-MacBook-Pro";
     configuration = { pkgs, ... }: {
       # Add your custom fonts
       # ex.
@@ -170,15 +145,14 @@
         #source "$ZIM_HOME/init.sh"
 	eval "$(jump shell)"
       '';
+      programs.zimfw.enable = true;
       #programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       #'';
     };
   in
   {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#<your-username> ex. darwin-rebuild build --flake .#Joe
-    darwinConfigurations."${profile}" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations.default = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration 
         mac-app-util.darwinModules.default
