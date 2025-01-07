@@ -5,7 +5,7 @@
     official-nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     fork-nixpkgs.url = "github:ThibautMarty/nixpkgs/master";
     nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.inputs.nixpkgs.follows = "official-nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     nix-homebrew-core = {
@@ -127,13 +127,13 @@
       system.stateVersion = 5;
 
       # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = system;
+      official-nixpkgs.hostPlatform = system;
 
       # Allows to install non-opensource applications
-      nixpkgs.config.allowUnfree = true;
+      official-nixpkgs.config.allowUnfree = true;
 
       # Allows to install non-compatible architecture applications
-      nixpkgs.config.allowUnsupportedSystem = true;
+      official-nixpkgs.config.allowUnsupportedSystem = true;
 
       programs.zsh.enable = true;
       programs.zsh.enableCompletion = true;
