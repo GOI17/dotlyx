@@ -2,7 +2,8 @@
   description = "Dotlyx flake template";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    official-nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    fork-nixpkgs.url = "github:ThibautMarty/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
@@ -19,22 +20,18 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
-    zimfw = {
-    	url = "github:joedevivo/zimfw.nix";
-	flake = true;
-    };
   };
 
   outputs = inputs@{
     self,
     nix-darwin,
-    nixpkgs,
+    official-nixpkgs,
+    fork-nixpkgs,
     mac-app-util,
     nix-homebrew,
     nix-homebrew-core,
     nix-homebrew-cask,
     nix-homebrew-bundle,
-    zimfw,
     ...
   }:
   let
@@ -113,6 +110,7 @@
 	zsh-syntax-highlighting
 	zsh-fast-syntax-highlighting
 	nix-zsh-completions
+	fork-nixpkgs.zimfw
       ];
 
       # Necessary for using flakes on this system.
@@ -171,13 +169,13 @@
       programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       '';
+      programs.zimfw.enable = true;
     };
   in
   {
     darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
       modules = [
 	      configuration 
-	      zimfw
 	      mac-app-util.darwinModules.default
 	      nix-homebrew.darwinModules.nix-homebrew {
 			nix-homebrew = {
