@@ -40,6 +40,7 @@
     #systemDefaults = import ./macos_defaults.nix;
     system = "aarch64-darwin";
     userName="$(whoami)";
+    hostName="Joses-MacBook-Pro";
     configuration = { pkgs, ... }: {
       # Add your custom fonts
       # ex.
@@ -164,7 +165,7 @@
     };
   in
   {
-    darwinConfigurations.default = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration 
       ];
