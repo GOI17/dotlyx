@@ -165,10 +165,10 @@
     };
   in
   {
-    darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
     imports = [
     	./modules/zimfw
     ];
+    darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
       modules = [
 	      configuration 
 	      mac-app-util.darwinModules.default
