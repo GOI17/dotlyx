@@ -153,7 +153,7 @@
 	export ZIM_HOME="$USER_DOTFILES_PATH/modules/zim"
       '';
       programs.zsh.loginShellInit = ''
-	source "${pkgs.zimfw}/share/zimfw/login_init.zsh" -q &!
+	source "${pkgs.zimfw-2018-05-15}/share/zimfw/.zim/login_init.zsh" -q &!
       '';
       programs.zsh.zimfw.enable = true;
       programs.zsh.zimfw.theme = "minimal";
