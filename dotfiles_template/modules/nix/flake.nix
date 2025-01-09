@@ -73,7 +73,6 @@
       // rec {
       	USER_DOTFILES_PATH= "XXX_USER_DOTFILES_PATH_XXX";
       	DOTLYX_HOME_PATH = "${USER_DOTFILES_PATH}/modules/dotlyx";
-      	ZIM_HOME = "${USER_DOTFILES_PATH}/modules/zim";
       };
 
       environment.systemPackages = with pkgs; [
@@ -150,7 +149,6 @@
 	export USER_DOTFILES_PATH="XXX_USER_DOTFILES_PATH_XXX"
 	export DOTLYX_HOME_PATH="$USER_DOTFILES_PATH/modules/dotlyx"
 	export NIX_CONFIG_HOME="$USER_DOTFILES_PATH/modules/nix"
-	export ZIM_HOME="$USER_DOTFILES_PATH/modules/zim"
       '';
       programs.zsh.zimfw.enable = true;
       programs.zsh.zimfw.theme = "gitster";
