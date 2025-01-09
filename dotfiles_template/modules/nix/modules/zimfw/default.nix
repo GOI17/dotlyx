@@ -52,6 +52,7 @@ in
             "environment"
             "git"
             "git-info"
+	    "gitster"
             "history"
             "input"
             "utility"
