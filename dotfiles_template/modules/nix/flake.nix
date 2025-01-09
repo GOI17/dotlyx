@@ -102,7 +102,6 @@
 	zsh-syntax-highlighting
 	zsh-fast-syntax-highlighting
 	nix-zsh-completions
-	#(import ./modules/zimfw)
       ];
 
       # Necessary for using flakes on this system.
@@ -161,12 +160,18 @@
       programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       '';
-      programs.zsh = {
-	zimfw = {
-	    enable = true;
-	    theme = "eriner";
-	};
-      };
+      programs.zsh.zimfw.enable = true;
+      programs.zsh.zimfw.theme = "minimal";
+      programs.zsh.zimfw.inputMode = "nvim";
+      programs.zsh.zimfw.modules = [
+	 "zimfw/environment"
+	 "zimfw/git-info"
+	 "zimfw/input"
+	 "zsh-users/zsh-syntax-highlighting"
+	 "zsh-users/zsh-autosuggestions"
+	 "gitster"
+	 "prompt-pwd"
+      ];
     };
   in
   {
