@@ -99,9 +99,6 @@
         fd
         fzf
         zsh
-	zsh-syntax-highlighting
-	zsh-fast-syntax-highlighting
-	nix-zsh-completions
       ];
 
       # Necessary for using flakes on this system.
@@ -144,8 +141,6 @@
 
 	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-        #source "$ZIM_HOME/init.sh"
-
 	# Async mode for autocompletion
 	ZSH_AUTOSUGGEST_USE_ASYNC=true
 	ZSH_HIGHLIGHT_MAXLENGTH=300
@@ -158,20 +153,12 @@
 	export ZIM_HOME="$USER_DOTFILES_PATH/modules/zim"
       '';
       programs.zsh.loginShellInit = ''
-	#source "$ZIM_HOME/login_init.zsh" -q &!
+	source "${pkgs.zimfw}/share/zimfw/login_init.zsh" -q &!
       '';
       programs.zsh.zimfw.enable = true;
       programs.zsh.zimfw.theme = "minimal";
       programs.zsh.zimfw.inputMode = "nvim";
-      programs.zsh.zimfw.modules = [
-	 "zimfw/environment"
-	 "zimfw/git-info"
-	 "zimfw/input"
-	 "zsh-users/zsh-syntax-highlighting"
-	 "zsh-users/zsh-autosuggestions"
-	 "gitster"
-	 "prompt-pwd"
-      ];
+      programs.zsh.zimfw.custom = "$USER_DOTFILES_PATH/shell/zsh/.zimrc";
     };
   in
   {
