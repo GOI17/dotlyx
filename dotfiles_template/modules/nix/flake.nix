@@ -155,6 +155,7 @@
       programs.zsh.zimfw.enable = true;
       programs.zsh.zimfw.theme = "gitster";
       programs.zsh.zimfw.inputMode = "nvim";
+      programs.zsh.zimfw.modules = [];
     };
   in
   {

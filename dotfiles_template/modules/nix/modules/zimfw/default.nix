@@ -6,7 +6,6 @@ let
   cfg = config.programs.zsh.zimfw;
   pkg = (cfg: cfg.package.override {
       customZimrc = ''
-      	zmodule gitster
         #zmodules=(${concatStringsSep "\\\n " cfg.modules})
 
         ${optionalString (stringLength(cfg.theme) > 0)
