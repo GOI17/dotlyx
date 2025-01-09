@@ -1,49 +1,14 @@
-{ pkgs }:
+with import <nixpkgs> {};
 
-pkgs.stdenv.mkDerivation rec {
-  pname = "zimfw";
-  version = "1.12.0";
-  src = pkgs.fetchFromGitHub {
-    owner = "zimfw";
-    repo = "zimfw";
-    rev = "v${version}";
-    ## zim only needs this one file to be installed.
-    sparseCheckout = [ "zimfw.zsh" ];
-    sha256 = "sha256-PwfPiga4KcOrkkObIu3RCUmO2ExoDQkbQx7S+Yncy6k=";
+stdenv.mkDerivation {
+  name = "zimfw-latest";
+  src = fetchurl {
+  	url = "https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh";
   };
-  strictDeps = true;
-  dontConfigure = true;
-  dontBuild = true;
 
   installPhase = ''
-    runHook preInstall
-
-    mkdir -p $out
-    cp -r $src/zimfw.zsh $out/
-
-    runHook postInstall
+  	mkdir $ZIM_HOME
+	mv $out $ZIM_HOME
+	zsh "$ZIM_HOME/zimfw.zsh" install
   '';
-
-  ## zim automates the downloading of any plugins you specify in the `.zimrc`
-  ## file. To do that with Nix, you'll need $ZIM_HOME to be writable.
-  ## `~/.cache/zim` is a good place for that. The problem is that zim also
-  ## looks for `zimfw.zsh` there, so we're going to tell it here to look for
-  ## the `zimfw.zsh` where we currently are.
-  postFixup = ''
-  	echo "
-	ZIM_HOME= $ZIM_HOME
-	"
-    substituteInPlace $out/zimfw.zsh \
-      --replace "\''${ZIM_HOME}/zimfw.zsh" "$out/zimfw.zsh" \
-      --replace "\''${(q-)ZIM_HOME}/zimfw.zsh" "$out/zimfw.zsh"
-  '';
-
-  meta = with pkgs.lib; {
-    description =
-      "The Zsh configuration framework with blazing speed and modular extensions";
-    homepage = "https://zimfw.sh";
-    license = licenses.mit;
-    maintainers = [ maintainers.joedevivo ];
-    platforms = platforms.all;
-  };
 }
