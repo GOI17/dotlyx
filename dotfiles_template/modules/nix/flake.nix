@@ -151,7 +151,7 @@
 	export NIX_CONFIG_HOME="$USER_DOTFILES_PATH/modules/nix"
       '';
       programs.zsh.zimfw.enable = true;
-      $programs.zsh.zimfw.theme = "gitster";
+      programs.zsh.zimfw.theme = "gitster";
       programs.zsh.zimfw.inputMode = "nvim";
       programs.zsh.zimfw.modules = [];
     };
