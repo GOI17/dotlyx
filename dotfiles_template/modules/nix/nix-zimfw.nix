@@ -6,6 +6,10 @@ stdenv.mkDerivation {
   	url = "https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh";
   };
 
+  strictDeps = true;
+  dontConfigure = true;
+  dontBuild = true;
+
   installPhase = ''
   	mkdir $ZIM_HOME
 	mv $out $ZIM_HOME
