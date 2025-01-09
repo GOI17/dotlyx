@@ -153,9 +153,8 @@
 	export ZIM_HOME="$USER_DOTFILES_PATH/modules/zim"
       '';
       programs.zsh.zimfw.enable = true;
-      programs.zsh.zimfw.theme = "minimal";
+      programs.zsh.zimfw.theme = "gitster";
       programs.zsh.zimfw.inputMode = "nvim";
-      programs.zsh.zimfw.custom = "$USER_DOTFILES_PATH/shell/zsh/.zimrc";
     };
   in
   {
