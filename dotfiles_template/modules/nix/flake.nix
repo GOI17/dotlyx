@@ -164,7 +164,7 @@
 	zimfw = {
 	    enable = true;
 	    theme = "eriner";
-	}
+	};
       };
     };
   in
