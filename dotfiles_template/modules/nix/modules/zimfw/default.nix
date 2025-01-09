@@ -6,7 +6,7 @@ let
   cfg = config.programs.zsh.zimfw;
   pkg = (cfg: cfg.package.override {
       customZimrc = ''
-        #zmodules=(${concatStringsSep "\\\n " cfg.modules})
+        zmodules=(${concatStringsSep "\\\n " cfg.modules})
 
         ${optionalString (stringLength(cfg.theme) > 0)
           "zprompt_theme='${cfg.theme}'"
