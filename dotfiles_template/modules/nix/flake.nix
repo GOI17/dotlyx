@@ -153,8 +153,8 @@
       programs.zsh.zimfw.enable = true;
       programs.zsh.zimfw.theme = "gitster";
       programs.zsh.zimfw.inputMode = "nvim";
-      programs.zsh.zimfw.modules = { modules }: with modules; [
-	      gitster
+      programs.zsh.zimfw.modules = [
+      	"${pkgs.zimfw}/share/.zim/modules/gitster"
       ];
     };
   in
