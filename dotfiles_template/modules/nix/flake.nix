@@ -152,9 +152,6 @@
 	export NIX_CONFIG_HOME="$USER_DOTFILES_PATH/modules/nix"
 	export ZIM_HOME="$USER_DOTFILES_PATH/modules/zim"
       '';
-      programs.zsh.loginShellInit = ''
-	source "${pkgs.zimfw."2018-05-15"}/share/zimfw/.zim/login_init.zsh" -q &!
-      '';
       programs.zsh.zimfw.enable = true;
       programs.zsh.zimfw.theme = "minimal";
       programs.zsh.zimfw.inputMode = "nvim";
