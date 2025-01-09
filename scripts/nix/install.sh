@@ -65,13 +65,6 @@ mkdir -pv "$USER_DOTFILES_PATH" 2>&1
 
 export USER_DOTFILES_PATH="$(realpath $USER_DOTFILES_PATH)"
 export DOTLYX_HOME_PATH="$USER_DOTFILES_PATH/modules/dotlyx"
-export ZIM_HOME="$USER_DOTFILES_PATH/modules/zim"
-
-echo "DOTLYX: ENVIRONMENT VARIABLES:
-USER_DOTFILES_PATH: $USER_DOTFILES_PATH
-DOTLYX_HOME_PATH: $DOTLYX_HOME_PATH
-ZIM_HOME: $ZIM_HOME
-"
 
 if [ -z $USER_DOTFILES_PATH ]; then echo "DOTLYX: There was an issue setting ENVIRONMENT variables"; exit 1; fi
 
@@ -88,10 +81,6 @@ sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|$USER_DOTFILES_PATH|g" "./modules/nix/fl
 for symlinks_file in "conf.yaml" "conf.macos.yaml"; do
 	"$DOTLYX_HOME_PATH/modules/dotbot/bin/dotbot" -d "$DOTLYX_HOME_PATH" -c "./symlinks/$symlinks_file"
 done
-#echo "DOTLYX: Installing zim..."
-#curl -fsSL --create-dirs -o "$ZIM_HOME/zimfw.zsh" \
-#  https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh 2>&1 && \
-#  zsh "$ZIM_HOME/zimfw.zsh" install
 source "$DOTLYX_HOME_PATH/scripts/nix/build_config.sh"
 cd $HOME
 echo "DOTLYX: Restart your terminal and Welcome to Dotlyx!"
