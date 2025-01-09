@@ -102,6 +102,7 @@
 	zsh-syntax-highlighting
 	zsh-fast-syntax-highlighting
 	nix-zsh-completions
+	#(import ./modules/zimfw)
       ];
 
       # Necessary for using flakes on this system.
@@ -169,11 +170,9 @@
     };
   in
   {
-    imports = [
-    	./modules/zimfw
-    ];
     darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
       modules = [
+      		./modules/zimfw
 	      configuration 
 	      mac-app-util.darwinModules.default
 	      nix-homebrew.darwinModules.nix-homebrew {
