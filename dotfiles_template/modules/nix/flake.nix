@@ -160,8 +160,12 @@
       programs.zsh.loginShellInit = ''
 	#source "$ZIM_HOME/login_init.zsh" -q &!
       '';
-      programs.zsh.zimfw.enable = true;
-      programs.zsh.zimfw.theme = "eriner";
+      programs.zsh = {
+	zimfw = {
+	    enable = true;
+	    theme = "eriner";
+	}
+      };
     };
   in
   {
