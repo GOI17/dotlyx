@@ -8,6 +8,7 @@ stdenv.mkDerivation rec {
   src = fetchgit {
     url = "https://github.com/zimfw/zimfw.git";
     rev = "v${version}";
+    sha256 = "uE+KJ8MBalT8YDjLr8F0OSEsVHHa5rntXQCw5/Kan0M=";
   };
 
   pathsToLink = [ "/share/zimfw" ];
