@@ -82,5 +82,11 @@ for symlinks_file in "conf.yaml" "conf.macos.yaml"; do
 	"$DOTLYX_HOME_PATH/modules/dotbot/bin/dotbot" -d "$DOTLYX_HOME_PATH" -c "./symlinks/$symlinks_file"
 done
 source "$DOTLYX_HOME_PATH/scripts/nix/build_config.sh"
+
+if [ $? -ne 0 ]; then
+	echo "DOTLYX: We stopped the installation cause of some issues. Try wiht a new installation process"
+	exit 1
+fi
+
 cd $HOME
 echo "DOTLYX: Restart your terminal and Welcome to Dotlyx!"
