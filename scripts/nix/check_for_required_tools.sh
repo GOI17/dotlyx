@@ -94,5 +94,5 @@ fi
 if ! command_exists nix; then
 	echo "DOTLYX: nix is not installed, trying to install"
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-	curl -sSf -L https://install.lix.systems/lix | sh -s -- install
+	. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 fi
