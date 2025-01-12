@@ -3,12 +3,12 @@
 with lib;
 
 stdenv.mkDerivation rec {
-  version = "2018-05-15";
-  name = "zimfw-${version}";
+  version = "1.16.0";
+  name = "zimfw";
   src = fetchgit {
     url = "https://github.com/zimfw/zimfw.git";
-    rev = "b7cb8d81c0899abaedc714102d65ca8b4764f27b";
-    sha256 = "1lb678adx596a61mfw6lgvrd1vjfvkna617p5d8a7c0cad2kfwsa";
+    rev = "v${version}";
+    sha256 = "sha256-hash";
   };
 
   pathsToLink = [ "/share/zimfw" ];
