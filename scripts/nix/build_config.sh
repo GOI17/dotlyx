@@ -11,9 +11,10 @@ cd "$HOME/.config/nix-darwin"
 if ! command_exists darwin-rebuild; then
   echo "DOTLYX: Installing nix-darwin..."
   nix --extra-experimental-features "nix-command flakes" \
-	  run nix-darwin -- switch
-  /bin/zsh -c "source '$HOME/.zshrc'"
+	run nix-darwin -- switch \
+	--flake .
+  #/bin/zsh -c "source '$HOME/.zshrc'"
 fi
 
-echo "DOTLYX: Building nix configurations..."
+echo "DOTLYX: Setting your nix configurations..."
 darwin-rebuild switch --flake . --impure
