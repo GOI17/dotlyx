@@ -37,7 +37,7 @@ if [ -d "$USER_DOTFILES_PATH" ]; then
 				files_with_errors=()
 				for filename in $current_dotfiles; do
 					mv "$HOME/$filename" "$parent_user_dotfiles_path/$backup_path/$home_user_dotfiles_path"
-					if [ $? -ne 0 ]; then files_with_errors+=($filename); fi
+					[ $? -ne 0 ] && files_with_errors+=($filename)
 				done
 				if [ ! -z $files_with_errors ]; then
 					echo "There were some issues moving these files ${files_with_errors[*]}
@@ -66,7 +66,10 @@ mkdir -pv "$USER_DOTFILES_PATH" 2>&1
 export USER_DOTFILES_PATH="$(realpath $USER_DOTFILES_PATH)"
 export DOTLYX_HOME_PATH="$USER_DOTFILES_PATH/modules/dotlyx"
 
-if [ -z $USER_DOTFILES_PATH ]; then echo "DOTLYX: There was an issue setting ENVIRONMENT variables"; exit 1; fi
+if [ -z $USER_DOTFILES_PATH ]; then
+	echo "DOTLYX: There was an issue setting ENVIRONMENT variables";
+	exit 1;
+fi
 
 cd $USER_DOTFILES_PATH
 git init

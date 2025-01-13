@@ -16,7 +16,7 @@ if ! command_exists darwin-rebuild; then
 	#/bin/zsh -c "source '$HOME/.zshrc'"
 fi
 
-[[ $? -ne 0 ]] exit 1; 
+[[ $? -ne 0 ]] && exit 1; 
 
 echo "DOTLYX: Setting your nix configurations..."
 darwin-rebuild switch --flake . --impure
