@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
 	cp -r $src/* $outdir/.zim/
 	cd $outdir
 	echo "Zim files:
-		$(ls -al .)
+		$(ls -al .zim)
 	"
 	rm .zim/README.md
 	rm .zim/LICENSE.md
