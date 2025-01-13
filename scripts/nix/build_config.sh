@@ -12,7 +12,7 @@ if ! command_exists darwin-rebuild; then
 	echo "DOTLYX: Installing nix-darwin..."
 	nix --extra-experimental-features "nix-command flakes" \
 		run nix-darwin -- switch \
-		--flake .
+		--flake . --impure
 	#/bin/zsh -c "source '$HOME/.zshrc'"
 fi
 
