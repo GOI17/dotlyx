@@ -16,26 +16,27 @@ stdenv.mkDerivation rec {
   phases = "installPhase";
 
   installPhase = with builtins; ''
-  outdir=$out/share/zimfw
+	outdir=$out/share/zimfw
 
-  mkdir -p $outdir/.zim
-  cp -r $src/* $outdir/.zim/
-  cd $outdir
-  rm .zim/README.md
-  rm .zim/LICENSE.md
+	mkdir -p $outdir/.zim
+	cp -r $src/* $outdir/.zim/
+	cd $outdir
+	ls -al .
+	#rm .zim/README.md
+	#rm .zim/LICENSE.md
 
-  chmod -R +w .zim
+	chmod -R +w .zim
 
-  find ./.zim -type f -exec sed -i -e "s#\''${ZDOTDIR:-\''${HOME}}#$outdir#g" {} \;
+	find ./.zim -type f -exec sed -i -e "s#\''${ZDOTDIR:-\''${HOME}}#$outdir#g" {} \;
 
-  # Change the path to zim dir
-  for template_file in $outdir/.zim/templates/*; do
-    user_file="$outdir/.''$(basename -- $template_file)"
-    cp $template_file $user_file
-  done
+	# Change the path to zim dir
+	for template_file in $outdir/.zim/templates/*; do
+		user_file="$outdir/.''$(basename -- $template_file)"
+		cp $template_file $user_file
+	done
 
-  ${optionalString (customZimrc != "")
-    ''echo '${customZimrc}' > $outdir/.zimrc ''
-  }
+	${optionalString (customZimrc != "")
+	''echo '${customZimrc}' > $outdir/.zimrc ''
+	}
   '';
 }
