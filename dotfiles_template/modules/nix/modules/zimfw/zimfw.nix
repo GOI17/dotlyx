@@ -24,8 +24,7 @@ stdenv.mkDerivation rec {
 	echo "Zim files:
 		$(ls -al .zim)
 	"
-	rm .zim/README.md
-	rm .zim/LICENSE.md
+	rm ./.zim/README.md ./.zim/LICENSE
 
 	chmod -R +w .zim
 
