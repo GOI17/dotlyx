@@ -13,10 +13,6 @@ if ! command_exists darwin-rebuild; then
 	nix --extra-experimental-features "nix-command flakes" \
 		run nix-darwin -- switch \
 		--flake . --impure
-	/bin/zsh -c "source /etc/zshrc"
+else
+	darwin-rebuild switch --flake . --impure
 fi
-
-[[ $? -ne 0 ]] && exit 1; 
-
-echo "DOTLYX: Setting your nix configurations..."
-darwin-rebuild switch --flake . --impure
