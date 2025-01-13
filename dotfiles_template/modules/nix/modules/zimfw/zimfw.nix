@@ -21,9 +21,6 @@ stdenv.mkDerivation rec {
 	mkdir -p $outdir/.zim
 	cp -r $src/* $outdir/.zim/
 	cd $outdir
-	echo "Zim files:
-		$(ls -al .zim)
-	"
 	rm ./.zim/README.md ./.zim/LICENSE
 
 	chmod -R +w .zim

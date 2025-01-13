@@ -13,7 +13,7 @@ if ! command_exists darwin-rebuild; then
 	nix --extra-experimental-features "nix-command flakes" \
 		run nix-darwin -- switch \
 		--flake . --impure
-	#/bin/zsh -c "source '$HOME/.zshrc'"
+	/bin/zsh -c "source '$HOME/.zshrc'"
 fi
 
 [[ $? -ne 0 ]] && exit 1; 
