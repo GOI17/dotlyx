@@ -16,19 +16,19 @@ in {
     };
     zimHome = mkOption {
       type = types.path;
-      default = "${config.home.homeDirectory}/.local/share/zim";
+      default = "${cfg.package}/.local/share/zim";
       defaultText = "~/.local/share/zim";
     };
     zimConfigFile = mkOption {
       type = types.path;
-      default = "${config.home.homeDirectory}/.zimrc";
+      default = "${cfg.package}/.zimrc";
       defaultText = "~/.zimrc";
     };
   };
 
   config = mkIf cfg.enable {
-    home.packages = [ cfg.package ];
-    home.file.${cfg.zimConfigFile}.text = ''
+    environment.packages = [ cfg.package ];
+    cfg.file.${cfg.zimConfigFile}.text = ''
       ${optionalString (cfg.modules != [ ]) ''
         ${concatStringsSep "\n" (map (m: "zmodule ${m}") cfg.modules)}
       ''}

@@ -38,7 +38,7 @@ in {
       };
 
       history = {
-        path = "${config.home.homeDirectory}/.zsh_history";
+        path = "${cfg.package}/.zsh_history";
         size = 1000000000;
         save = 1000000000;
         ignoreDups = true;
@@ -49,8 +49,6 @@ in {
         LANGUAGE = "en_US.UTF-8";
         NIX_PATH =
           "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels\${NIX_PATH:+:$NIX_PATH}";
-        CARGO_HOME = "${config.xdg.cacheHome}/cargo";
-        DOOMDIR = "${config.home.homeDirectory}/.doom.d";
       } // optionalAttrs isDarwin { HOMEBREW_NO_AUTO_UPDATE = "1"; };
       # Env vars that are specific to interactive shell.
       initExtraFirst = mkBefore ''
