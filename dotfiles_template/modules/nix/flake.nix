@@ -74,6 +74,7 @@
       	USER_DOTFILES_PATH= "XXX_USER_DOTFILES_PATH_XXX";
       	DOTLYX_HOME_PATH = "${USER_DOTFILES_PATH}/modules/dotlyx";
       };
+      environment.pathsToLink = [ "/share/zsh" ];
 
       environment.systemPackages = with pkgs; [
         # text editors
@@ -162,6 +163,7 @@
     darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
       modules = [
       		./modules/zimfw
+      		./modules/zimfw/zimfw.nix
 	      configuration 
 	      mac-app-util.darwinModules.default
 	      nix-homebrew.darwinModules.nix-homebrew {

@@ -1,40 +1,47 @@
-{ lib, stdenv, fetchgit, customZimrc ? "" }:
+{ config, lib, pkgs, ... }:
 
 with lib;
-
-stdenv.mkDerivation rec {
-  version = "1.16.0";
-  name = "zimfw";
-  src = fetchgit {
-    url = "https://github.com/zimfw/zimfw.git";
-    rev = "v${version}";
-    sha256 = "uE+KJ8MBalT8YDjLr8F0OSEsVHHa5rntXQCw5/Kan0M=";
+let cfg = config.programs.zsh.zimfw;
+in {
+  options.programs.zsh.zimfw = {
+    enable = mkEnableOption "Zim";
+    modules = mkOption {
+      type = with types; listOf str;
+      default = [ ];
+      description = "List of Zim modules";
+    };
+    package = mkOption {
+      type = types.package;
+      default = pkgs.zimfw;
+    };
+    zimHome = mkOption {
+      type = types.path;
+      default = "${config.home.homeDirectory}/.local/share/zim";
+      defaultText = "~/.local/share/zim";
+    };
+    zimConfigFile = mkOption {
+      type = types.path;
+      default = "${config.home.homeDirectory}/.zimrc";
+      defaultText = "~/.zimrc";
+    };
   };
 
-  pathsToLink = [ "/share/zimfw" ];
-
-  phases = "installPhase";
-
-  installPhase = with builtins; ''
-	outdir=$out/share/zimfw
-
-	mkdir -p $outdir/.zim
-	cp -r $src/* $outdir/.zim/
-	cd $outdir
-	rm ./.zim/README.md ./.zim/LICENSE
-
-	chmod -R +w .zim
-
-	find ./.zim -type f -exec sed -i -e "s#\''${ZDOTDIR:-\''${HOME}}#$outdir#g" {} \;
-
-	# Change the path to zim dir
-	for template_file in $outdir/.zim/templates/*; do
-		user_file="$outdir/.''$(basename -- $template_file)"
-		cp $template_file $user_file
-	done
-
-	${optionalString (customZimrc != "")
-	''echo '${customZimrc}' > $outdir/.zimrc ''
-	}
-  '';
+  config = mkIf cfg.enable {
+    home.packages = [ cfg.package ];
+    home.file.${cfg.zimConfigFile}.text = ''
+      ${optionalString (cfg.modules != [ ]) ''
+        ${concatStringsSep "\n" (map (m: "zmodule ${m}") cfg.modules)}
+      ''}
+    '';
+    programs.zsh.initExtraBeforeCompInit = ''
+      export ZIM_HOME=${cfg.zimHome};
+      export ZIM_CONFIG_FILE=${cfg.zimConfigFile};
+      zstyle ':zim:zmodule' use 'degit'
+      if [[ ! $ZIM_HOME/init.zsh -nt $ZIM_CONFIG_FILE ]]; then
+        source ${pkgs.zimfw}/zimfw.zsh init -q
+      fi
+      source $ZIM_HOME/init.zsh
+    '';
+  };
 }
+
