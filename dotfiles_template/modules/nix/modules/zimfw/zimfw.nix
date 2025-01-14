@@ -28,11 +28,11 @@ in {
 
   config = mkIf cfg.enable {
     environment.packages = [ cfg.package ];
-    cfg.file.${cfg.zimConfigFile}.text = ''
-      ${optionalString (cfg.modules != [ ]) ''
-        ${concatStringsSep "\n" (map (m: "zmodule ${m}") cfg.modules)}
-      ''}
-    '';
+    #cfg.file.${cfg.zimConfigFile}.text = ''
+    #  ${optionalString (cfg.modules != [ ]) ''
+    #    ${concatStringsSep "\n" (map (m: "zmodule ${m}") cfg.modules)}
+    #  ''}
+    #'';
     programs.zsh.initExtraBeforeCompInit = ''
       export ZIM_HOME=${cfg.zimHome};
       export ZIM_CONFIG_FILE=${cfg.zimConfigFile};
