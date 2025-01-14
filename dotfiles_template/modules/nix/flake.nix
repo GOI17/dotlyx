@@ -41,7 +41,7 @@
     hostName="XXX_USER_HOSTNAME_XXX";
   in
   {
-    darwinConfigurations."$HOSTNAME" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
       modules = [
 	      ./nix-darwin.nix { inherit inputs; }
 	      ./home-manager.nix
