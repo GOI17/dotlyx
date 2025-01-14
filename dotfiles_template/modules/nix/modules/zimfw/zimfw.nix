@@ -27,7 +27,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.packages = [ cfg.package ];
+    environment.systemPackages = [ cfg.package ];
     #cfg.file.${cfg.zimConfigFile}.text = ''
     #  ${optionalString (cfg.modules != [ ]) ''
     #    ${concatStringsSep "\n" (map (m: "zmodule ${m}") cfg.modules)}
