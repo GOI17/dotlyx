@@ -5,13 +5,13 @@
 	nix-homebrew-core,
 	nix-homebrew-cask,
 	nix-homebrew-bundle,
+	userName,
 	...
 }:
 
 let
 	#systemDefaults = import ./macos_defaults.nix;
 	system = "aarch64-darwin";
-	userName="$(whoami)";
 	hostName="XXX_USER_HOSTNAME_XXX";
 	configuration = { pkgs, ... }: {
 		# Add your custom fonts

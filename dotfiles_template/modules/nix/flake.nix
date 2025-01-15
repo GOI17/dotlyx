@@ -39,12 +39,13 @@
   let
     #systemDefaults = import ./macos_defaults.nix;
     hostName="XXX_USER_HOSTNAME_XXX";
+    userName="$(whoami)";
   in
   {
     darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
       modules = [
-	      ./nix-darwin.nix { inherit inputs; }
-	      ./home-manager.nix
+	      ./nix-darwin.nix { inherit inputs; userName = userName; }
+	      ./home-manager.nix { userName; }
 	      mac-app-util.darwinModules.default
       ];
     };

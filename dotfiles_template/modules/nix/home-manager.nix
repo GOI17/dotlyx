@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, userName, ... }:
 
 {
 	homeconfig = {pkgs, ...}: {
@@ -19,6 +19,6 @@
 		home-manager.useGlobalPkgs = true;
 		home-manager.useUserPackages = true;
 		home-manager.verbose = true;
-		home-manager.users.$USER = homeconfig;
+		home-manager.users."${userName}" = homeconfig;
 	}
 }
