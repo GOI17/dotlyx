@@ -21,6 +21,6 @@ in
 		home-manager.useGlobalPkgs = true;
 		home-manager.useUserPackages = true;
 		home-manager.verbose = true;
-		home-manager.users."${userName}" = homeconfig;
+		#home-manager.users."${userName}" = homeconfig;
 	};
 }
