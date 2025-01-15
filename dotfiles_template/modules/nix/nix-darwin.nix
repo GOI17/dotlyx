@@ -125,9 +125,9 @@
 		];
 
 		# Declare the user that will be running `nix-darwin`.
-		users.users.$USER = {
-		    name = "$USER";
-		    home = "/Users/$USER";
+		users.users.${userName} = {
+		    name = ${userName};
+		    home = "/Users/${userName}";
 		};
 	};
 
