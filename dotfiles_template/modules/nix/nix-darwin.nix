@@ -140,7 +140,7 @@ let
 	};
 
 in
-configuration //
+(configuration { pkgs = pkgs; }) //
 {
 	nix-homebrew.darwinModules.nix-homebrew = {
 		nix-homebrew = {
