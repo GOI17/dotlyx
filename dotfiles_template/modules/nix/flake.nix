@@ -45,7 +45,14 @@
     darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
       modules = [
 	      ./nix-darwin.nix { inherit inputs; inherit userName; }
-	      ./home-manager.nix { inherit userName; }
+	      #./home-manager.nix { inherit userName; }
+
+		home-manager.darwinModules.home-manager = {
+			home-manager.useGlobalPkgs = true;
+			home-manager.useUserPackages = true;
+			home-manager.verbose = true;
+			#home-manager.users."${userName}" = homeconfig;
+		};
 	      mac-app-util.darwinModules.default
       ];
     };
