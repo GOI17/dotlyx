@@ -133,7 +133,8 @@ let
 
 in
 {
-	nix-homebrew.darwinModules.nix-homebrew {
+	inherit configuration;
+	nix-homebrew.darwinModules.nix-homebrew = {
 		nix-homebrew = {
 			autoMigrate = true;
 			enable = true;
