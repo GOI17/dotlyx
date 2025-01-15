@@ -144,5 +144,5 @@
 				"homebrew/homebrew-bundle" = nix-homebrew-bundle;
 			};
 		};
-	}
+	};
 }
