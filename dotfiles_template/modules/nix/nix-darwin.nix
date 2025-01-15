@@ -1,4 +1,4 @@
-{ pkgs, nix-homebrew, nix-homebrew-core, nix-hombrew-cask, nix-homebrew-bundle, ... }:
+{ pkgs, nix-homebrew, nix-homebrew-core, nix-homebrew-cask, nix-homebrew-bundle, ... }:
 
 {
 	#systemDefaults = import ./macos_defaults.nix;
@@ -136,7 +136,7 @@
 			autoMigrate = true;
 			enable = true;
 			enableRosetta = true;
-			user = "$USER";
+			user = "${userName}";
 			mutableTaps = false;
 			taps = {
 				"homebrew/homebrew-core" = nix-homebrew-core;
