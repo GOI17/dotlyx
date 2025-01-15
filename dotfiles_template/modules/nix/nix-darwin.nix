@@ -1,6 +1,6 @@
 { pkgs, nix-homebrew, nix-homebrew-core, nix-homebrew-cask, nix-homebrew-bundle, ... }:
 
-let {
+let
 	#systemDefaults = import ./macos_defaults.nix;
 	system = "aarch64-darwin";
 	userName="$(whoami)";
@@ -131,7 +131,6 @@ let {
 		};
 	};
 
-};
 in
 {
 	nix-homebrew.darwinModules.nix-homebrew {
