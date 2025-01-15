@@ -131,7 +131,7 @@
 		};
 	};
 
-	nix-homebrew.darwinModules.nix-homebrew {
+	nix-homebrew.darwinModules.nix-homebrew = {
 		nix-homebrew = {
 			autoMigrate = true;
 			enable = true;
