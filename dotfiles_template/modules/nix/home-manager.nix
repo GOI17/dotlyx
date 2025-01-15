@@ -1,6 +1,6 @@
 { pkgs, userName, ... }:
 
-{
+let
 	homeconfig = {pkgs, ...}: {
 		# this is internal compatibility configuration 
 		# for home-manager, don't change this!
@@ -15,10 +15,12 @@
 		};
 	};
 
+in
+{
 	home-manager.darwinModules.home-manager = {
 		home-manager.useGlobalPkgs = true;
 		home-manager.useUserPackages = true;
 		home-manager.verbose = true;
 		home-manager.users."${userName}" = homeconfig;
-	}
+	};
 }
