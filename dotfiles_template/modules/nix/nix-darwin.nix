@@ -1,4 +1,12 @@
-{ pkgs, nix-homebrew, nix-homebrew-core, nix-homebrew-cask, nix-homebrew-bundle, ... }:
+{
+	self,
+	pkgs,
+	nix-homebrew,
+	nix-homebrew-core,
+	nix-homebrew-cask,
+	nix-homebrew-bundle,
+	...
+}:
 
 let
 	#systemDefaults = import ./macos_defaults.nix;
