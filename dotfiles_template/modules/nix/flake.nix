@@ -65,7 +65,7 @@
 			home-manager.useUserPackages = true;
 			home-manager.verbose = true;
 			#home-manager.users."${userName}" = homeconfig;
-		};
+		}
 	      mac-app-util.darwinModules.default
       ];
     };
