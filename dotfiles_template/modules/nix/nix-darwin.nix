@@ -140,8 +140,8 @@ let
 	};
 
 in
+configuration //
 {
-	(inherit configuration { inherit pkgs; });
 	nix-homebrew.darwinModules.nix-homebrew = {
 		nix-homebrew = {
 			autoMigrate = true;
