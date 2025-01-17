@@ -11,7 +11,7 @@
 	imports = [
 		./environment.nix
 		../programs/zsh.nix
-	]
+	];
 
 	homebrew = {
 		enable = true;
