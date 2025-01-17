@@ -37,37 +37,11 @@
     home-manager,
     ...
   }:
-  let
-	#systemDefaults = import ./macos_defaults.nix;
-	hostName="XXX_USER_HOSTNAME_XXX";
-	userName="$(whoami)";
-	homeconfig = {pkgs, ...}: {
-		# this is internal compatibility configuration 
-		# for home-manager, don't change this!
-		home.stateVersion = "23.05";
-		# Let home-manager install and manage itself.
-		programs.home-manager.enable = true;
-
-		home.packages = with pkgs; [];
-
-		home.sessionVariables = {
-			EDITOR = "vim";
-		};
-	};
-  in
   {
-    darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."XXX_USER_HOSTNAME_XXX" = nix-darwin.lib.darwinSystem {
       modules = [
-	      ./nix-darwin.nix { inherit inputs; inherit userName; }
-	      #./home-manager.nix { inherit userName; }
-
-		home-manager.darwinModules.home-manager {
-			home-manager.useGlobalPkgs = true;
-			home-manager.useUserPackages = true;
-			home-manager.verbose = true;
-			#home-manager.users."${userName}" = homeconfig;
-		}
-	      mac-app-util.darwinModules.default
+	      ./modules/system
+	      #mac-app-util.darwinModules.default
       ];
     };
   };
