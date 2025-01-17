@@ -29,10 +29,10 @@
 		export DOTLYX_HOME_PATH="$USER_DOTFILES_PATH/modules/dotlyx"
 		export NIX_CONFIG_HOME="$USER_DOTFILES_PATH/modules/nix"
 	'';
-	programs.zsh.zimfw.enable = true;
-	programs.zsh.zimfw.theme = "gitster";
-	programs.zsh.zimfw.inputMode = "nvim";
-	programs.zsh.zimfw.modules = [
-		"gitster"
-	];
+	#programs.zsh.zimfw.enable = true;
+	#programs.zsh.zimfw.theme = "gitster";
+	#programs.zsh.zimfw.inputMode = "nvim";
+	#programs.zsh.zimfw.modules = [
+	#	"gitster"
+	#];
 }
