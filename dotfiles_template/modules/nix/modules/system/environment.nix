@@ -1,4 +1,4 @@
-{ ... }: 
+{ pkgs, ... }: 
 
 {
 	environment.extraInit = import ../modules/shell/functions.nix;
