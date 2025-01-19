@@ -75,7 +75,7 @@
 				zimfw
 			];
 		};
-		home-manager-config = import ./modules/system/home-manager/home-manager.nix;
+		home-manager-config = { lib, userPackages, user, ... }: import ./modules/system/home-manager/home-manager.nix { inherit lib userPackages user; };
 		zsh-config = import ./modules/programs/zsh.nix;
 		homebrew-config = import ./modules/system/homebrew.nix;
 	in
@@ -98,7 +98,7 @@
 					};
 				}
 				home-manager.darwinModules.home-manager {
-					home-manager = home-manager-config { inherit user nixpkgs.lib; };
+					home-manager = home-manager-config { inherit user; };
 				} 
 				nix-homebrew.darwinModules.nix-homebrew {
 					nix-homebrew = homebrew-config.module {
