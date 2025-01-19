@@ -38,7 +38,7 @@
 		...
 	}:
 	let
-		user = "$(whoami)";
+		user = "josegilbertoolivasibarra";
 		nix-darwin-config = { pkgs, ... }: import ./modules/system/nix-darwin/nix-darwin.nix {
 			darwinHashVersion = self.rev or self.dirtyRev or null;
 			inherit user;
