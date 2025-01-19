@@ -17,10 +17,10 @@ let
 		};
 
 		home.file = {
-		    ".zshrc".source = "$USER_DOTFILES_PATH/shell/zsh/.zshrc";
-		    ".zshenv".source = "$USER_DOTFILES_PATH/shell/zsh/.zshenv";
-		    ".zlogin".source = "$USER_DOTFILES_PATH/shell/zsh/.zlogin";
-		    ".zimrc".source = "$USER_DOTFILES_PATH/shell/zsh/.zimrc";
+		    ".zshrc".source = "$HOME/.dotfiles/shell/zsh/.zshrc";
+		    ".zshenv".source = "$HOME/.dotfiles/shell/zsh/.zshenv";
+		    ".zlogin".source = "$HOME/.dotfiles/shell/zsh/.zlogin";
+		    ".zimrc".source = "$HOME/.dotfiles/shell/zsh/.zimrc";
 		};
 	};
 

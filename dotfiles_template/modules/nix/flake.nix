@@ -47,8 +47,6 @@
 				jetbrains-mono
 			];
 		};
-
-
 		environment-config = { lib, pkgs, ... }: import ./modules/system/environment/environment.nix {
 			inherit lib;
 			systemPackages = with pkgs; [
@@ -77,7 +75,7 @@
 				zimfw
 			];
 		};
-		
+		home-manager-config = import ./modules/system/home-manager/home-manager.nix;
 		zsh-config = import ./modules/programs/zsh.nix;
 		homebrew-config = import ./modules/system/homebrew.nix;
 	in
@@ -88,18 +86,6 @@
 				environment-config
 				{
 					programs.zsh = zsh-config;
-				}
-				nix-homebrew.darwinModules.nix-homebrew {
-					nix-homebrew = homebrew-config.module {
-						inherit user;
-						taps = {
-							"homebrew/homebrew-core" = nix-homebrew-core;
-							"homebrew/homebrew-cask" = nix-homebrew-cask;
-							"homebrew/homebrew-bundle" = nix-homebrew-bundle;
-						};
-					};
-				}
-				{
 					homebrew = homebrew-config.homebrew {
 						# it runs brew install --cask obs
 						# "obs"
@@ -109,6 +95,17 @@
 						# Identifier = APP_ID
 						# "Yoink" = 457622435;
 						masApps = {};
+					};
+					home-manager.darwinModules.home-manager homebrew-config { inherit user; };
+				}
+				nix-homebrew.darwinModules.nix-homebrew {
+					nix-homebrew = homebrew-config.module {
+						inherit user;
+						taps = {
+							"homebrew/homebrew-core" = nix-homebrew-core;
+							"homebrew/homebrew-cask" = nix-homebrew-cask;
+							"homebrew/homebrew-bundle" = nix-homebrew-bundle;
+						};
 					};
 				}
 				mac-app-util.darwinModules.default
