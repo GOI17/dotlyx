@@ -1,8 +1,8 @@
-{ ... }:
+{ self ? {}, ... }:
 
 {
 	imports = [
-		./nix-darwin.nix
+		./nix-darwin.nix { inherit self; }
 		#./home-manager.nix
 	];
 }
