@@ -11,7 +11,7 @@
 	programs.zsh.enableFastSyntaxHighlighting = true;
 	programs.zsh.enableGlobalCompInit = true;
 	programs.zsh.shellAliases = import ../shell/aliases.nix;
-	programs.zsh.history.ignoreAllDups = true;
+	#programs.zsh.history.ignoreAllDups = true;
 	/*programs.zsh.interactiveShellInit = ''
 		# ZSH Ops
 		setopt HIST_FCNTL_LOCK
