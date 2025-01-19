@@ -1,8 +1,8 @@
-{ ... }@attrs:
+{ ... }:
 
 {
 	imports = [
-		./nix-darwin.nix { inherit attrs; }
+		./nix-darwin.nix
 		#./home-manager.nix
 	];
 }
