@@ -1,5 +1,3 @@
-{ ... }: 
-
 {
 	zsh.enable = true;
 	zsh.enableCompletion = true;
