@@ -43,7 +43,7 @@
 	      ./modules/system/nix-darwin/nix-darwin.nix {
 			self = self;
 			user = "testuser";
-			fonts = with nixpkgs; [
+			userFonts = with nixpkgs; [
 			  nerd-fonts.caskaydia-cove
 			  jetbrains-mono
 			];

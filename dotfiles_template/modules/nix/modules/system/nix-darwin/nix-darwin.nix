@@ -1,9 +1,9 @@
-{ self, user, fonts ? [], ... }:
+{ self, user, userFonts ? [], ... }:
 
 {
 	# Add your custom fonts
 	# ex.
-	# fonts.packages = fonts;
+	# fonts.packages = userFonts;
 
 	# Necessary for using flakes on this system.
 	nix.settings.experimental-features = "nix-command flakes";
