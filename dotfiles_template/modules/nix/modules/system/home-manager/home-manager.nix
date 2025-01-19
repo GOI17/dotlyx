@@ -30,5 +30,5 @@ in
 	useGlobalPkgs = true;
 	useUserPackages = true;
 	verbose = true;
-	users."${user}" = homeconfig { inherit userPackages; };
+	users."${user}" = homeconfig { pkgs = userPackages; };
 }
