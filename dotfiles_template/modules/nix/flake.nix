@@ -98,7 +98,7 @@
 					};
 				}
 				home-manager.darwinModules.home-manager {
-					home-manager = home-manager-config { inherit user lib; };
+					home-manager = home-manager-config { inherit user (inherit nixpkgs) lib; };
 				} 
 				nix-homebrew.darwinModules.nix-homebrew {
 					nix-homebrew = homebrew-config.module {
