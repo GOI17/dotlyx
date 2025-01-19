@@ -41,7 +41,7 @@
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
       modules = [
 	      ./modules/system/nix-darwin/nix-darwin.nix {
-			self = self;
+			darwinHashVersion = self.rev or self.dirtyRev or null;
 			user = "testuser";
 			userFonts = with nixpkgs; [
 			  nerd-fonts.caskaydia-cove

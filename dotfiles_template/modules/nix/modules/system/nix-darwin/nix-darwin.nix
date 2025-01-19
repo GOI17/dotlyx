@@ -1,4 +1,4 @@
-{ self, user, userFonts ? [], ... }:
+{ darwinHashVersion, user, userFonts ? [], ... }:
 
 {
 	# Add your custom fonts
@@ -9,7 +9,7 @@
 	nix.settings.experimental-features = "nix-command flakes";
 
 	# Set Git commit hash for darwin-version.
-	system.configurationRevision = self.rev or self.dirtyRev or null;
+	system.configurationRevision = darwinHashVersion;
 
 	# Used for backwards compatibility, please read the changelog before changing.
 	# $ darwin-rebuild changelog
