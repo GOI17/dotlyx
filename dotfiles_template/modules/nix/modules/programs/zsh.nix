@@ -8,7 +8,7 @@
 	# enableSyntaxHighlighting = true;
 	enableFastSyntaxHighlighting = true;
 	enableGlobalCompInit = true;
-	shellAliases = import ../shell/aliases.nix;
+	#shellAliases = import ../shell/aliases.nix;
 	#history.ignoreAllDups = true;
 	/*interactiveShellInit = ''
 		# ZSH Ops
