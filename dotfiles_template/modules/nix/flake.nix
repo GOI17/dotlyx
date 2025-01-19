@@ -40,7 +40,7 @@
   {
     darwinConfigurations."XXX_USER_HOSTNAME_XXX" = nix-darwin.lib.darwinSystem {
       modules = [
-	      ./modules/system
+	      ./modules/system { inherit self; }
 	      #mac-app-util.darwinModules.default
       ];
     };
