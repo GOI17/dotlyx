@@ -38,9 +38,38 @@
     ...
   }:
   {
-    darwinConfigurations."XXX_USER_HOSTNAME_XXX" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
       modules = [
-	      ./modules/system { inherit self; }
+	      ./modules/nix/modules/system/nix-darwin/nix-darwin.nix { self = self; user = "testuser"; pkgs = nixpkgs; }
+	      ./modules/nix/modules/system/environment/environment.nix {
+	          lib = nixpkgs.lib;
+		  systemPackages = with nixpkgs; [
+			# text editors
+			neovim
+			# UI apps
+			raycast
+			# terminal tools
+			mas
+			tree
+			wget
+			jq
+			gh
+			ripgrep
+			rename
+			neofetch
+			jump
+			gcc
+			openssl
+			asdf-vm
+			lazygit
+			eza
+			fd
+			fzf
+			zsh
+		  ];
+	       }	
+	      ./modules/nix/modules/programs/zsh.nix {}	
+	      ./modules/nix/modules/system/homebrew.nix {}	
 	      #mac-app-util.darwinModules.default
       ];
     };

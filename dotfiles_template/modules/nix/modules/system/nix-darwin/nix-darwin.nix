@@ -1,4 +1,4 @@
-{ self, pkgs, ... }:
+{ self, user, pkgs, ... }:
 
 {
 	# Add your custom fonts
@@ -7,12 +7,6 @@
 	#   pkgs.nerd-fonts.caskaydia-cove
 	#   pkgs.jetbrains-mono
 	# ];
-
-	imports = [
-		./environment.nix
-		./homebrew.nix
-		../programs/zsh.nix
-	];
 
 	# Necessary for using flakes on this system.
 	nix.settings.experimental-features = "nix-command flakes";
@@ -33,10 +27,9 @@
 	# Allows to install non-compatible architecture applications
 	nixpkgs.config.allowUnsupportedSystem = true;
 
-
 	# Declare the user that will be running `nix-darwin`.
-	users.users."$(whoami)" = rec {
-	    name = "$(whoami)";
+	users.users."${user}" = rec {
+	    name = "${user}";
 	    home = "/Users/${name}";
 	};
 
