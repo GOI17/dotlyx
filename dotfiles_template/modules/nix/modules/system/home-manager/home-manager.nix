@@ -26,8 +26,8 @@ let
 
 in
 {
-	home-manager.useGlobalPkgs = true;
-	home-manager.useUserPackages = true;
-	home-manager.verbose = true;
-	home-manager.users."${user}" = homeconfig { inherit userPackages; };
+	useGlobalPkgs = true;
+	useUserPackages = true;
+	verbose = true;
+	users."${user}" = homeconfig { inherit userPackages; };
 }

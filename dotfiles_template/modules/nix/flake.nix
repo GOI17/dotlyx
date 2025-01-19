@@ -97,7 +97,9 @@
 						masApps = {};
 					};
 				}
-				home-manager.darwinModules.home-manager homebrew-config { inherit user; }
+				home-manager.darwinModules.home-manager {
+					home-manager = homebrew-config { inherit user; }
+				} 
 				nix-homebrew.darwinModules.nix-homebrew {
 					nix-homebrew = homebrew-config.module {
 						inherit user;
