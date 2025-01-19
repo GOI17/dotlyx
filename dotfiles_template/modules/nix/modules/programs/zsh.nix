@@ -1,16 +1,16 @@
 {
-	zsh.enable = true;
-	zsh.enableCompletion = true;
-	zsh.enableBashCompletion = true;
-	zsh.enableFzfCompletion = true;
-	zsh.enableFzfGit = true;
-	zsh.enableFzfHistory = true;
-	# programs.zsh.enableSyntaxHighlighting = true;
-	zsh.enableFastSyntaxHighlighting = true;
-	zsh.enableGlobalCompInit = true;
-	zsh.shellAliases = import ../shell/aliases.nix;
-	#programs.zsh.history.ignoreAllDups = true;
-	/*programs.zsh.interactiveShellInit = ''
+	enable = true;
+	enableCompletion = true;
+	enableBashCompletion = true;
+	enableFzfCompletion = true;
+	enableFzfGit = true;
+	enableFzfHistory = true;
+	# enableSyntaxHighlighting = true;
+	enableFastSyntaxHighlighting = true;
+	enableGlobalCompInit = true;
+	shellAliases = import ../shell/aliases.nix;
+	history.ignoreAllDups = true;
+	/*interactiveShellInit = ''
 		# ZSH Ops
 		setopt HIST_FCNTL_LOCK
 		setopt +o nomatch
@@ -23,10 +23,10 @@
 		ZSH_HIGHLIGHT_MAXLENGTH=300
 		eval "$(jump shell)"
 	'';*/
-	#programs.zsh.zimfw.enable = true;
-	#programs.zsh.zimfw.theme = "gitster";
-	#programs.zsh.zimfw.inputMode = "nvim";
-	#programs.zsh.zimfw.modules = [
+	#zimfw.enable = true;
+	#zimfw.theme = "gitster";
+	#zimfw.inputMode = "nvim";
+	#zimfw.modules = [
 	#	"gitster"
 	#];
 }
