@@ -74,6 +74,7 @@
 				fd
 				fzf
 				zsh
+				zimfw
 			];
 		};
 		
