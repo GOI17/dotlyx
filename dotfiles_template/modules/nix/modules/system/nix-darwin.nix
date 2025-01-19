@@ -10,28 +10,9 @@
 
 	imports = [
 		./environment.nix
+		./homebrew.nix
 		../programs/zsh.nix
 	];
-
-	homebrew = {
-		enable = true;
-		casks = [
-			# it runs brew install --cask obs
-			# "obs"
-			# "notion"
-		];
-		masApps = {
-			# it installs apps from apple store. You must be logged in.  
-			# Identifier = APP_ID
-			# "Yoink" = 457622435;
-		};
-
-		onActivation = {
-			cleanup = "zap";
-			autoUpdate = true;
-			upgrade = true;
-		};
-	};
 
 	# Necessary for using flakes on this system.
 	nix.settings.experimental-features = "nix-command flakes";
