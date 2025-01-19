@@ -86,7 +86,9 @@
 			modules = [
 				nix-darwin-config
 				environment-config
-				zsh-config
+				{
+					programs.zsh = zsh-config;
+				}
 				nix-homebrew.darwinModules.nix-homebrew {
 					nix-homebrew = homebrew-config.module {
 						inherit user;

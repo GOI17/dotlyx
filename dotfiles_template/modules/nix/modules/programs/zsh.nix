@@ -1,16 +1,16 @@
 { ... }: 
 
 {
-	programs.zsh.enable = true;
-	programs.zsh.enableCompletion = true;
-	programs.zsh.enableBashCompletion = true;
-	programs.zsh.enableFzfCompletion = true;
-	programs.zsh.enableFzfGit = true;
-	programs.zsh.enableFzfHistory = true;
+	zsh.enable = true;
+	zsh.enableCompletion = true;
+	zsh.enableBashCompletion = true;
+	zsh.enableFzfCompletion = true;
+	zsh.enableFzfGit = true;
+	zsh.enableFzfHistory = true;
 	# programs.zsh.enableSyntaxHighlighting = true;
-	programs.zsh.enableFastSyntaxHighlighting = true;
-	programs.zsh.enableGlobalCompInit = true;
-	programs.zsh.shellAliases = import ../shell/aliases.nix;
+	zsh.enableFastSyntaxHighlighting = true;
+	zsh.enableGlobalCompInit = true;
+	zsh.shellAliases = import ../shell/aliases.nix;
 	#programs.zsh.history.ignoreAllDups = true;
 	/*programs.zsh.interactiveShellInit = ''
 		# ZSH Ops
