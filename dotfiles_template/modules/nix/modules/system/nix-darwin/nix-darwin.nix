@@ -29,20 +29,4 @@
 	    name = "${user}";
 	    home = "/Users/${name}";
 	};
-
-	#nix-homebrew.darwinModules.nix-homebrew = {
-	#	nix-homebrew = {
-	#		autoMigrate = true;
-	#		enable = true;
-	#		enableRosetta = true;
-	#		user = "${userName}";
-	#		mutableTaps = false;
-	#		taps = {
-	#			"homebrew/homebrew-core" = nix-homebrew-core;
-	#			"homebrew/homebrew-cask" = nix-homebrew-cask;
-	#			"homebrew/homebrew-bundle" = nix-homebrew-bundle;
-	#		};
-	#	};
-	#};
-
 }

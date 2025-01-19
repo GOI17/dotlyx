@@ -1,4 +1,4 @@
-{ lib, systemPackages ? [], ... }: 
+{ lib, systemPackages, ... }: 
 
 with lib;
 
