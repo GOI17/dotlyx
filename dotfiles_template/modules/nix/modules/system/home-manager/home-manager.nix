@@ -16,6 +16,7 @@ let
 			EDITOR = "vim";
 		};
 
+		programs.zsh = import ../../programs/zsh.nix;
 		home.file = {
 		    ".zshrc".source = "$HOME/.dotfiles/shell/zsh/.zshrc";
 		    ".zshenv".source = "$HOME/.dotfiles/shell/zsh/.zshenv";
@@ -30,5 +31,4 @@ in
 	useUserPackages = true;
 	verbose = true;
 	users."${user}" = homeconfig { inherit userPackages; };
-	programs.zsh = import ../../programs/zsh.nix;
 }
