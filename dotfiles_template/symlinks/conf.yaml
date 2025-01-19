@@ -11,6 +11,6 @@
     - $HOME/.config/nix-darwin
 
 - link:
-    ~/.zimrc: $USER_DOTFILES_PATH/shell/zsh/.zimrc
-    ~/.inputrc: $USER_DOTFILES_PATH/shell/.inputrc
+    #~/.zimrc: $USER_DOTFILES_PATH/shell/zsh/.zimrc
+    #~/.inputrc: $USER_DOTFILES_PATH/shell/.inputrc
     ~/.config/nix-darwin/flake.nix: $USER_DOTFILES_PATH/modules/nix/flake.nix

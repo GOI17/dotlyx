@@ -12,7 +12,7 @@ if ! command_exists darwin-rebuild; then
 	echo "DOTLYX: Installing nix-darwin..."
 	nix --extra-experimental-features "nix-command flakes" \
 		run nix-darwin -- switch \
-		--flake . --impure
+		--flake .#dotlyx --impure
 else
-	darwin-rebuild switch --flake . --impure
+	darwin-rebuild switch --flake .#dotlyx --impure
 fi

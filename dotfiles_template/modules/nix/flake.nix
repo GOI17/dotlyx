@@ -87,11 +87,7 @@
 				environment-config
 				zsh-config
 				nix-homebrew.darwinModules.nix-homebrew {
-					nix-homebrew = {
-						autoMigrate = true;
-						enable = true;
-						enableRosetta = true;
-						mutableTaps = false;
+					nix-homebrew = homebrew-config.module {
 						inherit user;
 						taps = {
 							"homebrew/homebrew-core" = nix-homebrew-core;
@@ -100,15 +96,17 @@
 						};
 					};
 				}
-				homebrew-config {
-					# it runs brew install --cask obs
-					# "obs"
-					# "notion"
-					casks = [];
-					# it installs apps from apple store. You must be logged in.  
-					# Identifier = APP_ID
-					# "Yoink" = 457622435;
-					masApps = {};
+				{
+					homebrew = homebrew-config.homebrew {
+						# it runs brew install --cask obs
+						# "obs"
+						# "notion"
+						casks = [];
+						# it installs apps from apple store. You must be logged in.  
+						# Identifier = APP_ID
+						# "Yoink" = 457622435;
+						masApps = {};
+					};
 				}
 				mac-app-util.darwinModules.default
 			];

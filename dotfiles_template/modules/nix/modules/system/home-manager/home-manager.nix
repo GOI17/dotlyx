@@ -10,10 +10,17 @@ let
 		# Let home-manager install and manage itself.
 		programs.home-manager.enable = true;
 
-		home.packages = userPackages;
+		home.packages = pkgs;
 
 		home.sessionVariables = {
 			EDITOR = "vim";
+		};
+
+		home.file = {
+		    ".zshrc".source = "$USER_DOTFILES_PATH/shell/zsh/.zshrc";
+		    ".zshenv".source = "$USER_DOTFILES_PATH/shell/zsh/.zshenv";
+		    ".zlogin".source = "$USER_DOTFILES_PATH/shell/zsh/.zlogin";
+		    ".zimrc".source = "$USER_DOTFILES_PATH/shell/zsh/.zimrc";
 		};
 	};
 
