@@ -68,8 +68,8 @@
 			zsh
 		  ];
 	       }	
-	      ./modules/nix/modules/programs/zsh.nix {}	
-	      ./modules/nix/modules/system/homebrew.nix {}	
+	      ./modules/programs/zsh.nix {}	
+	      ./modules/system/homebrew.nix {}	
 	      #mac-app-util.darwinModules.default
       ];
     };
