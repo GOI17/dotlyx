@@ -1,12 +1,9 @@
-{ self, user, pkgs, ... }:
+{ self, user, fonts ? [], ... }:
 
 {
 	# Add your custom fonts
 	# ex.
-	# fonts.packages = [
-	#   pkgs.nerd-fonts.caskaydia-cove
-	#   pkgs.jetbrains-mono
-	# ];
+	# fonts.packages = fonts;
 
 	# Necessary for using flakes on this system.
 	nix.settings.experimental-features = "nix-command flakes";

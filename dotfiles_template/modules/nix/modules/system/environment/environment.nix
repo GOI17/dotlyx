@@ -1,4 +1,4 @@
-{ lib, systemPackages, ... }: 
+{ lib, systemPackages ? [], ... }: 
 
 with lib;
 
@@ -15,11 +15,6 @@ with lib;
 
 	environment.pathsToLink = [ "/share/zsh" ];
 
-	environment.systemPackages = mkDefault {
-		description = "System packages";
-		default = [];
-		type = with types; listOf package;
-		value = systemPackages;
-	};
+	environment.systemPackages = systemPackages;
 }
 

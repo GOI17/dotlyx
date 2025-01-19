@@ -1,4 +1,4 @@
-{ lib, pkgs, user, ... }:
+{ lib, userPackages ? [], user, ... }:
 
 with lib;
 
@@ -10,12 +10,7 @@ let
 		# Let home-manager install and manage itself.
 		programs.home-manager.enable = true;
 
-		home.packages = mkDefault {
-			description = "Dedicated user packages";
-			type = with types; listOf package;
-			default = [];
-			value = pkgs;
-		};
+		home.packages = userPackages;
 
 		home.sessionVariables = {
 			EDITOR = "vim";
@@ -28,6 +23,6 @@ in
 		home-manager.useGlobalPkgs = true;
 		home-manager.useUserPackages = true;
 		home-manager.verbose = true;
-		home-manager.users."${user}" = homeconfig { inherit pkgs; };
+		home-manager.users."${user}" = homeconfig { inherit userPackages; };
 	};
 }
