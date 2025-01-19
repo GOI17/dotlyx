@@ -40,8 +40,8 @@
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
       modules = [
-	      ./modules/nix/modules/system/nix-darwin/nix-darwin.nix { self = self; user = "testuser"; pkgs = nixpkgs; }
-	      ./modules/nix/modules/system/environment/environment.nix {
+	      ./modules/system/nix-darwin/nix-darwin.nix { self = self; user = "testuser"; pkgs = nixpkgs; }
+	      ./modules/system/environment/environment.nix {
 	          lib = nixpkgs.lib;
 		  systemPackages = with nixpkgs; [
 			# text editors
