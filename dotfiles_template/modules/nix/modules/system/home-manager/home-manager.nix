@@ -30,4 +30,5 @@ in
 	useUserPackages = true;
 	verbose = true;
 	users."${user}" = homeconfig { inherit userPackages; };
+	programs.zsh = import ../../programs/zsh.nix;
 }

@@ -76,7 +76,6 @@
 			];
 		};
 		home-manager-config = import ./modules/system/home-manager/home-manager.nix;
-		zsh-config = import ./modules/programs/zsh.nix;
 		homebrew-config = import ./modules/system/homebrew.nix;
 	in
 	{
@@ -85,7 +84,6 @@
 				nix-darwin-config
 				environment-config
 				{
-					programs.zsh = zsh-config;
 					homebrew = homebrew-config.homebrew {
 						# it runs brew install --cask obs
 						# "obs"
