@@ -9,7 +9,7 @@
 	enableFastSyntaxHighlighting = true;
 	enableGlobalCompInit = true;
 	shellAliases = import ../shell/aliases.nix;
-	history.ignoreAllDups = true;
+	#history.ignoreAllDups = true;
 	/*interactiveShellInit = ''
 		# ZSH Ops
 		setopt HIST_FCNTL_LOCK
