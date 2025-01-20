@@ -1,4 +1,4 @@
-{ dotfilesDirectory }:
+{ dotfilesDirectory, pkgs ? import <nixpkgs> {} }:
 
 {
 	enable = true;
