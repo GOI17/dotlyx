@@ -16,8 +16,6 @@ let
 			EDITOR = "vim";
 		};
 
-		home.homeDirectory = "/home/${user}";
-
 		programs.zsh = import ../../programs/zsh.nix;
 		home.file = {
 			#".config/nvim-nvchad" = "$HOME/.dotfiles/editors/nvim-nvchad";
