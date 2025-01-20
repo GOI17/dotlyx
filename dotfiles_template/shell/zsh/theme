@@ -105,3 +105,5 @@ function prompt_codely_setup() {
 
 	RPS1="";
 }
+
+prompt_codely_setup
