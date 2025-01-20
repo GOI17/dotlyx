@@ -14,9 +14,9 @@
 
 	antidote.enable = true;
 	antidote.plugins = [
-		zsh-users/zsh-syntax-highlighting
-		zsh-users/zsh-autosuggestions
-		gitster
-		prompt-pwd
+		"zsh-users/zsh-syntax-highlighting"
+		"zsh-users/zsh-autosuggestions"
+		"gitster"
+		"prompt-pwd"
 	];
 }
