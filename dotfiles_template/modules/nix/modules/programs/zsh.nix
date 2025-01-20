@@ -65,10 +65,6 @@
 		  [[ -n ${git_info} ]] && print -n "%F{$git_on_branch_color} on${(e)git_info[prompt]}"
 		}
 
-		#prompt_codely_precmd() {
-		#  (( ${+functions[git-info]} )) && git-info
-		#}
-
 		prompt_codely_setup() {
 		  local prompt_codely_status="%(?:%F{diamond_color}<%F{$status_icon_color_ok}$CODELY_THEME_STATUS_ICON_OK%F{diamond_color}>:%F{diamond_color}<%F{$status_icon_color_ko}$CODELY_THEME_STATUS_ICON_KO%F{diamond_color}>)"
 
