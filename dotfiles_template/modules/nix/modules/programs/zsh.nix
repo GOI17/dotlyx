@@ -6,7 +6,9 @@
 	history.ignoreAllDups = true;
 	
 	initExtra = ''
+autoload promptinit && promptinit
 source ${dotfilesDirectory}/shell/zsh/theme
+prompt pure
 	'';
 
 	#enableBashCompletion = true;
