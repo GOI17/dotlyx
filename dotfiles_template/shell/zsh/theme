@@ -60,11 +60,11 @@ function prompt_codely_setup() {
 
 	zstyle ':vcs_info:git:*' formats '%b %u%c'
 	zstyle ':vcs_info:*' enable git
+	PS1="$prompt_codely_status $(prompt_codely_pwd) "
 	
-	if [ "$CODELY_THEME_MINIMAL" = true ]; then
-		PROMPT='${vcs_info_msg_0_} %# '
-	else
-		PROMPT='${vcs_info_msg_0_} %# '
+	if [ "$CODELY_THEME_MINIMAL" = false ]; then
+		PS1="$PS1 ${vcs_info_msg_0_} %# "
+		PROMPT=''
 	fi
 
 	#if [ "$CODELY_THEME_PROMPT_IN_NEW_LINE" = true ]; then

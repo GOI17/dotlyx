@@ -25,6 +25,5 @@ source ${dotfilesDirectory}/shell/zsh/theme
 	antidote.plugins = [
 		"zsh-users/zsh-syntax-highlighting"
 		"zsh-users/zsh-autosuggestions"
-		"sindresorhus/pure"
 	];
 }
