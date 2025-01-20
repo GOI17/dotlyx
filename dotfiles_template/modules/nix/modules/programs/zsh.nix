@@ -6,6 +6,7 @@
 	history.ignoreAllDups = true;
 	
 	initExtra = ''
+source ${pkgs.antidote.gitstatus}/gitstatus/gitstatus.plugin.zsh
 source ${dotfilesDirectory}/shell/zsh/theme
 	'';
 
