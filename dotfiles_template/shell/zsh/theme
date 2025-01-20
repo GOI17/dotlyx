@@ -1,4 +1,4 @@
-CODELY_THEME_MINIMAL=${CODELY_THEME_MINIMAL:-true}
+CODELY_THEME_MINIMAL=${CODELY_THEME_MINIMAL:-false}
 CODELY_THEME_MODE=${CODELY_THEME_MODE:-"dark"}
 CODELY_THEME_PROMPT_IN_NEW_LINE=${CODELY_THEME_PROMPT_IN_NEW_LINE:-false}
 CODELY_THEME_PWD_MODE=${CODELY_THEME_PWD_MODE:-"short"} # full, short, home_relative
@@ -84,6 +84,10 @@ function prompt_codely_setup() {
 		zstyle :prompt:pure:prompt show yes
 		zstyle :prompt:pure:git show yes
 		zstyle :prompt:pure:execution_time show yes
+		PS1='%m%# %_ ?# +%N:%i'
+		PS2=''
+		PS3=''
+		PS4=''
 	fi
 
 	#if [ "$CODELY_THEME_PROMPT_IN_NEW_LINE" = true ]; then
