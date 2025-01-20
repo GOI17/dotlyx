@@ -58,36 +58,13 @@ function prompt_codely_pwd() {
 function prompt_codely_setup() {
 	local prompt_codely_status="%(?:%F{diamond_color}<%F{$status_icon_color_ok}$CODELY_THEME_STATUS_ICON_OK%F{diamond_color}>:%F{diamond_color}<%F{$status_icon_color_ko}$CODELY_THEME_STATUS_ICON_KO%F{diamond_color}>)"
 
-	# Pure uses environment variables for customization
-	PURE_GIT_UNTRACKED_DIRTY=1    # Include untracked files in dirty detection
-	PURE_GIT_DELAY_DIRTY_CHECK=1  # Delay dirty checking for better performance
-	PURE_PROMPT_SYMBOL=$prompt_codely_status
-
-	# Color customization
-	zstyle :prompt:pure:user show no
-	zstyle :prompt:pure:host show no
-	zstyle :prompt:pure:path show no
-	zstyle :prompt:pure:git:branch show no
-	zstyle :prompt:pure:git:dirty show no
-	zstyle :prompt:pure:git:action show no
-	zstyle :prompt:pure:git:arrow show no
-	zstyle :prompt:pure:git:stash show no
-	zstyle :prompt:pure:execution_time show no
-	zstyle :prompt:pure:prompt show no
-	zstyle :prompt:pure:virtualenv show no
+	zstyle ':vcs_info:git:*' formats '%b %u%c'
+	zstyle ':vcs_info:*' enable git
 	
 	if [ "$CODELY_THEME_MINIMAL" = true ]; then
-		zstyle :prompt:pure:user show yes
-		zstyle :prompt:pure:prompt show yes
+		PROMPT='${vcs_info_msg_0_} %# '
 	else
-		zstyle :prompt:pure:user show yes
-		zstyle :prompt:pure:prompt show yes
-		zstyle :prompt:pure:git show yes
-		zstyle :prompt:pure:execution_time show yes
-		PS1='%m%# %_ ?# +%N:%i'
-		PS2=''
-		PS3=''
-		PS4=''
+		PROMPT='${vcs_info_msg_0_} %# '
 	fi
 
 	#if [ "$CODELY_THEME_PROMPT_IN_NEW_LINE" = true ]; then
@@ -97,4 +74,4 @@ function prompt_codely_setup() {
 	#RPS1="";
 }
 
-prompt_codely_setup
+prompt_codely_setup "${@}"

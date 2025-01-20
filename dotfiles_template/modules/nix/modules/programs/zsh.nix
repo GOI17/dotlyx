@@ -6,9 +6,11 @@
 	history.ignoreAllDups = true;
 	
 	initExtra = ''
-autoload promptinit && promptinit
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook && add-zsh-hook precmd vcs_info
+prompt_opts=(cr percent sp subst)
+
 source ${dotfilesDirectory}/shell/zsh/theme
-prompt pure
 	'';
 
 	#enableBashCompletion = true;
