@@ -73,7 +73,6 @@
 				fd
 				fzf
 				zsh
-				zimfw
 			];
 		};
 		home-manager-config = import ./modules/system/home-manager/home-manager.nix;
