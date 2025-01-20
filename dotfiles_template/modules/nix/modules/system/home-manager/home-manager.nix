@@ -22,9 +22,9 @@ let
 			".config/nvim-nvchad".force = true;
 			".zshrc".source = "${dotfilesDirectory}/shell/zsh/.zshrc";
 			".zshrc".force = true;
-			".zshenv".source = "${dotfilesDirectory}/.dotfiles/shell/zsh/.zshenv";
-			".zlogin".source = "${dotfilesDirectory}/.dotfiles/shell/zsh/.zlogin";
-			".zimrc".source = "${dotfilesDirectory}/.dotfiles/shell/zsh/.zimrc";
+			".zshenv".source = "${dotfilesDirectory}/shell/zsh/.zshenv";
+			".zlogin".source = "${dotfilesDirectory}/shell/zsh/.zlogin";
+			".zimrc".source = "${dotfilesDirectory}/shell/zsh/.zimrc";
 		};
 	};
 
