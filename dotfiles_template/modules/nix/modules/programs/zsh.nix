@@ -1,13 +1,13 @@
 {
 	enable = true;
 	enableCompletion = true;
-	enableBashCompletion = true;
-	enableFzfCompletion = true;
-	enableFzfGit = true;
-	enableFzfHistory = true;
+	#enableBashCompletion = true;
+	#enableFzfCompletion = true;
+	#enableFzfGit = true;
+	#enableFzfHistory = true;
 	# enableSyntaxHighlighting = true;
-	enableFastSyntaxHighlighting = true;
-	enableGlobalCompInit = true;
+	#enableFastSyntaxHighlighting = true;
+	#enableGlobalCompInit = true;
 	#shellAliases = import ../shell/aliases.nix;
 	history.ignoreAllDups = true;
 	/*interactiveShellInit = ''

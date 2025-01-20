@@ -18,10 +18,11 @@ let
 
 		programs.zsh = import ../../programs/zsh.nix;
 		home.file = {
-		    ".zshrc".source = "$HOME/.dotfiles/shell/zsh/.zshrc";
-		    ".zshenv".source = "$HOME/.dotfiles/shell/zsh/.zshenv";
-		    ".zlogin".source = "$HOME/.dotfiles/shell/zsh/.zlogin";
-		    ".zimrc".source = "$HOME/.dotfiles/shell/zsh/.zimrc";
+			".config/nvim-nvchad" = "$HOME/.dotfiles/editors/nvim-nvchad";
+			".zshrc".source = "$HOME/.dotfiles/shell/zsh/.zshrc";
+			".zshenv".source = "$HOME/.dotfiles/shell/zsh/.zshenv";
+			".zlogin".source = "$HOME/.dotfiles/shell/zsh/.zlogin";
+			".zimrc".source = "$HOME/.dotfiles/shell/zsh/.zimrc";
 		};
 	};
 
