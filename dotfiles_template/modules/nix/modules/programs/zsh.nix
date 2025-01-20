@@ -4,6 +4,7 @@
 	history.ignoreAllDups = true;
 	
 	initExtra = ''
+		#!/usr/bin/env zsh
 		CODELY_THEME_MINIMAL=false
 		CODELY_THEME_MODE="dark"
 		CODELY_THEME_PROMPT_IN_NEW_LINE=false
@@ -65,10 +66,14 @@
 		  [[ -n ${git_info} ]] && print -n "%F{$git_on_branch_color} on${(e)git_info[prompt]}"
 		}
 
+		prompt_codely_precmd() {
+		  (( ${+functions[git-info]} )) && git-info
+		}
+
 		prompt_codely_setup() {
 		  local prompt_codely_status="%(?:%F{diamond_color}<%F{$status_icon_color_ok}$CODELY_THEME_STATUS_ICON_OK%F{diamond_color}>:%F{diamond_color}<%F{$status_icon_color_ko}$CODELY_THEME_STATUS_ICON_KO%F{diamond_color}>)"
 
-		  autoload -Uz add-zsh-hook #&& add-zsh-hook precmd prompt_codely_precmd
+		  autoload -Uz add-zsh-hook && add-zsh-hook precmd prompt_codely_precmd
 
 		  prompt_opts=(cr percent sp subst)
 
