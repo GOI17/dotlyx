@@ -55,46 +55,35 @@ function prompt_codely_pwd() {
   print -n "%F{$pwd_color}$prompt_dir"
 }
 
-function prompt_git_info() {
-  gitstatus_query 'dotlyxgit' || return 1
-  
-  local git_info=''
-  
-  if [[ $VCS_STATUS_RESULT == 'ok-sync' ]]; then
-    # Branch name or commit hash if in detached HEAD
-    if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
-      git_info+="%F{cyan}${VCS_STATUS_LOCAL_BRANCH}"
-    else
-      git_info+="%F{cyan}${VCS_STATUS_COMMIT[1,8]}"
-    fi
-    
-    # Clean/dirty status
-    if (( VCS_STATUS_HAS_STAGED || VCS_STATUS_HAS_UNSTAGED || VCS_STATUS_HAS_UNTRACKED )); then
-      git_info+=" %F{red}✗"  # Dirty indicator
-    else
-      git_info+=" %F{green}✓"  # Clean indicator
-    fi
-  fi
-  
-  echo -n $git_info
-}
-
-function prompt_git_setup() {
-	RPS1="$(prompt_git_info)"
-}
-
 function prompt_codely_setup() {
-	# Initialize gitstatus
-	gitstatus_stop 'dotlyxgit' && gitstatus_start 'dotlyxgit'
-
 	local prompt_codely_status="%(?:%F{diamond_color}<%F{$status_icon_color_ok}$CODELY_THEME_STATUS_ICON_OK%F{diamond_color}>:%F{diamond_color}<%F{$status_icon_color_ko}$CODELY_THEME_STATUS_ICON_KO%F{diamond_color}>)"
 
-	autoload -Uz add-zsh-hook && add-zsh-hook precmd prompt_git_setup
+	# Pure uses environment variables for customization
+	PURE_GIT_UNTRACKED_DIRTY=1    # Include untracked files in dirty detection
+	PURE_GIT_DELAY_DIRTY_CHECK=1  # Delay dirty checking for better performance
+	PURE_PROMPT_SYMBOL=$prompt_codely_status
+
+	# Color customization
+	zstyle :prompt:pure:git:branch color cyan
+	zstyle :prompt:pure:git:dirty color red
+	zstyle :prompt:pure:prompt:success color green
+	zstyle :prompt:pure:user:show no
+	zstyle :prompt:pure:user:show no
+	zstyle :prompt:pure:host:show no
+	zstyle :prompt:pure:path:show no
+	zstyle :prompt:pure:git:show no
+	zstyle :prompt:pure:execution_time:show no
+	zstyle :prompt:pure:prompt:show no
+	zstyle :prompt:pure:virtualenv:show no
 	
 	if [ "$CODELY_THEME_MINIMAL" = true ]; then
-		PS1="$prompt_codely_status $(prompt_codely_pwd) "
+		zstyle :prompt:pure:user:show yes
+		zstyle :prompt:pure:prompt:show yes
 	else
-		PS1="$prompt_codely_status $(prompt_codely_pwd) $(prompt_git_info)%f "
+		zstyle :prompt:pure:user:show yes
+		zstyle :prompt:pure:prompt:show yes
+		zstyle :prompt:pure:git:show yes
+		zstyle :prompt:pure:execution_time:show yes
 	fi
 
 	if [ "$CODELY_THEME_PROMPT_IN_NEW_LINE" = true ]; then
