@@ -18,7 +18,7 @@ let
 
 		programs.zsh = import ../../programs/zsh.nix;
 		home.file = {
-			".config/nvim-nvchad" = "$HOME/.dotfiles/editors/nvim-nvchad";
+			#".config/nvim-nvchad" = "$HOME/.dotfiles/editors/nvim-nvchad";
 			".zshrc".source = "$HOME/.dotfiles/shell/zsh/.zshrc";
 			".zshenv".source = "$HOME/.dotfiles/shell/zsh/.zshenv";
 			".zlogin".source = "$HOME/.dotfiles/shell/zsh/.zlogin";
