@@ -16,7 +16,8 @@ let
 			EDITOR = "vim";
 		};
 
-		programs.zsh = import ../../programs/zsh.nix;
+		programs.zsh = import ../../programs/zsh.nix { inherit dotfilesDirectory; };
+
 		home.file = {
 			".config/nvim-nvchad".source = "${dotfilesDirectory}/editors/nvim-nvchad";
 			".config/nvim-nvchad".force = true;
