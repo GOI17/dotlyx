@@ -1,4 +1,4 @@
-{ lib, userPackages ? [], user, ... }:
+{ lib, userPackages ? [], user, dotfilesDirectory, ... }:
 
 with lib;
 
@@ -18,9 +18,9 @@ let
 
 		programs.zsh = import ../../programs/zsh.nix;
 		home.file = {
-			".config/nvim-nvchad".source = "$HOME" + /.dotfiles/editors/nvim-nvchad;
+			".config/nvim-nvchad".source = dotfilesDirectory + /.dotfiles/editors/nvim-nvchad;
 			".config/nvim-nvchad".force = true;
-			".zshrc".source = "$HOME" + /.dotfiles/shell/zsh/.zshrc;
+			".zshrc".source = dotfilesDirectory + /.dotfiles/shell/zsh/.zshrc;
 			".zshrc".force = true;
 			#".zshenv".source = "$HOME/.dotfiles/shell/zsh/.zshenv";
 			#".zlogin".source = "$HOME/.dotfiles/shell/zsh/.zlogin";

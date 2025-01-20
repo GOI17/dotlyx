@@ -79,7 +79,8 @@ source "$DOTLYX_HOME_PATH/scripts/nix/check_for_required_tools.sh"
 echo "DOTLYX: Installing dotlyx submodules..."
 git submodule update --init --recursive
 cp -r "$DOTLYX_HOME_PATH/dotfiles_template/"* .
-sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|$USER_DOTFILES_PATH|g" "./modules/nix/modules/system/environment/environment.nix"
+sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|$USER_DOTFILES_PATH|g" "./modules/nix/flake.nix"
+sed -i -e "s|XXX_USERNAME_XXX|$(whoami)|g" "./modules/nix/flake.nix"
 for symlinks_file in "conf.yaml" "conf.macos.yaml"; do
 	"$DOTLYX_HOME_PATH/modules/dotbot/bin/dotbot" -d "$DOTLYX_HOME_PATH" -c "./symlinks/$symlinks_file"
 done

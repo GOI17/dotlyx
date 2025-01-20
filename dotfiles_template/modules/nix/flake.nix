@@ -38,7 +38,8 @@
 		...
 	}:
 	let
-		user = "josegilbertoolivasibarra";
+		user = "XXX_USERNAME_XXX";
+		dotfilesDirectory = "XXX_USER_DOTFILES_PATH_XXX";
 		nix-darwin-config = { pkgs, ... }: import ./modules/system/nix-darwin/nix-darwin.nix {
 			darwinHashVersion = self.rev or self.dirtyRev or null;
 			inherit user;
@@ -96,7 +97,11 @@
 					};
 				}
 				home-manager.darwinModules.home-manager {
-					home-manager = home-manager-config { inherit user; lib = nixpkgs.lib; userPackages = []; };
+					home-manager = home-manager-config {
+						inherit user dotfilesDirectory;
+						lib = nixpkgs.lib;
+						userPackages = [];
+					};
 				} 
 				nix-homebrew.darwinModules.nix-homebrew {
 					nix-homebrew = homebrew-config.module {
