@@ -20,11 +20,6 @@ let
 		home.file = {
 			".config/nvim-nvchad".source = "${dotfilesDirectory}/editors/nvim-nvchad";
 			".config/nvim-nvchad".force = true;
-			".zshrc".source = "${dotfilesDirectory}/shell/zsh/.zshrc";
-			".zshrc".force = true;
-			".zshenv".source = "${dotfilesDirectory}/shell/zsh/.zshenv";
-			".zlogin".source = "${dotfilesDirectory}/shell/zsh/.zlogin";
-			".zimrc".source = "${dotfilesDirectory}/shell/zsh/.zimrc";
 		};
 	};
 
