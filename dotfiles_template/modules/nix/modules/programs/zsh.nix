@@ -70,7 +70,7 @@ zstyle ':antidote:git-info:clean' format "%F{$git_no_changes_status_color}$git_n
 zstyle ':antidote:git-info:dirty' format "%F{$git_dirty_status_color}$git_dirty_status"
 zstyle ':antidote:git-info:keys' format "prompt" " %F{cyan}%b%c %C%D"
 
-PS1="$prompt_codely_status \$(prompt_codely_pwd) "
+PS1="$prompt_codely_status $(prompt_codely_pwd) "
 RPS1="";
 	'';
 
