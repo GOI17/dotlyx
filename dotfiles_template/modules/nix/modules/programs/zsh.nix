@@ -6,7 +6,7 @@
 	history.ignoreAllDups = true;
 	
 	initExtra = ''
-source {dotfilesDirectory}/shell/zsh/theme
+source ${dotfilesDirectory}/shell/zsh/theme
 	'';
 
 	#enableBashCompletion = true;
