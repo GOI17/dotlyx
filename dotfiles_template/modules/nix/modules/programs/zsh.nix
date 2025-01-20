@@ -59,7 +59,7 @@ prompt_codely_pwd() {
     home_relative) local -r prompt_dir=$(print -rD "$PWD") ;;
   esac
 
-  print -n "%F{$pwd_color}${prompt_dir}"
+  print -n "%F{$pwd_color}$prompt_dir"
 }
 
 prompt_codely_status="%(?:%F{diamond_color}<%F{$status_icon_color_ok}$CODELY_THEME_STATUS_ICON_OK%F{diamond_color}>:%F{diamond_color}<%F{$status_icon_color_ko}$CODELY_THEME_STATUS_ICON_KO%F{diamond_color}>)"
