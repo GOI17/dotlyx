@@ -86,6 +86,11 @@ function prompt_git_setup() {
 }
 
 function prompt_codely_setup() {
+	# Find gitstatus installation
+	if [[ -f ${ANTIDOTE_DIR:-${XDG_CACHE_HOME:-$HOME/.cache}/antidote}/https-COLON--SLASH--SLASH-github.com-SLASH-romkatv-SLASH-gitstatus/gitstatus.plugin.zsh ]]; then
+	    source ${ANTIDOTE_DIR:-${XDG_CACHE_HOME:-$HOME/.cache}/antidote}/https-COLON--SLASH--SLASH-github.com-SLASH-romkatv-SLASH-gitstatus/gitstatus.plugin.zsh
+	fi
+
 	# Initialize gitstatus
 	gitstatus_stop 'dotlyxgit' && gitstatus_start 'dotlyxgit'
 
