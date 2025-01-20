@@ -6,8 +6,8 @@
 	history.ignoreAllDups = true;
 	
 	initExtra = ''
-		fpath=("${dotfilesDirectory}/shell/zsh/themes" "${dotfilesDirectory}/shell/zsh/completions" $fpath)
-		promt codely
+fpath=("${dotfilesDirectory}/shell/zsh/theme" "${dotfilesDirectory}/shell/zsh/completions" $fpath)
+prompt codely
 	'';
 
 	#enableBashCompletion = true;
