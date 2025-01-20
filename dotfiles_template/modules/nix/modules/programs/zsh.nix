@@ -7,6 +7,8 @@
 	
 	initExtra = ''
 fpath=("${dotfilesDirectory}/shell/zsh/theme" "${dotfilesDirectory}/shell/zsh/completions" $fpath)
+
+autoload -Uz promptinit && promptinit
 prompt codely
 	'';
 
@@ -17,7 +19,6 @@ prompt codely
 	#enableSyntaxHighlighting = true;
 	#enableFastSyntaxHighlighting = true;
 	#enableGlobalCompInit = true;
-	#shellAliases = import ../shell/aliases.nix;
 
 	antidote.enable = true;
 	antidote.plugins = [
