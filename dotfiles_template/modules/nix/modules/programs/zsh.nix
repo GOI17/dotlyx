@@ -3,7 +3,7 @@
 	enableCompletion = true;
 	history.ignoreAllDups = true;
 	
-	initExtra = ""
+	initExtra = ''
 		CODELY_THEME_MINIMAL=false
 		CODELY_THEME_MODE="dark"
 		CODELY_THEME_PROMPT_IN_NEW_LINE=false
@@ -96,7 +96,7 @@
 		}
 
 		prompt_codely_setup "${@}"
-	"";
+	'';
 
 	#enableBashCompletion = true;
 	#enableFzfCompletion = true;
