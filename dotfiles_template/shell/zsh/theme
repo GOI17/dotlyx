@@ -64,7 +64,7 @@ function prompt_codely_setup() {
   setopt PROMPT_SUBST
 	
 	if [ "$CODELY_THEME_MINIMAL" = true ]; then
-		PS1="$prompt_codely_status $(prompt_codely_pwd)"
+		PS1="${prompt_codely_status} \$(prompt_codely_pwd)"
   else
 		#PS1="$prompt_codely_status $(prompt_codely_pwd) %F{$git_branch_color}${vcs_info_msg_0_}"
     #PS1="$prompt_codely_status %F{$pwd_color}%B%1/%b%f %F{green}%B${vcs_info_msg_0_}%b%f "
