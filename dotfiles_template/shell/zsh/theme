@@ -65,7 +65,7 @@ function prompt_codely_setup() {
 		PS1="$prompt_codely_status $(prompt_codely_pwd)"
   else
 		#PS1="$prompt_codely_status $(prompt_codely_pwd) %F{$git_branch_color}${vcs_info_msg_0_}"
-    PROMPT="$prompt_codely_status %F{pwd_color}%B%1/%b%f %F{git_branch_color}%B${vcs_info_msg_0_}%b%f "
+    PROMPT="$prompt_codely_status %F{pwd_color}%B%1/%b%f %F{git_branch_color}%B'${vcs_info_msg_0_}'%b%f "
 	fi
 
 	if [ "$CODELY_THEME_PROMPT_IN_NEW_LINE" = true ]; then
