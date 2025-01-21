@@ -1,4 +1,4 @@
-{ dotfilesDirectory, pkgs ? import <nixpkgs> {} }:
+{ dotfilesDirectory }:
 
 {
 	enable = true;
@@ -7,7 +7,8 @@
 	
 	initExtra = ''
 autoload -Uz vcs_info
-autoload -Uz add-zsh-hook && add-zsh-hook precmd vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
 prompt_opts=(cr percent sp subst)
 
 source ${dotfilesDirectory}/shell/zsh/theme

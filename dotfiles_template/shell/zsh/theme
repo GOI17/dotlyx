@@ -58,12 +58,11 @@ function prompt_codely_pwd() {
 function prompt_codely_setup() {
 	local prompt_codely_status="%(?:%F{diamond_color}<%F{$status_icon_color_ok}$CODELY_THEME_STATUS_ICON_OK%F{diamond_color}>:%F{diamond_color}<%F{$status_icon_color_ko}$CODELY_THEME_STATUS_ICON_KO%F{diamond_color}>)"
 
-	zstyle ':vcs_info:git:*' formats '%b %u%c'
-	zstyle ':vcs_info:*' enable git
+	zstyle ':vcs_info:git:*' formats '%b'
 	PS1="$prompt_codely_status $(prompt_codely_pwd) "
 	
 	if [ "$CODELY_THEME_MINIMAL" = false ]; then
-		PS1="$PS1 ${vcs_info_msg_0_} %# "
+		PS1="$PS1 $vcs_info_msg_0_" 
 	fi
 
 	#if [ "$CODELY_THEME_PROMPT_IN_NEW_LINE" = true ]; then
