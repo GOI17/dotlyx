@@ -64,7 +64,7 @@ function prompt_codely_setup() {
 	if [ "$CODELY_THEME_MINIMAL" = true ]; then
 		PS1="$prompt_codely_status $(prompt_codely_pwd)"
   else
-		PS1="$prompt_codely_status $(prompt_codely_pwd) %F{git_branch_color}${vcs_info_msg_0_}%f"
+		PS1="$prompt_codely_status $(prompt_codely_pwd) %F{$git_branch_color}${vcs_info_msg_0_}"
 	fi
 
 	#if [ "$CODELY_THEME_PROMPT_IN_NEW_LINE" = true ]; then
