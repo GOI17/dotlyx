@@ -60,6 +60,8 @@ function prompt_codely_setup() {
 
 	zstyle ':vcs_info:git:*' formats '%b '
 	zstyle ':vcs_info:*' enable git
+
+  setopt PROMPT_SUBST
 	
 	if [ "$CODELY_THEME_MINIMAL" = true ]; then
 		PS1="$prompt_codely_status $(prompt_codely_pwd)"
