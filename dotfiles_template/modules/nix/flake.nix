@@ -99,7 +99,9 @@
 					home-manager = home-manager-config {
 						inherit user dotfilesDirectory;
 						lib = nixpkgs.lib;
-						userPackages = [];
+						userPackages = with nixpkgs; [
+              docker
+            ];
 					};
 				} 
 				nix-homebrew.darwinModules.nix-homebrew {
