@@ -62,7 +62,7 @@ function prompt_codely_setup() {
 	zstyle ':vcs_info:*' check-for-changes true
 	zstyle ':vcs_info:*' unstagedstr "%F{$git_dirty_status_color}${git_dirty_status}"
 	zstyle ':vcs_info:*' stagedstr "%F{$git_no_changes_status_color}${git_no_changes_status}"
-	zstyle ':vcs_info:git:*' formats '%b %u%c%F{$git_no_changes_status_color}${git_no_changes_status}'
+	zstyle ':vcs_info:git:*' formats '%F{$git_on_branch_color}on%f %b %F{$git_no_changes_status_color}${git_no_changes_status}'
 	zstyle ':vcs_info:git:*' actionformats '%b|%a%u%c'
 
   setopt PROMPT_SUBST
