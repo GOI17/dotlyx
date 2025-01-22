@@ -59,12 +59,21 @@ function prompt_codely_pwd() {
 function prompt_codely_setup() {
 	local prompt_codely_status="%(?:%F{diamond_color}<%F{$status_icon_color_ok}$CODELY_THEME_STATUS_ICON_OK%F{diamond_color}>:%F{diamond_color}<%F{$status_icon_color_ko}$CODELY_THEME_STATUS_ICON_KO%F{diamond_color}>)"
 
+  +vi-git-check-clean() {
+    if [[ -z $hook_com[staged] ]] && [[ -z $hook_com[unstaged] ]]; then
+      hook_com[misc]="%F{$git_no_changes_status_color}${git_no_changes_status}"
+    else
+      hook_com[misc]=""
+    fi
+  }
+
 	zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:git*+set-message:*' hooks git-check-clean
 	zstyle ':vcs_info:*' check-for-changes true
 	zstyle ':vcs_info:*' stagedstr "%F{$git_dirty_status_color}${git_dirty_status}"
-	zstyle ':vcs_info:git:*' formats "%F{$git_on_branch_color}on %F{$git_branch_color}%b %c %F{$git_no_changes_status_color}%{$git_no_changes_status%G%}"
+	zstyle ':vcs_info:git:*' formats "%F{$git_on_branch_color}on %F{$git_branch_color}%b %c%m"
 
-	zstyle ':vcs_info:git:*' actionformats '%b|%a%u%c'
+	zstyle ':vcs_info:git:*' actionformats '%b|%a%u%c%m'
 
   setopt PROMPT_SUBST
 	
