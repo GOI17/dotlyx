@@ -76,7 +76,7 @@
 			];
 		};
 		homebrew-config = import ./modules/system/homebrew.nix;
-		home-manager-config = { pkgs, ... }: 
+		home-manager-config = { lib, pkgs, ... }: 
       let 
         config = import ./modules/system/home-manager/home-manager.nix;
       in {
