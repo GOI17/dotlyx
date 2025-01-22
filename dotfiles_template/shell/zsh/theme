@@ -58,8 +58,12 @@ function prompt_codely_pwd() {
 function prompt_codely_setup() {
 	local prompt_codely_status="%(?:%F{diamond_color}<%F{$status_icon_color_ok}$CODELY_THEME_STATUS_ICON_OK%F{diamond_color}>:%F{diamond_color}<%F{$status_icon_color_ko}$CODELY_THEME_STATUS_ICON_KO%F{diamond_color}>)"
 
-	zstyle ':vcs_info:git:*' formats '%b %i %c %u '
 	zstyle ':vcs_info:*' enable git
+	zstyle ':vcs_info:*' check-for-changes true
+	zstyle ':vcs_info:*' unstagedstr "%F{$git_dirty_status_color}${git_dirty_status}"
+	zstyle ':vcs_info:*' stagedstr "%F{$git_no_changes_status_color}${git_no_changes_status}"
+	zstyle ':vcs_info:git:*' formats '%b%u%c'
+	zstyle ':vcs_info:git:*' actionformats '%b|%a%u%c'
 
   setopt PROMPT_SUBST
 	
@@ -67,7 +71,7 @@ function prompt_codely_setup() {
 		PS1="${prompt_codely_status} \$(prompt_codely_pwd) "
   else
     PS1="${prompt_codely_status} \$(prompt_codely_pwd) "
-    PS1+='%F{$git_branch_color}%B${vcs_info_msg_0_}%#%f '
+    PS1+='%F{$git_branch_color}%B${vcs_info_msg_0_}%f '
 	fi
 
 	if [ "$CODELY_THEME_PROMPT_IN_NEW_LINE" = true ]; then
