@@ -99,8 +99,8 @@
 					home-manager = home-manager-config {
 						inherit user dotfilesDirectory;
 						lib = nixpkgs.lib;
-						userPackages = with nixpkgs; [
-              docker
+						userPackages = [
+              nixpkgs.docker
             ];
 					};
 				} 
