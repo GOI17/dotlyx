@@ -75,8 +75,18 @@
 				zsh
 			];
 		};
-		home-manager-config = import ./modules/system/home-manager/home-manager.nix;
 		homebrew-config = import ./modules/system/homebrew.nix;
+		home-manager-config = { pkgs, ... }: 
+      let 
+        config = import ./modules/system/home-manager/home-manager.nix;
+      in {
+        home-manager = config {
+          inherit lib user dotfilesDirectory;
+          userPackages = with pkgs; [
+            docker
+          ];
+        };
+      };
 	in
 	{
 		darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
@@ -95,15 +105,7 @@
 						masApps = {};
 					};
 				}
-				home-manager.darwinModules.home-manager {
-					home-manager = home-manager-config {
-						inherit user dotfilesDirectory;
-						lib = nixpkgs.lib;
-						userPackages = [
-              nixpkgs.docker
-            ];
-					};
-				} 
+				home-manager.darwinModules.home-manager home-manager-config 
 				nix-homebrew.darwinModules.nix-homebrew {
 					nix-homebrew = homebrew-config.module {
 						inherit user;
