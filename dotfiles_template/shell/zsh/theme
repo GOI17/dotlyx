@@ -60,7 +60,7 @@ function prompt_codely_setup() {
 	local prompt_codely_status="%(?:%F{diamond_color}<%F{$status_icon_color_ok}$CODELY_THEME_STATUS_ICON_OK%F{diamond_color}>:%F{diamond_color}<%F{$status_icon_color_ko}$CODELY_THEME_STATUS_ICON_KO%F{diamond_color}>)"
 
   +vi-git-check-clean() {
-    if [[ -z $hook_com[staged] ]] && [[ -z $hook_com[unstaged] ]]; then
+    if [[ -z $hook_com[staged] ]]; then
       hook_com[misc]="%F{$git_no_changes_status_color}${git_no_changes_status}"
     else
       hook_com[misc]=""
