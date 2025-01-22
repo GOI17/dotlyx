@@ -50,6 +50,7 @@ function prompt_codely_pwd() {
     short) local -r prompt_dir=$(short_pwd) ;;
     full) local -r prompt_dir="$PWD" ;;
     home_relative) local -r prompt_dir=$(print -rD "$PWD") ;;
+
   esac
 
   print -n "%F{$pwd_color}$prompt_dir"
@@ -62,7 +63,7 @@ function prompt_codely_setup() {
 	zstyle ':vcs_info:*' check-for-changes true
 	zstyle ':vcs_info:*' unstagedstr "%F{$git_dirty_status_color}${git_dirty_status}"
 	zstyle ':vcs_info:*' stagedstr "%F{$git_no_changes_status_color}${git_no_changes_status}"
-	zstyle ':vcs_info:git:*' formats '%F{$git_on_branch_color}on%f %b %F{$git_no_changes_status_color}${git_no_changes_status}'
+	zstyle ':vcs_info:git:*' formats "%F{$git_on_branch_color}on %F{$git_branch_color}%b %c%u"
 	zstyle ':vcs_info:git:*' actionformats '%b|%a%u%c'
 
   setopt PROMPT_SUBST
@@ -71,7 +72,7 @@ function prompt_codely_setup() {
 		PS1="${prompt_codely_status} \$(prompt_codely_pwd) "
   else
     PS1="${prompt_codely_status} \$(prompt_codely_pwd) "
-    PS1+='%F{$git_branch_color}%B${vcs_info_msg_0_}%f '
+    PS1+='%B${vcs_info_msg_0_}%f '
 
 	fi
 
