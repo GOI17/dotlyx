@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 command_exists() {
   type "$1" >/dev/null 2>&1
 }
@@ -96,28 +94,3 @@ if ! command_exists nix; then
   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
   . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 fi
-
-curl --proto '=https' --tlsv1.2 -sSf -L https://raw.githubusercontent.com/GOI17/dotlyx/refs/heads/main/scripts/nix/setup/install.nix | sh -s -- nix build ./install.nix
-
-#
-# cd $USER_DOTFILES_PATH
-# git init
-# echo "DOTLYX: Adding dotlyx as gitsubmodule"
-# git -c protocol.file.allow=always submodule add "$HOME/Documents/personal/workspace/dotlyx" modules/dotlyx
-# echo "DOTLYX: Installing dotlyx submodules..."
-# git submodule update --init --recursive
-# cp -r "$DOTLYX_HOME_PATH/dotfiles_template/"* .
-# sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|$USER_DOTFILES_PATH|g" "./modules/nix/flake.nix"
-# sed -i -e "s|XXX_USERNAME_XXX|$(whoami)|g" "./modules/nix/flake.nix"
-# for symlinks_file in "conf.yaml" "conf.macos.yaml"; do
-# 	"$DOTLYX_HOME_PATH/modules/dotbot/bin/dotbot" -d "$DOTLYX_HOME_PATH" -c "./symlinks/$symlinks_file"
-# done
-# source "$DOTLYX_HOME_PATH/scripts/nix/build_config.sh"
-#
-# if [ $? -ne 0 ]; then
-# 	echo "DOTLYX: We stopped the installation cause of some issues. Try wiht a new installation process"
-# 	exit 1
-# fi
-#
-# cd $HOME
-# echo "DOTLYX: Restart your terminal and Welcome to Dotlyx!"
