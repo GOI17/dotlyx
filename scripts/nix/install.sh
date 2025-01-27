@@ -97,7 +97,7 @@ if ! command_exists nix; then
   . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 fi
 
-nix build --file ./setup/install.nix
+nix build --file setup/install.nix
 ./result/bin/dotlyx-setup
 
 # read -p 'Where are going to be located your dotfiles?
