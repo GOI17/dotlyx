@@ -64,10 +64,16 @@
       exit 1;
     fi
 
+    # TODO: Move into his own step script "Manage dotlyx settings"
     export DOTLYX_HOME_PATH="$USER_DOTFILES_PATH/modules/dotlyx"
     if [ -z $DOTLYX_HOME_PATH ]; then
       echo "DOTLYX: There was an issue setting DOTLYX_HOME_PATH variable, please try again";
       exit 1;
     fi
+   
+    git submodule add -b main $(realpath $HOME/dotlyx) $DOTLYX_HOME_PATH
+    git submodule update --init --recursive
+
+    rm -rf $HOME/dotlyx
   '';
 }
