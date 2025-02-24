@@ -75,8 +75,10 @@
     fi
    
     git init
+    git config --global protocol.file.allow always
     git submodule add -b main ~/dotlyx $DOTLYX_HOME_PATH
     git submodule update --init --recursive
+    git config --global protocol.file.allow never
 
     rm -rf ~/dotlyx
   '';
