@@ -81,5 +81,14 @@
     git config --global protocol.file.allow never
 
     rm -rf ~/dotlyx
+
+    # Edit .gitmodules to change the URL
+    git config -f .gitmodules submodule.modules/dotlyx.url https://github.com/goi17/dotlyx.git
+
+    # Sync and update the changes
+    git submodule sync
+    git submodule update --init --remote
+    git add .gitmodules
+    git commit -m "Update dotlyx submodule to use remote URL"
   '';
 }
