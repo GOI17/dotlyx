@@ -64,6 +64,8 @@
       exit 1;
     fi
 
+    cd $USER_DOTFILES_PATH
+
     echo "TODO: Move into his own step script 'Manage dotlyx settings'"
     export DOTLYX_HOME_PATH="$USER_DOTFILES_PATH/modules/dotlyx"
     if [ -z $DOTLYX_HOME_PATH ]; then
@@ -71,9 +73,9 @@
       exit 1;
     fi
    
-    git submodule add -b main $(realpath $HOME/dotlyx) $DOTLYX_HOME_PATH
+    git submodule add -b main ~/dotlyx $DOTLYX_HOME_PATH
     git submodule update --init --recursive
 
-    rm -rf $HOME/dotlyx
+    rm -rf ~/dotlyx
   '';
 }
