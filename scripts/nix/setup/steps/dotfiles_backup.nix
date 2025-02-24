@@ -77,7 +77,7 @@
       echo "DOTLYX: There was an issue setting DOTLYX_HOME_PATH variable, please try again";
       exit 1;
     fi
-    ls -al ~
+    ls -al ~/dotlyx
    
     git submodule add -b main ~/dotlyx $DOTLYX_HOME_PATH
     git submodule update --init --recursive
