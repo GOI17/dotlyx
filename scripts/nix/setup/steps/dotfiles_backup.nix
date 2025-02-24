@@ -66,6 +66,7 @@
     fi
 
     cd $USER_DOTFILES_PATH
+    pwd
 
     echo "TODO: Move into his own step script 'Manage dotlyx settings'"
     export DOTLYX_HOME_PATH="$USER_DOTFILES_PATH/modules/dotlyx"
