@@ -46,6 +46,7 @@
             ;;
           [Nn] )
             echo "DOTLYX: Skipping backup";
+	    rm -rf $USER_DOTFILES_PATH
             break
             ;;
           *)
