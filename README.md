@@ -1,7 +1,11 @@
 # dotlyx [WIP]
 
 ## A personal dotlyxfiles manager 🧑🏻‍💻
-## Another one?
+### Installation
+```
+bash <(curl -s https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install)
+```
+### Another one?
 #### Yes, but with Nix underhood 😎
 #### Nix is the best alternative if you really want everything versioned. 
 
