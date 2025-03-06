@@ -1,4 +1,5 @@
-# dotlyx
+# dotlyx [WIP]
+
 ## A personal dotlyxfiles manager 🧑🏻‍💻
 ## Another one?
 #### Yes, but with Nix underhood 😎
