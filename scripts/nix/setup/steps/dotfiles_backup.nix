@@ -123,5 +123,5 @@
 
     cd ''$HOME
     echo "DOTLYX: Restart your terminal and Welcome to Dotlyx!"
-  ''
+  '';
 }
