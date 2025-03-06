@@ -8,18 +8,18 @@
     generate_backup_dir () {
       local backup_path="pre_dotlyx_dotfiles.$(get_local_time_in_seconds).back"
       echo "DOTLYX: Creating backup in '$backup_path'";
-      local user_dotfiles_absolute_path=$(realpath $USER_DOTFILES_PATH)
-      local parent_user_dotfiles_path=$(dirname $user_dotfiles_absolute_path)
-      mv $user_dotfiles_absolute_path "$parent_user_dotfiles_path/$backup_path";
-      local home_user_dotfiles_path="pre_dotlyx_home_dotfiles.$(get_local_time_in_seconds).back"
-      mkdir -pv "$parent_user_dotfiles_path/$backup_path/$home_user_dotfiles_path"
-      local current_dotfiles="$(ls -a ~ | grep -v dotlyx | grep -e zsh -e bash -e dot)"
+      local user_dotfiles_absolute_path=''$(realpath $USER_DOTFILES_PATH)
+      local parent_user_dotfiles_path=''$(dirname $user_dotfiles_absolute_path)
+      mv ''$user_dotfiles_absolute_path "''$parent_user_dotfiles_path/''$backup_path";
+      local home_user_dotfiles_path="pre_dotlyx_home_dotfiles.''$(get_local_time_in_seconds).back"
+      mkdir -pv "''$parent_user_dotfiles_path/''$backup_path/''$home_user_dotfiles_path"
+      local current_dotfiles="''$(ls -a ~ | grep -v dotlyx | grep -e zsh -e bash -e dot)"
       local files_with_errors=()
-      for filename in $current_dotfiles; do
-        mv "$HOME/$filename" "$parent_user_dotfiles_path/$backup_path/$home_user_dotfiles_path"
-        [ $? -ne 0 ] && files_with_errors+=($filename)
+      for filename in ''$current_dotfiles; do
+        mv "''$HOME/''$filename" "''$parent_user_dotfiles_path/''$backup_path/''$home_user_dotfiles_path"
+        [ ''$? -ne 0 ] && files_with_errors+=(''$filename)
       done
-      if [ ! -z $files_with_errors ]; then
+      if [ ! -z ''$files_with_errors ]; then
         echo "There were some issues moving these files ''${files_with_errors[*]}
         Posible solutions:
         - Run the install process again.
@@ -29,24 +29,24 @@
       fi
     }
 
-    if ! [[ $SHELL =~ "zsh" ]]; then
+    if ! [[ ''$SHELL =~ "zsh" ]]; then
         echo "DOTLYX: Setting zsh as default shell"
-        sudo chsh -s "$(command -v zsh)"
+        sudo chsh -s "''$(command -v zsh)"
     fi
 
     echo "DOTLYX: Looking for existing dotfiles..."
 
-    if [ -d "$USER_DOTFILES_PATH" ]; then
+    if [ -d "''$USER_DOTFILES_PATH" ]; then
       while true; do
-        read -p "The path '$USER_DOTFILES_PATH' already exists. Do you want to create a backup? (y/n): " is_backup_required
-        case $is_backup_required in
+        read -p "The path ''${USER_DOTFILES_PATH} already exists. Do you want to create a backup? (y/n): " is_backup_required
+        case ''$is_backup_required in
           [Yy] ) 
             generate_backup_dir
             break
             ;;
           [Nn] )
             echo "DOTLYX: Skipping backup";
-	    rm -rf $USER_DOTFILES_PATH
+	    rm -rf ''$USER_DOTFILES_PATH
             break
             ;;
           *)
@@ -56,31 +56,31 @@
       done
     fi
 
-    echo "DOTLYX: dotfiles will be located in: $USER_DOTFILES_PATH"
-    mkdir -pv "$USER_DOTFILES_PATH" 2>&1
+    echo "DOTLYX: dotfiles will be located in: ''$USER_DOTFILES_PATH"
+    mkdir -pv "''$USER_DOTFILES_PATH" 2>&1
 
-    export USER_DOTFILES_PATH="$(realpath $USER_DOTFILES_PATH)"
-    if [ -z $USER_DOTFILES_PATH ]; then
+    export USER_DOTFILES_PATH="''$(realpath $USER_DOTFILES_PATH)"
+    if [ -z ''$USER_DOTFILES_PATH ]; then
       echo "DOTLYX: There was an issue setting USER_DOTFILES_PATH variable, please try again";
       exit 1;
     fi
 
-    cd $USER_DOTFILES_PATH
+    cd ''$USER_DOTFILES_PATH
 
-    echo "TODO: Move into his own step script 'Manage dotlyx settings'"
-    export DOTLYX_HOME_PATH="$USER_DOTFILES_PATH/modules/dotlyx"
-    if [ -z $DOTLYX_HOME_PATH ]; then
+    # TODO: Move into his own step script 'Manage dotlyx settings'
+    export DOTLYX_HOME_PATH="''$USER_DOTFILES_PATH/modules/dotlyx"
+    if [ -z ''$DOTLYX_HOME_PATH ]; then
       echo "DOTLYX: There was an issue setting DOTLYX_HOME_PATH variable, please try again";
       exit 1;
     fi
    
     git init
     git config --global protocol.file.allow always
-    git submodule add -b main ~/dotlyx modules/dotlyx
+    git submodule add -b main ''$HOME/dotlyx modules/dotlyx
     git submodule update --init --recursive
     git config --global protocol.file.allow never
 
-    rm -rf ~/dotlyx
+    rm -rf ''$HOME/dotlyx
 
     # Edit .gitmodules to change the URL
     git config -f .gitmodules submodule.modules/dotlyx.url https://github.com/goi17/dotlyx.git
@@ -92,5 +92,36 @@
     git commit -m "Update dotlyx submodule to use remote URL"
 
     # Setting up dotfiles template
+    cp -r "''$DOTLYX_HOME_PATH/dotfiles_template/"* .
+    sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|''$USER_DOTFILES_PATH|g" "./modules/nix/flake.nix"
+    sed -i -e "s|XXX_USERNAME_XXX|''$(whoami)|g" "./modules/nix/flake.nix"
+    for symlinks_file in "conf.yaml" "conf.macos.yaml"; do
+     	"''$DOTLYX_HOME_PATH/modules/dotbot/bin/dotbot" -d "''$DOTLYX_HOME_PATH" -c "./symlinks/$symlinks_file"
+    done
+
+    echo "DOTLYX: Initializing Nix default configurations"
+
+    command_exists() {
+        type "''$1" >/dev/null 2>&1
+    }
+
+    cd "''$HOME/.config/nix-darwin"
+
+    if ! command_exists darwin-rebuild; then
+        echo "DOTLYX: Installing nix-darwin..."
+	nix --extra-experimental-features "nix-command flakes" \
+		run nix-darwin -- switch \
+		--flake .#dotlyx --impure
+    else
+	darwin-rebuild switch --flake .#dotlyx --impure
+    fi
+
+    if [ ''$? -ne 0 ]; then
+        echo "DOTLYX: We stopped the installation. Try with a new installation process"
+        exit 1
+    fi
+
+    cd ''$HOME
+    echo "DOTLYX: Restart your terminal and Welcome to Dotlyx!"
   ''
 }
