@@ -92,36 +92,5 @@
     git commit -m "Update dotlyx submodule to use remote URL"
 
     # Setting up dotfiles template
-    cp -r "$DOTLYX_HOME_PATH/dotfiles_template/"* .
-    sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|$USER_DOTFILES_PATH|g" "./modules/nix/flake.nix"
-    sed -i -e "s|XXX_USERNAME_XXX|$(whoami)|g" "./modules/nix/flake.nix"
-    for symlinks_file in "conf.yaml" "conf.macos.yaml"; do
-     	"$DOTLYX_HOME_PATH/modules/dotbot/bin/dotbot" -d "$DOTLYX_HOME_PATH" -c "./symlinks/$symlinks_file"
-    done
-
-    echo "DOTLYX: Initializing Nix default configurations"
-
-    command_exists() {
-        type "$1" >/dev/null 2>&1
-    }
-
-    cd "$HOME/.config/nix-darwin"
-
-    if ! command_exists darwin-rebuild; then
-        echo "DOTLYX: Installing nix-darwin..."
-	nix --extra-experimental-features "nix-command flakes" \
-		run nix-darwin -- switch \
-		--flake .#dotlyx --impure
-    else
-	darwin-rebuild switch --flake .#dotlyx --impure
-    fi
-
-    if [ $? -ne 0 ]; then
-        echo "DOTLYX: We stopped the installation. Try with a new installation process"
-        exit 1
-    fi
-
-    cd $HOME
-    echo "DOTLYX: Restart your terminal and Welcome to Dotlyx!"
   ''
 }
