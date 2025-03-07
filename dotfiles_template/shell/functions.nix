@@ -1,4 +1,4 @@
-with import ../modules/dotlyx/scripts/nix/setup/utilities/colors.nix;
+with import ../modules/dotlyx/scripts/nix/setup/utilities/log_helpers.nix;
 
 ''
 function vv() {
