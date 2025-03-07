@@ -8,12 +8,12 @@ rec {
     echo "${color}${message}"
   '';
   _s = message: ''
-    echo "\${_colorized { color = ${GREEN}; message = "DOTLYX:"; } } ${message}"
+    echo "\${_colorized { color = {GREEN}; message = "DOTLYX:"; } } ${message}"
   '';
   _e = message: ''
-    echo "\${_colorized { color = ${RED}; message = "DOTLYX:"; } } ${message}"
+    echo "\${_colorized { color = {RED}; message = "DOTLYX:"; } } ${message}"
   '';
   _w = message: ''
-    echo "\${_colorized { color = ${YELLOW}; message = "DOTLYX:"; } } ${message}"
+    echo "\${_colorized { color = {YELLOW}; message = "DOTLYX:"; } } ${message}"
   '';
 }
