@@ -107,9 +107,9 @@ rec {
       ${_s "Installing nix-darwin..."}
       nix --extra-experimental-features "nix-command flakes" \
         run nix-darwin -- switch \
-        --flake .#dotlyx --impure
+        --flake $DOTLYX_HOME_PATH/dotfiles_template/modules/nix#dotlyx --impure
     else
-      darwin-rebuild switch --flake .#dotlyx --impure
+      darwin-rebuild switch --flake $DOTLYX_HOME_PATH/dotfiles_template/modules/nix#dotlyx --impure
     fi
 
     if [ ''$? -ne 0 ]; then
