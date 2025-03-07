@@ -104,7 +104,7 @@ rec {
       ${_s "Installing nix-darwin..."}
       nix --extra-experimental-features "nix-command flakes" \
         run nix-darwin -- switch \
-        --flake ./modules/nix/flake.nix#dotlyx --impure
+        --flake .#dotlyx --impure
     else
       darwin-rebuild switch --flake .#dotlyx --impure
     fi
