@@ -4,95 +4,105 @@ command_exists() {
   type "$1" >/dev/null 2>&1
 }
 
+_colorized () {
+  local color = $1
+  local content = $2
+  echo "\e[$color]${content}\e[m"
+}
+
+_w () {
+  echo "$(_colorized 0;31 "DOTLYX:") $0"
+}
+
 if ! command_exists curl; then
-  echo "DOTLYX: curl not installed, trying to install"
+  _w "curl not installed, trying to install"
 
   if command_exists apt; then
-    echo "DOTLYX: Installing using apt"
-    echo "DOTLYX: Installing curl"
+    _w "Installing using apt"
+    _w "Installing curl"
     sudo apt -y install curl 2>&1
   elif command_exists dnf; then
-    echo "DOTLYX: Installing using dnf"
-    echo "DOTLYX: Installing curl"
+    _w "Installing using dnf"
+    _w "Installing curl"
     sudo dnf -y install curl 2>&1
   elif command_exists yum; then
-    echo "DOTLYX: Installing using yum"
-    echo "DOTLYX: Installing curl"
+    _w "Installing using yum"
+    _w "Installing curl"
     yes | sudo yum install curl 2>&1 
   elif command_exists brew; then
-    echo "DOTLYX: Installing using brew"
-    echo "DOTLYX: Installing curl"
+    _w "Installing using brew"
+    _w "Installing curl"
     yes | brew install curl 2>&1 
   elif command_exists pacman; then
-    echo "DOTLYX: Installing using pacman"
-    echo "DOTLYX: Installing curl"
+    _w "Installing using pacman"
+    _w "Installing curl"
     sudo pacman -S --noconfirm curl 2>&1 
   else
-    echo "DOTLYX: Could not install curl, no package provider found"
+    _w "Could not install curl, no package provider found"
     exit 1
   fi
 fi
 
 if ! command_exists git; then
-  echo "DOTLYX: git not installed, trying to install"
+  _w "git not installed, trying to install"
 
   if command_exists apt; then
-    echo "DOTLYX: Installing using apt"
-    echo "DOTLYX: Installing git"
+    _w "Installing using apt"
+    _w "Installing git"
     sudo apt -y install git 2>&1
   elif command_exists dnf; then
-    echo "DOTLYX: Installing using dnf"
-    echo "DOTLYX: Installing git"
+    _w "Installing using dnf"
+    _w "Installing git"
     sudo dnf -y install git 2>&1
   elif command_exists yum; then
-    echo "DOTLYX: Installing using yum"
-    echo "DOTLYX: Installing git";
+    _w "Installing using yum"
+    _w "Installing git";
     yes | sudo yum install git 2>&1 
   elif command_exists brew; then
-    echo "DOTLYX: Installing using brew"
-    echo "DOTLYX: Installing git"
+    _w "Installing using brew"
+    _w "Installing git"
     yes | brew install git 2>&1 
   elif command_exists pacman; then
-    echo "DOTLYX: Installing using pacman"
-    echo "DOTLYX: Installing git"
+    _w "Installing using pacman"
+    _w "Installing git"
     sudo pacman -S --noconfirm git 2>&1 
   else
-    echo "DOTLYX: Could not install git, no package provider found"
+    _w "Could not install git, no package provider found"
     exit 1
   fi
 fi
 
 if ! command_exists python3; then
-  echo "DOTLYX: python not installed, trying to install"
+  _w "python not installed, trying to install"
 
   if command_exists apt; then
-    echo "DOTLYX: Installing using apt"
-    echo "DOTLYX: Installing python"
+    _w "Installing using apt"
+    _w "Installing python"
     sudo apt -y install python3 2>&1
   elif command_exists dnf; then
-    echo "DOTLYX: Installing using dnf"
-    echo "DOTLYX: Installing python"
+    _w "Installing using dnf"
+    _w "Installing python"
     sudo dnf -y install python3 2>&1
   elif command_exists yum; then
-    echo "DOTLYX: Installing using yum"
-    echo "DOTLYX: Installing python";
+    _w "Installing using yum"
+    _w "Installing python";
     yes | sudo yum install python3 2>&1 
   elif command_exists brew; then
-    echo "DOTLYX: Installing using brew"
-    echo "DOTLYX: Installing python"
+    _w "Installing using brew"
+    _w "Installing python"
     yes | brew install python3 2>&1 
   elif command_exists pacman; then
-    echo "DOTLYX: Installing using pacman"
-    echo "DOTLYX: Installing python"
+    _w "Installing using pacman"
+    _w "Installing python"
     sudo pacman -S --noconfirm python3 2>&1 
   else
-    echo "DOTLYX: Could not install python, no package provider found"
+    _w "Could not install python, no package provider found"
     exit 1
   fi
 fi
 
 if ! command_exists nix; then
-  echo "DOTLYX: nix is not installed, trying to install"
+  _w "nix is not installed, trying to install"
   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
   . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 fi
