@@ -97,7 +97,7 @@ rec {
     cp -r "''$DOTLYX_HOME_PATH/dotfiles_template/"* .
     sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|''$USER_DOTFILES_PATH|g" "./modules/nix/flake.nix"
     sed -i -e "s|XXX_USERNAME_XXX|''$(whoami)|g" "./modules/nix/flake.nix"
-    ln -sf ''$HOME/.config/nix-darwin/flake.nix ./modules/nix/flake.nix
+    ln -sf ./modules/nix/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
     cd ''$HOME/.config/nix-darwin
 
     if ! $(type darwin-rebuild >/dev/null 2>&1); then
