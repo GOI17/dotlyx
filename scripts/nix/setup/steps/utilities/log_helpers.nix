@@ -1,9 +1,6 @@
 with import ./colors.nix;
 
 rec {
-  command_exists = command: ''
-    type ${command} >/dev/null 2>&1
-  '';
   _colorized = { message, color }: ''
     echo "${color}${message}"
   '';
