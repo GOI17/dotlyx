@@ -38,7 +38,7 @@ rec {
 
     if [ -d "''$USER_DOTFILES_PATH" ]; then
       while true; do
-        read -p "The path ''${USER_DOTFILES_PATH} already exists. Do you want to create a backup? (y/n): " is_backup_required
+        read -p "\${WHITE}The path ''${USER_DOTFILES_PATH} already exists. Do you want to create a backup? (y/n): " is_backup_required
         case ''$is_backup_required in
           [Yy] ) 
             ${create_backup_dir}
