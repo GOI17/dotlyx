@@ -30,7 +30,7 @@ rec {
   '';
   script = ''
     if ! [[ ''$SHELL =~ "zsh" ]]; then
-        ${_s 0}
+        ${_s "Setting zsh as default shell"}
         sudo chsh -s "''$(command -v zsh)"
     fi
 
