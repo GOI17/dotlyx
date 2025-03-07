@@ -97,14 +97,16 @@ rec {
     cp -r "''$DOTLYX_HOME_PATH/dotfiles_template/"* .
     sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|''$USER_DOTFILES_PATH|g" "./modules/nix/flake.nix"
     sed -i -e "s|XXX_USERNAME_XXX|''$(whoami)|g" "./modules/nix/flake.nix"
+    ln -sf ''$USER_DOTFILES_PATH/modules/nix/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
+    cd ''$HOME/.config/nix-darwin
 
     if ! $(type darwin-rebuild >/dev/null 2>&1); then
       ${_s "Installing nix-darwin..."}
       nix --extra-experimental-features "nix-command flakes" \
         run nix-darwin -- switch \
-        --flake ''$USER_DOTFILES_PATH/modules/nix#dotlyx --impure
+        --flake ./modules/nix/flake.nix#dotlyx --impure
     else
-      darwin-rebuild switch --flake ''$USER_DOTFILES_PATH/modules/nix#dotlyx --impure
+      darwin-rebuild switch --flake .#dotlyx --impure
     fi
 
     if [ ''$? -ne 0 ]; then

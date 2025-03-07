@@ -21,8 +21,8 @@ let
 		home.file = {
 			".config/nvim-nvchad".source = "${dotfilesDirectory}/editors/nvim-nvchad";
 			".config/nvim-nvchad".force = true;
-      # ".config/nix-darwin/flake.nix".source = "${dotfilesDirectory}/modules/nix/flake.nix";
-			# ".config/nix-darwin/flake.nix".force = true;
+      ".config/nix-darwin/flake.nix".source = "${dotfilesDirectory}/modules/nix/flake.nix";
+			".config/nix-darwin/flake.nix".force = true;
 		};
 	};
 
