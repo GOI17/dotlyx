@@ -1,3 +1,5 @@
+with import ../modules/dotlyx/scripts/nix/setup/utilities/colors.nix;
+
 ''
 function vv() {
 	# Assumes all configs exist in directories named ~/.config/nvim-*
