@@ -97,7 +97,7 @@ rec {
     cp -r "''$DOTLYX_HOME_PATH/dotfiles_template/"* .
     sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|''$USER_DOTFILES_PATH|g" "./modules/nix/flake.nix"
     sed -i -e "s|XXX_USERNAME_XXX|''$(whoami)|g" "./modules/nix/flake.nix"
-    cp ''$DOTLYX_HOME_PATH/dotfiles_template/modules/nix/flake.nix ''$HOME/.config/nix-darwin/flake.nix
+    sudo cp ''$DOTLYX_HOME_PATH/dotfiles_template/modules/nix/flake.nix ''$HOME/.config/nix-darwin/flake.nix
 
     cd "''$HOME/.config/nix-darwin"
 
