@@ -27,9 +27,16 @@ function get_ports ()
   echo "PID's are in you clipboard now"
 }
 
-symlinks::apply ()
-{
-  dotbot -d "$DOTLYX_HOME_PATH" -c "$DOTLYX_HOME_PATH/modules/symlinks/conf.yaml" "$@"
-  dotbot -d "$DOTLYX_HOME_PATH" -c "$DOTLYX_HOME_PATH/modules/symlinks/conf.macos.yaml" "$@"
+function nix-rebuild () {
+    cd ''$HOME/.config/nix-darwin
+
+    if ! $(type darwin-rebuild >/dev/null 2>&1); then
+      ${_s "Installing nix-darwin..."}
+      nix --extra-experimental-features "nix-command flakes" \
+        run nix-darwin -- switch \
+        --flake .#dotlyx --impure
+    else
+      darwin-rebuild switch --flake .#dotlyx --impure
+    fi
 }
 ''
