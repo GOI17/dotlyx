@@ -1,16 +1,13 @@
 with import ./colors.nix;
 
 rec {
-  _colorized = { message, color }: ''
-    echo "${color}${message}"
-  '';
   _s = message: ''
-    echo "\${_colorized { color = "${GREEN}"; message = "DOTLYX:"; } } ${message}"
+    echo -e "\${GREEN}DOTLYX:\${RESET} ${WHITE}${message}${RESET}"
   '';
   _e = message: ''
-    echo "\${_colorized { color = "${RED}"; message = "DOTLYX:"; } } ${message}"
+    echo -e "\${RED}DOTLYX:\${RESET} ${WHITE}${message}${RESET}"
   '';
   _w = message: ''
-    echo "\${_colorized { color = "${YELLOW}"; message = "DOTLYX:"; } } ${message}"
+    echo -e "\${YELLOW}DOTLYX:\${RESET} ${WHITE}${message}${RESET}"
   '';
 }
