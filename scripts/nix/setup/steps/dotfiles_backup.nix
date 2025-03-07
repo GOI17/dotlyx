@@ -101,6 +101,8 @@ rec {
 
     cd "''$HOME/.config/nix-darwin"
 
+    echo ''$(pwd)
+
     if ! $(type darwin-rebuild >/dev/null 2>&1); then
       ${_s "Installing nix-darwin..."}
       nix --extra-experimental-features "nix-command flakes" \
