@@ -125,7 +125,7 @@ if ! command_exists nix; then
   else
       echo "Using alternative to systemd..."
       curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s \
-        -- install \
+        -- install linux \
         --init none \
         --no-confirm
   fi
