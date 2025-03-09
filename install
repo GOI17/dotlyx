@@ -121,12 +121,12 @@ if ! command_exists nix; then
       echo "Enabling systemd-dependent features..."
       curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s \
         -- install \
-        --init none \
         --no-confirm
   else
       echo "Using alternative to systemd..."
       curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s \
         -- install \
+        --init none \
         --no-confirm
   fi
   . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
