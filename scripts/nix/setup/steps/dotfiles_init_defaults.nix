@@ -29,8 +29,8 @@ with import ./utilities/log_helpers.nix;
 
     # Setting up dotfiles template
     cp -r "''$DOTLYX_HOME_PATH/dotfiles_template/"* .
-    sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|''$USER_DOTFILES_PATH|g" "./modules/nix/flake.nix"
-    sed -i -e "s|XXX_USERNAME_XXX|''$(whoami)|g" "./modules/nix/flake.nix"
+    sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|''$USER_DOTFILES_PATH|g" "./env.nix"
+    sed -i -e "s|XXX_USERNAME_XXX|''$(whoami)|g" "./env.nix"
     ln -sf ''$USER_DOTFILES_PATH/modules/nix/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
     cd ''$HOME/.config/nix-darwin
 
