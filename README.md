@@ -9,14 +9,14 @@ bash <(curl -s https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install)
 ```
 docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -w /root -it --rm alpine sh -uec '
   apk add curl sudo bash zsh git g++ python3
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/installer)"
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install)"
   zsh'
 ```
 ```
 docker run -e TERM -e COLORTERM -w /root -it --rm ubuntu sh -uec '
   apt-get update
   apt-get install -y curl build-essential sudo
-  su -c bash -c "$(curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/installer)"
+  su -c bash -c "$(curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install)"
   su -c zsh'
 ```
 ### Another one?
