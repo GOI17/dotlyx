@@ -1,6 +1,7 @@
-{ lib, userPackages ? [], user, dotfilesDirectory, ... }:
+{ lib, userPackages ? [], ... }:
 
 with lib;
+with import ../../env.nix;
 
 let
 	homeconfig = { pkgs, ... }: {
@@ -9,23 +10,18 @@ let
 		home.stateVersion = "23.05";
 		# Let home-manager install and manage itself.
 		programs.home-manager.enable = true;
-
 		home.packages = pkgs;
-
 		home.sessionVariables = {
 			EDITOR = "vim";
 		};
-
-		programs.zsh = import ../../../../../shell/zsh/zsh.nix { inherit dotfilesDirectory; };
-
+		programs.zsh = import "${dotfilesDirectory}/shell/zsh/zsh.nix";
 		home.file = {
 			".config/nvim-nvchad".source = "${dotfilesDirectory}/editors/nvim-nvchad";
 			".config/nvim-nvchad".force = true;
-      ".config/nix-darwin/flake.nix".source = "${dotfilesDirectory}/modules/nix/flake.nix";
+      ".config/nix-darwin/flake.nix".source = "${dotfilesDirectory}/flake.nix";
 			".config/nix-darwin/flake.nix".force = true;
 		};
 	};
-
 in
 {
 	useGlobalPkgs = true;

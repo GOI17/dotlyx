@@ -1,4 +1,4 @@
-{ dotfilesDirectory }:
+with import ../../env.nix;
 
 {
 	enable = true;
@@ -11,6 +11,8 @@ precmd_vcs_info() { vcs_info }
 autoload _Uz add-zsh-hook && add-zsh-hook precmd precmd_vcs_info
 prompt_opts=(cr percent sp subst)
 
+# Replace with your custom theme path
+# ex. ${dotfilesDirectory}/shell/zsh/themes/theme
 source ${dotfilesDirectory}/modules/dotlyx/shell/zsh/themes/theme
 	'';
 

@@ -38,17 +38,14 @@
 		...
 	}:
 	let
-		user = "XXX_USERNAME_XXX";
-		dotfilesDirectory = "XXX_USER_DOTFILES_PATH_XXX";
-		nix-darwin-config = { pkgs, ... }: import ./modules/system/nix-darwin/nix-darwin.nix {
+		nix-darwin-config = { pkgs, ... }: import ./system/nix-darwin.nix {
 			darwinHashVersion = self.rev or self.dirtyRev or null;
-			inherit user;
 			userFonts = with pkgs; [
 				nerd-fonts.caskaydia-cove
 				jetbrains-mono
 			];
 		};
-		environment-config = { lib, pkgs, ... }: import ./modules/system/environment/environment.nix {
+		environment-config = { lib, pkgs, ... }: import ./system/environment.nix {
 			inherit lib;
 			systemPackages = with pkgs; [
 				# text editors
@@ -75,13 +72,13 @@
 				zsh
 			];
 		};
-		homebrew-config = import ./modules/system/homebrew.nix;
+		homebrew-config = import ./system/homebrew.nix;
 		home-manager-config = { lib, pkgs, ... }: 
       let 
-        config = import ./modules/system/home-manager/home-manager.nix;
+        config = import ./system/home-manager.nix;
       in {
         home-manager = config {
-          inherit lib user dotfilesDirectory;
+          inherit lib;
           userPackages = with pkgs; [
           ];
         };
@@ -109,7 +106,6 @@
 				home-manager.darwinModules.home-manager home-manager-config 
 				nix-homebrew.darwinModules.nix-homebrew {
 					nix-homebrew = homebrew-config.module {
-						inherit user;
 						taps = {
 							"homebrew/homebrew-core" = nix-homebrew-core;
 							"homebrew/homebrew-cask" = nix-homebrew-cask;

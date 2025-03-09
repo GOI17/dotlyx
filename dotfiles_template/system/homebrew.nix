@@ -1,5 +1,7 @@
+with import ../env.nix;
+
 {
-	module = { user, taps, ... }: {
+	module = { taps, ... }: {
 		autoMigrate = true;
 		enable = true;
 		enableRosetta = true;
