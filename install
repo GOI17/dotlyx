@@ -103,31 +103,30 @@ fi
 
 if ! command_exists nix; then
   _w "nix is not installed, trying to install"
+  SYSTEMD_ENABLED=1;
 
   check_systemd() {
       if command -v systemctl >/dev/null 2>&1; then
-          exit 0
+          $SYSTEMD_ENABLED=0
       fi
       if [ "$(ps -p 1 -o comm=)" = "systemd" ]; then
-          exit 0
+          $SYSTEMD_ENABLED=0
       fi
       if [ -d /lib/systemd ] || [ -d /usr/lib/systemd ]; then
-          exit 0
+          $SYSTEMD_ENABLED=0
       fi
-      
-      exit 1
   }
 
-  if check_systemd; then
+  if [ $SYSTEMD_ENABLED -eq 0 ]; then
       echo "Enabling systemd-dependent features..."
-      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix \
-        | sh -s -- install \
+      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s \
+        -- install \
         --init none \
         --no-confirm
   else
       echo "Using alternative to systemd..."
-      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix \
-        | sh -s -- install \
+      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s \
+        -- install \
         --no-confirm
   fi
   . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
