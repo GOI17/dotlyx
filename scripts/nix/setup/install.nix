@@ -1,6 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
 
 with pkgs;
+with import ./steps/utilities/log_helpers.nix;
 
 let
   name = "dotlyx-setup";
