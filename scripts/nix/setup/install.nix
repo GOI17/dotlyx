@@ -11,7 +11,43 @@ let
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
   dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
   script = with colors; writeShellScriptBin name ''
-    echo "args: $@"
+    ${dotfilesBanner.script}
+    while getopts "a:b:c:" opt; do
+       case "$opt" in
+          a ) parameterA="$OPTARG" ;;
+          ? ) ;;
+       esac
+    done
+    while true; do
+      read -p "Choose an option [Ii]Install [Uu]Update [Rr]Rebuild" opt
+      case ''$opt in
+        [Ii] ) 
+          ${dotfilesLocation.script}
+          ${dotfilesBackup.script}
+          ${dotfilesInitDefaults.script}
+          break
+          ;;
+        [Uu] )
+          ${_w "Coming soon.."}
+          break
+          ;;
+        [Rr] )
+          cd ''$HOME/.config/nix-darwin
+          if ! $(type darwin-rebuild >/dev/null 2>&1); then
+            ${_s "Installing nix-darwin..."}
+            nix --extra-experimental-features "nix-command flakes" \
+              run nix-darwin -- switch \
+              --flake .#dotlyx --impure
+          else
+            darwin-rebuild switch --flake .#dotlyx --impure
+          fi
+          break
+          ;;
+        *)
+          ${_e "Plase provide a valid option."}
+          ;;
+      esac
+    done
 
     if [ ''$? -ne 0 ]; then
         ${_e "We stopped the installation. Try with a new installation process"}
