@@ -16,10 +16,6 @@ let
     ${dotfilesBackup.script}
     ${dotfilesInitDefaults.script}
 
-    echo "------------------"
-    ls -al ${pkgs}
-    echo "------------------"
-
     if [ ''$? -ne 0 ]; then
         ${_e "We stopped the installation. Try with a new installation process"}
         exit 1
