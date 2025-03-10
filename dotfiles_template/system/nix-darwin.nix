@@ -1,6 +1,6 @@
 { darwinHashVersion, userFonts ? [], ... }:
 
-with import ../../env.nix;
+with import ../env.nix;
 
 {
 	fonts.packages = userFonts;

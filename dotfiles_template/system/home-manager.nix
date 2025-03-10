@@ -1,7 +1,7 @@
 { lib, userPackages ? [], ... }:
 
 with lib;
-with import ../../env.nix;
+with import ../env.nix;
 
 let
 	homeconfig = { pkgs, ... }: {
