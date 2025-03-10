@@ -26,7 +26,7 @@ let
           break
           ;;
         [Rr] )
-          cd $(dirname $(readlink ''$HOME/.config/nix-darwin/flake.nix))
+          cd ''$HOME/.config/nix-darwin/flake.nix
           pwd
           if ! $(type darwin-rebuild >/dev/null 2>&1); then
             ${_s "Installing nix-darwin..."}
