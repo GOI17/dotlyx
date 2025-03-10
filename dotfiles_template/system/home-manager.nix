@@ -19,8 +19,8 @@ let
 		home.file = {
 			".config/nvim-nvchad".source = "${dotfilesDirectory}/editors/nvim-nvchad";
 			".config/nvim-nvchad".force = true;
-      "~/.wezterm.lua".source = "${dotfilesDirectory}/terminals/wezterm/wezterm.lua";
-      "~/.wezterm.lua".force = true;
+      "${home}/.wezterm.lua".source = "${dotfilesDirectory}/terminals/wezterm/wezterm.lua";
+      "${home}/.wezterm.lua".force = true;
 		};
 	};
 in
