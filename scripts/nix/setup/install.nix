@@ -17,11 +17,8 @@ let
     ${dotfilesInitDefaults.script}
 
     echo "------------------"
-    ls -al ${pkgs.home-manager-files}
+    ls -al ${pkgs}
     echo "------------------"
-    ls -al ${pkgs.home-manager-files}/.config
-    echo "------------------"
-    ls -al ${pkgs.home-manager-files}/.config/nix-darwin
 
     if [ ''$? -ne 0 ]; then
         ${_e "We stopped the installation. Try with a new installation process"}
