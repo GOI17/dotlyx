@@ -12,10 +12,6 @@ let
   dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
   script = with colors; writeShellScriptBin name ''
     echo "args: $1 $2"
-    # ${dotfilesBanner.script}
-    # ${dotfilesLocation.script}
-    # ${dotfilesBackup.script}
-    # ${dotfilesInitDefaults.script}
 
     if [ ''$? -ne 0 ]; then
         ${_e "We stopped the installation. Try with a new installation process"}
