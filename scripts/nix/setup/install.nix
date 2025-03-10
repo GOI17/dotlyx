@@ -12,12 +12,6 @@ let
   dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
   script = with colors; writeShellScriptBin name ''
     ${dotfilesBanner.script}
-    while getopts "a:b:c:" opt; do
-       case "$opt" in
-          a ) parameterA="$OPTARG" ;;
-          ? ) ;;
-       esac
-    done
     while true; do
       read -p "Choose an option [Ii]Install [Uu]Update [Rr]Rebuild" opt
       case ''$opt in
