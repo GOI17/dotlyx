@@ -10,7 +10,7 @@ let
   dotfilesLocation = import ./steps/dotfiles_location.nix;
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
   dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
-  dotfilesHooks = import ./steps/dotfiles_hooks.nix { inherit pkgs; };
+  dotfilesHooks = import ./steps/dotfiles_hooks.nix;
   script = with colors; writeShellScriptBin name ''
     ${dotfilesBanner.script}
     ${dotfilesLocation.script}
