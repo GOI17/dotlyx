@@ -5,6 +5,7 @@ with import ../env.nix;
 
 let
 	homeconfig = { pkgs, ... }: {
+    home.homeDirectory = "$HOME";
 		# this is internal compatibility configuration 
 		# for home-manager, don't change this!
 		home.stateVersion = "23.05";
@@ -20,6 +21,7 @@ let
 			".config/nvim-nvchad".force = true;
       ".config/nix-darwin/flake.nix".source = "${dotfilesDirectory}/flake.nix";
 			".config/nix-darwin/flake.nix".force = true;
+			".config/nix-darwin/flake.nix".onChange = "echo 'Your flake was updated'";
 		};
 	};
 in
