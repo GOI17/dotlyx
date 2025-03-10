@@ -31,7 +31,8 @@ with import ./utilities/log_helpers.nix;
     cp -r "''$DOTLYX_HOME_PATH/dotfiles_template/"* .
     sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|''$USER_DOTFILES_PATH|g" "''$USER_DOTFILES_PATH/env.nix"
     sed -i -e "s|XXX_DOTLYX_HOME_PATH_XXX|''$DOTLYX_HOME_PATH|g" "''$USER_DOTFILES_PATH/env.nix"
-    sed -i -e "s|XXX_USERNAME_XXX|''$(whoami)|g" "''$USER_DOTFILES_PATH/env.nix"
+    sed -i -e "s|XXX_USER_NAME_XXX|''$(whoami)|g" "''$USER_DOTFILES_PATH/env.nix"
+    sed -i -e "s|XXX_USER_HOME_XXX|''$HOME|g" "''$USER_DOTFILES_PATH/env.nix"
     ln -sf ''$USER_DOTFILES_PATH/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
     cd ''$HOME/.config/nix-darwin
 

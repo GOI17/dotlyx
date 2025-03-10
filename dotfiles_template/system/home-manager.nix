@@ -5,7 +5,7 @@ with import ../env.nix;
 
 let
 	homeconfig = { pkgs, ... }: {
-    home.homeDirectory = "$HOME";
+    home.homeDirectory = home;
 		# this is internal compatibility configuration 
 		# for home-manager, don't change this!
 		home.stateVersion = "23.05";
