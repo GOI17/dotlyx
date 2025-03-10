@@ -21,7 +21,7 @@ let
 			".config/nvim-nvchad".force = true;
       ".config/nix-darwin/flake.nix".source = "${dotfilesDirectory}/flake.nix";
 			".config/nix-darwin/flake.nix".force = true;
-			".config/nix-darwin/flake.nix".onChange = "echo 'Your flake was updated'";
+			".config/nix-darwin/flake.nix".onChange = "darwin-rebuild switch --flake ${home}/.config/nix-darwin#dotlyx --impure";
 		};
 	};
 in
