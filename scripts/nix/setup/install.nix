@@ -13,7 +13,7 @@ let
   script = with colors; writeShellScriptBin name ''
     ${dotfilesBanner.script}
     while true; do
-      read -p "Choose an option [Ii]Install [Uu]Update [Rr]Rebuild" opt
+      read -p "Choose an option [Ii]Install [Uu]Update [Rr]Rebuild: " opt
       case ''$opt in
         [Ii] ) 
           ${dotfilesLocation.script}
@@ -26,7 +26,8 @@ let
           break
           ;;
         [Rr] )
-          cd ''$HOME/.config/nix-darwin
+          cd $(dirname $(redlink ''$HOME/.config/nix-darwin/flake.nix))
+          echo pwd
           if ! $(type darwin-rebuild >/dev/null 2>&1); then
             ${_s "Installing nix-darwin..."}
             nix --extra-experimental-features "nix-command flakes" \
