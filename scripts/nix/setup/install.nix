@@ -11,7 +11,7 @@ let
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
   dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
   script = with colors; writeShellScriptBin name ''
-    echo "args: $1 $2"
+    echo "args: $@"
 
     if [ ''$? -ne 0 ]; then
         ${_e "We stopped the installation. Try with a new installation process"}
