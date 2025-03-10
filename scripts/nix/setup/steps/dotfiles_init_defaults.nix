@@ -32,7 +32,7 @@ with import ./utilities/log_helpers.nix;
     sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|''$USER_DOTFILES_PATH|g" "''$USER_DOTFILES_PATH/env.nix"
     sed -i -e "s|XXX_DOTLYX_HOME_PATH_XXX|''$DOTLYX_HOME_PATH|g" "''$USER_DOTFILES_PATH/env.nix"
     sed -i -e "s|XXX_USERNAME_XXX|''$(whoami)|g" "''$USER_DOTFILES_PATH/env.nix"
-    cp ''$USER_DOTFILES_PATH/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
+    ln -sf ''$USER_DOTFILES_PATH/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
     cd ''$HOME/.config/nix-darwin
 
     if ! $(type darwin-rebuild >/dev/null 2>&1); then
