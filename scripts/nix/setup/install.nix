@@ -27,7 +27,7 @@ let
           ;;
         [Rr] )
           cd $(dirname $(readlink ''$HOME/.config/nix-darwin/flake.nix))
-          echo pwd
+          pwd
           if ! $(type darwin-rebuild >/dev/null 2>&1); then
             ${_s "Installing nix-darwin..."}
             nix --extra-experimental-features "nix-command flakes" \
