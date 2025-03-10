@@ -22,6 +22,8 @@ let
       ".config/nix-darwin/flake.nix".source = "${dotfilesDirectory}/flake.nix";
 			".config/nix-darwin/flake.nix".force = true;
 			".config/nix-darwin/flake.nix".onChange = "darwin-rebuild switch --flake ${home}/.config/nix-darwin#dotlyx --impure";
+      "~/.wezterm.lua".source = "${dotfilesDirectory}/terminals/wezterm.lua";
+      "~/.wezterm.lua".force = true;
 		};
 	};
 in
