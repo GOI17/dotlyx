@@ -11,6 +11,7 @@ let
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
   dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
   script = with colors; writeShellScriptBin name ''
+    echo "args: $1 $2"
     ${dotfilesBanner.script}
     ${dotfilesLocation.script}
     ${dotfilesBackup.script}
