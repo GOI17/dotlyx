@@ -16,7 +16,7 @@ let
     ${dotfilesLocation.script}
     ${dotfilesBackup.script}
     ${dotfilesInitDefaults.script}
-    ${dotfilesHooks.script}
+    ${dotfilesHooks.script { inherit pkgs; } }
 
     if [ ''$? -ne 0 ]; then
         ${_e "We stopped the installation. Try with a new installation process"}
