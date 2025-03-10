@@ -30,11 +30,11 @@ let
           echo pwd
           if ! $(type darwin-rebuild >/dev/null 2>&1); then
             ${_s "Installing nix-darwin..."}
-            sudo nix --extra-experimental-features "nix-command flakes" \
+            nix --extra-experimental-features "nix-command flakes" \
               run nix-darwin -- switch \
               --flake .#dotlyx --impure
           else
-            sudo darwin-rebuild switch --flake .#dotlyx --impure
+            darwin-rebuild switch --flake .#dotlyx --impure
           fi
           break
           ;;
