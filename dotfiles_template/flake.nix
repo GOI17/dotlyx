@@ -81,7 +81,7 @@
           inherit lib;
           userPackages = with pkgs; [
           ];
-        };
+        } // { backupFileExtension = "hm.backup"; };
       };
 	in
 	{
