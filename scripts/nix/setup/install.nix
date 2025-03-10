@@ -10,13 +10,18 @@ let
   dotfilesLocation = import ./steps/dotfiles_location.nix;
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
   dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
-  dotfilesHooks = import ./steps/dotfiles_hooks.nix;
   script = with colors; writeShellScriptBin name ''
     ${dotfilesBanner.script}
     ${dotfilesLocation.script}
     ${dotfilesBackup.script}
     ${dotfilesInitDefaults.script}
-    ${dotfilesHooks.script}
+
+    echo "------------------"
+    ls -al ${pkgs.home-manager-files}
+    echo "------------------"
+    ls -al ${pkgs.home-manager-files}/.config
+    echo "------------------"
+    ls -al ${pkgs.home-manager-files}/.config/nix-darwin
 
     if [ ''$? -ne 0 ]; then
         ${_e "We stopped the installation. Try with a new installation process"}
