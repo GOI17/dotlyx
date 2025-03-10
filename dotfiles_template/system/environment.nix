@@ -8,7 +8,7 @@ with import ../env.nix;
 	environment.shellAliases = import ../shell/aliases.nix;
 	environment.variables = import ../shell/exports.nix
   // {
-    testing = {dotfilesDirectory};
+    testing = dotfilesDirectory
   };
 	environment.pathsToLink = [ "/share/zsh" ];
 	environment.systemPackages = systemPackages;
