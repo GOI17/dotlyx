@@ -26,6 +26,7 @@ let
           break
           ;;
         [Rr] )
+          ln -sf ''$USER_DOTFILES_PATH/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
           cd ''$HOME/.config/nix-darwin
           pwd
           if ! $(type darwin-rebuild >/dev/null 2>&1); then
