@@ -42,5 +42,5 @@ with import ./utilities/log_helpers.nix;
     else
       darwin-rebuild switch --flake .#dotlyx --impure
     fi
-  ''
+  '';
 }
