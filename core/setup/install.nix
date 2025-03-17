@@ -13,8 +13,8 @@ let
   with import ./steps/utilities/log_helpers.nix;
   writeShellScriptBin name ''
     ${dotfilesBanner.script}
-    opt
-    while getopts "i:r:" flag "$@"; do 
+    opt=
+    while getopts "ir" flag "$@"; do 
       case ''$flag in
         i)
           ''$opt="i"
