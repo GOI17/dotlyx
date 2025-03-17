@@ -35,13 +35,6 @@ let
           fi
           break
           ;;
-        ?)
-          ${_w "Script usage example:"}
-          break
-          ;;
-        *)
-          ${_e "Plase provide a valid option."}
-          ;;
       esac
     done
 
