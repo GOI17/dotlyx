@@ -37,6 +37,8 @@ let
           ;;
         ?)
           ${_w "Script usage example:"}
+          break
+          ;;
         *)
           ${_e "Plase provide a valid option."}
           ;;
