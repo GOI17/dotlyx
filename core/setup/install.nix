@@ -37,7 +37,7 @@ let
           break
           ;;
         *)
-          ${_e "Please provide a valid option. Script usage \$(basename \$0 ) [-i][-r]"}
+          ${_e "Please provide a valid option. \n Script usage: \$(basename \$0 ) [-i][-r]"}
           exit 1
           ;;
       esac
