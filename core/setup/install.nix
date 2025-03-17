@@ -16,9 +16,9 @@ let
     opt=
     while getopts "i:r:" opt "$@"; do 
       case ''$opt in
-        i) ''$opt=i; break
-        r) ''$opt=r; break
-        *) ${_e "Invalid option. \n Script usage: \$(basename \$0) [-i][-r]"}
+        i) ''$opt=i; break;;
+        r) ''$opt=r; break;;
+        *) ${_e "Invalid option. \n Script usage: \$(basename \$0) [-i][-r]"}; exit 1;;
       esac
     done
 
