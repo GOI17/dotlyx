@@ -27,6 +27,8 @@ let
       esac
     done
 
+    ${_w "Hey: \$opt"}
+
     if [ $opt -eq "-i"]; then
       ${dotfilesLocation.script}
       ${dotfilesBackup.script}
