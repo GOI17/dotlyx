@@ -17,7 +17,7 @@ let
     while getopts "ir:" flag ''$@; do 
       case ''$flag in
         i)
-          ''$opt="-''$flag"
+          ''$opt=''$flag
           break
           ;;
         *)
@@ -29,11 +29,11 @@ let
 
     ${_w "Hey: \$opt"}
 
-    if [ $opt -eq "-i"]; then
+    if [ $opt -eq "i" ]; then
       ${dotfilesLocation.script}
       ${dotfilesBackup.script}
       ${dotfilesInitDefaults.script}
-    elif [$opt -eq "-r"]; then
+    elif [$opt -eq "r"]; then
       ln -sf ''$USER_DOTFILES_PATH/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
       cd ''$HOME/.config/nix-darwin
       pwd
