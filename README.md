@@ -22,16 +22,16 @@ docker run -e TERM -e COLORTERM -w /root -it --rm ubuntu sh -uec '
 ```
 
 ### Working and planned features
-features                                        |   ❌  |   🔨  |   ⚠️   |   ✅  |
----------------------------------------------------------------------------------
-Onboarding                                      |       |       |   ⚠️   |       |
-Custom dotfiles location                        |       |       |       |   ✅  |
-Rebuild flake after setup                       |       |   🔨  |       |       |
-Dotlyx core scripts                             |       |   🔨  |       |       |
-Update dotlyx core                              |   ❌  |       |       |       |
-UI app manager                                  |   ❌  |       |       |       |
-Auto build flake/home-manager updates changes   |   ❌  |       |       |   ✅  |
-Release versioning                              |   ❌  |       |       |       |
+|features                                       |   ❌  |   🔨  |   ⚠️   |   ✅  |
+|-----------------------------------------------|-------|-------|-------|-------|
+|Onboarding                                     |       |       |   ⚠️   |       |
+|Custom dotfiles location                       |       |       |       |   ✅  |
+|Rebuild flake after setup                      |       |   🔨  |       |       |
+|Dotlyx core scripts                            |       |   🔨  |       |       |
+|Update dotlyx core                             |   ❌  |       |       |       |
+|UI app manager                                 |   ❌  |       |       |       |
+|Auto build flake/home-manager updates changes  |   ❌  |       |       |   ✅  |
+|Release versioning                             |   ❌  |       |       |       |
 
 ### Another one?
 #### Yes, but with Nix underhood 😎
