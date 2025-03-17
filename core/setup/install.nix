@@ -16,7 +16,7 @@ let
     opt=
     while getopts "ir:" flag ''$@; do 
       case ''$flag in
-        [ir])
+        [i|r])
           ''$opt=''$flag
           break
           ;;
