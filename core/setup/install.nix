@@ -14,7 +14,8 @@ let
   writeShellScriptBin name ''
     ${dotfilesBanner.script}
     while true; do
-      getopts "ir:" opt
+      getopts "ir:" opt $@
+      ${_w "hey: $opt"}
       case ''$opt in
         i) 
           ${dotfilesLocation.script}
