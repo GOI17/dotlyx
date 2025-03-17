@@ -13,11 +13,10 @@ let
   with import ./steps/utilities/log_helpers.nix;
   writeShellScriptBin name ''
     ${dotfilesBanner.script}
-    opt=''$@
+    opt=
     while getopts "ir:" flag ''$@; do 
       case ''$flag in
-        i)
-          ${_w "Hey: \$flag"}
+        [ir])
           ''$opt=''$flag
           break
           ;;
@@ -28,13 +27,11 @@ let
       esac
     done
 
-    ${_w "Hey: \$opt"}
-
-    if [ $opt -eq "i"]; then
+    if [ $opt -eq "-i"]; then
       ${dotfilesLocation.script}
       ${dotfilesBackup.script}
       ${dotfilesInitDefaults.script}
-    elif [$opt -eq "r"]; then
+    elif [$opt -eq "-r"]; then
       ln -sf ''$USER_DOTFILES_PATH/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
       cd ''$HOME/.config/nix-darwin
       pwd
