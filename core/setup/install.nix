@@ -1,16 +1,17 @@
 { pkgs ? import <nixpkgs> {} }:
 
 with pkgs;
-with import ./steps/utilities/log_helpers.nix;
 
 let
   name = "dotlyx-setup";
-  colors = import ./steps/utilities/colors.nix;
   dotfilesBanner = import ./steps/utilities/dotfiles_banner.nix;
   dotfilesLocation = import ./steps/dotfiles_location.nix;
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
   dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
-  script = with colors; writeShellScriptBin name ''
+  script =
+  with import ./steps/utilities/colors.nix;
+  with import ./steps/utilities/log_helpers.nix;
+  writeShellScriptBin name ''
     ${dotfilesBanner.script}
     while true; do
       read -p "Choose an option [Ii]Install [Uu]Update [Rr]Rebuild: " opt
@@ -55,7 +56,7 @@ let
   '';
 in stdenv.mkDerivation {
   pname = "Dotlyx";
-  version = "0.0.1";
+  version = "0.0.2";
   buildInputs = [
     script
   ];
