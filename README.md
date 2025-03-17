@@ -4,8 +4,9 @@
 
 ### Installation
 ```
-bash <(curl -s https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install)
+bash <(curl -s https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install) -- -i
 ```
+
 ### Curious? Try it first
 ```
 docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -w /root -it --rm alpine sh -uec '
@@ -32,6 +33,17 @@ docker run -e TERM -e COLORTERM -w /root -it --rm ubuntu sh -uec '
 |UI app manager                                 |   ❌  |       |       |       |
 |Auto build flake/home-manager updates changes  |   ❌  |       |       |   ✅  |
 |Release versioning                             |   ❌  |       |       |       |
+
+### Usage
+#### Installation
+```
+bash <(curl -s https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install) -- -i
+```
+#### Manual flake rebuild
+```
+bash <(curl -s https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install) -- -r
+```
+
 
 ### Another one?
 #### Yes, but with Nix underhood 😎

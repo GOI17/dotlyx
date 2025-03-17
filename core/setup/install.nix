@@ -13,20 +13,15 @@ let
   with import ./steps/utilities/log_helpers.nix;
   writeShellScriptBin name ''
     ${dotfilesBanner.script}
-    while true; do
-      read -p "Choose an option [Ii]Install [Uu]Update [Rr]Rebuild: " opt
+    while getopts "ir:" opt; do
       case ''$opt in
-        [Ii] ) 
+        i) 
           ${dotfilesLocation.script}
           ${dotfilesBackup.script}
           ${dotfilesInitDefaults.script}
           break
           ;;
-        [Uu] )
-          ${_w "Coming soon..."}
-          break
-          ;;
-        [Rr] )
+        r)
           ln -sf ''$USER_DOTFILES_PATH/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
           cd ''$HOME/.config/nix-darwin
           pwd
@@ -40,6 +35,8 @@ let
           fi
           break
           ;;
+        ?)
+          ${_w "Script usage example:"}
         *)
           ${_e "Plase provide a valid option."}
           ;;
