@@ -14,7 +14,7 @@ let
   writeShellScriptBin name ''
     ${dotfilesBanner.script}
     opt=0
-    while getopts "ir" flag; do 
+    while getopts "ir" flag ''$@; do 
       case ''$flag in
         [ir] )
           ''$opt=''$flag
