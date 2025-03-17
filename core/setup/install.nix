@@ -16,7 +16,8 @@ let
     opt=0
     while getopts "ir" flag ''$@; do 
       case ''$flag in
-        [ir] )
+        -i )
+          ${_w "Hey: \$flag"}
           ''$opt=''$flag
           break
           ;;
