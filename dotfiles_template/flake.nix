@@ -82,29 +82,28 @@
     ];
   in
   {
-    darwinConfigurations."dotlyx" = with ./env.nix; {
-      hostname = darwing.lib.darwinSystem {
-        modules = commonModules ++ [
-          home-manager.darwinModules.home-manager
+    darwinConfigurations."dotlyx" = with ./env.nix; nix-darwin.lib.darwinSystem {
+      modules = commonModules ++ [
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+        }] ++
+        (if isDarwin then [
+          mac-app-util.darwinModules.default
+          # Set Git commit hash for darwin-version.
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-          }] ++
-          (if isDarwin then [
-            mac-app-util.darwinModules.default
-            # Set Git commit hash for darwin-version.
-            {
-              system.configurationRevision = self.rev or self.dirtyRev or null;
-              home-manager.users."${user}" = import ./os/mac/silicon/home.nix;
-              nixpkgs.hostPlatform = "aarch64-darwin";
-            }
-          ] else []) ++
-          (if isLinux then [
-            {
-                nixpkgs.hostPlatform = "x86_64-linux";
-            }
-          ] else []);
-      };
+            system.configurationRevision = self.rev or self.dirtyRev or null;
+            home-manager.users."${user}" = import ./os/mac/silicon/home.nix;
+            nixpkgs.hostPlatform = "aarch64-darwin";
+          }
+        ] else []) ++
+        (if isLinux then [
+          {
+              nixpkgs.hostPlatform = "x86_64-linux";
+              home-manager.users."${user}" = import ./os/linux/home.nix;
+          }
+        ] else []);
     };
   };
 }
