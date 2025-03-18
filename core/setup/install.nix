@@ -12,7 +12,7 @@ let
   with import ./steps/utilities/colors.nix;
   with import ./steps/utilities/log_helpers.nix;
   writeShellScriptBin name ''
-    while getopts "ir" flag; do 
+    while getopts "iru" flag; do 
       case ''$flag in
         i)
           ${dotfilesBanner.script {} }

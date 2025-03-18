@@ -5,7 +5,7 @@
 	 ll="eza -l";
 	 la="eza -la";
 	 "~"="cd ~";
-	 dotfiles="j dotfiles";
+	 dotfiles="cd $USER_DOTFILES_PATH";
 	 gaa="git add -A";
 	 gcm="git commit -m";
 	 grb="git rebase";
@@ -33,5 +33,5 @@
 	 up="dot package update_all";
 	 chmodr="chmod -Rv";
 	 ppath="echo '$PATH' | tr ':' '\n' | nl";
-	 dotbot="$DOTLYX_HOME_PATH/modules/dotbot/bin/dotbot";
+   dotlyx="$USER_DOTFILES_PATH/result/bin/dotlyx-setup";
 }
