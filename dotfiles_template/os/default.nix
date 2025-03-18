@@ -1,10 +1,9 @@
 { lib, ... }:
 
-with stdenv;
+with lib;
 
 let
-  inherit (lib) systems;
-  isDarwin = systems.isDarwin builtins.currentSystem;
+  isDarwin = isDarwin builtins.currentSystem;
   darwinCfg = [
     mac-app-util.darwinModules.default
     # Set Git commit hash for darwin-version.
