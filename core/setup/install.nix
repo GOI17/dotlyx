@@ -51,7 +51,7 @@ let
           break
           ;;
         v)
-          ${_s "Dotlyx core: ${version}v"}
+          echo "Dotlyx core: ${version}v"
           break
           ;;
         *)
