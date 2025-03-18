@@ -17,12 +17,10 @@ let
 		};
 		programs.zsh = import "${dotfilesDirectory}/shell/zsh/zsh.nix";
 		home.file = {
-			".config/nvim-nvchad".source = "${dotfilesDirectory}/editors/nvim-nvchad";
-			".config/nvim-nvchad".force = true;
-      "${home}/.wezterm.lua" = {
-         source = "${dotfilesDirectory}/terminals/wezterm/wezterm.lua";
-         force = true;
-      };
+      #symlinks
+      #ex.
+			# ".config/nvim-nvchad".source = "${dotfilesDirectory}/editors/nvim-nvchad";
+			# ".config/nvim-nvchad".force = true;
 		};
 	};
 in

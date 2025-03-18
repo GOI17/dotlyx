@@ -23,12 +23,4 @@ fpath=(
 	$fpath
 )
 
-# autoload -Uz promptinit && promptinit
-# autoload -Uz compinit && compinit
-
-# source "$DOTLY_PATH/shell/zsh/bindings/dot.zsh"
-# source "$DOTLY_PATH/shell/zsh/bindings/reverse_search.zsh"
-# source "$DOTLYX_HOME_PATH/modules/shell/zsh/key-bindings.zsh"
-# source "$HOME/fzf-tab/fzf-tab.plugin.zsh"
-
 eval "$(jump shell)"

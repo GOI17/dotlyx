@@ -12,7 +12,7 @@ with import ../env.nix;
 	# $ darwin-rebuild changelog
 	system.stateVersion = 5;
 	# The platform the configuration will be used on.
-	nixpkgs.hostPlatform = "aarch64-darwin";
+	# nixpkgs.hostPlatform = "aarch64-darwin";
 	# Allows to install non-opensource applications
 	nixpkgs.config.allowUnfree = true;
 	# Allows to install non-compatible architecture applications
