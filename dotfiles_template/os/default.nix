@@ -18,4 +18,4 @@ let
         home-manager.users."${user}" = import ./os/linux/home.nix;
       }
     ];
-in if isDarwin then darwinCfg else linuxCfg;
+in if isDarwin then darwinCfg else linuxCfg
