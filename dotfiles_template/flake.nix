@@ -88,8 +88,8 @@
           nixpkgs.hostPlatform = "aarch64-darwin";
         }
       ] else []);
-    linuxCfg = { lib, ... }: 
-      (if lib.isLinux then with ./env.nix; [
+    linuxCfg = { stdenv, ... }: 
+      (if stdenv.isLinux then with ./env.nix; [
         {
             nixpkgs.hostPlatform = "x86_64-linux";
             home-manager.users."${user}" = import ./os/linux/home.nix;
@@ -98,7 +98,7 @@
   in
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
-      modules = commonModules ++ (args: darwinCfg { inherit args; }) ++ linuxCfg { lib = nixpkgs.lib; } ++ [
+      modules = commonModules ++ (args: darwinCfg { inherit args; }) ++ (args: linuxCfg { inherit args; }) ++ [
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
