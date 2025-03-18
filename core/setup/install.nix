@@ -44,7 +44,7 @@ let
           break
           ;;
         *)
-          ${_e "Invalid option. \n Script usage: \$(basename \$0) [-i][-r]"}
+          ${_e "Invalid option. \n Script usage: \$(basename \$0) [-i][-r][-u]"}
           exit 1
           ;;
       esac
