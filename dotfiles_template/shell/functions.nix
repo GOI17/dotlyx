@@ -1,4 +1,4 @@
-with import ../modules/dotlyx/scripts/nix/setup/steps/utilities/log_helpers.nix;
+with import ../modules/dotlyx/core/setup/steps/utilities/log_helpers.nix;
 
 ''
 function vv() {
