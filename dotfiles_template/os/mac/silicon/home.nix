@@ -1,8 +1,6 @@
 { pkgs, ... }:
+with ../../../env.nix;
 {
-  # Required to enable flakes on this system.
-  # Set Git commit hash for darwin-version.
-  system.configurationRevision = darwinHashVersion;
   home.packages = with pkgs; [
     # UI apps
     raycast

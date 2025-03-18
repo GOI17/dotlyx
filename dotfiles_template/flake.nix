@@ -38,7 +38,9 @@
 		...
 	}:
   let
-    modules = [
+    isDarwin = pkgs.stdenv.isDarwin;
+    isLinux = pkgs.stdenv.isLinux;
+    commonModules = [
       import ./system/environment.nix
       {
         nix.settings.experimental-features = "nix-command flakes";
@@ -52,49 +54,52 @@
         nixpkgs.config.allowUnfree = true;
         # Allows to install non-compatible architecture applications
         nixpkgs.config.allowUnsupportedSystem = true;
+        home.packages = with pkgs; [
+          # text editors
+          neovim
+          # terminal tools
+          mas
+          tree
+          wget
+          jq
+          gh
+          ripgrep
+          rename
+          neofetch
+          jump
+          gcc
+          openssl
+          asdf-vm
+          lazygit
+          eza
+          fd
+          fzf
+          zsh
+          nerd-fonts.caskaydia-cove
+          jetbrains-mono
+        ];
       }
-    ];
-    packages = { pkgs, ... }: with pkgs; [
-      # text editors
-      neovim
-      # terminal tools
-      mas
-      tree
-      wget
-      jq
-      gh
-      ripgrep
-      rename
-      neofetch
-      jump
-      gcc
-      openssl
-      asdf-vm
-      lazygit
-      eza
-      fd
-      fzf
-      zsh
-      nerd-fonts.caskaydia-cove
-      jetbrains-mono
     ];
   in
   {
-    homeConfigurations = {
-      "dotlyx@linux" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = modules ++ packages ++ [];
-      };
-      "dotlyx@mac-intel" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-darwin;
-        modules = modules ++ packages ++ [];
-      };
-      "dotlyx@mac-sillicon" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-        modules = modules ++ packages ++ [
-          import ./os/mac/silicon/home.nix
-          mac-app-util.darwinModules.default
-        ];
+    darwinConfigurations."dotlyx" = with ./env.nix; {
+      hostname = darwing.lib.darwinSystem {
+        system = if isDarwin then "aarch64-darwin" else "x86_64-linux";
+        modules = commonModules ++ [
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }] ++
+          (if isDarwin then [
+            mac-app-util.darwinModules.default
+            # Set Git commit hash for darwin-version.
+            system.configurationRevision = self.rev or self.dirtyRev or null;
+            {
+              home-manager.users.{user} = import ./os/mac/silicon/home.nix;
+            }
+          ]
+          else [])
       };
     };
   };
