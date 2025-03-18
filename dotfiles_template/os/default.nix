@@ -3,8 +3,7 @@
 with ../env.nix;
 
 let
-  pkgs = nixpkgs.legacyPackages."aarch64-darwin";
-  isDarwin = pkgs.stdenv.isDarwin;
+  isDarwin = if builtins.currentSystem == "aarch64-darwin" then true else false;
   darwinCfg = [
     mac-app-util.darwinModules.default
     # Set Git commit hash for darwin-version.
