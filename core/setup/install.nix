@@ -13,7 +13,7 @@ let
   with import ./steps/utilities/colors.nix;
   with import ./steps/utilities/log_helpers.nix;
   writeShellScriptBin name ''
-    while getopts "iru" flag; do 
+    while getopts "iruv" flag; do 
       case ''$flag in
         i)
           ${dotfilesBanner.script {} }
@@ -49,7 +49,7 @@ let
           break
           ;;
         *)
-          ${_e "Invalid option. \n Script usage: \$(basename \$0) [-i][-r][-u]"}
+          ${_e "Invalid option. \n Script usage: \$(basename \$0) [-i][-r][-u][-v]"}
           exit 1
           ;;
       esac
