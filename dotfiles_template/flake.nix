@@ -79,8 +79,9 @@
       }
     ];
   in
+  with ./env.nix; 
   {
-    darwinConfigurations."dotlyx" = with ./env.nix; nix-darwin.lib.darwinSystem {
+    darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
       modules = commonModules ++ [
         home-manager.darwinModules.home-manager
         {
