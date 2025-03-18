@@ -4,7 +4,7 @@ with pkgs;
 
 let
   name = "dotlyx-setup";
-  version = "0.0.3";
+  version = "0.0.4";
   dotfilesBanner = import ./steps/utilities/dotfiles_banner.nix;
   dotfilesLocation = import ./steps/dotfiles_location.nix;
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
