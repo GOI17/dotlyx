@@ -37,84 +37,67 @@
 		home-manager,
 		...
 	}:
-	let
-		nix-darwin-config = { pkgs, ... }: import ./system/nix-darwin.nix {
-			darwinHashVersion = self.rev or self.dirtyRev or null;
-			userFonts = with pkgs; [
-				nerd-fonts.caskaydia-cove
-				jetbrains-mono
-			];
-		};
-		environment-config = { lib, pkgs, ... }: import ./system/environment.nix {
-			inherit lib;
-			systemPackages = with pkgs; [
-				# text editors
-				neovim
-				# UI apps
-				raycast
-				# terminal tools
-				mas
-				tree
-				wget
-				jq
-				gh
-				ripgrep
-				rename
-				neofetch
-				jump
-				gcc
-				openssl
-				asdf-vm
-				lazygit
-				eza
-				fd
-				fzf
-				zsh
-			];
-		};
-		homebrew-config = import ./system/homebrew.nix;
-		home-manager-config = { lib, pkgs, ... }: 
-      let 
-        config = import ./system/home-manager.nix;
-      in {
-        home-manager = config {
-          inherit lib;
-          userPackages = with pkgs; [
+  flake-utils.lib.eachDefaultSystem (system: 
+    let
+      modules = [
+        import ./system/environment.nix
+        {
+          nix.settings.experimental-features = "nix-command flakes";
+          fonts.fontconfig.enable = true;
+          # Used for backwards compatibility, please read the changelog before changing.
+          # $ darwin-rebuild changelog
+          system.stateVersion = 5;
+          # The platform the configuration will be used on.
+          # nixpkgs.hostPlatform = "aarch64-darwin";
+          # Allows to install non-opensource applications
+          nixpkgs.config.allowUnfree = true;
+          # Allows to install non-compatible architecture applications
+          nixpkgs.config.allowUnsupportedSystem = true;
+        }
+      ];
+      packages = { pkgs, ... }: with pkgs; [
+        # text editors
+        neovim
+        # terminal tools
+        mas
+        tree
+        wget
+        jq
+        gh
+        ripgrep
+        rename
+        neofetch
+        jump
+        gcc
+        openssl
+        asdf-vm
+        lazygit
+        eza
+        fd
+        fzf
+        zsh
+        nerd-fonts.caskaydia-cove
+        jetbrains-mono
+      ];
+    in
+    {
+      homeConfigurations = {
+        "dotlyx@linux" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = modules ++ packages ++ [];
+        };
+        "dotlyx@mac-intel" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-darwin;
+          modules = modules ++ packages ++ [];
+        };
+        "dotlyx@mac-sillicon" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+          modules = modules ++ packages ++ [
+            import ./os/mac/silicon/home.nix
+            mac-app-util.darwinModules.default
           ];
-        } // { backupFileExtension = "hm.backup"; };
+        };
       };
-	in
-	{
-		darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
-			modules = [
-				nix-darwin-config
-				environment-config
-				{
-					homebrew = homebrew-config.homebrew {
-						# it runs brew install --cask obs
-						# "obs"
-						# "notion"
-						casks = [
-              "docker"
-            ];
-						# it installs apps from apple store. You must be logged in.  
-						# Identifier = APP_ID
-						# "Yoink" = 457622435;
-						masApps = {};
-					};
-				}
-				home-manager.darwinModules.home-manager home-manager-config 
-				nix-homebrew.darwinModules.nix-homebrew {
-					nix-homebrew = homebrew-config.module {
-						taps = {
-							"homebrew/homebrew-core" = nix-homebrew-core;
-							"homebrew/homebrew-cask" = nix-homebrew-cask;
-							"homebrew/homebrew-bundle" = nix-homebrew-bundle;
-						};
-					};
-				}
-				mac-app-util.darwinModules.default
-			];
-		};
-	};
+    };
+  );
 }

@@ -1,6 +1,3 @@
-{ lib, systemPackages, ... }: 
-
-with lib;
 with import ../env.nix;
 
 {
@@ -12,6 +9,5 @@ with import ../env.nix;
     DOTLYX_HOME_PATH = dotlyxDirectory;
   };
 	environment.pathsToLink = [ "/share/zsh" ];
-	environment.systemPackages = systemPackages;
 }
 
