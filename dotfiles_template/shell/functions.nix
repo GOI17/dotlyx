@@ -1,7 +1,7 @@
 with import ../modules/dotlyx/core/setup/steps/utilities/log_helpers.nix;
 
 ''
-function vv() {
+function vv () {
 	# Assumes all configs exist in directories named ~/.config/nvim-*
 	local config=$(fd --max-depth 1 --glob 'nvim-*' ~/.config | fzf --prompt="Neovim Configs > " --border --exit-0)
 
@@ -12,8 +12,7 @@ function vv() {
 	NVIM_APPNAME=$(basename $config) nvim
 }
 
-function get_ports ()
-{
+function get_ports () {
   local port=$1
 
   [[ -z $port ]] && echo "Provide a valid port..." && return
@@ -31,8 +30,8 @@ function get_ports ()
 
 function dotlyx_core_rebuild () {
   dotlyx -u
-  nix build --file core/setup/install.nix
-  rm -rf $USER_DOTFILES_PATH/result
+  nix build --file $DOTLYX_HOME_PATH/core/setup/install.nix
+  sudo rm -rf $USER_DOTFILES_PATH/result
   mv ./result $USER_DOTFILES_PATH
 }
 ''
