@@ -12,16 +12,17 @@ let
   with import ./steps/utilities/colors.nix;
   with import ./steps/utilities/log_helpers.nix;
   writeShellScriptBin name ''
-    ${dotfilesBanner.script}
     while getopts "ir" flag; do 
       case ''$flag in
         i)
+          ${dotfilesBanner.script}
           ${dotfilesLocation.script}
           ${dotfilesBackup.script}
           ${dotfilesInitDefaults.script}
           break
           ;;
         r)
+          ${dotfilesBanner.script { type = "rebuild"; }}
           cd ''$HOME/.config/nix-darwin
           pwd
           if ! $(type darwin-rebuild >/dev/null 2>&1); then
