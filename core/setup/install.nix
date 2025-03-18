@@ -13,7 +13,7 @@ let
   with import ./steps/utilities/log_helpers.nix;
   writeShellScriptBin name ''
     ${dotfilesBanner.script}
-    while getopts "i:r:" flag; do 
+    while getopts "ir" flag; do 
       case ''$flag in
         i)
           ${dotfilesLocation.script}
