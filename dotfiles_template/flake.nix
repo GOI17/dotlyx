@@ -33,6 +33,32 @@
     mac-app-util,
 		...
 	}:
+  let
+    packages = { pkgs, ... }: with pkgs; [
+      # text editors
+      neovim
+      # terminal tools
+      mas
+      tree
+      wget
+      jq
+      gh
+      ripgrep
+      rename
+      neofetch
+      jump
+      gcc
+      openssl
+      asdf-vm
+      lazygit
+      eza
+      fd
+      fzf
+      zsh
+      nerd-fonts.caskaydia-cove
+      jetbrains-mono
+    ]; 
+  in 
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
       modules = import ./os/selector.nix { inherit mac-app-util; inherit self; } ++ [
@@ -42,7 +68,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
         }
-        ({ pkgs, ... }: {
+        {
           nix.settings.experimental-features = "nix-command flakes";
           fonts.fontconfig.enable = true;
           # Used for backwards compatibility, please read the changelog before changing.
@@ -54,31 +80,8 @@
           nixpkgs.config.allowUnfree = true;
           # Allows to install non-compatible architecture applications
           nixpkgs.config.allowUnsupportedSystem = true;
-          home.packages = with pkgs; [
-            # text editors
-            neovim
-            # terminal tools
-            mas
-            tree
-            wget
-            jq
-            gh
-            ripgrep
-            rename
-            neofetch
-            jump
-            gcc
-            openssl
-            asdf-vm
-            lazygit
-            eza
-            fd
-            fzf
-            zsh
-            nerd-fonts.caskaydia-cove
-            jetbrains-mono
-          ];
-        })
+          home.packages = packages;
+        }
       ];
     };
   };
