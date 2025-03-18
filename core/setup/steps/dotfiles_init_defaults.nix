@@ -16,7 +16,7 @@ with import ./utilities/log_helpers.nix;
     git submodule update --init --recursive
     git config --global protocol.file.allow never
 
-    cp -r "''$HOME/dotlyx/result" ''$USER_DOTFILES_PATH
+    mv -r "''$HOME/dotlyx/result" ''$USER_DOTFILES_PATH
     rm -rf ''$HOME/dotlyx
 
     # Edit .gitmodules to change the URL
