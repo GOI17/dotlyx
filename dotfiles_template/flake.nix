@@ -78,8 +78,8 @@
         ];
       }
     ];
-    darwinCfg = { lib, ... }:
-      (if lib.isDarwin then with ./env.nix; [
+    darwinCfg = { stdenv, ... }:
+      (if stdenv.isDarwin then with ./env.nix; [
         mac-app-util.darwinModules.default
         # Set Git commit hash for darwin-version.
         {
@@ -98,7 +98,7 @@
   in
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
-      modules = commonModules ++ darwinCfg { lib = nixpkgs.lib; } ++ linuxCfg { lib = nixpkgs.lib; } ++ [
+      modules = commonModules ++ darwinCfg { ...; } ++ linuxCfg { lib = nixpkgs.lib; } ++ [
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
