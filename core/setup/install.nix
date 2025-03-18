@@ -46,6 +46,8 @@ let
           ;;
         v)
           ${_s "Dotlyx core: ${version}v"}
+          break
+          ;;
         *)
           ${_e "Invalid option. \n Script usage: \$(basename \$0) [-i][-r][-u]"}
           exit 1
