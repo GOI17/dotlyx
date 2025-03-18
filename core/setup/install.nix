@@ -20,6 +20,8 @@ let
           ${dotfilesLocation.script}
           ${dotfilesBackup.script}
           ${dotfilesInitDefaults.script}
+          cd ''$HOME
+          ${_s "Restart your terminal and Welcome to Dotlyx!"}
           break
           ;;
         r)
@@ -34,6 +36,8 @@ let
           else
             darwin-rebuild switch --flake .#dotlyx --impure
           fi
+          cd ''$HOME
+          ${_s "Restart your terminal and Welcome to Dotlyx!"}
           break
           ;;
         u)
@@ -42,6 +46,8 @@ let
           git merge
           git submodule update --init --recursive
           ${_s "Dotlyx core was updated"}
+          cd ''$HOME
+          ${_s "Restart your terminal and Welcome to Dotlyx!"}
           break
           ;;
         v)
@@ -59,9 +65,6 @@ let
         ${_e "We stopped the installation. Try with a new installation process"}
         exit 1
     fi
-
-    cd ''$HOME
-    ${_s "Restart your terminal and Welcome to Dotlyx!"}
   '';
 in stdenv.mkDerivation {
   pname = "Dotlyx";
