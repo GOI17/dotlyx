@@ -3,7 +3,7 @@
 with ../env.nix;
 
 let
-  pkgs = nixpkgs.legacyPackages;
+  pkgs = nixpkgs.legacyPackages."aarch64-darwin";
   isDarwin = pkgs.stdenv.isDarwin;
   darwinCfg = [
     mac-app-util.darwinModules.default
