@@ -99,7 +99,7 @@
               home-manager.users."${user}" = import ./os/mac/silicon/home.nix;
             }
           ]
-          else [])
+          else []);
       };
     };
   };
