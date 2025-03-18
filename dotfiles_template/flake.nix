@@ -62,7 +62,7 @@
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
       modules = import ./os/selector.nix { inherit mac-app-util; inherit self; } ++ [
-        # import ./system/environment.nix
+        import ./system/environment.nix
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -70,7 +70,6 @@
         }
         {
           nix.settings.experimental-features = "nix-command flakes";
-          fonts.fontconfig.enable = true;
           # Used for backwards compatibility, please read the changelog before changing.
           # $ darwin-rebuild changelog
           system.stateVersion = 5;

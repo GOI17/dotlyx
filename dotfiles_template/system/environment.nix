@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 with import ../env.nix;
 
 {
