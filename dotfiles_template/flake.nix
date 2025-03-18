@@ -48,7 +48,7 @@
         nixpkgs.config.allowUnfree = true;
         # Allows to install non-compatible architecture applications
         nixpkgs.config.allowUnsupportedSystem = true;
-        home.packages = with nixpkgs; [
+        home.packages = with pkgs; [
           # text editors
           neovim
           # terminal tools
@@ -77,7 +77,7 @@
   in
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
-      modules = import ./os/selector.nix { inherit mac-app-util; inherit self; } ++ [
+      modules = commonModules ++ import ./os/selector.nix { inherit mac-app-util; inherit self; } ++ [
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
