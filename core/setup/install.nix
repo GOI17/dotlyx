@@ -13,11 +13,26 @@ let
   with import ./steps/utilities/log_helpers.nix;
   writeShellScriptBin name ''
     ${dotfilesBanner.script}
-    opt=
     while getopts "ir:" flag; do 
       case ''$flag in
         i)
-          ''$opt="i"
+          ${dotfilesLocation.script}
+          ${dotfilesBackup.script}
+          ${dotfilesInitDefaults.script}
+          break
+          ;;
+        r)
+          ln -sf ''$USER_DOTFILES_PATH/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
+          cd ''$HOME/.config/nix-darwin
+          pwd
+          if ! $(type darwin-rebuild >/dev/null 2>&1); then
+            ${_s "Installing nix-darwin..."}
+            nix --extra-experimental-features "nix-command flakes" \
+              run nix-darwin -- switch \
+              --flake .#dotlyx --impure
+          else
+            darwin-rebuild switch --flake .#dotlyx --impure
+          fi
           break
           ;;
         *)
@@ -26,26 +41,6 @@ let
           ;;
       esac
     done
-
-    ${_w "Hey: \$opt"}
-
-    if [ $opt -eq "i" ]; then
-      ${dotfilesLocation.script}
-      ${dotfilesBackup.script}
-      ${dotfilesInitDefaults.script}
-    elif [$opt -eq "r"]; then
-      ln -sf ''$USER_DOTFILES_PATH/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
-      cd ''$HOME/.config/nix-darwin
-      pwd
-      if ! $(type darwin-rebuild >/dev/null 2>&1); then
-        ${_s "Installing nix-darwin..."}
-        nix --extra-experimental-features "nix-command flakes" \
-          run nix-darwin -- switch \
-          --flake .#dotlyx --impure
-      else
-        darwin-rebuild switch --flake .#dotlyx --impure
-      fi
-    fi
 
     if [ ''$? -ne 0 ]; then
         ${_e "We stopped the installation. Try with a new installation process"}
