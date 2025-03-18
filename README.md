@@ -31,7 +31,7 @@ docker run -e TERM -e COLORTERM -w /root -it --rm ubuntu sh -uec '
 |Dotlyx core scripts                            |       |   🔨  |       |       |
 |Update dotlyx core                             |       |   🔨  |       |       |
 |UI app manager                                 |   ❌  |       |       |       |
-|Auto build flake/home-manager updates changes  |   ❌  |       |       |   ✅  |
+|Auto build flake/home-manager updates changes  |   ❌  |       |       |       |
 |Release versioning                             |   ❌  |       |       |       |
 |Linux support                                  |   ❌  |       |       |       |
 |WSL support                                    |   ❌  |       |       |       |
