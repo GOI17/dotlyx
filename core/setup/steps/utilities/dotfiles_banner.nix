@@ -1,3 +1,5 @@
+with import ./colors.nix; 
+
 rec {
   new_user = ''
     echo -e "\${BOLD}\${WHITE}We're glad to have you here.\${RESET}"
@@ -8,7 +10,7 @@ rec {
     echo -e "\${BOLD}\${WHITE}Rebuilding your new cool settings!\${RESET}"
     echo -e "\${CYAN}********************************************\${RESET}"
   '';
-  script = with import ./colors.nix; { type ? "new" }: ''
+  script = { type ? "new" }: ''
     # Display the styled welcome message
     echo -e "\${CYAN}********************************************\${RESET}"
     echo -e "\${BOLD}\${WHITE}Welcome to \${GREEN}Dotlyx\${RESET}\${BOLD}!\${RESET}"
