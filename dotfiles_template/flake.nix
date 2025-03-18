@@ -30,6 +30,7 @@
 		nix-darwin,
 		nixpkgs,
 		home-manager,
+    mac-app-util,
 		...
 	}:
   let
@@ -76,7 +77,7 @@
   in
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
-      modules = commonModules ++ import ./os { inherit inputs; inherit self; lib = nixpkgs.lib; } ++ [
+      modules = commonModules ++ import ./os { inherit mac-app-util; inherit self; lib = nixpkgs.lib; } ++ [
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
