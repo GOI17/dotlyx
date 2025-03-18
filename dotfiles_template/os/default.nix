@@ -1,5 +1,7 @@
 { lib, mac-app-util, self, ... }:
 
+with ../env.nix;
+
 let
   isDarwin = lib.isDarwin builtins.currentSystem;
   darwinCfg = [
