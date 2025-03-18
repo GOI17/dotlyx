@@ -46,7 +46,7 @@ rec {
             ;;
           [Nn] )
             ${_w "Skipping backup"}
-            rm -rf ''$USER_DOTFILES_PATH
+            sudo rm -rf ''$USER_DOTFILES_PATH
             break
             ;;
           *)

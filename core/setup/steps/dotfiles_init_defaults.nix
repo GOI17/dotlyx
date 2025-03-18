@@ -17,7 +17,7 @@ with import ./utilities/log_helpers.nix;
     git config --global protocol.file.allow never
 
     mv "''$HOME/dotlyx/result" ''$USER_DOTFILES_PATH
-    rm -rf ''$HOME/dotlyx
+    sudo rm -rf ''$HOME/dotlyx
 
     # Edit .gitmodules to change the URL
     git config -f .gitmodules submodule.modules/dotlyx.url https://github.com/goi17/dotlyx.git
