@@ -26,6 +26,7 @@
 	};
 
 	outputs = inputs@{
+    self,
 		nix-darwin,
 		nixpkgs,
 		home-manager,
@@ -75,7 +76,7 @@
   in
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
-      modules = commonModules ++ import ./os { inherit inputs; lib = nixpkgs.lib; } ++ [
+      modules = commonModules ++ import ./os { inherit inputs; inherit self; lib = nixpkgs.lib; } ++ [
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
