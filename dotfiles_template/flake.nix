@@ -84,7 +84,6 @@
   {
     darwinConfigurations."dotlyx" = with ./env.nix; {
       hostname = darwing.lib.darwinSystem {
-        system = if isDarwin then "aarch64-darwin" else "x86_64-linux";
         modules = commonModules ++ [
           home-manager.darwinModules.home-manager
           {
@@ -97,9 +96,14 @@
             {
               system.configurationRevision = self.rev or self.dirtyRev or null;
               home-manager.users."${user}" = import ./os/mac/silicon/home.nix;
+              nixpkgs.hostPlatform = "aarch64-darwin";
             }
-          ]
-          else []);
+          ] else []) ++
+          (if isLinux then [
+            {
+                nixpkgs.hostPlatform = "x86_64-linux";
+            }
+          ] else []);
       };
     };
   };
