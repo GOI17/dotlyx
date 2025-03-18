@@ -79,7 +79,15 @@
           nixpkgs.config.allowUnfree = true;
           # Allows to install non-compatible architecture applications
           nixpkgs.config.allowUnsupportedSystem = true;
-          home.packages = packages;
+          environment.extraInit = import ../shell/functions.nix;
+          environment.shellAliases = import ../shell/aliases.nix;
+          environment.variables = import ../shell/exports.nix
+          // {
+            USER_DOTFILES_PATH = dotfilesDirectory;
+            DOTLYX_HOME_PATH = dotlyxDirectory;
+          };
+          environment.pathsToLink = [ "/share/zsh" ];
+          environment.systemPackages = packages;
         }
       ];
     };
