@@ -1,9 +1,7 @@
 { lib, ... }:
 
-with lib;
-
 let
-  isDarwin = isDarwin builtins.currentSystem;
+  isDarwin = lib.isDarwin builtins.currentSystem;
   darwinCfg = [
     mac-app-util.darwinModules.default
     # Set Git commit hash for darwin-version.
