@@ -27,23 +27,38 @@ docker run -e TERM -e COLORTERM -w /root -it --rm ubuntu sh -uec '
 |-----------------------------------------------|-------|-------|-------|-------|
 |Onboarding                                     |       |       |   ⚠️   |       |
 |Custom dotfiles location                       |       |       |       |   ✅  |
-|Rebuild flake after setup                      |       |   🔨  |       |       |
+|Rebuild flake after setup                      |       |       |   ⚠️   |       |
 |Dotlyx core scripts                            |       |   🔨  |       |       |
-|Update dotlyx core                             |   ❌  |       |       |       |
+|Update dotlyx core                             |       |   🔨  |       |       |
 |UI app manager                                 |   ❌  |       |       |       |
 |Auto build flake/home-manager updates changes  |   ❌  |       |       |   ✅  |
 |Release versioning                             |   ❌  |       |       |       |
+|Linux support                                  |   ❌  |       |       |       |
+|WSL support                                    |   ❌  |       |       |       |
 
 ### Usage
 #### Installation
 ```
-bash <(curl -s https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install) -- -i
+bash <(curl -s https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install) -i
+or
+dotlyx -i # Re-install from existing build
 ```
 #### Manual flake rebuild
 ```
-bash <(curl -s https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install) -- -r
+dotlyx -r
 ```
-
+#### Check core updates
+```
+dotlyx -u
+```
+#### Update core
+```
+dotlyx_core_rebuild
+```
+#### Print core version 
+```
+dotlyx -v
+```
 
 ### Another one?
 #### Yes, but with Nix underhood 😎
