@@ -78,9 +78,9 @@
           nixpkgs.config.allowUnfree = true;
           # Allows to install non-compatible architecture applications
           nixpkgs.config.allowUnsupportedSystem = true;
-          environment.extraInit = import ../shell/functions.nix;
-          environment.shellAliases = import ../shell/aliases.nix;
-          environment.variables = with ./env.nix; import ../shell/exports.nix
+          environment.extraInit = import ./shell/functions.nix;
+          environment.shellAliases = import ./shell/aliases.nix;
+          environment.variables = with ./env.nix; import ./shell/exports.nix
           // {
             USER_DOTFILES_PATH = dotfilesDirectory;
             DOTLYX_HOME_PATH = dotlyxDirectory;
