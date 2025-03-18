@@ -35,6 +35,14 @@ let
           fi
           break
           ;;
+        u)
+          cd $DOTLYX_HOME_PATH
+          git fetch
+          git merge
+          git submodule update --init --recursive
+          ${_s "Dotlyx core was updated"}
+          break
+          ;;
         *)
           ${_e "Invalid option. \n Script usage: \$(basename \$0) [-i][-r]"}
           exit 1
