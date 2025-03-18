@@ -62,7 +62,7 @@
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
       modules = import ./os/selector.nix { inherit mac-app-util; inherit self; } ++ [
-        import ./system/environment.nix
+        # import ./system/environment.nix
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
