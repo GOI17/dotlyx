@@ -98,7 +98,7 @@
   in
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
-      modules = commonModules ++ darwinCfg { lib = nixpkgs.lib; } ++ linuxCfg { lib = nixpkgs.lib; } ++ [
+      modules = commonModules ++ darwinCfg { lib = nixpkgs; } ++ linuxCfg { lib = nixpkgs; } ++ [
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
