@@ -16,6 +16,7 @@ with import ./utilities/log_helpers.nix;
     git submodule update --init --recursive
     git config --global protocol.file.allow never
 
+    cp -r "''$HOME/dotlyx/result" ''$USER_DOTFILES_PATH
     rm -rf ''$HOME/dotlyx
 
     # Edit .gitmodules to change the URL
@@ -29,7 +30,6 @@ with import ./utilities/log_helpers.nix;
 
     # Setting up dotfiles template
     cp -r "''$DOTLYX_HOME_PATH/dotfiles_template/"* .
-    cp -r "''$DOTLYX_HOME_PATH/result" .
     sed -i -e "s|XXX_USER_DOTFILES_PATH_XXX|''$USER_DOTFILES_PATH|g" "''$USER_DOTFILES_PATH/env.nix"
     sed -i -e "s|XXX_DOTLYX_HOME_PATH_XXX|''$DOTLYX_HOME_PATH|g" "''$USER_DOTFILES_PATH/env.nix"
     sed -i -e "s|XXX_USER_NAME_XXX|''$(whoami)|g" "''$USER_DOTFILES_PATH/env.nix"
