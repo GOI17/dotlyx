@@ -27,7 +27,6 @@ let
         r)
           ${dotfilesBanner.script { type = "rebuild"; }}
           cd ''$HOME/.config/nix-darwin
-          pwd
           if ! $(type darwin-rebuild >/dev/null 2>&1); then
             ${_s "Installing nix-darwin..."}
             nix --extra-experimental-features "nix-command flakes" \
@@ -41,13 +40,13 @@ let
           break
           ;;
         u)
+          cur_path=$(pwd)
           cd $DOTLYX_HOME_PATH
           git fetch
           git merge
           git submodule update --init --recursive
           ${_s "Dotlyx core was updated"}
-          cd ''$HOME
-          ${_s "Restart your terminal and Welcome to Dotlyx!"}
+          cd $cur_path
           break
           ;;
         v)
