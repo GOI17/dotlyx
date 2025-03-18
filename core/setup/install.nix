@@ -4,6 +4,7 @@ with pkgs;
 
 let
   name = "dotlyx-setup";
+  version = "0.0.3";
   dotfilesBanner = import ./steps/utilities/dotfiles_banner.nix;
   dotfilesLocation = import ./steps/dotfiles_location.nix;
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
@@ -43,6 +44,8 @@ let
           ${_s "Dotlyx core was updated"}
           break
           ;;
+        v)
+          ${_s "Dotlyx core: ${version}v"}
         *)
           ${_e "Invalid option. \n Script usage: \$(basename \$0) [-i][-r][-u]"}
           exit 1
@@ -60,7 +63,7 @@ let
   '';
 in stdenv.mkDerivation {
   pname = "Dotlyx";
-  version = "0.0.3";
+  version = version;
   buildInputs = [
     script
   ];
