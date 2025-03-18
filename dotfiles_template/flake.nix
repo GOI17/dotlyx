@@ -98,7 +98,7 @@
   in
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
-      modules = commonModules ++ (args: darwinCfg { inherit args; }) ++ (args: linuxCfg { inherit args; }) ++ [
+      modules = commonModules ++ darwinCfg { inherit self; } ++ linuxCfg { inherit self; } ++ [
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
