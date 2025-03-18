@@ -29,7 +29,7 @@ function get_ports () {
 }
 
 function dotlyx_core_rebuild () {
-  $USER_DOTFILES_PATH/result/bin/dotlyx-setup -u
+  ''$USER_DOTFILES_PATH/result/bin/dotlyx-setup -u
   nix build --file $DOTLYX_HOME_PATH/core/setup/install.nix
   sudo rm -rf $USER_DOTFILES_PATH/result
   mv ./result $USER_DOTFILES_PATH
