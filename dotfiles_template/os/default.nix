@@ -1,4 +1,4 @@
-{ nixpkgs, mac-app-util, self, ... }:
+{ mac-app-util, self, ... }:
 
 with ../env.nix;
 
