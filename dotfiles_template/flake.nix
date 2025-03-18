@@ -38,8 +38,6 @@
 		...
 	}:
   let
-    isDarwin = nixpkgs.stdenv.isDarwin;
-    isLinux = nixpkgs.stdenv.isLinux;
     commonModules = [
       import ./system/environment.nix
       {
@@ -89,7 +87,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
         }] ++
-        (if isDarwin then [
+        (if lib.stdenv.isDarwin then [
           mac-app-util.darwinModules.default
           # Set Git commit hash for darwin-version.
           {
@@ -98,7 +96,7 @@
             nixpkgs.hostPlatform = "aarch64-darwin";
           }
         ] else []) ++
-        (if isLinux then [
+        (if lib.stdenv.isLinux then [
           {
               nixpkgs.hostPlatform = "x86_64-linux";
               home-manager.users."${user}" = import ./os/linux/home.nix;
