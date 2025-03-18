@@ -79,7 +79,7 @@
             jetbrains-mono
           ];
         }
-      ]
+      ];
     };
   };
 }
