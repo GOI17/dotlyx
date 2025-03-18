@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, mac-app-util, self, ... }:
 
 let
   isDarwin = lib.isDarwin builtins.currentSystem;
