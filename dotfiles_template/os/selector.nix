@@ -1,4 +1,4 @@
-{ mac-app-util, self, ... }:
+{ mac-app-util, self, pkgs, ... }:
 
 with ../env.nix;
 
@@ -9,7 +9,7 @@ let
     # Set Git commit hash for darwin-version.
     {
       system.configurationRevision = self.rev or self.dirtyRev or null;
-      home-manager.users."${user}" = import ./os/mac/silicon/home.nix;
+      home-manager.users."${user}" = import ./os/mac/silicon/home.nix { inherit pkgs; };
       nixpkgs.hostPlatform = "aarch64-darwin";
     }
   ];
