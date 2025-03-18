@@ -3,7 +3,7 @@
 with ../env.nix;
 
 let
-  isDarwin = lib.isDarwin builtins.currentSystem;
+  isDarwin = lib.stdenv.isDarwin builtins.currentSystem;
   darwinCfg = [
     mac-app-util.darwinModules.default
     # Set Git commit hash for darwin-version.
