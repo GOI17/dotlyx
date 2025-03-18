@@ -33,56 +33,53 @@
     mac-app-util,
 		...
 	}:
-  let
-    commonModules = [
-      import ./system/environment.nix
-      {
-        nix.settings.experimental-features = "nix-command flakes";
-        fonts.fontconfig.enable = true;
-        # Used for backwards compatibility, please read the changelog before changing.
-        # $ darwin-rebuild changelog
-        system.stateVersion = 5;
-        # The platform the configuration will be used on.
-        # nixpkgs.hostPlatform = "aarch64-darwin";
-        # Allows to install non-opensource applications
-        nixpkgs.config.allowUnfree = true;
-        # Allows to install non-compatible architecture applications
-        nixpkgs.config.allowUnsupportedSystem = true;
-        home.packages = with pkgs; [
-          # text editors
-          neovim
-          # terminal tools
-          mas
-          tree
-          wget
-          jq
-          gh
-          ripgrep
-          rename
-          neofetch
-          jump
-          gcc
-          openssl
-          asdf-vm
-          lazygit
-          eza
-          fd
-          fzf
-          zsh
-          nerd-fonts.caskaydia-cove
-          jetbrains-mono
-        ];
-      }
-    ];
-  in
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
-      modules = commonModules ++ import ./os/selector.nix { inherit mac-app-util; inherit self; } ++ [
+      modules = import ./os/selector.nix { inherit mac-app-util; inherit self; } ++ [
+        import ./system/environment.nix
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-        }];
+        }
+        {
+          nix.settings.experimental-features = "nix-command flakes";
+          fonts.fontconfig.enable = true;
+          # Used for backwards compatibility, please read the changelog before changing.
+          # $ darwin-rebuild changelog
+          system.stateVersion = 5;
+          # The platform the configuration will be used on.
+          # nixpkgs.hostPlatform = "aarch64-darwin";
+          # Allows to install non-opensource applications
+          nixpkgs.config.allowUnfree = true;
+          # Allows to install non-compatible architecture applications
+          nixpkgs.config.allowUnsupportedSystem = true;
+          home.packages = with pkgs; [
+            # text editors
+            neovim
+            # terminal tools
+            mas
+            tree
+            wget
+            jq
+            gh
+            ripgrep
+            rename
+            neofetch
+            jump
+            gcc
+            openssl
+            asdf-vm
+            lazygit
+            eza
+            fd
+            fzf
+            zsh
+            nerd-fonts.caskaydia-cove
+            jetbrains-mono
+          ];
+        }
+      ]
     };
   };
 }
