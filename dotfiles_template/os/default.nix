@@ -1,9 +1,10 @@
-{ lib, mac-app-util, self, ... }:
+{ nixpkgs, mac-app-util, self, ... }:
 
 with ../env.nix;
 
 let
-  isDarwin = lib.stdenv.isDarwin builtins.currentSystem;
+  pkgs = nixpkgs.legacyPackages;
+  isDarwin = pkgs.stdenv.isDarwin;
   darwinCfg = [
     mac-app-util.darwinModules.default
     # Set Git commit hash for darwin-version.
