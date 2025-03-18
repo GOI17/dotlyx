@@ -15,7 +15,7 @@ let
     while getopts "ir" flag; do 
       case ''$flag in
         i)
-          ${dotfilesBanner.script}
+          ${dotfilesBanner.script {} }
           ${dotfilesLocation.script}
           ${dotfilesBackup.script}
           ${dotfilesInitDefaults.script}
