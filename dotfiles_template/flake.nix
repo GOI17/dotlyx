@@ -42,7 +42,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
         }
-        { pkgs, ... }: {
+        ({ pkgs, ... }: {
           nix.settings.experimental-features = "nix-command flakes";
           fonts.fontconfig.enable = true;
           # Used for backwards compatibility, please read the changelog before changing.
@@ -78,7 +78,7 @@
             nerd-fonts.caskaydia-cove
             jetbrains-mono
           ];
-        }
+        })
       ];
     };
   };
