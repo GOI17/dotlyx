@@ -38,8 +38,8 @@
 		...
 	}:
   let
-    isDarwin = pkgs.stdenv.isDarwin;
-    isLinux = pkgs.stdenv.isLinux;
+    isDarwin = nixpkgs.stdenv.isDarwin;
+    isLinux = nixpkgs.stdenv.isLinux;
     commonModules = [
       import ./system/environment.nix
       {
@@ -54,7 +54,7 @@
         nixpkgs.config.allowUnfree = true;
         # Allows to install non-compatible architecture applications
         nixpkgs.config.allowUnsupportedSystem = true;
-        home.packages = with pkgs; [
+        home.packages = with nixpkgs; [
           # text editors
           neovim
           # terminal tools
