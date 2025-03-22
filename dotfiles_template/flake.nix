@@ -80,7 +80,7 @@
           nixpkgs.config.allowUnsupportedSystem = true;
           environment.extraInit = import ./shell/functions.nix;
           environment.shellAliases = import ./shell/aliases.nix;
-          environment.variables = with ./env.nix; import ./shell/exports.nix
+          environment.variables = with import ./env.nix; import ./shell/exports.nix
           // {
             USER_DOTFILES_PATH = dotfilesDirectory;
             DOTLYX_HOME_PATH = dotlyxDirectory;
