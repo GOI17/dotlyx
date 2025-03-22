@@ -23,7 +23,7 @@ let
     home-manager.darwinModules.home-manager {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users."${user}" = import ./mac/silicon/home.nix { };
+      home-manager.users."${user}" = import ./mac/silicon/home.nix { inherit pkgs; };
     }
     # Set Git commit hash for darwin-version.
     {
@@ -51,7 +51,7 @@ let
     home-manager.darwinModules.home-manager {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users."${user}" = import ./linux/home.nix { };
+      home-manager.users."${user}" = import ./linux/home.nix { inherit pkgs; };
     }
     {
       nixpkgs.hostPlatform = "x86_64-linux";

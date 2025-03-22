@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { allowUnfree = true; }, ... }:
+{ pkgs ? import <nixpkgs> {}, ... }:
 
 with import ../../../env.nix;
 
