@@ -14,8 +14,6 @@ let
   with import ./steps/utilities/log_helpers.nix;
   writeShellScriptBin name ''
     while [ ''$# -gt 0 ]; do 
-      echo "Flag from getopts: ''$flag"
-      echo "Flag from args: ''${@}"
       case ''$1 in
         -i | --install)
           ${dotfilesBanner.script {} }
