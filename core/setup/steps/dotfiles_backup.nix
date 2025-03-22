@@ -54,7 +54,7 @@ rec {
       ${_s "Looking for existing dotfiles..."}
       ${enable_backup_prompt}
       mkdir -pv "''$USER_DOTFILES_PATH") 2>&1
-    '' else 0}
+    '' else ""}
 
     ${_s "dotfiles will be located in: $USER_DOTFILES_PATH"}
 
