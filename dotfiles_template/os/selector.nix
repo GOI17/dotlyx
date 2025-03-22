@@ -1,6 +1,6 @@
 { mac-app-util, self, pkgs, ... }:
 
-with ../env.nix;
+with import ../env.nix;
 
 let
   isDarwin = if builtins.currentSystem == "aarch64-darwin" then true else false;
