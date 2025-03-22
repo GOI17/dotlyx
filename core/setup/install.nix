@@ -16,15 +16,22 @@ let
     while [ ''$# -gt 0 ]; do 
       case ''$1 in
         -i | --install)
-          ${dotfilesBanner.script {} }
+          ${dotfilesBanner.script { type = "new"; } }
           ${dotfilesLocation.script}
-          ${dotfilesBackup.script}
-          ${dotfilesInitDefaults.script}
+          ${dotfilesBackup.script {} }
+          ${dotfilesInitDefaults.script {} }
           cd ''$HOME
           ${_s "Restart your terminal and Welcome to Dotlyx!"}
           break
           ;;
-        -r | --rebuild)
+        -r | --retore)
+          ${dotfilesBanner.script { type = "restore"; } }
+          ${dotfilesLocation.script}
+          ${dotfilesBackup.script { is_restoring = true; } }
+          ${dotfilesInitDefaults.script { is_restoring = true; }}
+          break
+          ;;
+        -b | --rebuild)
           ${dotfilesBanner.script { type = "rebuild"; }}
           cd ''$HOME/.config/nix-darwin
           if ! $(type darwin-rebuild >/dev/null 2>&1); then
@@ -40,6 +47,7 @@ let
           break
           ;;
         -u | --update-core)
+          ${dotfilesBanner.script { type = "update"; }}
           cur_path=$(pwd)
           cd $DOTLYX_HOME_PATH
           git fetch
@@ -50,11 +58,12 @@ let
           break
           ;;
         -v | --version)
+          ${dotfilesBanner.script { type = "version"; }}
           echo "Dotlyx core: ${version}v"
           break
           ;;
         *)
-          ${_e "Invalid \$1 option. \n Script usage: \$(basename \$0) [-i | --install][-r | --rebuild ][-u | --update-core ][-v | --version]"}
+          ${_e "Invalid \$1 option. \n Script usage: \$(basename \$0) [-i | --install][-r | --restore][-b | --rebuild][-u | --update-core ][-v | --version]"}
           exit 1
           ;;
       esac

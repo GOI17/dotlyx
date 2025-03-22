@@ -1,7 +1,7 @@
 with import ./utilities/log_helpers.nix;
 
 {
-  script = ''
+  script = { is_restoring ? false }: ''
     ${_s "Setting dotlyx core configurations"}
 
     export DOTLYX_HOME_PATH="''$USER_DOTFILES_PATH/modules/dotlyx"
@@ -10,23 +10,25 @@ with import ./utilities/log_helpers.nix;
       exit 1
     fi
 
-    git init
-    git config --global protocol.file.allow always
-    git submodule add -b main ''$HOME/dotlyx modules/dotlyx
-    git submodule update --init --recursive
-    git config --global protocol.file.allow never
+    if ! [${is_restoring}]; then
+      git init
+      git config --global protocol.file.allow always
+      git submodule add -b main ''$HOME/dotlyx modules/dotlyx
+      git submodule update --init --recursive
+      git config --global protocol.file.allow never
 
-    mv "''$HOME/dotlyx/result" ''$USER_DOTFILES_PATH
-    sudo rm -rf ''$HOME/dotlyx
+      mv "''$HOME/dotlyx/result" ''$USER_DOTFILES_PATH
+      sudo rm -rf ''$HOME/dotlyx
 
-    # Edit .gitmodules to change the URL
-    git config -f .gitmodules submodule.modules/dotlyx.url https://github.com/goi17/dotlyx.git
+      # Edit .gitmodules to change the URL
+      git config -f .gitmodules submodule.modules/dotlyx.url https://github.com/goi17/dotlyx.git
 
-    # Sync and update the changes
-    git submodule sync
-    git submodule update --init --remote
-    git add .gitmodules
-    git commit -m "Update dotlyx submodule to use remote URL"
+      # Sync and update the changes
+      git submodule sync
+      git submodule update --init --remote
+      git add .gitmodules
+      git commit -m "Update dotlyx submodule to use remote URL"
+    fi
 
     # Setting up dotfiles template
     cp -r "''$DOTLYX_HOME_PATH/dotfiles_template/"* .

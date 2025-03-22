@@ -28,14 +28,7 @@ rec {
         exit 1
       fi
   '';
-  script = ''
-    if ! [[ ''$SHELL =~ "zsh" ]]; then
-        ${_s "Setting zsh as default shell"}
-        sudo chsh -s "''$(command -v zsh)"
-    fi
-
-    ${_s "Looking for existing dotfiles..."}
-
+  enable_backup_prompt = ''
     if [ -d "''$USER_DOTFILES_PATH" ]; then
       while true; do
         read -p "The path ''${USER_DOTFILES_PATH} already exists. Do you want to create a backup? (y/n): " is_backup_required
@@ -55,9 +48,15 @@ rec {
         esac
       done
     fi
+  '';
+  script = { is_restoring ? false }: ''
+    if ! [${is_restoring}]; then
+      ${_s "Looking for existing dotfiles..."}
+      ${enable_backup_prompt}
+      mkdir -pv "''$USER_DOTFILES_PATH" 2>&1
+    fi 
 
     ${_s "dotfiles will be located in: $USER_DOTFILES_PATH"}
-    mkdir -pv "''$USER_DOTFILES_PATH" 2>&1
 
     export USER_DOTFILES_PATH="''$(realpath $USER_DOTFILES_PATH)"
     if [ -z ''$USER_DOTFILES_PATH ]; then

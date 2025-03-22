@@ -12,5 +12,10 @@ rec {
 
     USER_DOTFILES_PATH=''${USER_DOTFILES_PATH:-${defaultUserDotfilesPath}}
     USER_DOTFILES_PATH="$(eval echo "$USER_DOTFILES_PATH")"
+
+    if ! [[ ''$SHELL =~ "zsh" ]]; then
+        ${_s "Setting zsh as default shell"}
+        sudo chsh -s "''$(command -v zsh)"
+    fi
   '';
 }
