@@ -9,14 +9,14 @@ let
     # Set Git commit hash for darwin-version.
     {
       system.configurationRevision = self.rev or self.dirtyRev or null;
-      home-manager.users."${user}" = import ./os/mac/silicon/home.nix { inherit pkgs; };
+      home-manager.users."${user}" = import ./mac/silicon/home.nix { inherit pkgs; };
       nixpkgs.hostPlatform = "aarch64-darwin";
     }
   ];
   linuxCfg = [
     {
       nixpkgs.hostPlatform = "x86_64-linux";
-      home-manager.users."${user}" = import ./os/linux/home.nix;
+      home-manager.users."${user}" = import ./linux/home.nix;
     }
   ];
 in if isDarwin then darwinCfg else linuxCfg
