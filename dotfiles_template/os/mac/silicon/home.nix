@@ -8,7 +8,7 @@ with import ../../../env.nix;
     raycast
   ];
   home.username = user;
-  home.homeDirectory = home;
+  home.homeDirectory = "/home/${user}";
   # this is internal compatibility configuration 
   # for home-manager, don't change this!
   home.stateVersion = "23.05";
