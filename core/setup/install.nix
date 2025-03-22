@@ -9,10 +9,7 @@ let
   dotfilesLocation = import ./steps/dotfiles_location.nix;
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
   dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
-  script =
-  with import ./steps/utilities/colors.nix;
-  with import ./steps/utilities/log_helpers.nix;
-  writeShellScriptBin name ''
+  script = with import ./steps/utilities/colors.nix; with import ./steps/utilities/log_helpers.nix; writeShellScriptBin name ''
     while [ ''$# -gt 0 ]; do 
       case ''$1 in
         -i | --install)
@@ -80,10 +77,7 @@ in stdenv.mkDerivation {
   buildInputs = [
     script
   ];
-  phases = [ "preBuild" "install" ];
-  preBuild = ''
-    export NIX_DEBUG=7
-  '';
+  phases = [ "install" ];
   install = ''
     export NIX_DEBUG=7
     mkdir -p $out/bin
