@@ -48,34 +48,37 @@
       inherit home-manager;
       pkgs = nixpkgs;
     };
-    packages = { pkgs, ... }: with pkgs; [
-      # text editors
-      neovim
-      # terminal tools
-      mas
-      tree
-      wget
-      jq
-      gh
-      ripgrep
-      rename
-      neofetch
-      jump
-      gcc
-      openssl
-      asdf-vm
-      lazygit
-      eza
-      fd
-      fzf
-      zsh
-      nerd-fonts.caskaydia-cove
-      jetbrains-mono
-    ];
+    packages = { pkgs, ... }: with pkgs; {
+      environment.systemPackages = [
+        # text editors
+        neovim
+        # terminal tools
+        mas
+        tree
+        wget
+        jq
+        gh
+        ripgrep
+        rename
+        neofetch
+        jump
+        gcc
+        openssl
+        asdf-vm
+        lazygit
+        eza
+        fd
+        fzf
+        zsh
+        nerd-fonts.caskaydia-cove
+        jetbrains-mono
+      ];
+    };
   in 
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
       modules = osConfigs ++ [
+        packages
         {
           nix.settings.experimental-features = "nix-command flakes";
           # Used for backwards compatibility, please read the changelog before changing.
@@ -95,7 +98,6 @@
             DOTLYX_HOME_PATH = dotlyxDirectory;
           };
           environment.pathsToLink = [ "/share/zsh" ];
-          environment.systemPackages = packages;
         }
       ];
     };
