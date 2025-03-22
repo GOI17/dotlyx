@@ -76,7 +76,7 @@ let
   # '';
 in stdenv.mkDerivation {
   pname = "Dotlyx";
-  version = "0";
+  version = version;
   buildInputs = [
     script
   ];
