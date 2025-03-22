@@ -1,8 +1,8 @@
 { pkgs ? import <nixpkgs> {} }:
 
 with pkgs;
-# with import ./steps/utilities/colors.nix;
-# with import ./steps/utilities/log_helpers.nix;
+with import ./steps/utilities/colors.nix;
+with import ./steps/utilities/log_helpers.nix;
 
 let
   name = "dotlyx-setup";
