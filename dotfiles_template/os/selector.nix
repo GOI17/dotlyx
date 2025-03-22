@@ -8,17 +8,15 @@ let
     mac-app-util.darwinModules.default
     nix-homebrew.darwinModules.nix-homebrew {
       nix-homebrew = {
-        module = { taps, ... }: {
-          autoMigrate = true;
-          enable = true;
-          enableRosetta = true;
-          mutableTaps = false;
-          inherit user;
-          taps = {
-            "homebrew/homebrew-core" = nix-homebrew-core;
-            "homebrew/homebrew-cask" = nix-homebrew-cask;
-            "homebrew/homebrew-bundle" = nix-homebrew-bundle;
-          };
+        autoMigrate = true;
+        enable = true;
+        enableRosetta = true;
+        mutableTaps = false;
+        inherit user;
+        taps = {
+          "homebrew/homebrew-core" = nix-homebrew-core;
+          "homebrew/homebrew-cask" = nix-homebrew-cask;
+          "homebrew/homebrew-bundle" = nix-homebrew-bundle;
         };
       };
     }
