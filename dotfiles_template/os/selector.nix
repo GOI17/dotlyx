@@ -41,7 +41,7 @@ let
           upgrade = true;
         };
       };
-      users.users."${user}" = rec {
+      users.users."${user}" = {
           name = user;
           home = home;
       };
