@@ -48,9 +48,9 @@
       inherit home-manager;
       pkgs = import <nixpkgs> {
           # Allows to install non-opensource applications
-          allowUnfree = true;
+          config.allowUnfree = true;
           # Allows to install non-compatible architecture applications
-          allowUnsupportedSystem = true;
+          config.allowUnsupportedSystem = true;
       };
     };
     packages = { pkgs, ... }: with pkgs; {
