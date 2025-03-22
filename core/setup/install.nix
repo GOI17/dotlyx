@@ -8,9 +8,9 @@ let
   name = "dotlyx-setup";
   version = "0.0.4";
   dotfilesBanner = import ./steps/utilities/dotfiles_banner.nix;
-  # dotfilesLocation = import ./steps/dotfiles_location.nix;
-  # dotfilesBackup = import ./steps/dotfiles_backup.nix;
-  # dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
+  dotfilesLocation = import ./steps/dotfiles_location.nix;
+  dotfilesBackup = import ./steps/dotfiles_backup.nix;
+  dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
   script = writeShellScriptBin name ''echo "Hello world"'';
   # writeShellScriptBin name ''
     # while [ ''$# -gt 0 ]; do 
