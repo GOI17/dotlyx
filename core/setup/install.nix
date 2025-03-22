@@ -12,66 +12,66 @@ let
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
   dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
   script = writeShellScriptBin name ''
-    # while [ ''$# -gt 0 ]; do 
-    #   case ''$1 in
-    #     -i | --install)
-    #       ${dotfilesBanner.script { type = "new"; } }
-    #       ${dotfilesLocation.script}
-    #       ${dotfilesBackup.script {} }
-    #       ${dotfilesInitDefaults.script {} }
-    #       cd ''$HOME
-    #       ${_s "Restart your terminal and Welcome to Dotlyx!"}
-    #       break
-    #       ;;
-    #     -r | --retore)
-    #       ${dotfilesBanner.script { type = "restore"; } }
-    #       ${dotfilesLocation.script}
-    #       ${dotfilesBackup.script { is_restoring = true; } }
-    #       ${dotfilesInitDefaults.script { is_restoring = true; }}
-    #       break
-    #       ;;
-    #     -b | --rebuild)
-    #       ${dotfilesBanner.script { type = "rebuild"; }}
-    #       cd ''$HOME/.config/nix-darwin
-    #       if ! $(type darwin-rebuild >/dev/null 2>&1); then
-    #         ${_s "Installing nix-darwin..."}
-    #         nix --extra-experimental-features "nix-command flakes" \
-    #           run nix-darwin -- switch \
-    #           --flake .#dotlyx --impure
-    #       else
-    #         darwin-rebuild switch --flake .#dotlyx --impure
-    #       fi
-    #       cd ''$HOME
-    #       ${_s "Restart your terminal and Welcome to Dotlyx!"}
-    #       break
-    #       ;;
-    #     -u | --update-core)
-    #       ${dotfilesBanner.script { type = "update"; }}
-    #       cur_path=$(pwd)
-    #       cd $DOTLYX_HOME_PATH
-    #       git fetch
-    #       git merge
-    #       git submodule update --init --recursive
-    #       ${_s "Dotlyx core was updated"}
-    #       cd $cur_path
-    #       break
-    #       ;;
-    #     -v | --version)
-    #       ${dotfilesBanner.script { type = "version"; }}
-    #       echo "Dotlyx core: ${version}v"
-    #       break
-    #       ;;
-    #     *)
-    #       ${_e "Invalid \$1 option. \n Script usage: \$(basename \$0) [-i | --install][-r | --restore][-b | --rebuild][-u | --update-core ][-v | --version]"}
-    #       exit 1
-    #       ;;
-    #   esac
-    # done
-    #
-    # if [ ''$? -ne 0 ]; then
-    #     ${_e "We stopped the installation. Try with a new installation process"}
-    #     exit 1
-    # fi
+    while [ ''$# -gt 0 ]; do 
+      case ''$1 in
+        -i | --install)
+          ${dotfilesBanner.script { type = "new"; } }
+          ${dotfilesLocation.script}
+          ${dotfilesBackup.script {} }
+          ${dotfilesInitDefaults.script {} }
+          cd ''$HOME
+          ${_s "Restart your terminal and Welcome to Dotlyx!"}
+          break
+          ;;
+        -r | --retore)
+          ${dotfilesBanner.script { type = "restore"; } }
+          ${dotfilesLocation.script}
+          ${dotfilesBackup.script { is_restoring = true; } }
+          ${dotfilesInitDefaults.script { is_restoring = true; }}
+          break
+          ;;
+        -b | --rebuild)
+          ${dotfilesBanner.script { type = "rebuild"; }}
+          cd ''$HOME/.config/nix-darwin
+          if ! $(type darwin-rebuild >/dev/null 2>&1); then
+            ${_s "Installing nix-darwin..."}
+            nix --extra-experimental-features "nix-command flakes" \
+              run nix-darwin -- switch \
+              --flake .#dotlyx --impure
+          else
+            darwin-rebuild switch --flake .#dotlyx --impure
+          fi
+          cd ''$HOME
+          ${_s "Restart your terminal and Welcome to Dotlyx!"}
+          break
+          ;;
+        -u | --update-core)
+          ${dotfilesBanner.script { type = "update"; }}
+          cur_path=$(pwd)
+          cd $DOTLYX_HOME_PATH
+          git fetch
+          git merge
+          git submodule update --init --recursive
+          ${_s "Dotlyx core was updated"}
+          cd $cur_path
+          break
+          ;;
+        -v | --version)
+          ${dotfilesBanner.script { type = "version"; }}
+          echo "Dotlyx core: ${version}v"
+          break
+          ;;
+        *)
+          ${_e "Invalid \$1 option. \n Script usage: \$(basename \$0) [-i | --install][-r | --restore][-b | --rebuild][-u | --update-core ][-v | --version]"}
+          exit 1
+          ;;
+      esac
+    done
+
+    if [ ''$? -ne 0 ]; then
+        ${_e "We stopped the installation. Try with a new installation process"}
+        exit 1
+    fi
   # '';
 in stdenv.mkDerivation {
   pname = "Dotlyx";
