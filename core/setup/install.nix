@@ -9,7 +9,7 @@ let
   # dotfilesLocation = import ./steps/dotfiles_location.nix;
   # dotfilesBackup = import ./steps/dotfiles_backup.nix;
   # dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
-  script = writeShellScriptBin name ''echo "Hello world"'';
+  script = writeShellScriptBin name ''echo "Hello world ${version}"'';
   # with import ./steps/utilities/colors.nix;
   # with import ./steps/utilities/log_helpers.nix;
   # writeShellScriptBin name ''
