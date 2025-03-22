@@ -13,11 +13,11 @@ let
   with import ./steps/utilities/colors.nix;
   with import ./steps/utilities/log_helpers.nix;
   writeShellScriptBin name ''
-    while getopts "iruv" flag; do 
+    while [ ''$# -gt 0 ]; do 
       echo "Flag from getopts: ''$flag"
       echo "Flag from args: ''${@}"
-      case ''$flag in
-        i|--install)
+      case ''$1 in
+        -i | --install)
           ${dotfilesBanner.script {} }
           ${dotfilesLocation.script}
           ${dotfilesBackup.script}
@@ -26,7 +26,7 @@ let
           ${_s "Restart your terminal and Welcome to Dotlyx!"}
           break
           ;;
-        r|--rebuild)
+        -r | --rebuild)
           ${dotfilesBanner.script { type = "rebuild"; }}
           cd ''$HOME/.config/nix-darwin
           if ! $(type darwin-rebuild >/dev/null 2>&1); then
@@ -41,7 +41,7 @@ let
           ${_s "Restart your terminal and Welcome to Dotlyx!"}
           break
           ;;
-        u|--update-core)
+        -u | --update-core)
           cur_path=$(pwd)
           cd $DOTLYX_HOME_PATH
           git fetch
@@ -51,12 +51,12 @@ let
           cd $cur_path
           break
           ;;
-        v|--version)
+        -v | --version)
           echo "Dotlyx core: ${version}v"
           break
           ;;
         *)
-          ${_e "Invalid option. \n Script usage: \$(basename \$0) [-i | --install][-r | --rebuild ][-u | --update-core ][-v | --version]"}
+          ${_e "Invalid \$1 option. \n Script usage: \$(basename \$0) [-i | --install][-r | --rebuild ][-u | --update-core ][-v | --version]"}
           exit 1
           ;;
       esac
