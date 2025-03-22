@@ -1,6 +1,6 @@
 # Dotlyx
 
-## A personal dotlyxfiles manager 🧑🏻‍💻
+## Your personal dotfiles manager 🧑🏻‍💻
 
 ### Installation
 ```
