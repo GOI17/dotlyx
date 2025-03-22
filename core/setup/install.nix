@@ -5,14 +5,14 @@ with pkgs;
 let
   name = "dotlyx-setup";
   version = "0.0.4";
-  dotfilesBanner = import ./steps/utilities/dotfiles_banner.nix;
-  dotfilesLocation = import ./steps/dotfiles_location.nix;
-  dotfilesBackup = import ./steps/dotfiles_backup.nix;
-  dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
-  script =
+  # dotfilesBanner = import ./steps/utilities/dotfiles_banner.nix;
+  # dotfilesLocation = import ./steps/dotfiles_location.nix;
+  # dotfilesBackup = import ./steps/dotfiles_backup.nix;
+  # dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
+  script = ''echo "Hello world"'';
   # with import ./steps/utilities/colors.nix;
   # with import ./steps/utilities/log_helpers.nix;
-  writeShellScriptBin name ''
+  # writeShellScriptBin name ''
     # while [ ''$# -gt 0 ]; do 
     #   case ''$1 in
     #     -i | --install)
@@ -73,7 +73,7 @@ let
     #     ${_e "We stopped the installation. Try with a new installation process"}
     #     exit 1
     # fi
-  '';
+  # '';
 in stdenv.mkDerivation {
   pname = "Dotlyx";
   version = "0";
