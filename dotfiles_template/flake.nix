@@ -53,7 +53,7 @@
       inherit nix-homebrew-bundle;
       inherit home-manager;
       pkgs = import <nixpkgs> {
-        inherit nixpkgs-config;
+        inherit nixpkgs-config.config;
       };
     };
     packages = { pkgs, ... }: with pkgs; {
@@ -92,7 +92,7 @@
           # Used for backwards compatibility, please read the changelog before changing.
           # $ darwin-rebuild changelog
           system.stateVersion = 5;
-          nixpkgs = { inherit nixpkgs-config; };
+          nixpkgs = { inherit nixpkgs-config.config; };
           environment.extraInit = import ./shell/functions.nix;
           environment.shellAliases = import ./shell/aliases.nix;
           environment.variables = with import ./env.nix; import ./shell/exports.nix
