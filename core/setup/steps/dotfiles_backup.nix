@@ -51,8 +51,8 @@ rec {
   '';
   script = { is_restoring ? false }: ''
     ${if !is_restoring then {
-      {_s "Looking for existing dotfiles..."}
-      {enable_backup_prompt}
+      "${_s "Looking for existing dotfiles..."}"
+      "${enable_backup_prompt}"
       "$(mkdir -pv "''$USER_DOTFILES_PATH") 2>&1"
     }}
 
