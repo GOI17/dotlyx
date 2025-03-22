@@ -10,8 +10,8 @@ let
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
   dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
   script =
-  with import ./steps/utilities/colors.nix;
-  with import ./steps/utilities/log_helpers.nix;
+  # with import ./steps/utilities/colors.nix;
+  # with import ./steps/utilities/log_helpers.nix;
   writeShellScriptBin name ''
     # while [ ''$# -gt 0 ]; do 
     #   case ''$1 in
