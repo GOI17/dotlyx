@@ -41,6 +41,10 @@ let
           upgrade = true;
         };
       };
+      users.users."${user}" = rec {
+          name = user;
+          home = home;
+      };
     }
   ];
   linuxCfg = [
