@@ -45,16 +45,13 @@
       inherit nix-homebrew-core;
       inherit nix-homebrew-cask;
       inherit nix-homebrew-bundle;
+      inherit home-manager;
       pkgs = nixpkgs;
     };
   in 
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
       modules = osConfigs ++ [
-        home-manager.darwinModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-        }
         {
           nix.settings.experimental-features = "nix-command flakes";
           # Used for backwards compatibility, please read the changelog before changing.

@@ -1,4 +1,4 @@
-{ mac-app-util, nix-homebrew, nix-homebrew-core, nix-homebrew-cask, nix-homebrew-bundle, self, pkgs, ... }:
+{ mac-app-util, nix-homebrew, nix-homebrew-core, nix-homebrew-cask, nix-homebrew-bundle, home-manager, self, pkgs, ... }:
 
 with import ../env.nix;
 
@@ -20,10 +20,14 @@ let
         };
       };
     }
+    home-manager.darwinModules.home-manager {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users."${user}" = import ./mac/silicon/home.nix { inherit pkgs; };
+    }
     # Set Git commit hash for darwin-version.
     {
       system.configurationRevision = self.rev or self.dirtyRev or null;
-      home-manager.users."${user}" = import ./mac/silicon/home.nix { inherit pkgs; };
       nixpkgs.hostPlatform = "aarch64-darwin";
       homebrew = {
         enable = true;
