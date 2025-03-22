@@ -46,7 +46,7 @@
       inherit nix-homebrew-cask;
       inherit nix-homebrew-bundle;
       inherit home-manager;
-      pkgs = nixpkgs.legacyPackages;
+      pkgs = import <nixpkgs> {};
     };
     packages = { pkgs, ... }: with pkgs; {
       environment.systemPackages = [
