@@ -31,11 +31,26 @@
 		nixpkgs,
 		home-manager,
     mac-app-util,
+    nix-homebrew,
+    nix-homebrew-cask,
+    nix-homebrew-core,
+    nix-homebrew-bundle,
 		...
 	}:
+  let
+    osConfigs = import ./os/selector.nix {
+      inherit mac-app-util;
+      inherit self;
+      inherit nix-homebrew;
+      inherit nix-homebrew-core;
+      inherit nix-homebrew-cask;
+      inherit nix-homebrew-bundle;
+      pkgs = nixpkgs;
+    };
+  in 
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
-      modules = import ./os/selector.nix { inherit mac-app-util; inherit self; pkgs = nixpkgs; } ++ [
+      modules = osConfigs ++ [
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
