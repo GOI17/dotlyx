@@ -14,6 +14,8 @@ let
   with import ./steps/utilities/log_helpers.nix;
   writeShellScriptBin name ''
     while getopts "iruv" flag; do 
+      echo "Flag from getopts: ''$flag"
+      echo "Flag from args: ''${@}"
       case ''$flag in
         i|--install)
           ${dotfilesBanner.script {} }
