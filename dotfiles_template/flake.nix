@@ -62,7 +62,7 @@
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
       # modules = import ./os/selector.nix { inherit mac-app-util; inherit self; pkgs = nixpkgs; } ++ [
-      modules = [
+      modules = with import ./env.nix; [
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -81,7 +81,7 @@
           nixpkgs.config.allowUnsupportedSystem = true;
           environment.extraInit = import ./shell/functions.nix;
           environment.shellAliases = import ./shell/aliases.nix;
-          environment.variables = with import ./env.nix; import ./shell/exports.nix
+          environment.variables = import ./shell/exports.nix
           // {
             USER_DOTFILES_PATH = dotfilesDirectory;
             DOTLYX_HOME_PATH = dotlyxDirectory;
