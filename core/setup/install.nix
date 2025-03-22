@@ -15,7 +15,7 @@ let
   writeShellScriptBin name ''
     while getopts "iruv" flag; do 
       case ''$flag in
-        i)
+        i|-install)
           ${dotfilesBanner.script {} }
           ${dotfilesLocation.script}
           ${dotfilesBackup.script}
@@ -24,7 +24,7 @@ let
           ${_s "Restart your terminal and Welcome to Dotlyx!"}
           break
           ;;
-        r)
+        r|-rebuild)
           ${dotfilesBanner.script { type = "rebuild"; }}
           cd ''$HOME/.config/nix-darwin
           if ! $(type darwin-rebuild >/dev/null 2>&1); then
@@ -39,7 +39,7 @@ let
           ${_s "Restart your terminal and Welcome to Dotlyx!"}
           break
           ;;
-        u)
+        u|-update-core)
           cur_path=$(pwd)
           cd $DOTLYX_HOME_PATH
           git fetch
@@ -49,12 +49,12 @@ let
           cd $cur_path
           break
           ;;
-        v)
+        v|-version)
           echo "Dotlyx core: ${version}v"
           break
           ;;
         *)
-          ${_e "Invalid option. \n Script usage: \$(basename \$0) [-i][-r][-u][-v]"}
+          ${_e "Invalid option. \n Script usage: \$(basename \$0) [-i | --install][-r | --rebuild ][-u | --update-core ][-v | --version]"}
           exit 1
           ;;
       esac
