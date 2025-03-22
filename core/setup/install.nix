@@ -75,10 +75,10 @@ let
     # fi
   '';
 in stdenv.mkDerivation {
-  pname = "Dotlyx";
+  pname = "Dotlyx -test";
   version = version;
   buildInputs = [
-    script
+    # script
   ];
   phases = [ "install" ];
   install = ''
