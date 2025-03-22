@@ -32,6 +32,6 @@ rec {
     '';
   };
   script = { type ? "new" }: ''
-    ${messages{type}}
+    ${messages."${type}"}
   '';
 }
