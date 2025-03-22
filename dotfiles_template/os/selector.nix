@@ -44,9 +44,13 @@ let
     }
   ];
   linuxCfg = [
+    home-manager.darwinModules.home-manager {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users."${user}" = import ./linux/home.nix { inherit pkgs; };
+    }
     {
       nixpkgs.hostPlatform = "x86_64-linux";
-      home-manager.users."${user}" = import ./linux/home.nix;
     }
   ];
 in if isDarwin then darwinCfg else linuxCfg
