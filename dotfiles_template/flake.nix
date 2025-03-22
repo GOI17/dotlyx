@@ -87,7 +87,7 @@
             DOTLYX_HOME_PATH = dotlyxDirectory;
           };
           environment.pathsToLink = [ "/share/zsh" ];
-          environment.systemPackages = packages;
+          # environment.systemPackages = packages;
         }
       ];
     };
