@@ -10,6 +10,7 @@ with import ./utilities/log_helpers.nix;
       exit 1
     fi
 
+    ${if !is_restoring then ''
       git init
       git config --global protocol.file.allow always
       git submodule add -b main ''$HOME/dotlyx modules/dotlyx
@@ -27,6 +28,7 @@ with import ./utilities/log_helpers.nix;
       git submodule update --init --remote
       git add .gitmodules
       git commit -m "Update dotlyx submodule to use remote URL"
+    '' else ""}
 
     # Setting up dotfiles template
     cp -r "''$DOTLYX_HOME_PATH/dotfiles_template/"* .
