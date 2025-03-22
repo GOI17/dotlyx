@@ -38,6 +38,12 @@
 		...
 	}:
   let
+    nixpkgs-config = {
+      # Allows to install non-opensource applications
+      config.allowUnfree = true;
+      # Allows to install non-compatible architecture applications
+      config.allowUnsupportedSystem = true;
+    };
     osConfigs = import ./os/selector.nix {
       inherit mac-app-util;
       inherit self;
@@ -47,10 +53,7 @@
       inherit nix-homebrew-bundle;
       inherit home-manager;
       pkgs = import <nixpkgs> {
-          # Allows to install non-opensource applications
-          config.allowUnfree = true;
-          # Allows to install non-compatible architecture applications
-          config.allowUnsupportedSystem = true;
+        inherit nixpkgs-config;
       };
     };
     packages = { pkgs, ... }: with pkgs; {
@@ -89,12 +92,7 @@
           # Used for backwards compatibility, please read the changelog before changing.
           # $ darwin-rebuild changelog
           system.stateVersion = 5;
-          # The platform the configuration will be used on.
-          # nixpkgs.hostPlatform = "aarch64-darwin";
-          # Allows to install non-opensource applications
-          nixpkgs.config.allowUnfree = true;
-          # Allows to install non-compatible architecture applications
-          nixpkgs.config.allowUnsupportedSystem = true;
+          nixpkgs = { inherit nixpkgs-config; }
           environment.extraInit = import ./shell/functions.nix;
           environment.shellAliases = import ./shell/aliases.nix;
           environment.variables = with import ./env.nix; import ./shell/exports.nix
