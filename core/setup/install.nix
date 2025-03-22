@@ -80,8 +80,12 @@ in stdenv.mkDerivation {
   buildInputs = [
     script
   ];
-  phases = [ "installPhase" ];
-  installPhase = ''
+  phases = [ "preBuild" "install" ];
+  preBuild = ''
+    export NIX_DEBUG=7
+  '';
+  install = ''
+    export NIX_DEBUG=7
     mkdir -p $out/bin
     cp ${script}/bin/${name} $out/bin/${name}
   '';
