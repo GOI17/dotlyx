@@ -7,7 +7,7 @@ with import ../../../env.nix;
     # UI apps
     raycast
   ];
-  home.homeDirectory = builtins.getEnv "$HOME";
+  home.homeDirectory = "/";
   # this is internal compatibility configuration 
   # for home-manager, don't change this!
   home.stateVersion = "23.05";
