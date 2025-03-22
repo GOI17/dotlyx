@@ -15,7 +15,7 @@ let
   writeShellScriptBin name ''
     while getopts "iruv" flag; do 
       case ''$flag in
-        i|-install)
+        i|--install)
           ${dotfilesBanner.script {} }
           ${dotfilesLocation.script}
           ${dotfilesBackup.script}
@@ -24,7 +24,7 @@ let
           ${_s "Restart your terminal and Welcome to Dotlyx!"}
           break
           ;;
-        r|-rebuild)
+        r|--rebuild)
           ${dotfilesBanner.script { type = "rebuild"; }}
           cd ''$HOME/.config/nix-darwin
           if ! $(type darwin-rebuild >/dev/null 2>&1); then
@@ -39,7 +39,7 @@ let
           ${_s "Restart your terminal and Welcome to Dotlyx!"}
           break
           ;;
-        u|-update-core)
+        u|--update-core)
           cur_path=$(pwd)
           cd $DOTLYX_HOME_PATH
           git fetch
@@ -49,7 +49,7 @@ let
           cd $cur_path
           break
           ;;
-        v|-version)
+        v|--version)
           echo "Dotlyx core: ${version}v"
           break
           ;;
