@@ -59,7 +59,7 @@
             DOTLYX_HOME_PATH = dotlyxDirectory;
           };
           environment.pathsToLink = [ "/share/zsh" ];
-          environment.systemPackages = with pkgs; [
+          environment.systemPackages = with nixpkgs; [
             # text editors
             neovim
             # terminal tools
