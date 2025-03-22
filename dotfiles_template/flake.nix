@@ -33,36 +33,9 @@
     mac-app-util,
 		...
 	}:
-  let
-    packages = { pkgs, ... }: with pkgs; [
-      # text editors
-      neovim
-      # terminal tools
-      mas
-      tree
-      wget
-      jq
-      gh
-      ripgrep
-      rename
-      neofetch
-      jump
-      gcc
-      openssl
-      asdf-vm
-      lazygit
-      eza
-      fd
-      fzf
-      zsh
-      nerd-fonts.caskaydia-cove
-      jetbrains-mono
-    ]; 
-  in 
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
-      # modules = import ./os/selector.nix { inherit mac-app-util; inherit self; pkgs = nixpkgs; } ++ [
-      modules = with import ./env.nix; [
+      modules = import ./os/selector.nix { inherit mac-app-util; inherit self; pkgs = nixpkgs; } ++ [
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -86,7 +59,30 @@
             DOTLYX_HOME_PATH = dotlyxDirectory;
           };
           environment.pathsToLink = [ "/share/zsh" ];
-          # environment.systemPackages = packages;
+          environment.systemPackages = with pkgs; [
+            # text editors
+            neovim
+            # terminal tools
+            mas
+            tree
+            wget
+            jq
+            gh
+            ripgrep
+            rename
+            neofetch
+            jump
+            gcc
+            openssl
+            asdf-vm
+            lazygit
+            eza
+            fd
+            fzf
+            zsh
+            nerd-fonts.caskaydia-cove
+            jetbrains-mono
+          ];
         }
       ];
     };
