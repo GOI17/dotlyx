@@ -135,5 +135,5 @@ fi
 sudo rm -rf $HOME/dotlyx
 git clone https://github.com/goi17/dotlyx.git $HOME/dotlyx
 cd $HOME/dotlyx
-nix build --file core/setup/install.nix --show-trace
+nix build --file core/setup/install.nix -- --show-trace
 ./result/bin/dotlyx-setup $@
