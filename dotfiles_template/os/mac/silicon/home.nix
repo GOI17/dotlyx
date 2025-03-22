@@ -1,5 +1,7 @@
 { pkgs, ... }:
-with ../../../env.nix;
+
+with import ../../../env.nix;
+
 {
   home.packages = with pkgs; [
     # UI apps
@@ -23,7 +25,6 @@ with ../../../env.nix;
   home.stateVersion = "23.05";
   # Let home-manager install and manage itself.
   programs.home-manager.enable = true;
-  home.packages = pkgs;
   home.sessionVariables = {
     EDITOR = "vim";
   };
