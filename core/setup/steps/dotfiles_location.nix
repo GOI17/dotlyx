@@ -7,7 +7,7 @@ rec {
 
     Press enter to keep default location:\${RESET}
   '';
-  script = ''
+  script = with import ./utilities/log_helpers.nix; ''
     echo -e "${messsage}" && read -p "" USER_DOTFILES_PATH
 
     USER_DOTFILES_PATH=''${USER_DOTFILES_PATH:-${defaultUserDotfilesPath}}
