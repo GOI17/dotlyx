@@ -44,7 +44,9 @@
       # Allows to install non-compatible architecture applications
       config.allowUnsupportedSystem = true;
     };
-    osConfigs = import ./os/selector.nix inputs // {
+    osConfigs = let
+      args = inputs // { inherit pkgs; };
+    in import ./os/selector.nix args; #{
       # inherit mac-app-util;
       # inherit self;
       # inherit nix-homebrew;
@@ -52,8 +54,9 @@
       # inherit nix-homebrew-cask;
       # inherit nix-homebrew-bundle;
       # inherit home-manager;
-      inherit pkgs;
-    };
+      # inherit inputs;
+      # inherit pkgs;
+    # };
   in 
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
