@@ -1,7 +1,5 @@
 args:
 
-with import ../env.nix;
-
 let
   isDarwin = if builtins.currentSystem == "aarch64-darwin" then true else false;
   darwinCfg = import ./mac/silicon/config.nix args;

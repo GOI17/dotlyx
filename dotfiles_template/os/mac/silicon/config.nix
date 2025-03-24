@@ -9,6 +9,9 @@
   pkgs,
   ...
 }:
+
+with import ../../../env.nix;
+
 [
   mac-app-util.darwinModules.default
   nix-homebrew.darwinModules.nix-homebrew {
