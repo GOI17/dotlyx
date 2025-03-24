@@ -26,73 +26,41 @@
 	};
 
 	outputs = inputs@{
-    self,
+    # self,
 		nix-darwin,
-		nixpkgs,
-		home-manager,
-    mac-app-util,
-    nix-homebrew,
-    nix-homebrew-cask,
-    nix-homebrew-core,
-    nix-homebrew-bundle,
+		# nixpkgs,
+		# home-manager,
+    # mac-app-util,
+    # nix-homebrew,
+    # nix-homebrew-cask,
+    # nix-homebrew-core,
+    # nix-homebrew-bundle,
 		...
 	}:
   let
-    nixpkgs-config = {
+    pkgs = import <nixpkgs> {
       # Allows to install non-opensource applications
       config.allowUnfree = true;
       # Allows to install non-compatible architecture applications
       config.allowUnsupportedSystem = true;
     };
-    osConfigs = import ./os/selector.nix {
-      inherit mac-app-util;
-      inherit self;
-      inherit nix-homebrew;
-      inherit nix-homebrew-core;
-      inherit nix-homebrew-cask;
-      inherit nix-homebrew-bundle;
-      inherit home-manager;
-      pkgs = import <nixpkgs> {
-        config = nixpkgs-config.config;
-      };
-    };
-    packages = { pkgs, ... }: with pkgs; {
-      environment.systemPackages = [
-        # text editors
-        neovim
-        # terminal tools
-        mas
-        tree
-        wget
-        jq
-        gh
-        ripgrep
-        rename
-        neofetch
-        jump
-        gcc
-        openssl
-        asdf-vm
-        lazygit
-        eza
-        fd
-        fzf
-        zsh
-        nerd-fonts.caskaydia-cove
-        jetbrains-mono
-      ];
+    osConfigs = import ./os/selector.nix inputs // {
+      # inherit mac-app-util;
+      # inherit self;
+      # inherit nix-homebrew;
+      # inherit nix-homebrew-core;
+      # inherit nix-homebrew-cask;
+      # inherit nix-homebrew-bundle;
+      # inherit home-manager;
+      inherit pkgs;
     };
   in 
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
       modules = osConfigs ++ [
-        packages
         {
           nix.settings.experimental-features = "nix-command flakes";
-          # Used for backwards compatibility, please read the changelog before changing.
-          # $ darwin-rebuild changelog
           system.stateVersion = 5;
-          nixpkgs = { config = nixpkgs-config.config; };
           environment.extraInit = import ./shell/functions.nix;
           environment.shellAliases = import ./shell/aliases.nix;
           environment.variables = with import ./env.nix; import ./shell/exports.nix
@@ -101,6 +69,28 @@
             DOTLYX_HOME_PATH = dotlyxDirectory;
           };
           environment.pathsToLink = [ "/share/zsh" ];
+          environment.systemPackages = with pkgs; [
+            neovim
+            mas
+            tree
+            wget
+            jq
+            gh
+            ripgrep
+            rename
+            neofetch
+            jump
+            gcc
+            openssl
+            asdf-vm
+            lazygit
+            eza
+            fd
+            fzf
+            zsh
+            nerd-fonts.caskaydia-cove
+            jetbrains-mono
+          ];
         }
       ];
     };
