@@ -1,10 +1,9 @@
-{ pkgs ? import <nixpkgs> {}, ... }:
+{ pkgs }:
 
 with import ../../../env.nix;
 
 {
   home.packages = with pkgs; [
-    # UI apps
     raycast
   ];
   home.username = user;

@@ -25,38 +25,15 @@
 		};
 	};
 
-	outputs = inputs@{
-    # self,
-		nix-darwin,
-		# nixpkgs,
-		# home-manager,
-    # mac-app-util,
-    # nix-homebrew,
-    # nix-homebrew-cask,
-    # nix-homebrew-core,
-    # nix-homebrew-bundle,
-		...
-	}:
+	outputs = inputs@{nix-darwin, ...}:
   let
     pkgs = import <nixpkgs> {
-      # Allows to install non-opensource applications
       config.allowUnfree = true;
-      # Allows to install non-compatible architecture applications
       config.allowUnsupportedSystem = true;
     };
     osConfigs = let
       args = inputs // { inherit pkgs; };
-    in import ./os/selector.nix args; #{
-      # inherit mac-app-util;
-      # inherit self;
-      # inherit nix-homebrew;
-      # inherit nix-homebrew-core;
-      # inherit nix-homebrew-cask;
-      # inherit nix-homebrew-bundle;
-      # inherit home-manager;
-      # inherit inputs;
-      # inherit pkgs;
-    # };
+    in import ./os/selector.nix args;
   in 
   {
     darwinConfigurations."dotlyx" = nix-darwin.lib.darwinSystem {
