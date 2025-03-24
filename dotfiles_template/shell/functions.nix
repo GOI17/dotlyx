@@ -6,32 +6,25 @@ function vv () {
 	local config=$(fd --max-depth 1 --glob 'nvim-*' ~/.config | fzf --prompt="Neovim Configs > " --border --exit-0)
 
 	# If I exit fzf without selecting a config, don't open Neovim
-	[[ -z $config ]] && echo "No config selected" && return
+	[[ -z $config ]] && ${_w "No config selected"} && return
 
 	# Open Neovim with the selected config
-	NVIM_APPNAME=$(basename $config) nvim
+	NVIM_APPNAME=$(basename $config) nvim ''$1
 }
 
 function get_ports () {
   local port=$1
 
-  [[ -z $port ]] && echo "Provide a valid port..." && return
+  [[ -z $port ]] && ${_e "Provide a valid port..."} && return
 
-  echo "Looking for proocesses using $port..."
+  ${_w "Looking for proocesses using $port..."} 
 
   local result=$(lsof -i tcp:$port | awk 'FNR==1{next} {printf "%s,", $2}')
 
-  [[ -z $result ]] && echo "No processes running under $port port" && return
+  [[ -z $result ]] && ${_w "No processes running under $port port"} && return
 
   echo $result | pbcopy
 
-  echo "PID's are in you clipboard now"
-}
-
-function dotlyx_core_rebuild () {
-  ''$USER_DOTFILES_PATH/result/bin/dotlyx-setup -u
-  nix build --file $DOTLYX_HOME_PATH/core/setup/install.nix
-  sudo rm -rf $USER_DOTFILES_PATH/result
-  mv ./result $USER_DOTFILES_PATH
+  ${_s "PID's are in you clipboard now"}
 }
 ''
