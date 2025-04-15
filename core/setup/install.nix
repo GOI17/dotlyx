@@ -24,9 +24,9 @@ let
           break
           ;;
         -r | --retore)
-          ${dotfilesBanner.script { type = "restore"; } }
-          ${dotfilesLocation.script { type = "restore"; }
-          ${dotfilesBackup.script { is_restoring = true; } }
+          ${dotfilesBanner.script { type = "restore"; }}
+          ${dotfilesLocation.script { type = "restore"; }}
+          ${dotfilesBackup.script { is_restoring = true; }}
           ${dotfilesInitDefaults.script { is_restoring = true; }}
           break
           ;;
