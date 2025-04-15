@@ -16,7 +16,7 @@ let
       case ''$1 in
         -i | --install)
           ${dotfilesBanner.script { type = "new"; } }
-          ${dotfilesLocation.script}
+          ${dotfilesLocation.script { type = "new"; }}
           ${dotfilesBackup.script {} }
           ${dotfilesInitDefaults.script {} }
           cd ''$HOME
@@ -25,7 +25,7 @@ let
           ;;
         -r | --retore)
           ${dotfilesBanner.script { type = "restore"; } }
-          ${dotfilesLocation.script}
+          ${dotfilesLocation.script { type = "restore"; }
           ${dotfilesBackup.script { is_restoring = true; } }
           ${dotfilesInitDefaults.script { is_restoring = true; }}
           break
