@@ -28,7 +28,9 @@ with import ./utilities/log_helpers.nix;
       git submodule update --init --remote
       git add .gitmodules
       git commit -m "Update dotlyx submodule to use remote URL"
-    '' else ""}
+    '' else ''
+      git submodule update --init --remote
+    ''}
 
     # Setting up dotfiles template
     cp -r "''$DOTLYX_HOME_PATH/dotfiles_template/"* .
