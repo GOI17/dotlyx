@@ -48,14 +48,14 @@ let
         -u | --update-core)
           ${dotfilesBanner.script { type = "update"; }}
           cur_path=$(pwd)
-          cd $DOTLYX_HOME_PATH
-          git pull origin main
-          git submodule update --init --recursive
-          nix build --file core/setup/install.nix
-          ./result/bin/dotlyx-setup -b
+          cd $USER_DOTFILES_PATH
+          ${_w "Downloading latest Dotlyx core..."}
+          git submodule update --init --remote
           ${_s "Dotlyx core was updated"}
+          ${_w "Building Dotlyx core..."}
           cd $cur_path
-          ./result/bin/dotlyx-setup -v
+          ${_s "Dotlyx core was updated"}
+          dotlyx -v
           break
           ;;
         -v | --version)
