@@ -8,5 +8,5 @@ fi
 
 git tag -a "v$VERSION" -m "Release v$VERSION"
 git push origin "v$VERSION"
-sed -i "s/version = \"[0-9.]*\"/version = \"$VERSION\"/" ./core/setup/install.nix
+sed -i "s/version = \"[0-9.]*\"/version = \"$VERSION\"/" "./core/setup/install.nix"
 echo "Tag v$VERSION created and pushed. Derivation updated."
