@@ -49,8 +49,7 @@ let
           ${dotfilesBanner.script { type = "update"; }}
           cur_path=$(pwd)
           cd $DOTLYX_HOME_PATH
-          git fetch
-          git merge
+          git pull origin main
           git submodule update --init --recursive
           ${_s "Dotlyx core was updated"}
           cd $cur_path
