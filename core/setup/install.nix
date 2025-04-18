@@ -6,7 +6,7 @@ with import ./steps/utilities/log_helpers.nix;
 
 let
   name = "dotlyx-setup";
-  version = "0.0.5";
+  version = "vXXX_DOTLYX_RELEASE_XXX";
   dotfilesBanner = import ./steps/utilities/dotfiles_banner.nix;
   dotfilesLocation = import ./steps/dotfiles_location.nix;
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
@@ -58,7 +58,7 @@ let
           ;;
         -v | --version)
           ${dotfilesBanner.script { type = "version"; }}
-          echo "Dotlyx core: ${version}v"
+          echo "Dotlyx core: ${version}"
           break
           ;;
         *)
