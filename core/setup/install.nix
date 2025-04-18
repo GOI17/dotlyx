@@ -51,8 +51,11 @@ let
           cd $DOTLYX_HOME_PATH
           git pull origin main
           git submodule update --init --recursive
+          nix build --file core/setup/install.nix
+          ./result/bin/dotlyx-setup -b
           ${_s "Dotlyx core was updated"}
           cd $cur_path
+          ./result/bin/dotlyx-setup -v
           break
           ;;
         -v | --version)
