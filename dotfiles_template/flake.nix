@@ -41,13 +41,19 @@
         {
           nix.settings.experimental-features = "nix-command flakes";
           system.stateVersion = 5;
-          environment.extraInit = import ./shell/functions.nix;
-          environment.shellAliases = import ./shell/aliases.nix;
-          environment.variables = with import ./env.nix; import ./shell/exports.nix
-          // {
-            USER_DOTFILES_PATH = dotfilesDirectory;
-            DOTLYX_HOME_PATH = dotlyxDirectory;
-          };
+          environment.extraInit =
+            import ./shell/functions.nix //
+            import ./modules/dotlyx/shell/functions.nix;
+          environment.shellAliases =
+            import ./shell/aliases.nix //
+            import ./modules/dotlyx/shell/aliases.nix;
+          environment.variables = with import ./env.nix;
+            import ./shell/exports.nix //
+            import ./modules/dotlyx/shell/exports.nix //
+            {
+              USER_DOTFILES_PATH = dotfilesDirectory;
+              DOTLYX_HOME_PATH = dotlyxDirectory;
+            };
           environment.pathsToLink = [ "/share/zsh" ];
           environment.systemPackages = with pkgs; [
             neovim

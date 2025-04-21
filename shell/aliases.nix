@@ -1,0 +1,32 @@
+{
+	 sudo="sudo ";
+	 ".."="cd ..";
+	 "..."="cd ../..";
+	 ll="eza -l";
+	 la="eza -la";
+	 "~"="cd ~";
+	 dotfiles="cd $USER_DOTFILES_PATH";
+	 gaa="git add -A";
+	 gcm="git commit -m";
+	 grb="git rebase";
+	 grbi="git rebase -i -r";
+	 gca="git add --all && git commit --amend --no-edit";
+	 gco="git checkout";
+	 gs="git status -sb";
+	 gf="git fetch --all -p";
+	 gps="git push";
+	 gpsf="git push --force";
+	 gpl="git pull --rebase --autostash";
+	 gb="git branch";
+	 gpsup="git push -u origin '$(gb --show-current)'";
+	 gswitch="git switch";
+	 "c."="(code $PWD &>/dev/null &)";
+	 pin="jump pin";
+	 unpin="jump unpin";
+	 pins="jump pins";
+	 k="kill -9";
+	 "o."="open .";
+	 chmodr="chmod -Rv";
+	 ppath="echo '$PATH' | tr ':' '\n' | nl";
+   dotlyx="$USER_DOTFILES_PATH/result/bin/dotlyx-setup";
+}

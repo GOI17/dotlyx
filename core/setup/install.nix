@@ -28,6 +28,7 @@ let
           ${dotfilesLocation.script { type = "restore"; }}
           ${dotfilesBackup.script { is_restoring = true; }}
           ${dotfilesInitDefaults.script { is_restoring = true; }}
+          cd ''$USER_DOTFILES_PATH
           break
           ;;
         -b | --rebuild)
@@ -48,12 +49,12 @@ let
         -u | --update-core)
           ${dotfilesBanner.script { type = "update"; }}
           cur_path=$(pwd)
-          cd $USER_DOTFILES_PATH
+          cd ''$USER_DOTFILES_PATH
           ${_w "Downloading latest Dotlyx core..."}
           git submodule update --init --remote
           ${_s "Dotlyx core was updated"}
           ${_w "Building Dotlyx core..."}
-          cd $cur_path
+          cd ''$cur_path
           ${_s "Dotlyx core was updated"}
           dotlyx -v
           break
