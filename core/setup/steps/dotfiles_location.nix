@@ -13,7 +13,7 @@ rec {
     '';
   };
   script = with import ./utilities/log_helpers.nix; { type }: ''
-    echo -e "${messages."${type}"}" && read -e -p "location: " USER_DOTFILES_PATH
+    echo -e "${messages."${type}"}" && vared -p "Location: " USER_DOTFILES_PATH
 
     USER_DOTFILES_PATH=''${USER_DOTFILES_PATH:-${defaultUserDotfilesPath}}
     USER_DOTFILES_PATH="$(eval echo "$USER_DOTFILES_PATH")"
