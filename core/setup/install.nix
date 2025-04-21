@@ -31,7 +31,7 @@ let
           cd ''$USER_DOTFILES_PATH
           break
           ;;
-        -b | --rebuild)
+        -R | --rebuild)
           ${dotfilesBanner.script { type = "rebuild"; }}
           cd ''$HOME/.config/nix-darwin
           if ! $(type darwin-rebuild >/dev/null 2>&1); then
@@ -47,16 +47,7 @@ let
           break
           ;;
         -u | --update-core)
-          ${dotfilesBanner.script { type = "update"; }}
-          cur_path=$(pwd)
-          cd ''$USER_DOTFILES_PATH
-          ${_w "Downloading latest Dotlyx core..."}
-          git submodule update --init --remote
-          ${_s "Dotlyx core was updated"}
-          ${_w "Building Dotlyx core..."}
-          cd ''$cur_path
-          ${_s "Dotlyx core was updated"}
-          dotlyx -v
+          ${_w "Module under construction"}
           break
           ;;
         -v | --version)
@@ -65,7 +56,7 @@ let
           break
           ;;
         *)
-          ${_e "Invalid \$1 option. \n Script usage: \$(basename \$0) [-i | --install][-r | --restore][-b | --rebuild][-u | --update-core ][-v | --version]"}
+          ${_e "Invalid \$1 option. \n Script usage: \$(basename \$0) Create new dotfiles [-i | --install]\nKeep your existing dotfiles [-r | --restore]\nRebuild your flake [-R | --rebuild]\nUpdate dotlyx core [-u | --update-core]\nGet your local version [-v | --version]"}
           exit 1
           ;;
       esac
