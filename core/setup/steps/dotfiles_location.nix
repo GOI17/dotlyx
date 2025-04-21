@@ -18,7 +18,7 @@ rec {
         sudo chsh -s "''$(command -v zsh)"
     fi
 
-    echo -e "${messages."${type}"}" && vared -p "Location: " USER_DOTFILES_PATH
+    echo -e "${messages."${type}"}" && bash <(read -e -p "Location: " USER_DOTFILES_PATH)
 
     USER_DOTFILES_PATH=''${USER_DOTFILES_PATH:-${defaultUserDotfilesPath}}
     USER_DOTFILES_PATH="$(eval echo "$USER_DOTFILES_PATH")"
