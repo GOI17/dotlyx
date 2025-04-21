@@ -13,14 +13,15 @@ rec {
     '';
   };
   script = with import ./utilities/log_helpers.nix; { type }: ''
+    if ! [[ ''$SHELL =~ "zsh" ]]; then
+        ${_s "Setting zsh as default shell"}
+        sudo chsh -s "''$(command -v zsh)"
+    fi
+
     echo -e "${messages."${type}"}" && vared -p "Location: " USER_DOTFILES_PATH
 
     USER_DOTFILES_PATH=''${USER_DOTFILES_PATH:-${defaultUserDotfilesPath}}
     USER_DOTFILES_PATH="$(eval echo "$USER_DOTFILES_PATH")"
 
-    if ! [[ ''$SHELL =~ "zsh" ]]; then
-        ${_s "Setting zsh as default shell"}
-        sudo chsh -s "''$(command -v zsh)"
-    fi
   '';
 }
