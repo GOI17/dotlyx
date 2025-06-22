@@ -1,0 +1,131 @@
+#!/bin/bash
+
+command_exists() {
+  type "$1" >/dev/null 2>&1
+}
+
+if ! command_exists curl; then
+  echo "curl not installed, trying to install"
+
+  if command_exists apt; then
+    echo "Installing using apt"
+    echo "Installing curl"
+    sudo apt -y install curl 2>&1
+  elif command_exists dnf; then
+    echo "Installing using dnf"
+    echo "Installing curl"
+    sudo dnf -y install curl 2>&1
+  elif command_exists yum; then
+    echo "Installing using yum"
+    echo "Installing curl"
+    yes | sudo yum install curl 2>&1
+  elif command_exists brew; then
+    echo "Installing using brew"
+    echo "Installing curl"
+    yes | brew install curl 2>&1
+  elif command_exists pacman; then
+    echo "Installing using pacman"
+    echo "Installing curl"
+    sudo pacman -S --noconfirm curl 2>&1
+  else
+    echo "Could not install curl, no package provider found"
+    exit 1
+  fi
+else
+    echo "✅ curl installed"
+fi
+
+if ! command_exists git; then
+  echo "git not installed, trying to install"
+
+  if command_exists apt; then
+    echo "Installing using apt"
+    echo "Installing git"
+    sudo apt -y install git 2>&1
+  elif command_exists dnf; then
+    echo "Installing using dnf"
+    echo "Installing git"
+    sudo dnf -y install git 2>&1
+  elif command_exists yum; then
+    echo "Installing using yum"
+    echo "Installing git";
+    yes | sudo yum install git 2>&1
+  elif command_exists brew; then
+    echo "Installing using brew"
+    echo "Installing git"
+    yes | brew install git 2>&1
+  elif command_exists pacman; then
+    echo "Installing using pacman"
+    echo "Installing git"
+    sudo pacman -S --noconfirm git 2>&1
+  else
+    echo "Could not install git, no package provider found"
+    exit 1
+  fi
+else
+    echo "✅ git installed"
+fi
+
+if ! command_exists python3; then
+  echo "python not installed, trying to install"
+
+  if command_exists apt; then
+    echo "Installing using apt"
+    echo "Installing python"
+    sudo apt -y install python3 2>&1
+  elif command_exists dnf; then
+    echo "Installing using dnf"
+    echo "Installing python"
+    sudo dnf -y install python3 2>&1
+  elif command_exists yum; then
+    echo "Installing using yum"
+    echo "Installing python";
+    yes | sudo yum install python3 2>&1
+  elif command_exists brew; then
+    echo "Installing using brew"
+    echo "Installing python"
+    yes | brew install python3 2>&1
+  elif command_exists pacman; then
+    echo "Installing using pacman"
+    echo "Installing python"
+    sudo pacman -S --noconfirm python3 2>&1
+  else
+    echo "Could not install python, no package provider found"
+    exit 1
+  fi
+else
+    echo "✅ python installed"
+fi
+
+if ! command_exists nix; then
+  echo "nix is not installed, trying to install"
+  SYSTEMD_ENABLED=1;
+
+  check_systemd() {
+      if command -v systemctl >/dev/null 2>&1; then
+          $SYSTEMD_ENABLED=0
+      fi
+      if [ "$(ps -p 1 -o comm=)" = "systemd" ]; then
+          $SYSTEMD_ENABLED=0
+      fi
+      if [ -d /lib/systemd ] || [ -d /usr/lib/systemd ]; then
+          $SYSTEMD_ENABLED=0
+      fi
+  }
+
+  if [ $SYSTEMD_ENABLED -eq 0 ]; then
+      echo "Enabling systemd-dependent features..."
+      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s \
+        -- install \
+        --no-confirm
+  else
+      echo "Using alternative to systemd..."
+      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s \
+        -- install linux \
+        --init none \
+        --no-confirm
+  fi
+  . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+else
+    echo "✅ nix installed"
+fi
