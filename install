@@ -1,7 +1,43 @@
-bash <(curl -s https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/requirements)
+#!/usr/bin/env bash
+set -euo pipefail
 
-sudo rm -rf $HOME/dotlyx
-git clone https://github.com/goi17/dotlyx.git $HOME/dotlyx
-cd $HOME/dotlyx
-nix build --file core/setup/install.nix
-./result/bin/dotlyx-setup $@
+# ------------------------------------------------------------------
+# 1. Run the requirements script
+# ------------------------------------------------------------------
+# The script is fetched via curl and executed with bash.  If either
+# the download or the script itself fails, we abort the installation.
+if ! curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/requirements | bash; then
+  echo "❌ Requirements check failed. Aborting installation." >&2
+  exit 1
+fi
+
+# ------------------------------------------------------------------
+# 2. Clean up any previous installation
+# ------------------------------------------------------------------
+sudo rm -rf "$HOME/dotlyx"
+
+# ------------------------------------------------------------------
+# 3. Clone the repository
+# ------------------------------------------------------------------
+if ! git clone https://github.com/goi17/dotlyx.git "$HOME/dotlyx"; then
+  echo "❌ Failed to clone repository." >&2
+  exit 1
+fi
+
+cd "$HOME/dotlyx"
+
+# ------------------------------------------------------------------
+# 4. Build the setup derivation
+# ------------------------------------------------------------------
+if ! nix build --file core/setup/install.nix; then
+  echo "❌ Nix build failed." >&2
+  exit 1
+fi
+
+# ------------------------------------------------------------------
+# 5. Execute the setup script
+# ------------------------------------------------------------------
+if ! ./result/bin/dotlyx-setup "$@"; then
+  echo "❌ dotlyx-setup failed." >&2
+  exit 1
+fi
