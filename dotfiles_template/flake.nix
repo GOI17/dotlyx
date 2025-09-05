@@ -31,6 +31,11 @@
       config.allowUnfree = true;
       config.allowUnsupportedSystem = true;
     };
+    pkgsFor = system: import <nixpkgs> {
+      inherit system;
+      config.allowUnfree = true;
+      config.allowUnsupportedSystem = true;
+    };
     osConfigs = let
       args = inputs // { inherit pkgs; };
     in import ./os/selector.nix args;
@@ -57,7 +62,6 @@
           environment.pathsToLink = [ "/share/zsh" ];
           environment.systemPackages = with pkgs; [
             neovim
-            mas
             tree
             wget
             jq
@@ -123,6 +127,44 @@
           ];
         }
       ];
+    };
+
+    # Provide a default package for Linux systems so that
+    # `nix build .#packages.<system>.default` works.
+    packages = {
+      aarch64-linux = pkgsFor "aarch64-linux".neovim;
+      x86_64-linux   = pkgsFor "x86_64-linux".neovim;
+      aarch64-darwin = pkgsFor "aarch64-darwin".neovim;
+      x86_64-darwin = pkgsFor "x86_64-darwin".neovim;
+    };
+
+    # Provide a minimal app entry for Linux and Darwin so that
+    # `nix run .#apps.<system>.default` works.
+    apps = {
+      aarch64-linux = {
+        default = {
+          type = "app";
+          program = "${packages.aarch64-linux}/bin/nvim";
+        };
+      };
+      x86_64-linux = {
+        default = {
+          type = "app";
+          program = "${packages.x86_64-linux}/bin/nvim";
+        };
+      };
+      aarch64-darwin = {
+        default = {
+          type = "app";
+          program = "${packages.aarch64-darwin}/bin/nvim";
+        };
+      };
+      x86_64-darwin = {
+        default = {
+          type = "app";
+          program = "${packages.x86_64-darwin}/bin/nvim";
+        };
+      };
     };
   };
 }
