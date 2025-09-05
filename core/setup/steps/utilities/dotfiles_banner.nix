@@ -1,5 +1,3 @@
-{ lib, stdenv, writeShellScriptBin, _s, _e, _w }:
-
 with import ./colors.nix;
 
 rec {
