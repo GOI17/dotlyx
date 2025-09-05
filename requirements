@@ -1,131 +1,95 @@
 #!/bin/bash
 
+# Helper to check if a command exists
 command_exists() {
   type "$1" >/dev/null 2>&1
 }
 
+# ------------------------------------------------------------------
+# 1. Ensure curl is available
+# ------------------------------------------------------------------
 if ! command_exists curl; then
-  echo "curl not installed, trying to install"
-
-  if command_exists apt; then
-    echo "Installing using apt"
-    echo "Installing curl"
-    sudo apt -y install curl 2>&1
-  elif command_exists dnf; then
-    echo "Installing using dnf"
-    echo "Installing curl"
-    sudo dnf -y install curl 2>&1
-  elif command_exists yum; then
-    echo "Installing using yum"
-    echo "Installing curl"
-    yes | sudo yum install curl 2>&1
-  elif command_exists brew; then
-    echo "Installing using brew"
-    echo "Installing curl"
-    yes | brew install curl 2>&1
-  elif command_exists pacman; then
-    echo "Installing using pacman"
-    echo "Installing curl"
-    sudo pacman -S --noconfirm curl 2>&1
-  else
-    echo "Could not install curl, no package provider found"
-    exit 1
-  fi
-else
-    echo "✅ curl installed"
+  echo "❌ curl is not installed. Please install curl and re‑run this script." >&2
+  exit 1
 fi
 
+# ------------------------------------------------------------------
+# 2. Install missing prerequisites
+# ------------------------------------------------------------------
+install_pkg() {
+  local pkg=$1
+  local installer=$2
+  echo "🔧 Installing $pkg..."
+  if command_exists apt; then
+    sudo apt -y install "$pkg" 2>&1
+  elif command_exists dnf; then
+    sudo dnf -y install "$pkg" 2>&1
+  elif command_exists yum; then
+    sudo yum -y install "$pkg" 2>&1
+  elif command_exists brew; then
+    brew install "$pkg" 2>&1
+  elif command_exists pacman; then
+    sudo pacman -S --noconfirm "$pkg" 2>&1
+  else
+    echo "❌ No supported package manager found. Please install $pkg manually." >&2
+    exit 1
+  fi
+}
+
+# Ensure git
 if ! command_exists git; then
-  echo "git not installed, trying to install"
-
-  if command_exists apt; then
-    echo "Installing using apt"
-    echo "Installing git"
-    sudo apt -y install git 2>&1
-  elif command_exists dnf; then
-    echo "Installing using dnf"
-    echo "Installing git"
-    sudo dnf -y install git 2>&1
-  elif command_exists yum; then
-    echo "Installing using yum"
-    echo "Installing git";
-    yes | sudo yum install git 2>&1
-  elif command_exists brew; then
-    echo "Installing using brew"
-    echo "Installing git"
-    yes | brew install git 2>&1
-  elif command_exists pacman; then
-    echo "Installing using pacman"
-    echo "Installing git"
-    sudo pacman -S --noconfirm git 2>&1
-  else
-    echo "Could not install git, no package provider found"
-    exit 1
-  fi
-else
-    echo "✅ git installed"
+  install_pkg git
 fi
 
+# Ensure python3
 if ! command_exists python3; then
-  echo "python not installed, trying to install"
+  install_pkg python3
+fi
 
-  if command_exists apt; then
-    echo "Installing using apt"
-    echo "Installing python"
-    sudo apt -y install python3 2>&1
-  elif command_exists dnf; then
-    echo "Installing using dnf"
-    echo "Installing python"
-    sudo dnf -y install python3 2>&1
-  elif command_exists yum; then
-    echo "Installing using yum"
-    echo "Installing python";
-    yes | sudo yum install python3 2>&1
-  elif command_exists brew; then
-    echo "Installing using brew"
-    echo "Installing python"
-    yes | brew install python3 2>&1
-  elif command_exists pacman; then
-    echo "Installing using pacman"
-    echo "Installing python"
-    sudo pacman -S --noconfirm python3 2>&1
+# ------------------------------------------------------------------
+# 3. Install nix if missing
+# ------------------------------------------------------------------
+if ! command_exists nix; then
+  echo "🔧 nix is not installed. Installing nix..."
+
+  # Use the official installer script
+  # The installer will automatically detect systemd and install the daemon if available.
+  # For non‑systemd systems we pass --no-daemon to avoid errors.
+  if command_exists systemctl || [ "$(ps -p 1 -o comm=)" = "systemd" ]; then
+    # Systemd is present
+    curl -L https://nixos.org/nix/install | sh
   else
-    echo "Could not install python, no package provider found"
+    # Non‑systemd (e.g., Alpine, some containers)
+    curl -L https://nixos.org/nix/install | sh -s -- --no-daemon
+  fi
+
+  # Source the profile that the installer creates
+  if [ -f /nix/var/nix/profiles/default/etc/profile.d/nix.sh ]; then
+    . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
+  elif [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+    . $HOME/.nix-profile/etc/profile.d/nix.sh
+  else
+    echo "❌ nix installation succeeded but profile could not be sourced." >&2
     exit 1
   fi
-else
-    echo "✅ python installed"
-fi
 
-if ! command_exists nix; then
-  echo "nix is not installed, trying to install"
-  SYSTEMD_ENABLED=1;
-
-  check_systemd() {
-      if command -v systemctl >/dev/null 2>&1; then
-          $SYSTEMD_ENABLED=0
-      fi
-      if [ "$(ps -p 1 -o comm=)" = "systemd" ]; then
-          $SYSTEMD_ENABLED=0
-      fi
-      if [ -d /lib/systemd ] || [ -d /usr/lib/systemd ]; then
-          $SYSTEMD_ENABLED=0
-      fi
-  }
-
-  if [ $SYSTEMD_ENABLED -eq 0 ]; then
-      echo "Enabling systemd-dependent features..."
-      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s \
-        -- install \
-        --no-confirm
-  else
-      echo "Using alternative to systemd..."
-      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s \
-        -- install linux \
-        --init none \
-        --no-confirm
+  # Verify installation
+  if ! command_exists nix; then
+    echo "❌ nix installation failed." >&2
+    exit 1
   fi
-  . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-else
-    echo "✅ nix installed"
+
+  echo "✅ nix installed successfully."
 fi
+
+# ------------------------------------------------------------------
+# 4. Verify all required tools are now available
+# ------------------------------------------------------------------
+for tool in curl git python3 nix; do
+  if ! command_exists "$tool"; then
+    echo "❌ $tool is still missing after installation." >&2
+    exit 1
+  fi
+done
+
+echo "✅ All prerequisites satisfied."
