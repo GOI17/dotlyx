@@ -1,4 +1,4 @@
-import { Suspense, useCallback, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 
 export const App = () => {
   const { executeScript, scriptState, output } = useRunScript();
@@ -10,6 +10,12 @@ export const App = () => {
   const handleOnClickInstallDotlyx = () => {
     executeScript<"install">(`../install`, "install", true);
   };
+
+  useEffect(() => {
+    window.electronAPI.onPasswordPrompt(() =>
+      console.log("Script is asking for your password"),
+    );
+  }, []);
 
   return (
     <div>
@@ -72,7 +78,9 @@ const RequirementsList = <V,>({ value }: RequirementsListProps<V>) => {
         .map((text) => {
           if (text.length === 0) return;
           return (
-            <li title={`Dotlyx requirements list item, ${text}`}>{text}</li>
+            <li key={text} title={`Dotlyx requirements list item, ${text}`}>
+              {text}
+            </li>
           );
         })}
     </ul>
@@ -122,7 +130,10 @@ const useRunScript = () => {
             if (res.type === "stderr") {
               window.electronAPI.killProcess(res.processId);
             }
-            setOutput({ type, value: res.data });
+            setOutput((prev) => ({
+              type,
+              value: `${String(prev?.value)}${res.data}`,
+            }));
           });
         }
         window.electronAPI.executeBashScript(scriptPath).then((result) => {

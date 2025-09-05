@@ -18,7 +18,7 @@ docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -w /root -it --rm alpine sh -u
 docker run -e TERM -e COLORTERM -w /root -it --rm ubuntu sh -uec '
   apt-get update
   apt-get install -y curl build-essential sudo
-  su -c bash -c "$(curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install)"
+  su -c bash -c "$(curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install) -- -i"
   su -c zsh'
 ```
 
@@ -55,14 +55,14 @@ dotlyx -u
 ```
 dotlyx_core_rebuild
 ```
-#### Print core version 
+#### Print core version
 ```
 dotlyx -v
 ```
 
 ### Another one?
 #### Yes, but with Nix underhood 😎
-#### Nix is the best alternative if you really want everything versioned. 
+#### Nix is the best alternative if you really want everything versioned.
 
 Powered by
 -   [Nix](https://nixos.org)

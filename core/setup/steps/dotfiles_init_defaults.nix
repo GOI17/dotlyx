@@ -41,13 +41,17 @@ with import ./utilities/log_helpers.nix;
     ln -sf ''$USER_DOTFILES_PATH/flake.nix ''$HOME/.config/nix-darwin/flake.nix 
     cd ''$HOME/.config/nix-darwin
 
-    if ! $(type darwin-rebuild >/dev/null 2>&1); then
-      ${_s "Installing nix-darwin..."}
-      nix --extra-experimental-features "nix-command flakes" \
-        run nix-darwin -- switch \
-        --flake .#dotlyx --impure
+    if [[ "$(uname -s)" == "Darwin" ]]; then
+      if ! $(type darwin-rebuild >/dev/null 2>&1); then
+        ${_s "Installing nix-darwin..."}
+        nix --extra-experimental-features "nix-command flakes" \
+          run nix-darwin -- switch \
+          --flake .#dotlyx --impure
+      else
+        darwin-rebuild switch --flake .#dotlyx --impure
+      fi
     else
-      darwin-rebuild switch --flake .#dotlyx --impure
+      ${_s "Skipping nix-darwin setup on non-Darwin system"}
     fi
   '';
 }

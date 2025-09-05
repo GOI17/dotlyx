@@ -11,6 +11,11 @@ export interface ScriptResult {
   success: boolean;
 }
 
+export interface PasswordPrompt {
+  processId: string;
+  prompt: string;
+}
+
 export interface ScriptOutput {
   processId: string;
   type: "stdout" | "stderr";
@@ -23,51 +28,44 @@ contextBridge.exposeInMainWorld("dotlyx", {
 
 contextBridge.exposeInMainWorld("electronAPI", {
   platform: process.platform,
-
-  // Execute bash script file
   executeBashScript: (
     scriptPath: string,
     args?: string[],
   ): Promise<ScriptResult> =>
     ipcRenderer.invoke("execute:bash-script", scriptPath, args),
-
-  // Execute bash command
   executeBashCommand: (command: string): Promise<ScriptResult> =>
     ipcRenderer.invoke("execute:bash-command", command),
-
-  // Kill running process
   killProcess: (
     processId: string,
   ): Promise<{ success: boolean; error?: string }> =>
     ipcRenderer.invoke("kill:process", processId),
-
-  // List running processes
   listProcesses: (): Promise<string[]> => ipcRenderer.invoke("list:processes"),
-
-  // Event listeners for real-time output
   onScriptOutput: (callback: (output: ScriptOutput) => void) => {
     ipcRenderer.on("script:output", (_, output) => callback(output));
   },
-
   onScriptStarted: (
     callback: (data: { processId: string; command: string }) => void,
   ) => {
     ipcRenderer.on("script:started", (_, data) => callback(data));
   },
-
   onScriptCompleted: (callback: (result: ScriptResult) => void) => {
     ipcRenderer.on("script:completed", (_, result) => callback(result));
   },
-
   onScriptError: (
     callback: (data: { processId: string; error: string }) => void,
   ) => {
     ipcRenderer.on("script:error", (_, data) => callback(data));
   },
-
-  // Remove event listeners
   removeAllListeners: (channel: string) => {
     ipcRenderer.removeAllListeners(channel);
+  },
+  providePassword: (
+    processId: string,
+    password: string,
+  ): Promise<{ success: boolean; error?: string }> =>
+    ipcRenderer.invoke("provide:password", processId, password),
+  onPasswordPrompt: (callback: (prompt: PasswordPrompt) => void) => {
+    ipcRenderer.on("script:password-prompt", (_, prompt) => callback(prompt));
   },
 });
 
@@ -97,6 +95,11 @@ declare global {
         callback: (data: { processId: string; error: string }) => void,
       ) => void;
       removeAllListeners: (channel: string) => void;
+      providePassword: (
+        processId: string,
+        password: string,
+      ) => Promise<{ success: boolean; error?: string }>;
+      onPasswordPrompt: (callback: (prompt: PasswordPrompt) => void) => void;
     };
   }
 }

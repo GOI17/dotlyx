@@ -54,6 +54,19 @@ function validateScript(scriptPath: string): {
   return { valid: true };
 }
 
+function isPasswordPrompt(text: string): boolean {
+  const passwordPatterns = [
+    /password.*:/i,
+    /\[sudo\].*password.*:/i,
+    /enter.*password/i,
+    /passphrase.*:/i,
+    /password.*for.*:/i,
+    /.*password.*\s*$/i,
+  ];
+
+  return passwordPatterns.some((pattern) => pattern.test(text.trim()));
+}
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -87,9 +100,6 @@ const createWindow = () => {
         if (!validation.valid) {
           reject(validation.error);
         }
-
-        console.log({ resolvedPath, validation });
-
         const _process = spawn(getShell(), [resolvedPath, ...args], {
           cwd: path.dirname(scriptPath),
           env: { ...process.env },
@@ -100,6 +110,7 @@ const createWindow = () => {
 
         let stdout = "";
         let stderr = "";
+        let currentPrompt = "";
 
         _process.stdout.on("data", (data) => {
           const output = data?.toString();
@@ -115,12 +126,22 @@ const createWindow = () => {
         _process.stderr.on("data", (data) => {
           const output = data?.toString();
           stderr += output;
+          currentPrompt += output;
+          console.log({ currentPrompt });
 
-          mainWindow.webContents.send("script:output", {
-            processId,
-            type: "stderr",
-            data: output,
-          });
+          if (isPasswordPrompt(currentPrompt)) {
+            mainWindow.webContents.send("script:password-prompt", {
+              processId,
+              prompt: currentPrompt.trim(),
+            });
+            currentPrompt = "";
+          } else {
+            mainWindow.webContents.send("script:output", {
+              processId,
+              type: "stderr",
+              data: output,
+            });
+          }
         });
 
         _process.on("close", (code) => {
@@ -203,6 +224,21 @@ const createWindow = () => {
       });
     });
   });
+
+  ipcMain.handle(
+    "provide:password",
+    async (event, processId: string, password: string) => {
+      const process = runningProcesses.get(processId);
+      if (process && process.stdin) {
+        process.stdin.write(password + "\n");
+        return { success: true };
+      }
+      return {
+        success: false,
+        error: "Process not found or stdin not available",
+      };
+    },
+  );
 
   ipcMain.handle("kill:process", async (event, processId: string) => {
     const process = runningProcesses.get(processId);
