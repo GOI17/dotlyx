@@ -60,7 +60,7 @@ if ! command_exists nix; then
   fi
 
   # Determine the current user in a robust way
-  CURRENT_USER=${LOGNAME:-$(whoami)}
+  CURRENT_USER=$(whoami)
 
   # Add the current user to the nixbld group
   if ! id -nG "$CURRENT_USER" | grep -qw nixbld; then
