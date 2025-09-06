@@ -60,6 +60,13 @@ if ! command_exists nix; then
     groupadd nixbld
   fi
 
+  # Ensure /nix directory exists (required for root installations)
+  if [ ! -d /nix ]; then
+    echo "🔧 Creating /nix directory..."
+    mkdir -p /nix
+    chown root:root /nix
+  fi
+
   # Determine the current user in a robust way
   CURRENT_USER=$(whoami)
 
