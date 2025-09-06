@@ -18,7 +18,6 @@ fi
 # ------------------------------------------------------------------
 install_pkg() {
   local pkg=$1
-  local installer=$2
   echo "🔧 Installing $pkg..."
   if command_exists apt; then
     sudo apt -y install "$pkg" 2>&1
@@ -52,6 +51,12 @@ fi
 if ! command_exists nix; then
   echo "🔧 nix is not installed. Installing nix..."
 
+  # Create the nixbld group if it does not exist
+  if ! getent group nixbld >/dev/null 2>&1; then
+    echo "🔧 Creating nixbld group..."
+    sudo groupadd nixbld
+  fi
+
   # Use the official installer script
   # The installer will automatically detect systemd and install the daemon if available.
   # For non‑systemd systems we pass --no-daemon to avoid errors.
@@ -66,8 +71,8 @@ if ! command_exists nix; then
   # Source the profile that the installer creates
   if [ -f /nix/var/nix/profiles/default/etc/profile.d/nix.sh ]; then
     . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
-  elif [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
-    . $HOME/.nix-profile/etc/profile.d/nix.sh
+  elif [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+    . "$HOME/.nix-profile/etc/profile.d/nix.sh"
   else
     echo "❌ nix installation succeeded but profile could not be sourced." >&2
     exit 1
