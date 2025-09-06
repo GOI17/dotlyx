@@ -19,8 +19,10 @@ fi
 install_pkg() {
   local pkg=$1
   echo "🔧 Installing $pkg..."
+  # Update package lists before installing
   if command_exists apt; then
-    sudo apt -y install "$pkg" 2>&1
+    sudo apt-get update -y
+    sudo apt-get -y install "$pkg" 2>&1
   elif command_exists dnf; then
     sudo dnf -y install "$pkg" 2>&1
   elif command_exists yum; then
