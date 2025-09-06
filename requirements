@@ -21,16 +21,16 @@ install_pkg() {
   echo "🔧 Installing $pkg..."
   # Update package lists before installing
   if command_exists apt; then
-    sudo apt-get update -y
-    sudo apt-get -y install "$pkg" 2>&1
+    apt-get update -y
+    apt-get -y install "$pkg" 2>&1
   elif command_exists dnf; then
-    sudo dnf -y install "$pkg" 2>&1
+    dnf -y install "$pkg" 2>&1
   elif command_exists yum; then
-    sudo yum -y install "$pkg" 2>&1
+    yum -y install "$pkg" 2>&1
   elif command_exists brew; then
     brew install "$pkg" 2>&1
   elif command_exists pacman; then
-    sudo pacman -S --noconfirm "$pkg" 2>&1
+    pacman -S --noconfirm "$pkg" 2>&1
   else
     echo "❌ No supported package manager found. Please install $pkg manually." >&2
     exit 1
@@ -57,7 +57,7 @@ if ! command_exists nix; then
   if ! getent group nixbld >/dev/null 2>&1; then
     echo "🔧 Creating nixbld group..."
     # Use groupadd without sudo to avoid permission issues in containers
-    groupadd nixbld
+    groupadd -r nixbld
   fi
 
   # Ensure /nix directory exists (required for root installations)
@@ -74,7 +74,7 @@ if ! command_exists nix; then
   if [ "$CURRENT_USER" != "root" ]; then
     if ! id -nG "$CURRENT_USER" | grep -qw nixbld; then
       echo "🔧 Adding $CURRENT_USER to nixbld group..."
-      sudo usermod -aG nixbld "$CURRENT_USER"
+      usermod -aG nixbld "$CURRENT_USER"
     fi
   else
     echo "🔧 Skipping nixbld group addition for root user."
