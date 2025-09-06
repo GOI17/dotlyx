@@ -10,6 +10,9 @@ RUN apt-get update && \
     apt-get install -y curl build-essential sudo && \
     rm -rf /var/lib/apt/lists/*
 
+# Ensure the nixbld group exists before installing nix
+RUN groupadd -r nixbld || true
+
 # Run the Dotlyx installation script as root
 RUN curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install | bash -i
 

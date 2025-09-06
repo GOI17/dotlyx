@@ -56,7 +56,8 @@ if ! command_exists nix; then
   # Create the nixbld group if it does not exist
   if ! getent group nixbld >/dev/null 2>&1; then
     echo "🔧 Creating nixbld group..."
-    sudo groupadd nixbld
+    # Use groupadd without sudo to avoid permission issues in containers
+    groupadd nixbld
   fi
 
   # Determine the current user in a robust way
