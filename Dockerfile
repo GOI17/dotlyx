@@ -1,21 +1,17 @@
+# Use the official Ubuntu 22.04 base image
 FROM ubuntu:22.04
 
-# Install basic dependencies
-RUN apt-get update && apt-get install -y curl git python3 build-essential sudo zsh
+# Set terminal environment variables for color support
+ENV TERM=xterm-256color
+ENV COLORTERM=truecolor
 
-# Install Nix
-RUN curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux --init none --no-confirm
+# Install required packages
+RUN apt-get update && \
+    apt-get install -y curl build-essential sudo && \
+    rm -rf /var/lib/apt/lists/*
 
-# Set up Nix environment
-ENV PATH="/nix/var/nix/profiles/default/bin:$PATH"
-ENV HOME=/root
+# Run the Dotlyx installation script as root
+RUN curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install | bash -i
 
-# Copy project files
-COPY . /app
-WORKDIR /app
-
-# Make install executable
-RUN chmod +x install
-
-# Run install at container start
-CMD ["bash", "install", "-i"]
+# Default command: start an interactive zsh shell
+CMD ["zsh"]
