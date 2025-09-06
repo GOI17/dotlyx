@@ -57,6 +57,12 @@ if ! command_exists nix; then
     sudo groupadd nixbld
   fi
 
+  # Add the current user to the nixbld group
+  if ! id -nG "$USER" | grep -qw nixbld; then
+    echo "🔧 Adding $USER to nixbld group..."
+    sudo usermod -aG nixbld "$USER"
+  fi
+
   # Use the official installer script
   # The installer will automatically detect systemd and install the daemon if available.
   # For non‑systemd systems we pass --no-daemon to avoid errors.
