@@ -59,10 +59,13 @@ if ! command_exists nix; then
     sudo groupadd nixbld
   fi
 
+  # Determine the current user in a robust way
+  CURRENT_USER=${LOGNAME:-$(whoami)}
+
   # Add the current user to the nixbld group
-  if ! id -nG "$USER" | grep -qw nixbld; then
-    echo "🔧 Adding $USER to nixbld group..."
-    sudo usermod -aG nixbld "$USER"
+  if ! id -nG "$CURRENT_USER" | grep -qw nixbld; then
+    echo "🔧 Adding $CURRENT_USER to nixbld group..."
+    sudo usermod -aG nixbld "$CURRENT_USER"
   fi
 
   # Use the official installer script
