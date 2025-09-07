@@ -1,118 +1,49 @@
 #!/bin/bash
 
-# Helper to check if a command exists
 command_exists() {
   type "$1" >/dev/null 2>&1
 }
 
-# ------------------------------------------------------------------
-# 1. Ensure curl is available
-# ------------------------------------------------------------------
-if ! command_exists curl; then
-  echo "❌ curl is not installed. Please install curl and re‑run this script." >&2
-  exit 1
-fi
-
-# ------------------------------------------------------------------
-# 2. Install missing prerequisites
-# ------------------------------------------------------------------
 install_pkg() {
   local pkg=$1
   echo "🔧 Installing $pkg..."
-  # Update package lists before installing
   if command_exists apt; then
-    apt-get update -y
-    apt-get -y install "$pkg" 2>&1
+    sudo apt-get update -y
+    sudo apt-get -y install "$pkg" 2>&1
   elif command_exists dnf; then
-    dnf -y install "$pkg" 2>&1
+    sudo dnf -y install "$pkg" 2>&1
   elif command_exists yum; then
-    yum -y install "$pkg" 2>&1
+    sudo yum -y install "$pkg" 2>&1
   elif command_exists brew; then
-    brew install "$pkg" 2>&1
+    sudo brew install "$pkg" 2>&1
   elif command_exists pacman; then
-    pacman -S --noconfirm "$pkg" 2>&1
+    sudo pacman -S --noconfirm "$pkg" 2>&1
   else
     echo "❌ No supported package manager found. Please install $pkg manually." >&2
     exit 1
   fi
 }
 
-# Ensure git
+if ! command_exists curl; then
+    echo "🔧 curl is not installed. Installing curl..."
+    install_pkg curl
+fi
+
 if ! command_exists git; then
-  install_pkg git
+    echo "🔧 git is not installed. Installing git..."
+    install_pkg git
 fi
 
-# Ensure python3
 if ! command_exists python3; then
-  install_pkg python3
+    echo "🔧 python3 is not installed. Installing python3..."
+    install_pkg python3
 fi
 
-# ------------------------------------------------------------------
-# 3. Install nix if missing
-# ------------------------------------------------------------------
 if ! command_exists nix; then
-  echo "🔧 nix is not installed. Installing nix..."
-
-  # Create the nixbld group if it does not exist
-  if ! getent group nixbld >/dev/null 2>&1; then
-    echo "🔧 Creating nixbld group..."
-    # Use groupadd without sudo to avoid permission issues in containers
-    groupadd -r nixbld
-  fi
-
-  # Ensure /nix directory exists (required for root installations)
-  if [ ! -d /nix ]; then
-    echo "🔧 Creating /nix directory..."
-    mkdir -p /nix
-    chown root:root /nix
-  fi
-
-  # Determine the current user in a robust way
-  CURRENT_USER=$(whoami)
-
-  # Add the current user to the nixbld group, unless the user is root
-  if [ "$CURRENT_USER" != "root" ]; then
-    if ! id -nG "$CURRENT_USER" | grep -qw nixbld; then
-      echo "🔧 Adding $CURRENT_USER to nixbld group..."
-      usermod -aG nixbld "$CURRENT_USER"
-    fi
-  else
-    echo "🔧 Skipping nixbld group addition for root user."
-  fi
-
-  # Use the official installer script
-  # The installer will automatically detect systemd and install the daemon if available.
-  # For non‑systemd systems we pass --no-daemon to avoid errors.
-  if command_exists systemctl || [ "$(ps -p 1 -o comm=)" = "systemd" ]; then
-    # Systemd is present
-    curl -L https://nixos.org/nix/install | sh
-  else
-    # Non‑systemd (e.g., Alpine, some containers)
-    curl -L https://nixos.org/nix/install | sh -s -- --no-daemon
-  fi
-
-  # Source the profile that the installer creates
-  if [ -f /nix/var/nix/profiles/default/etc/profile.d/nix.sh ]; then
-    . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
-  elif [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
-    . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-  else
-    echo "❌ nix installation succeeded but profile could not be sourced." >&2
-    exit 1
-  fi
-
-  # Verify installation
-  if ! command_exists nix; then
-    echo "❌ nix installation failed." >&2
-    exit 1
-  fi
-
-  echo "✅ nix installed successfully."
+    echo "🔧 nix is not installed. Installing nix..."
+    curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | bash --daemon
 fi
 
-# ------------------------------------------------------------------
-# 4. Verify all required tools are now available
-# ------------------------------------------------------------------
 for tool in curl git python3 nix; do
   if ! command_exists "$tool"; then
     echo "❌ $tool is still missing after installation." >&2
