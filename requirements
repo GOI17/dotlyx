@@ -54,7 +54,14 @@ if ! command_exists nix; then
     fi
 fi
 
-for tool in curl git python3 nix; do
+if !command_exists zsh; then
+    echo "🔧 zsh is not installed. Installing zsh..."
+    install_pkg zsh
+    zsh --version
+    chsh -s $(which zsh)
+fi
+
+for tool in curl git python3 nix zsh; do
   if ! command_exists "$tool"; then
     echo "❌ $tool is still missing after installation." >&2
     exit 1
