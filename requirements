@@ -43,15 +43,7 @@ if ! command_exists nix; then
     echo "🔧 nix is not installed. Installing nix..."
     export NIX_BUILD_GROUP_ID=999
     curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh -s -- --daemon
-
-    if [ -f /nix/var/nix/profiles/default/etc/profile.d/nix.sh ]; then
-      . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
-    elif [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
-      . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-    else
-      echo "❌ nix installation succeeded but profile could not be sourced." >&2
-      exit 1
-    fi
+    nix daemon
 fi
 
 for tool in curl git python3 nix; do
