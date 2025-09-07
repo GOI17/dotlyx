@@ -25,7 +25,7 @@ else
     exit 1
 fi
 
-if ! nix build --file core/setup/install.nix; then
+if ! nix build --extra-experimental-features "nix-command flakes" --file core/setup/install.nix; then
   echo "❌ Nix build failed." >&2
   exit 1
 fi
