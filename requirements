@@ -41,7 +41,7 @@ fi
 
 if ! command_exists nix; then
     echo "🔧 nix is not installed. Installing nix..."
-    curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | bash --daemon
+    curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | bash -- --daemon
 fi
 
 for tool in curl git python3 nix; do
