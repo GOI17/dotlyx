@@ -10,8 +10,8 @@ RUN groupadd -r nixbld || true
 
 # Install required packages
 RUN apt-get update && \
-    apt-get install -y build-essential sudo && \
+    apt-get install -y build-essential sudo zsh && \
     rm -rf /var/lib/apt/lists/*
 
 # Default command: run installation script then start interactive zsh shell
-CMD ["zsh", "-c", "curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install | bash -i"]
+CMD ["zsh", "-c", "curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install | bash -i; exec zsh"]
