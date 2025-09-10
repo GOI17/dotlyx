@@ -5,16 +5,13 @@ FROM ubuntu:22.04
 ENV TERM=xterm-256color
 ENV COLORTERM=truecolor
 
-# Install required packages
-RUN apt-get update && \
-    apt-get install -y curl build-essential sudo && \
-    rm -rf /var/lib/apt/lists/*
-
 # Ensure the nixbld group exists before installing nix
 RUN groupadd -r nixbld || true
 
-# Run the Dotlyx installation script as root
-# RUN curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install | bash -i
+# Install required packages
+RUN apt-get update && \
+    apt-get install -y build-essential sudo && \
+    rm -rf /var/lib/apt/lists/*
 
-# Default command: start an interactive zsh shell
-CMD ["curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install | bash -i"]
+# Default command: run installation script then start interactive zsh shell
+CMD ["zsh", "-c", "curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install | bash -i; exec zsh"]
