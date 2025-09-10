@@ -13,5 +13,8 @@ RUN apt-get update && \
     apt-get install -y curl build-essential sudo zsh && \
     rm -rf /var/lib/apt/lists/*
 
+# Download the installation script
+RUN curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install -o /tmp/install.sh
+
 # Default command: run installation script then start interactive zsh shell
-CMD ["zsh", "-c", "curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install | bash -i; exec zsh"]
+CMD ["zsh", "-c", "bash -i < /tmp/install.sh; exec zsh"]
