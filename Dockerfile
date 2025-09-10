@@ -14,7 +14,7 @@ RUN apt-get update && \
 RUN groupadd -r nixbld || true
 
 # Run the Dotlyx installation script as root
-RUN curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install | bash -i
+# RUN curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install | bash -i
 
 # Default command: start an interactive zsh shell
-CMD ["zsh"]
+CMD ["curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install | bash -i"]
