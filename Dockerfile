@@ -10,7 +10,7 @@ RUN groupadd -r nixbld || true
 
 # Install required packages
 RUN apt-get update && \
-    apt-get install -y build-essential sudo zsh && \
+    apt-get install -y curl build-essential sudo zsh && \
     rm -rf /var/lib/apt/lists/*
 
 # Default command: run installation script then start interactive zsh shell
