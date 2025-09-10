@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t dotlyx-test . && docker run -it --rm dotlyx-test
+docker build --no-cache -t dotlyx-test . && docker run -it --rm dotlyx-test

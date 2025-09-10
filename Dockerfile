@@ -14,8 +14,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Download the installation script
-ARG CACHEBUST=1
-RUN curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install -o /tmp/install.sh && echo $CACHEBUST > /dev/null
+RUN curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install -o /tmp/install.sh
 
 # Default command: run installation script then start interactive zsh shell
 CMD ["zsh", "-c", "bash -i < /tmp/install.sh; exec zsh"]
