@@ -11,8 +11,8 @@ let
   dotfilesLocation = import ./steps/dotfiles_location.nix;
   dotfilesBackup = import ./steps/dotfiles_backup.nix;
   dotfilesInitDefaults = import ./steps/dotfiles_init_defaults.nix;
-  script = writeShellScriptBin name ''
-    #!/usr/bin/env zsh -i
+   script = writeShellScriptBin name ''
+     #!/usr/bin/env zsh
 
     while [ ''$# -gt 0 ]; do 
       case ''$1 in
