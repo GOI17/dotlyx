@@ -23,7 +23,7 @@ RUN apt-get update && \
     chmod 0440 /etc/sudoers.d/$USERNAME
 
 # Download the installation script
-RUN curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install -o /tmp/install.sh
+ADD https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install /tmp/install.sh
 
 # Default command: run installation script then start interactive zsh shell
 CMD ["zsh", "-c", "bash -i < /tmp/install.sh; exec zsh"]
