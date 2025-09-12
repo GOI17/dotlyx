@@ -30,4 +30,4 @@ if ! nix build --extra-experimental-features "nix-command flakes" --file core/se
   exit 1
 fi
 
-./result/bin/dotlyx-setup "$@"
+"$pwd/result/bin/dotlyx-setup" -i
