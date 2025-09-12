@@ -41,7 +41,6 @@ fi
 
 if ! command_exists nix; then
     echo "🔧 nix is not installed. Installing nix..."
-    export NIX_BUILD_GROUP_ID=999
     curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh -s -- --daemon
     TARGET_PATH="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 
