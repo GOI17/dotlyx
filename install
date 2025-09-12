@@ -30,9 +30,4 @@ if ! nix build --extra-experimental-features "nix-command flakes" --file core/se
   exit 1
 fi
 
-# if ! nix run --experimental-features "nix-command flakes" .#dotlyx-setup "$@"; then
-#   echo "❌ dotlyx-setup failed." >&2
-#   exit 1
-# fi
-
-sudo ./result/bin/dotlyx-setup "$@"
+./result/bin/dotlyx-setup "$@"
