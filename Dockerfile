@@ -14,15 +14,14 @@ ENV COLORTERM=truecolor
 RUN apt-get update && \
     apt-get install -y curl build-essential sudo zsh && \
     rm -rf /var/lib/apt/lists/* && \
+    # --- FIX: Remove the conflicting group from the base image ---
+    groupdel nixbld && \
     # Create the user with a home directory
     groupadd --gid $USER_GID $USERNAME && \
     useradd --uid $USER_UID --gid $USER_GID -m -s /bin/zsh $USERNAME && \
     # Give the user passwordless sudo privileges for convenience
     echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USERNAME && \
     chmod 0440 /etc/sudoers.d/$USERNAME
-
-# Ensure the nixbld group exists before installing nix
-RUN groupadd -r nixbld || true
 
 # Download the installation script
 RUN curl -fsSL https://raw.githubusercontent.com/GOI17/dotlyx/HEAD/install -o /tmp/install.sh
