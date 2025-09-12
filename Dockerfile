@@ -10,12 +10,11 @@ ARG USER_GID=1000
 ENV TERM=xterm-256color
 ENV COLORTERM=truecolor
 
-# Install base dependencies and create the user in a single layer
 RUN apt-get update && \
     apt-get install -y curl build-essential sudo zsh && \
     rm -rf /var/lib/apt/lists/* && \
-    # --- FIX: Remove the conflicting group from the base image ---
-    groupdel nixbld && \
+    # --- ROBUST FIX: Remove the conflicting group, but don't fail if it doesn't exist ---
+    groupdel nixbld || true && \
     # Create the user with a home directory
     groupadd --gid $USER_GID $USERNAME && \
     useradd --uid $USER_UID --gid $USER_GID -m -s /bin/zsh $USERNAME && \
